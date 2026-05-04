@@ -1,4 +1,7 @@
 data/raw/
+data/dataset/
+models/
+models_sym/
 images_full.zip
 __pycache__/
 *.pyc
