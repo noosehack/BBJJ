@@ -121,11 +121,17 @@ if __name__ == "__main__":
     parser.add_argument("--export", type=Path, help="Export FPT records to JSON")
     parser.add_argument("--limit", type=int, help="Limit number of annotations to process")
     parser.add_argument("--smooth", type=int, default=0, metavar="K",
-                        help="Apply temporal score smoothing with ±K frame window")
-    parser.add_argument("--persist", type=int, default=0, metavar="N",
-                        help="Require N consecutive frames before label switch")
+                        help="(experimental) Apply temporal score smoothing with ±K frame window")
+    parser.add_argument("--wsmooth", type=int, default=0, metavar="K",
+                        help="(experimental) Apply confidence-weighted smoothing with ±K frame window")
+    parser.add_argument("--persist", type=int, default=8, metavar="N",
+                        help="Require N consecutive frames before label switch (default: 8)")
+    parser.add_argument("--no-persist", action="store_true",
+                        help="Disable default persistence filter")
     parser.add_argument("--videos", type=str, default=None,
                         help="Comma-separated video prefixes to include (e.g. 00,14,15)")
+    parser.add_argument("--flicker", action="store_true",
+                        help="Report label flicker rate per video")
     args = parser.parse_args()
 
     if args.fpt and args.fpt.exists():
@@ -152,10 +158,27 @@ if __name__ == "__main__":
         print(f"Applying temporal smoothing (k={args.smooth})...", file=sys.stderr)
         records = smooth_scores(records, k=args.smooth)
 
-    if args.persist > 0:
+    if args.wsmooth > 0:
+        from tools.temporal import weighted_smooth
+        print(f"Applying weighted smoothing (k={args.wsmooth})...", file=sys.stderr)
+        records = weighted_smooth(records, k=args.wsmooth)
+
+    if not args.no_persist and args.persist > 0:
         from tools.temporal import apply_persistence
         print(f"Applying persistence filter (min_frames={args.persist})...", file=sys.stderr)
         records = apply_persistence(records, min_frames=args.persist)
 
     result = evaluate(records)
     print_report(result)
+
+    if args.flicker:
+        from tools.temporal import flicker_rate
+        rates = flicker_rate(records)
+        print(f"{'─'*60}")
+        print(f"  Flicker rate (label switches / frame):")
+        for vid, rate in sorted(rates.items()):
+            if vid == "overall":
+                continue
+            print(f"    vid {vid}: {rate:.4f}")
+        print(f"    overall: {rates['overall']:.4f}")
+        print()

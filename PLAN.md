@@ -242,6 +242,35 @@ Additional algebraic tests:
 
 ---
 
+## Phase 6: Temporal Smoothing
+
+Default pipeline: `raw frame predictions → persist N=8 → labels`
+
+Persistence filter (N=8) with None-bridging is the canonical temporal method.
+None frames inherit the last stable label (no-observation, not no-position).
+
+Results on target videos (00-02: GRD_CLP, 14-15: BCTR):
+
+| Metric | Baseline | Persist N=8 |
+|---|---|---|
+| BCTR | 21.2% | 60.0% |
+| GRD_CLP | 27.5% | 54.6% |
+| GRD | 59.6% | 84.5% |
+| Compatible | 37.0% | 67.3% |
+| Flicker | 0.2114 | 0.0100 |
+
+### Weighted smoothing (experimental, `--wsmooth K`)
+
+Weighted smoothing is inappropriate for CGRD/BCTR because lower-specificity
+radicals appear in more frames and dominate accumulated scores. Persistence-only
+better preserves high-specificity radicals across intermittent missing CONs.
+
+Useful for broad GRD-family stability (GRD 84.5% → 91.8% with wsmooth k=8 +
+persist N=8) but regresses CGRD/BCTR discrimination (GRD_CLP 54.6% → 43.2%).
+Not part of the default evaluation pipeline.
+
+---
+
 ## Phases 2-7 (unchanged from previous plan)
 
 Deferred until Phase 0+1 pass all tests. See previous plan for details on:
