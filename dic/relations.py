@@ -14,7 +14,7 @@ class CON:
     attacker: AxisDef
     axis: AxisDef
     depth: str      # symbolic depth label: "d", "d1", "d2", etc.
-    helicity: str   # "+" or "-"
+    helicity: str   # "+", "-", or "0" (achiral closure)
 
     def __str__(self):
         return f"CON({self.attacker}, {self.axis}, {self.depth}, {self.helicity})"
@@ -25,4 +25,6 @@ def neg_helicity(h: str) -> str:
         return "-"
     if h == "-":
         return "+"
+    if h == "0":
+        return "0"
     raise ValueError(f"invalid helicity: {h}")

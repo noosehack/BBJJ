@@ -54,12 +54,15 @@ def test_radical_contacts_use_valid_parts():
 def test_radical_helicities_valid():
     for name, rad in ALL_RADICALS.items():
         for con in rad.contacts:
-            assert con.helicity in ("+", "-"), f"{name}: bad helicity {con.helicity}"
+            assert con.helicity in ("+", "-", "0"), f"{name}: bad helicity {con.helicity}"
+        for con in rad.forbidden_contacts:
+            assert con.helicity in ("+", "-", "0"), f"{name}: bad forbidden helicity {con.helicity}"
 
 
 def test_neg_helicity():
     assert neg_helicity("+") == "-"
     assert neg_helicity("-") == "+"
+    assert neg_helicity("0") == "0"
 
 
 def test_limb_ref_str():
@@ -85,10 +88,13 @@ def test_con_str():
 
 
 def test_mnt_and_bctr_share_contacts():
-    """MNT and BCTR have identical CON tuples; only frame constraints differ."""
+    """MNT and BCTR have identical required CON tuples; they differ in
+    frame constraints and forbidden contacts (BCTR forbids Fo-Fo closure)."""
     from dic.radicals import MNT, BCTR
     assert MNT.contacts == BCTR.contacts
     assert MNT.frame_constraints != BCTR.frame_constraints
+    assert len(BCTR.forbidden_contacts) == 1
+    assert len(MNT.forbidden_contacts) == 0
 
 
 def test_dlr_slx_differ_only_in_helicity():
@@ -113,3 +119,42 @@ def test_omop_is_lsso_with_reversed_axis():
     assert l.axis.limb_ref == o.axis.limb_ref
     assert l.axis.from_pt == o.axis.to_pt
     assert l.axis.to_pt == o.axis.from_pt
+
+
+# ── intra-body CON / cycle tests ─────────────────────────────────
+
+def test_cgrd_has_intra_body_closure():
+    """CGRD must include a Me→Me Fo-Fo CON with helicity 0."""
+    from dic.radicals import CGRD
+    closure = [c for c in CGRD.contacts
+               if c.attacker.limb_ref.role == "Me"
+               and c.axis.limb_ref.role == "Me"]
+    assert len(closure) == 1
+    c = closure[0]
+    assert c.attacker.limb_ref.part == "Fo"
+    assert c.axis.limb_ref.part == "Fo"
+    assert c.helicity == "0"
+    assert c.depth == "d3"
+
+
+def test_bctr_forbids_closure():
+    """BCTR must explicitly forbid the Fo-Fo closure CON."""
+    from dic.radicals import BCTR
+    assert len(BCTR.forbidden_contacts) == 1
+    f = BCTR.forbidden_contacts[0]
+    assert f.attacker.limb_ref.role == "Me"
+    assert f.axis.limb_ref.role == "Me"
+    assert f.attacker.limb_ref.part == "Fo"
+    assert f.axis.limb_ref.part == "Fo"
+    assert f.helicity == "0"
+
+
+def test_opponent_self_connection_accepted():
+    """CON must accept Op→Op pairs (structural test)."""
+    op_ha = AxisDef(LimbRef("Op", "Ha", "+"), "Ha", "Wr")
+    op_wr = AxisDef(LimbRef("Op", "Wr", "-"), "Wr", "El")
+    con = CON(op_ha, op_wr, "d", "0")
+    assert con.attacker.limb_ref.role == "Op"
+    assert con.axis.limb_ref.role == "Op"
+    assert con.helicity == "0"
+    assert str(con).startswith("CON(")

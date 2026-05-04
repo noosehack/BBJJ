@@ -117,7 +117,7 @@ def _detect_closure(pose: Pose, norm_len: float, contacts: list[InferredCON]) ->
 
     fo_l = AxisDef(LimbRef("Me", "Fo", "-"), "Fo", "Kn")
     fo_r = AxisDef(LimbRef("Me", "Fo", "+"), "Fo", "Kn")
-    contacts.append(InferredCON(CON(fo_l, fo_r, depth, "+"), confidence, norm_dist))
+    contacts.append(InferredCON(CON(fo_l, fo_r, depth, "0"), confidence, norm_dist))
 
 
 # ── frame constraint inference ────────────────────────────────────
@@ -169,6 +169,9 @@ def match_radical(
     for name, rad in radicals.items():
         contact_hits = _match_all_contacts(rad.contacts, contacts)
         if contact_hits is None:
+            continue
+
+        if _has_forbidden_contact(rad.forbidden_contacts, contacts):
             continue
 
         ground_reqs = tuple(
@@ -242,6 +245,16 @@ def _match_found_frames(
     return hits
 
 
+def _has_forbidden_contact(
+    forbidden: tuple[CON, ...],
+    inferred: list[InferredCON],
+) -> bool:
+    for req in forbidden:
+        if _find_contact(req, inferred) is not None:
+            return True
+    return False
+
+
 CON_MATCH_THRESHOLD = 0.02
 
 
@@ -273,6 +286,11 @@ def _find_contact(req: CON, candidates: list[InferredCON]) -> Optional[InferredC
 
 
 def _con_similarity(required: CON, candidate: CON) -> float:
+    if candidate.attacker.limb_ref.role != required.attacker.limb_ref.role:
+        return 0.0
+    if candidate.axis.limb_ref.role != required.axis.limb_ref.role:
+        return 0.0
+
     att_part = required.attacker.limb_ref.part
     ax_part = required.axis.limb_ref.part
     if candidate.attacker.limb_ref.part != att_part:

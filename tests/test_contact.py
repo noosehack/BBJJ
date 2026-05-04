@@ -342,9 +342,95 @@ class TestRadicalMatching:
             assert matches[0].radical_name not in ("MNT", "BCTR")
 
 
-# ── integration on real data ──────────────────────────────────────
+# ── cycle / forbidden contact tests ──────────────────────────────
 
-from tools.contact_inference import PROXIMITY_THRESHOLD
+from dic.body_parts import LimbRef, AxisDef
+from dic.relations import CON
+from tools.contact_inference import (
+    InferredCON, InferredFrame, _has_forbidden_contact,
+    PROXIMITY_THRESHOLD,
+)
+from dic.frames import NotOnGround
+
+
+def _fo_closure_con(conf=0.5, dist=0.1):
+    fo_l = AxisDef(LimbRef("Me", "Fo", "-"), "Fo", "Kn")
+    fo_r = AxisDef(LimbRef("Me", "Fo", "+"), "Fo", "Kn")
+    return InferredCON(CON(fo_l, fo_r, "deep", "0"), conf, dist)
+
+
+def _le_to_cons():
+    """Standard Le+→To and Le-→To contacts for mount/guard/back control."""
+    le_plus = AxisDef(LimbRef("Me", "Le", "+"), "Fo", "Hp")
+    le_minus = AxisDef(LimbRef("Me", "Le", "-"), "Fo", "Hp")
+    op_to = AxisDef(LimbRef("Op", "To", ""), "Hp", "Sh")
+    return [
+        InferredCON(CON(le_plus, op_to, "d1", "-"), 0.5, 0.1),
+        InferredCON(CON(le_minus, op_to, "d2", "+"), 0.5, 0.1),
+    ]
+
+
+def _not_on_ground_op():
+    return [InferredFrame(NotOnGround(LimbRef("Op", "Ba")), 0.8)]
+
+
+class TestCycleMatching:
+    def test_cgrd_positive_with_closure(self):
+        """Le+→To, Le-→To, Fo-→Fo+ closure → must match CGRD."""
+        contacts = _le_to_cons() + [_fo_closure_con()]
+        frames = _not_on_ground_op()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "CGRD" in names
+        assert matches[0].radical_name == "CGRD"
+
+    def test_cgrd_negative_without_closure(self):
+        """Le+→To, Le-→To, NO closure → must NOT match CGRD."""
+        contacts = _le_to_cons()
+        frames = _not_on_ground_op()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "CGRD" not in names
+
+    def test_bctr_positive_without_closure(self):
+        """Le+→To, Le-→To, no closure, FacingAligned → must match BCTR."""
+        from dic.frames import FacingAligned
+        contacts = _le_to_cons()
+        frames = _not_on_ground_op() + [InferredFrame(FacingAligned(), 0.9)]
+        matches = match_radical(contacts, frames)
+        assert matches[0].radical_name == "BCTR"
+
+    def test_bctr_negative_with_closure(self):
+        """Le+→To, Le-→To, WITH closure → BCTR must be forbidden."""
+        from dic.frames import FacingAligned
+        contacts = _le_to_cons() + [_fo_closure_con()]
+        frames = _not_on_ground_op() + [InferredFrame(FacingAligned(), 0.9)]
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "BCTR" not in names
+
+    def test_opponent_self_con_preserved(self):
+        """Op→Op CON must be accepted and stored."""
+        op_ha = AxisDef(LimbRef("Op", "Ha", "+"), "Ha", "Wr")
+        op_wr = AxisDef(LimbRef("Op", "Wr", "-"), "Wr", "El")
+        con = CON(op_ha, op_wr, "d", "0")
+        ic = InferredCON(con, 0.6, 0.15)
+        assert ic.con.attacker.limb_ref.role == "Op"
+        assert ic.con.axis.limb_ref.role == "Op"
+        assert ic.confidence == 0.6
+
+    def test_closure_helicity_is_zero(self):
+        """Inferred closure CON must have helicity 0."""
+        me, op = _mount_poses()
+        contacts = infer_contacts(me, op)
+        closures = [c for c in contacts
+                    if c.con.attacker.limb_ref.role == "Me"
+                    and c.con.axis.limb_ref.role == "Me"]
+        for c in closures:
+            assert c.con.helicity == "0"
+
+
+# ── integration on real data ──────────────────────────────────────
 
 ANNOTATIONS_EXIST = DEFAULT_PATH.exists()
 skip_no_data = pytest.mark.skipif(not ANNOTATIONS_EXIST, reason="data/raw not present")

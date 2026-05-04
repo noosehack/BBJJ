@@ -11,6 +11,7 @@ class Radical:
     name: str
     frame_constraints: tuple[FrameConstraint, ...] = ()
     contacts: tuple[CON, ...] = ()
+    forbidden_contacts: tuple[CON, ...] = ()
 
     def __str__(self):
         parts = [self.name, "{"]
@@ -18,6 +19,8 @@ class Radical:
             parts.append(f"  {fc}")
         for c in self.contacts:
             parts.append(f"  {c}")
+        for c in self.forbidden_contacts:
+            parts.append(f"  NOT {c}")
         parts.append("}")
         return "\n".join(parts)
 
@@ -59,6 +62,9 @@ BCTR = Radical("BCTR",
         CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d1", "-"),
         CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d2", "+"),
     ),
+    forbidden_contacts=(
+        CON(_me_ax("Fo", "-", "Fo", "Kn"), _me_ax("Fo", "+", "Fo", "Kn"), "d", "0"),
+    ),
 )
 
 DLR = Radical("DLR",
@@ -98,7 +104,7 @@ CGRD = Radical("CGRD",
     contacts=(
         CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d1", "-"),
         CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d2", "+"),
-        CON(_me_ax("Fo", "-", "Fo", "Kn"), _me_ax("Fo", "+", "Fo", "Kn"), "d", "+"),
+        CON(_me_ax("Fo", "-", "Fo", "Kn"), _me_ax("Fo", "+", "Fo", "Kn"), "d3", "0"),
     ),
 )
 

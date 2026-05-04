@@ -54,6 +54,7 @@ def hel_flip_radical(rad: Radical) -> Radical:
         rad.name,
         rad.frame_constraints,
         tuple(hel_flip(c) for c in rad.contacts),
+        tuple(hel_flip(c) for c in rad.forbidden_contacts),
     )
 
 
@@ -63,6 +64,7 @@ def pov_swap_radical(rad: Radical) -> Radical:
         rad.name,
         tuple(pov_swap_frame(fc) for fc in rad.frame_constraints),
         tuple(pov_swap_con(c) for c in rad.contacts),
+        tuple(pov_swap_con(c) for c in rad.forbidden_contacts),
     )
 
 
