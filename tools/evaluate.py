@@ -16,7 +16,7 @@ BLISP_TO_RADICALS = {
     "GRD_CLP": {"CGRD", "DLR", "SLX", "RDLR"},
     "HGRD":    {"DLR", "SLX", "RDLR"},
     "5050":    {"DLR", "SLX"},
-    "SCTR":    set(),
+    "SCTR":    {"SCTR"},
     "TRTL":    set(),
     "STND":    set(),
     "TKDN":    set(),

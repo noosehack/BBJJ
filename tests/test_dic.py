@@ -121,6 +121,74 @@ def test_omop_is_lsso_with_reversed_axis():
     assert l.axis.to_pt == o.axis.from_pt
 
 
+# ── SCTR structural tests ───────────────────────────────────────
+
+def test_sctr_has_arm_to_torso_contact():
+    """SCTR has one Me.Ar -> Op.To contact."""
+    from dic.radicals import SCTR
+    assert len(SCTR.contacts) == 1
+    c = SCTR.contacts[0]
+    assert c.attacker.limb_ref.role == "Me"
+    assert c.attacker.limb_ref.part == "Ar"
+    assert c.axis.limb_ref.role == "Op"
+    assert c.axis.limb_ref.part == "To"
+
+
+def test_sctr_requires_opponent_on_ground():
+    """SCTR requires OnGround(Op.Ba)."""
+    from dic.radicals import SCTR
+    from dic.frames import OnGround
+    ground = [f for f in SCTR.frame_constraints if isinstance(f, OnGround)]
+    assert len(ground) == 1
+    assert ground[0].part.role == "Op"
+    assert ground[0].part.part == "Ba"
+
+
+def test_sctr_no_facing_constraint():
+    """SCTR does not require a specific facing direction."""
+    from dic.radicals import SCTR
+    from dic.frames import FacingAligned, FacingOpposed
+    facing = [f for f in SCTR.frame_constraints
+              if isinstance(f, (FacingAligned, FacingOpposed))]
+    assert len(facing) == 0
+
+
+def test_sctr_differs_from_mnt_by_limb():
+    """MNT uses legs on torso, SCTR uses arms on torso."""
+    from dic.radicals import MNT, SCTR
+    for c in MNT.contacts:
+        assert c.attacker.limb_ref.part == "Le"
+    for c in SCTR.contacts:
+        assert c.attacker.limb_ref.part == "Ar"
+
+
+def test_sctr_v1_minimal():
+    """Canonical SCTR has 1 CON + 1 FRM, no forbidden contacts."""
+    from dic.radicals import SCTR
+    assert len(SCTR.contacts) == 1
+    assert len(SCTR.frame_constraints) == 1
+    assert len(SCTR.forbidden_contacts) == 0
+    assert len(SCTR.forbidden_bilateral) == 0
+
+
+def test_sctr_strict_has_kbr_and_bilateral():
+    """SCTR_STRICT adds NotKneeBracket + bilateral Le→To forbid."""
+    from dic.radicals import SCTR_STRICT
+    from dic.frames import NotKneeBracket
+    kbr = [f for f in SCTR_STRICT.frame_constraints if isinstance(f, NotKneeBracket)]
+    assert len(kbr) == 1
+    assert len(SCTR_STRICT.forbidden_bilateral) == 2
+    parts = {c.attacker.limb_ref.sign for c in SCTR_STRICT.forbidden_bilateral}
+    assert parts == {"+", "-"}
+
+
+def test_sctr_strict_not_in_all_radicals():
+    """SCTR_STRICT is diagnostic only, not in the default radical dict."""
+    from dic.radicals import ALL_RADICALS
+    assert "SCTR_STRICT" not in ALL_RADICALS
+    assert "SCTR" in ALL_RADICALS
+
+
 # ── intra-body CON / cycle tests ─────────────────────────────────
 
 def test_cgrd_has_intra_body_closure():

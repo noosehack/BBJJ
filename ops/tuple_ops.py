@@ -2,6 +2,7 @@ from dic.body_parts import LimbRef, AxisDef
 from dic.relations import CON, neg_helicity
 from dic.frames import (
     FrameConstraint, FacingOpposed, FacingAligned, OnGround, NotOnGround,
+    KneeBracket, NotKneeBracket,
 )
 from dic.radicals import Radical
 
@@ -43,6 +44,10 @@ def pov_swap_frame(fc: FrameConstraint) -> FrameConstraint:
         return OnGround(_swap_role_limb(fc.part))
     if isinstance(fc, NotOnGround):
         return NotOnGround(_swap_role_limb(fc.part))
+    if isinstance(fc, KneeBracket):
+        return KneeBracket(_swap_role_limb(fc.part))
+    if isinstance(fc, NotKneeBracket):
+        return NotKneeBracket(_swap_role_limb(fc.part))
     raise TypeError(f"unknown frame constraint: {fc}")
 
 
@@ -55,6 +60,7 @@ def hel_flip_radical(rad: Radical) -> Radical:
         rad.frame_constraints,
         tuple(hel_flip(c) for c in rad.contacts),
         tuple(hel_flip(c) for c in rad.forbidden_contacts),
+        tuple(hel_flip(c) for c in rad.forbidden_bilateral),
     )
 
 
@@ -65,6 +71,7 @@ def pov_swap_radical(rad: Radical) -> Radical:
         tuple(pov_swap_frame(fc) for fc in rad.frame_constraints),
         tuple(pov_swap_con(c) for c in rad.contacts),
         tuple(pov_swap_con(c) for c in rad.forbidden_contacts),
+        tuple(pov_swap_con(c) for c in rad.forbidden_bilateral),
     )
 
 

@@ -430,6 +430,214 @@ class TestCycleMatching:
             assert c.con.helicity == "0"
 
 
+# ── SCTR matching tests ──────────────────────────────────────────
+
+from dic.frames import KneeBracket, NotKneeBracket
+
+
+def _ar_to_cons():
+    """Standard Ar+→To and Ar-→To contacts for side control."""
+    ar_plus = AxisDef(LimbRef("Me", "Ar", "+"), "Wr", "Sh")
+    ar_minus = AxisDef(LimbRef("Me", "Ar", "-"), "Wr", "Sh")
+    op_to = AxisDef(LimbRef("Op", "To", ""), "Hp", "Sh")
+    return [
+        InferredCON(CON(ar_plus, op_to, "d1", "-"), 0.5, 0.08),
+        InferredCON(CON(ar_minus, op_to, "d2", "+"), 0.5, 0.10),
+    ]
+
+
+def _on_ground_op():
+    from dic.frames import OnGround
+    return [InferredFrame(OnGround(LimbRef("Op", "Ba", "")), 0.9)]
+
+
+class TestSCTRMatching:
+    def test_sctr_positive(self):
+        """Ar→To + Z0(Op.Ba) → must match SCTR."""
+        contacts = _ar_to_cons()
+        frames = _on_ground_op()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "SCTR" in names
+        assert matches[0].radical_name == "SCTR"
+
+    def test_sctr_outscores_single_con_radicals(self):
+        """SCTR (1 CON + 1 FRM) must outscore DLR/SLX (1 CON + 0 FRM)."""
+        contacts = _ar_to_cons()
+        frames = _on_ground_op()
+        matches = match_radical(contacts, frames)
+        sctr = [m for m in matches if m.radical_name == "SCTR"]
+        single = [m for m in matches if m.radical_name in ("DLR", "SLX", "RDLR", "LSSO", "OMOP")]
+        assert len(sctr) == 1
+        if single:
+            assert sctr[0].confidence > single[0].confidence
+
+    def test_sctr_does_not_match_without_ground(self):
+        """SCTR requires OnGround(Op.Ba); without it, SCTR must not match."""
+        contacts = _ar_to_cons()
+        frames = _not_on_ground_op()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "SCTR" not in names
+
+    def test_sctr_does_not_match_without_arm_contacts(self):
+        """SCTR requires arm-to-torso; leg-to-torso must not trigger SCTR."""
+        contacts = _le_to_cons()
+        frames = _on_ground_op()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "SCTR" not in names
+
+    def test_sctr_with_single_arm_still_matches(self):
+        """Even with just one arm on torso, SCTR should match (partial credit)."""
+        ar_plus = AxisDef(LimbRef("Me", "Ar", "+"), "Wr", "Sh")
+        op_to = AxisDef(LimbRef("Op", "To", ""), "Hp", "Sh")
+        contacts = [InferredCON(CON(ar_plus, op_to, "d1", "-"), 0.5, 0.08)]
+        frames = _on_ground_op()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "SCTR" in names
+
+    def test_mnt_outscores_sctr_when_legs_present(self):
+        """MNT (2 CON + 2 FRM) outscores SCTR (1 CON + 1 FRM) with facing."""
+        from dic.frames import FacingOpposed
+        contacts = _le_to_cons() + _ar_to_cons()
+        frames = _on_ground_op() + [InferredFrame(FacingOpposed(), 0.95)]
+        matches = match_radical(contacts, frames)
+        mnt = [m for m in matches if m.radical_name == "MNT"]
+        sctr = [m for m in matches if m.radical_name == "SCTR"]
+        assert len(mnt) == 1
+        assert len(sctr) == 1
+        assert mnt[0].confidence > sctr[0].confidence
+
+    def test_mnt_outscores_sctr_even_without_facing(self):
+        """MNT with MISSING_FACING_PENALTY still outscores SCTR."""
+        contacts = _le_to_cons() + _ar_to_cons()
+        frames = _on_ground_op()
+        matches = match_radical(contacts, frames)
+        mnt = [m for m in matches if m.radical_name == "MNT"]
+        sctr = [m for m in matches if m.radical_name == "SCTR"]
+        assert len(mnt) == 1
+        assert len(sctr) == 1
+        assert mnt[0].confidence > sctr[0].confidence
+
+
+class TestSCTRStrictDiagnostic:
+    """SCTR_STRICT is not in ALL_RADICALS but can be used as a diagnostic."""
+
+    def test_strict_blocked_by_kbr(self):
+        """SCTR_STRICT requires NotKneeBracket; KBR present blocks it."""
+        from dic.radicals import SCTR_STRICT
+        from dic.frames import OnGround
+        contacts = _ar_to_cons()
+        frames = [
+            InferredFrame(OnGround(LimbRef("Op", "Ba", "")), 0.9),
+            InferredFrame(KneeBracket(LimbRef("Op", "To", "")), 0.8),
+        ]
+        matches = match_radical(contacts, frames, {"SCTR_STRICT": SCTR_STRICT})
+        names = [m.radical_name for m in matches]
+        assert "SCTR_STRICT" not in names
+
+    def test_strict_blocked_by_bilateral_le(self):
+        """SCTR_STRICT bilateral forbid blocks when both Le→To present."""
+        from dic.radicals import SCTR_STRICT
+        contacts = _le_to_cons() + _ar_to_cons()
+        frames = _on_ground_op() + [InferredFrame(NotKneeBracket(LimbRef("Op", "To", "")), 0.7)]
+        matches = match_radical(contacts, frames, {"SCTR_STRICT": SCTR_STRICT})
+        names = [m.radical_name for m in matches]
+        assert "SCTR_STRICT" not in names
+
+    def test_strict_passes_with_single_le(self):
+        """Single Le→To does NOT trigger SCTR_STRICT bilateral forbid."""
+        from dic.radicals import SCTR_STRICT
+        le_plus = AxisDef(LimbRef("Me", "Le", "+"), "Fo", "Hp")
+        op_to = AxisDef(LimbRef("Op", "To", ""), "Hp", "Sh")
+        single_le = [InferredCON(CON(le_plus, op_to, "d1", "-"), 0.3, 0.15)]
+        contacts = single_le + _ar_to_cons()
+        frames = _on_ground_op() + [InferredFrame(NotKneeBracket(LimbRef("Op", "To", "")), 0.7)]
+        matches = match_radical(contacts, frames, {"SCTR_STRICT": SCTR_STRICT})
+        names = [m.radical_name for m in matches]
+        assert "SCTR_STRICT" in names
+
+
+def _side_control_poses():
+    """Me perpendicular on top of Op. Me's arms wrap Op's torso.
+    Op is on back (hips high y). Me's knees sprawled to one side,
+    NOT bracketing Op's torso (key for NOT KBR)."""
+    me = Pose([
+        Keypoint(220, 120, 0.9),   # 0  nose
+        Keypoint(222, 118, 0.9),   # 1
+        Keypoint(218, 118, 0.9),   # 2
+        Keypoint(225, 120, 0.9),   # 3
+        Keypoint(215, 120, 0.9),   # 4
+        Keypoint(190, 160, 0.9),   # 5  l_shoulder
+        Keypoint(250, 160, 0.9),   # 6  r_shoulder
+        Keypoint(175, 200, 0.9),   # 7  l_elbow (reaching under Op head)
+        Keypoint(265, 200, 0.9),   # 8  r_elbow (underhook side)
+        Keypoint(200, 250, 0.9),   # 9  l_wrist (on Op torso area)
+        Keypoint(240, 250, 0.9),   # 10 r_wrist (on Op torso area)
+        Keypoint(180, 280, 0.9),   # 11 l_hip
+        Keypoint(260, 280, 0.9),   # 12 r_hip
+        Keypoint(100, 350, 0.9),   # 13 l_knee (sprawled far from Op torso)
+        Keypoint(80,  380, 0.9),   # 14 r_knee (sprawled far)
+        Keypoint(70,  410, 0.9),   # 15 l_ankle
+        Keypoint(50,  440, 0.9),   # 16 r_ankle
+    ])
+    op = Pose([
+        Keypoint(120, 300, 0.9),   # 0  nose (to the side, below shoulders)
+        Keypoint(122, 302, 0.9),   # 1
+        Keypoint(118, 302, 0.9),   # 2
+        Keypoint(125, 305, 0.9),   # 3
+        Keypoint(115, 305, 0.9),   # 4
+        Keypoint(170, 230, 0.9),   # 5  l_shoulder
+        Keypoint(230, 230, 0.9),   # 6  r_shoulder
+        Keypoint(150, 280, 0.9),   # 7  l_elbow
+        Keypoint(250, 280, 0.9),   # 8  r_elbow
+        Keypoint(140, 320, 0.9),   # 9  l_wrist
+        Keypoint(260, 320, 0.9),   # 10 r_wrist
+        Keypoint(180, 340, 0.9),   # 11 l_hip (high y -> on ground)
+        Keypoint(220, 340, 0.9),   # 12 r_hip
+        Keypoint(175, 420, 0.9),   # 13 l_knee
+        Keypoint(225, 420, 0.9),   # 14 r_knee
+        Keypoint(170, 490, 0.9),   # 15 l_ankle
+        Keypoint(230, 490, 0.9),   # 16 r_ankle
+    ])
+    return me, op
+
+
+class TestSCTRSyntheticPose:
+    def test_side_control_arm_contacts_detected(self):
+        """Side control must produce Me.Ar -> Op.To contacts."""
+        me, op = _side_control_poses()
+        contacts = infer_contacts(me, op)
+        ar_to_to = [c for c in contacts
+                    if c.con.attacker.limb_ref.role == "Me"
+                    and c.con.attacker.limb_ref.part == "Ar"
+                    and c.con.axis.limb_ref.role == "Op"
+                    and c.con.axis.limb_ref.part == "To"]
+        assert len(ar_to_to) >= 1
+
+    def test_side_control_not_kbr_detected(self):
+        """Side control with sprawled knees must produce NotKneeBracket."""
+        me, op = _side_control_poses()
+        frames = infer_frame_constraints(me, op)
+        nkbr = [f for f in frames if isinstance(f.constraint, NotKneeBracket)]
+        assert len(nkbr) == 1, f"Expected NotKneeBracket, got: {[type(f.constraint).__name__ for f in frames]}"
+
+    def test_mount_straddle_kbr_detected(self):
+        """Mount with knees straddling (one near head, one near hip) must produce KneeBracket."""
+        me_base, op = _mount_poses()
+        kps = list(me_base.keypoints)
+        kps[13] = Keypoint(170, 300, 0.9)   # l_knee near Op shoulders (y=290)
+        kps[14] = Keypoint(230, 360, 0.9)   # r_knee near Op hips (y=370)
+        kps[15] = Keypoint(170, 340, 0.9)   # l_ankle
+        kps[16] = Keypoint(230, 400, 0.9)   # r_ankle
+        me = Pose(kps)
+        frames = infer_frame_constraints(me, op)
+        kbr = [f for f in frames if isinstance(f.constraint, KneeBracket)]
+        assert len(kbr) == 1, f"Expected KneeBracket, got: {[type(f.constraint).__name__ for f in frames]}"
+
+
 # ── integration on real data ──────────────────────────────────────
 
 ANNOTATIONS_EXIST = DEFAULT_PATH.exists()

@@ -3,6 +3,7 @@ from dic.body_parts import LimbRef, AxisDef
 from dic.relations import CON
 from dic.frames import (
     FrameConstraint, FacingOpposed, FacingAligned, OnGround, NotOnGround,
+    KneeBracket, NotKneeBracket,
 )
 
 
@@ -12,6 +13,7 @@ class Radical:
     frame_constraints: tuple[FrameConstraint, ...] = ()
     contacts: tuple[CON, ...] = ()
     forbidden_contacts: tuple[CON, ...] = ()
+    forbidden_bilateral: tuple[CON, ...] = ()
 
     def __str__(self):
         parts = [self.name, "{"]
@@ -97,6 +99,29 @@ OMOP = Radical("OMOP",
     ),
 )
 
+SCTR = Radical("SCTR",
+    frame_constraints=(
+        OnGround(_ref("Op", "Ba")),
+    ),
+    contacts=(
+        CON(_me_ax("Ar", "+", "Wr", "Sh"), _op_ax("To", "", "Hp", "Sh"), "d1", "-"),
+    ),
+)
+
+SCTR_STRICT = Radical("SCTR_STRICT",
+    frame_constraints=(
+        OnGround(_ref("Op", "Ba")),
+        NotKneeBracket(_ref("Op", "To")),
+    ),
+    contacts=(
+        CON(_me_ax("Ar", "+", "Wr", "Sh"), _op_ax("To", "", "Hp", "Sh"), "d1", "-"),
+    ),
+    forbidden_bilateral=(
+        CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d", "-"),
+        CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d", "+"),
+    ),
+)
+
 CGRD = Radical("CGRD",
     frame_constraints=(
         NotOnGround(_ref("Op", "Ba")),
@@ -112,6 +137,7 @@ CGRD = Radical("CGRD",
 ALL_RADICALS = {
     "MNT": MNT,
     "BCTR": BCTR,
+    "SCTR": SCTR,
     "CGRD": CGRD,
     "DLR": DLR,
     "SLX": SLX,

@@ -122,27 +122,41 @@ Frame constraint predicates -- frozen dataclasses:
 ```python
 @dataclass(frozen=True)
 class FacingOpposed:       # y = -y'
-    """Me faces Op, Op faces Me"""
 
 @dataclass(frozen=True)
 class FacingAligned:       # y = y'
-    """Same facing direction (e.g. back control)"""
 
 @dataclass(frozen=True)
 class OnGround:            # Z0(X)
-    part: LimbRef           # body part that is grounded
+    part: LimbRef
 
 @dataclass(frozen=True)
 class NotOnGround:         # ¬Z0(X)
-    part: LimbRef           # body part that is elevated
+    part: LimbRef
+
+@dataclass(frozen=True)
+class KneeBracket:         # KBR(X) — Me's knees bracket X
+    part: LimbRef
+
+@dataclass(frozen=True)
+class NotKneeBracket:      # ¬KBR(X)
+    part: LimbRef
 ```
+
+KBR is a derived geometric predicate (not a new primitive). It measures whether
+Me's knees bracket Op's torso: one knee near head/shoulder line, one near hip
+line. Inverted from initial expectation: KBR is a mount signal (knees straddle),
+NOT a side control signal (knees sprawl). Used positively in MNT diagnostics,
+negatively in SCTR_STRICT.
 
 ### dic/radicals.py
 
 Each radical is a `Radical` dataclass containing:
 - `name`: position code string
-- `frame_constraints`: list of frame predicates
-- `contacts`: list of CON tuples
+- `frame_constraints`: tuple of frame predicates
+- `contacts`: tuple of CON tuples
+- `forbidden_contacts`: tuple of CON (OR-semantics: any match blocks)
+- `forbidden_bilateral`: tuple of CON (AND-semantics: all must match to block, distinct-match enforced)
 
 All radicals are explicit literals. No auto-generation.
 
@@ -177,7 +191,28 @@ OMOP = Radical("OMOP",
   contacts=[CON(Me.Le-, REV(Op.Ar+_{Wr->Sh}), "d", "+")])
 ```
 
-Remaining radicals (SCTR, GRD, HGRD, 5050, TRI, KMR, BFLY, KGRD) -- stubbed with TODO, to be filled in as explicit canonical forms.
+SCTR = Radical("SCTR",
+  frames=[OnGround(Op.Ba)],
+  contacts=[CON(Me.Ar+, Op.To_{Hp->Sh}, "d1", "-")])
+
+SCTR_STRICT = Radical("SCTR_STRICT",    # diagnostic only, not in ALL_RADICALS
+  frames=[OnGround(Op.Ba), NotKneeBracket(Op.To)],
+  contacts=[CON(Me.Ar+, Op.To_{Hp->Sh}, "d1", "-")],
+  forbidden_bilateral=[
+    CON(Me.Le+, Op.To_{Hp->Sh}, "d", "-"),
+    CON(Me.Le-, Op.To_{Hp->Sh}, "d", "+"),
+  ])
+
+**SCTR v1 vs v3 decision (2026-05-04):**
+- v1 (canonical): Z0(Op.Ba) + Ar→To. 1 CON + 1 FRM. SCTR=48.3%, MNT=89.8%, Compat=69.5%.
+- v3 (strict): v1 + ¬KBR(Op.To) + FORBID bilateral Le→To. SCTR=37.2%, MNT=90.0%, Compat=64.2%.
+- v3 is structurally appealing but too brittle under 2D projection (ground confidence
+  unreliable 0.2–0.6 on clear SCTR frames; KBR threshold sensitive to pose noise).
+- v1 remains canonical for ViCoS v0.2. KBR/bilateral-forbid are diagnostics via SCTR_STRICT.
+- Main confuser: MNT (38% of SCTR frames) — MNT's 2 CON + 2 FRM outscores SCTR's 1 CON + 1 FRM
+  when Me's legs happen to be near Op's torso.
+
+Remaining radicals (GRD, HGRD, 5050, TRI, KMR, BFLY, KGRD) -- stubbed with TODO, to be filled in as explicit canonical forms.
 
 ### data/loader.py
 

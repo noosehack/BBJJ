@@ -5,19 +5,24 @@ from typing import Optional
 from data.schema import Pose
 from dic.body_parts import LimbRef, AxisDef
 from dic.relations import CON
-from dic.frames import FacingOpposed, FacingAligned, OnGround, NotOnGround, FrameConstraint
+from dic.frames import (
+    FacingOpposed, FacingAligned, OnGround, NotOnGround,
+    KneeBracket, NotKneeBracket, FrameConstraint,
+)
 from dic.radicals import ALL_RADICALS, Radical
 from tools.axis_reconstruction import (
-    ReconstructedAxis, Vec2,
+    ReconstructedAxis, Vec2, kp_to_vec,
     reconstruct_axes, torso_length, torso_center, facing_direction,
     point_to_segment_distance,
-    L_HIP, R_HIP, L_ANKLE, R_ANKLE,
+    L_HIP, R_HIP, L_ANKLE, R_ANKLE, L_KNEE, R_KNEE,
+    NOSE, L_SHOULDER, R_SHOULDER,
     CONFIDENCE_THRESHOLD,
 )
 
 CONTACT_THRESHOLD = 0.3
 PROXIMITY_THRESHOLD = 0.6
 CLOSURE_THRESHOLD = 0.20
+KBR_THRESHOLD = 0.6
 MISSING_FACING_PENALTY = 0.7
 
 
@@ -152,7 +157,61 @@ def infer_frame_constraints(me_pose: Pose, op_pose: Pose) -> list[InferredFrame]
         constraints.append(InferredFrame(NotOnGround(LimbRef("Me", "Ba")), 0.5))
         constraints.append(InferredFrame(NotOnGround(LimbRef("Op", "Ba")), 0.5))
 
+    # knee bracket: do Me's knees bracket Op's torso?
+    kbr = _infer_knee_bracket(me_pose, op_pose)
+    if kbr is not None:
+        constraints.append(kbr)
+
     return constraints
+
+
+def _infer_knee_bracket(me_pose: Pose, op_pose: Pose) -> InferredFrame | None:
+    me_kps = me_pose.keypoints
+    op_kps = op_pose.keypoints
+
+    if me_kps[L_KNEE].confidence < 0.3 or me_kps[R_KNEE].confidence < 0.3:
+        return None
+    if op_kps[L_SHOULDER].confidence < 0.3 or op_kps[R_SHOULDER].confidence < 0.3:
+        return None
+    if op_kps[L_HIP].confidence < 0.3 or op_kps[R_HIP].confidence < 0.3:
+        return None
+
+    op_tl = max(torso_length(op_pose), 1.0)
+
+    op_nose = kp_to_vec(op_kps[NOSE])
+    op_sh_l = kp_to_vec(op_kps[L_SHOULDER])
+    op_sh_r = kp_to_vec(op_kps[R_SHOULDER])
+    op_sh_mid = (op_sh_l + op_sh_r) * 0.5
+    op_neck = (op_nose + op_sh_mid) * 0.5
+    op_hp_l = kp_to_vec(op_kps[L_HIP])
+    op_hp_r = kp_to_vec(op_kps[R_HIP])
+    op_hp_mid = (op_hp_l + op_hp_r) * 0.5
+
+    head_targets = [op_nose, op_sh_l, op_sh_r, op_sh_mid, op_neck]
+    hip_targets = [op_hp_l, op_hp_r, op_hp_mid]
+
+    me_kn_l = kp_to_vec(me_kps[L_KNEE])
+    me_kn_r = kp_to_vec(me_kps[R_KNEE])
+
+    def min_dist(pt, targets):
+        return min((pt - t).length() for t in targets)
+
+    kn_l_head = min_dist(me_kn_l, head_targets) / op_tl
+    kn_l_hip = min_dist(me_kn_l, hip_targets) / op_tl
+    kn_r_head = min_dist(me_kn_r, head_targets) / op_tl
+    kn_r_hip = min_dist(me_kn_r, hip_targets) / op_tl
+
+    cost_a = max(kn_l_head, kn_r_hip)
+    cost_b = max(kn_r_head, kn_l_hip)
+    best_cost = min(cost_a, cost_b)
+
+    ref = LimbRef("Op", "To", "")
+    if best_cost < KBR_THRESHOLD:
+        conf = min(1.0, 1.0 - best_cost / KBR_THRESHOLD)
+        return InferredFrame(KneeBracket(ref), conf)
+    else:
+        conf = min(1.0, (best_cost - KBR_THRESHOLD) / KBR_THRESHOLD)
+        return InferredFrame(NotKneeBracket(ref), conf)
 
 
 # ── radical matching ──────────────────────────────────────────────
@@ -174,11 +233,15 @@ def match_radical(
         if _has_forbidden_contact(rad.forbidden_contacts, contacts):
             continue
 
-        ground_reqs = tuple(
-            r for r in rad.frame_constraints if isinstance(r, (OnGround, NotOnGround))
+        if _has_bilateral_forbidden(rad.forbidden_bilateral, contacts):
+            continue
+
+        hard_reqs = tuple(
+            r for r in rad.frame_constraints
+            if isinstance(r, (OnGround, NotOnGround, KneeBracket, NotKneeBracket))
         )
-        ground_hits = _match_all_grounds(ground_reqs, frames)
-        if ground_hits is None:
+        hard_hits = _match_all_grounds(hard_reqs, frames)
+        if hard_hits is None:
             continue
 
         facing_reqs = tuple(
@@ -186,7 +249,7 @@ def match_radical(
         )
         facing_hits = _match_found_frames(facing_reqs, frames)
 
-        frame_hits = ground_hits + facing_hits
+        frame_hits = hard_hits + facing_hits
         n_con = len(contact_hits)
         n_frame = len(frame_hits)
         n_facing_missing = len(facing_reqs) - len(facing_hits)
@@ -255,6 +318,33 @@ def _has_forbidden_contact(
     return False
 
 
+def _has_bilateral_forbidden(
+    bilateral: tuple[CON, ...],
+    inferred: list[InferredCON],
+) -> bool:
+    if not bilateral:
+        return False
+    used: set[int] = set()
+    for req in bilateral:
+        found = False
+        best_idx = None
+        best_score = 0.0
+        for i, cand in enumerate(inferred):
+            if i in used:
+                continue
+            s = _con_similarity(req, cand.con)
+            w = s * cand.confidence
+            if w > best_score:
+                best_score = w
+                best_idx = i
+        if best_idx is not None and best_score > CON_MATCH_THRESHOLD:
+            used.add(best_idx)
+            found = True
+        if not found:
+            return False
+    return True
+
+
 CON_MATCH_THRESHOLD = 0.02
 
 
@@ -265,6 +355,10 @@ def _find_frame(req: FrameConstraint, inferred: list[InferredFrame]) -> Optional
         if isinstance(req, (FacingOpposed, FacingAligned)):
             return inf
         if isinstance(req, (OnGround, NotOnGround)):
+            if (inf.constraint.part.part == req.part.part
+                    and inf.constraint.part.role == req.part.role):
+                return inf
+        if isinstance(req, (KneeBracket, NotKneeBracket)):
             if (inf.constraint.part.part == req.part.part
                     and inf.constraint.part.role == req.part.role):
                 return inf
