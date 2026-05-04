@@ -120,6 +120,12 @@ if __name__ == "__main__":
     parser.add_argument("--fpt", type=Path, help="Load existing FPT records from JSON")
     parser.add_argument("--export", type=Path, help="Export FPT records to JSON")
     parser.add_argument("--limit", type=int, help="Limit number of annotations to process")
+    parser.add_argument("--smooth", type=int, default=0, metavar="K",
+                        help="Apply temporal score smoothing with ±K frame window")
+    parser.add_argument("--persist", type=int, default=0, metavar="N",
+                        help="Require N consecutive frames before label switch")
+    parser.add_argument("--videos", type=str, default=None,
+                        help="Comma-separated video prefixes to include (e.g. 00,14,15)")
     args = parser.parse_args()
 
     if args.fpt and args.fpt.exists():
@@ -129,6 +135,10 @@ if __name__ == "__main__":
         from data.loader import load_annotations
         print("Loading annotations...", file=sys.stderr)
         annotations = load_annotations()
+        if args.videos:
+            prefixes = tuple(v.strip() for v in args.videos.split(","))
+            annotations = [a for a in annotations if a.image[:2] in prefixes]
+            print(f"Filtered to videos {prefixes}: {len(annotations)} annotations", file=sys.stderr)
         if args.limit:
             annotations = annotations[:args.limit]
         print(f"Annotating {len(annotations)} images...", file=sys.stderr)
@@ -136,6 +146,16 @@ if __name__ == "__main__":
         if args.export:
             export_fpt(records, args.export)
             print(f"Exported to {args.export}", file=sys.stderr)
+
+    if args.smooth > 0:
+        from tools.temporal import smooth_scores
+        print(f"Applying temporal smoothing (k={args.smooth})...", file=sys.stderr)
+        records = smooth_scores(records, k=args.smooth)
+
+    if args.persist > 0:
+        from tools.temporal import apply_persistence
+        print(f"Applying persistence filter (min_frames={args.persist})...", file=sys.stderr)
+        records = apply_persistence(records, min_frames=args.persist)
 
     result = evaluate(records)
     print_report(result)
