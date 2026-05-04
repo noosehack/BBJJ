@@ -91,10 +91,22 @@ OMOP = Radical("OMOP",
     ),
 )
 
+CGRD = Radical("CGRD",
+    frame_constraints=(
+        NotOnGround(_ref("Op", "Ba")),
+    ),
+    contacts=(
+        CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d1", "-"),
+        CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d2", "+"),
+        CON(_me_ax("Fo", "-", "Fo", "Kn"), _me_ax("Fo", "+", "Fo", "Kn"), "d", "+"),
+    ),
+)
+
 
 ALL_RADICALS = {
     "MNT": MNT,
     "BCTR": BCTR,
+    "CGRD": CGRD,
     "DLR": DLR,
     "SLX": SLX,
     "RDLR": RDLR,

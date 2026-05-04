@@ -11,11 +11,14 @@ from tools.axis_reconstruction import (
     ReconstructedAxis, Vec2,
     reconstruct_axes, torso_length, torso_center, facing_direction,
     point_to_segment_distance,
-    L_HIP, R_HIP,
+    L_HIP, R_HIP, L_ANKLE, R_ANKLE,
+    CONFIDENCE_THRESHOLD,
 )
 
 CONTACT_THRESHOLD = 0.3
 PROXIMITY_THRESHOLD = 0.6
+CLOSURE_THRESHOLD = 0.20
+MISSING_FACING_PENALTY = 0.7
 
 
 @dataclass
@@ -52,12 +55,19 @@ def infer_contacts(me_pose: Pose, op_pose: Pose) -> list[InferredCON]:
     contacts = []
     for me_ax in me_axes:
         for op_ax in op_axes:
-            dist = point_to_segment_distance(me_ax.origin, op_ax.origin, op_ax.endpoint)
+            me_mid = Vec2(
+                (me_ax.origin.x + me_ax.endpoint.x) * 0.5,
+                (me_ax.origin.y + me_ax.endpoint.y) * 0.5,
+            )
+            d_origin = point_to_segment_distance(me_ax.origin, op_ax.origin, op_ax.endpoint)
+            d_mid = point_to_segment_distance(me_mid, op_ax.origin, op_ax.endpoint)
+            dist = min(d_origin, d_mid)
+            contact_pt = me_ax.origin if d_origin <= d_mid else me_mid
             norm_dist = dist / norm_len
             if norm_dist > PROXIMITY_THRESHOLD:
                 continue
 
-            cross = op_ax.direction.cross(me_ax.origin - op_ax.origin)
+            cross = op_ax.direction.cross(contact_pt - op_ax.origin)
             helicity = "+" if cross >= 0 else "-"
 
             if norm_dist < CONTACT_THRESHOLD:
@@ -77,8 +87,37 @@ def infer_contacts(me_pose: Pose, op_pose: Pose) -> list[InferredCON]:
             con = CON(me_ax.axis_def, op_ax.axis_def, depth, helicity)
             contacts.append(InferredCON(con, confidence, norm_dist))
 
+    # Self-contact: foot closure (ankles crossing behind opponent)
+    _detect_closure(me_pose, norm_len, contacts)
+
     contacts.sort(key=lambda c: -c.confidence)
     return contacts
+
+
+def _detect_closure(pose: Pose, norm_len: float, contacts: list[InferredCON]) -> None:
+    """Detect foot closure (ankles locked) — the cycle in the contact graph.
+    In 2D, approximated by ankle proximity normalized by torso length.
+    LEG_LOOP_CONTAINS(Op.To) is the correct 3D invariant but collapses
+    under 2D projection (tested: convex hull, hip angle, leg-axis projection,
+    convergence ratio — all show heavy overlap between guard and hooks)."""
+    l_ankle = pose.keypoints[L_ANKLE]
+    r_ankle = pose.keypoints[R_ANKLE]
+    if l_ankle.confidence < CONFIDENCE_THRESHOLD or r_ankle.confidence < CONFIDENCE_THRESHOLD:
+        return
+    a = Vec2(l_ankle.x, l_ankle.y)
+    b = Vec2(r_ankle.x, r_ankle.y)
+    ankle_dist = (a - b).length()
+    norm_dist = ankle_dist / norm_len
+    if norm_dist > CLOSURE_THRESHOLD:
+        return
+
+    dist_conf = 1.0 - norm_dist / CLOSURE_THRESHOLD
+    confidence = dist_conf * min(l_ankle.confidence, r_ankle.confidence)
+    depth = "deep" if norm_dist < 0.10 else "mid"
+
+    fo_l = AxisDef(LimbRef("Me", "Fo", "-"), "Fo", "Kn")
+    fo_r = AxisDef(LimbRef("Me", "Fo", "+"), "Fo", "Kn")
+    contacts.append(InferredCON(CON(fo_l, fo_r, depth, "+"), confidence, norm_dist))
 
 
 # ── frame constraint inference ────────────────────────────────────
@@ -105,8 +144,13 @@ def infer_frame_constraints(me_pose: Pose, op_pose: Pose) -> list[InferredFrame]
         conf = min(1.0, y_diff / avg_tl)
         if op_hip_y > me_hip_y:
             constraints.append(InferredFrame(OnGround(LimbRef("Op", "Ba")), conf))
+            constraints.append(InferredFrame(NotOnGround(LimbRef("Me", "Ba")), conf))
         else:
             constraints.append(InferredFrame(OnGround(LimbRef("Me", "Ba")), conf))
+            constraints.append(InferredFrame(NotOnGround(LimbRef("Op", "Ba")), conf))
+    else:
+        constraints.append(InferredFrame(NotOnGround(LimbRef("Me", "Ba")), 0.5))
+        constraints.append(InferredFrame(NotOnGround(LimbRef("Op", "Ba")), 0.5))
 
     return constraints
 
@@ -121,33 +165,84 @@ def match_radical(
     if radicals is None:
         radicals = ALL_RADICALS
 
-    matches = []
+    candidates = []
     for name, rad in radicals.items():
-        frame_hits, frame_score = _score_frames(rad.frame_constraints, frames)
-        contact_hits, contact_score = _score_contacts(rad.contacts, contacts)
+        contact_hits = _match_all_contacts(rad.contacts, contacts)
+        if contact_hits is None:
+            continue
 
-        overall = contact_score * frame_score
-        if overall > 0.001:
-            matches.append(PositionMatch(name, overall, contact_hits, frame_hits))
+        ground_reqs = tuple(
+            r for r in rad.frame_constraints if isinstance(r, (OnGround, NotOnGround))
+        )
+        ground_hits = _match_all_grounds(ground_reqs, frames)
+        if ground_hits is None:
+            continue
 
-    matches.sort(key=lambda m: -m.confidence)
-    return matches
+        facing_reqs = tuple(
+            r for r in rad.frame_constraints if isinstance(r, (FacingOpposed, FacingAligned))
+        )
+        facing_hits = _match_found_frames(facing_reqs, frames)
+
+        frame_hits = ground_hits + facing_hits
+        n_con = len(contact_hits)
+        n_frame = len(frame_hits)
+        n_facing_missing = len(facing_reqs) - len(facing_hits)
+        avg_conf = (
+            sum(c.confidence for c in contact_hits) / n_con if n_con > 0 else 0.0
+        )
+        specificity = n_con + n_frame
+        score = 10 * n_con + 5 * n_frame + avg_conf + specificity
+
+        if frame_hits:
+            score *= min(f.confidence for f in frame_hits)
+        if n_facing_missing > 0:
+            score *= MISSING_FACING_PENALTY ** n_facing_missing
+
+        candidates.append(PositionMatch(name, score, contact_hits, frame_hits))
+
+    candidates.sort(key=lambda m: -m.confidence)
+    return candidates
 
 
-def _score_frames(
+def _match_all_contacts(
+    required: tuple[CON, ...],
+    inferred: list[InferredCON],
+) -> Optional[list[InferredCON]]:
+    hits = []
+    for req in required:
+        best = _find_contact(req, inferred)
+        if best is None:
+            return None
+        hits.append(best)
+    return hits
+
+
+def _match_all_grounds(
     required: tuple[FrameConstraint, ...],
     inferred: list[InferredFrame],
-) -> tuple[list[InferredFrame], float]:
+) -> Optional[list[InferredFrame]]:
     hits = []
-    score = 1.0
     for req in required:
         best = _find_frame(req, inferred)
-        if best:
+        if best is None:
+            return None
+        hits.append(best)
+    return hits
+
+
+def _match_found_frames(
+    required: tuple[FrameConstraint, ...],
+    inferred: list[InferredFrame],
+) -> list[InferredFrame]:
+    hits = []
+    for req in required:
+        best = _find_frame(req, inferred)
+        if best is not None:
             hits.append(best)
-            score *= best.confidence
-        else:
-            score *= 0.1
-    return hits, score
+    return hits
+
+
+CON_MATCH_THRESHOLD = 0.02
 
 
 def _find_frame(req: FrameConstraint, inferred: list[InferredFrame]) -> Optional[InferredFrame]:
@@ -157,27 +252,10 @@ def _find_frame(req: FrameConstraint, inferred: list[InferredFrame]) -> Optional
         if isinstance(req, (FacingOpposed, FacingAligned)):
             return inf
         if isinstance(req, (OnGround, NotOnGround)):
-            if inf.constraint.part.part == req.part.part:
+            if (inf.constraint.part.part == req.part.part
+                    and inf.constraint.part.role == req.part.role):
                 return inf
     return None
-
-
-def _score_contacts(
-    required: tuple[CON, ...],
-    inferred: list[InferredCON],
-) -> tuple[list[InferredCON], float]:
-    hits = []
-    score = 1.0
-    for req in required:
-        best = _find_contact(req, inferred)
-        if best:
-            hits.append(best)
-            score *= best.confidence
-        else:
-            score *= 0.05
-    if len(required) > 0:
-        score = score ** (1.0 / len(required))
-    return hits, score
 
 
 def _find_contact(req: CON, candidates: list[InferredCON]) -> Optional[InferredCON]:
@@ -189,7 +267,7 @@ def _find_contact(req: CON, candidates: list[InferredCON]) -> Optional[InferredC
         if w > best_score:
             best_score = w
             best = cand
-    if best and best_score > 0.05:
+    if best and best_score > CON_MATCH_THRESHOLD:
         return InferredCON(best.con, best_score, best.distance)
     return None
 

@@ -129,25 +129,26 @@ def _mount_poses():
 
 def _back_control_poses():
     """Me behind Op, both facing right (side view). Me's feet hook Op torso.
-    Shoulders spread vertically, torsos extend along x-axis."""
+    Shoulders spread vertically, torsos extend along x-axis.
+    Me is slightly lower (wrapping from behind) so NotOnGround(Op.Ba) is detected."""
     me = Pose([
-        Keypoint(250, 160, 0.9),   # 0  nose (right of sh_mid -> facing right)
-        Keypoint(252, 158, 0.9),   # 1
-        Keypoint(248, 158, 0.9),   # 2
-        Keypoint(255, 160, 0.9),   # 3
-        Keypoint(245, 160, 0.9),   # 4
-        Keypoint(200, 180, 0.9),   # 5  l_shoulder
-        Keypoint(200, 140, 0.9),   # 6  r_shoulder
-        Keypoint(170, 195, 0.9),   # 7  l_elbow (wrapping Op)
-        Keypoint(170, 125, 0.9),   # 8  r_elbow
-        Keypoint(280, 185, 0.9),   # 9  l_wrist (grip on Op)
-        Keypoint(280, 135, 0.9),   # 10 r_wrist
-        Keypoint(130, 180, 0.9),   # 11 l_hip
-        Keypoint(130, 140, 0.9),   # 12 r_hip
-        Keypoint(200, 190, 0.9),   # 13 l_knee (hooking)
-        Keypoint(200, 130, 0.9),   # 14 r_knee
-        Keypoint(250, 185, 0.9),   # 15 l_ankle (hook on Op torso)
-        Keypoint(250, 135, 0.9),   # 16 r_ankle (hook on Op torso)
+        Keypoint(250, 185, 0.9),   # 0  nose (right of sh_mid -> facing right)
+        Keypoint(252, 183, 0.9),   # 1
+        Keypoint(248, 183, 0.9),   # 2
+        Keypoint(255, 185, 0.9),   # 3
+        Keypoint(245, 185, 0.9),   # 4
+        Keypoint(200, 205, 0.9),   # 5  l_shoulder
+        Keypoint(200, 165, 0.9),   # 6  r_shoulder
+        Keypoint(170, 220, 0.9),   # 7  l_elbow (wrapping Op)
+        Keypoint(170, 150, 0.9),   # 8  r_elbow
+        Keypoint(280, 210, 0.9),   # 9  l_wrist (grip on Op)
+        Keypoint(280, 160, 0.9),   # 10 r_wrist
+        Keypoint(130, 205, 0.9),   # 11 l_hip
+        Keypoint(130, 165, 0.9),   # 12 r_hip
+        Keypoint(200, 215, 0.9),   # 13 l_knee (hooking)
+        Keypoint(200, 155, 0.9),   # 14 r_knee
+        Keypoint(250, 210, 0.9),   # 15 l_ankle (hook on Op torso)
+        Keypoint(250, 160, 0.9),   # 16 r_ankle (hook on Op torso)
     ])
     op = Pose([
         Keypoint(370, 160, 0.9),   # 0  nose (right of sh_mid -> facing right)
@@ -310,6 +311,35 @@ class TestRadicalMatching:
         if matches:
             best = matches[0]
             assert best.radical_name in ("MNT", "BCTR")
+
+    def test_mount_matches_mnt_not_single_con(self):
+        """Mount with both Le CONs + FacingOpposed + OnGround must match MNT first."""
+        me, op = _mount_poses()
+        contacts = infer_contacts(me, op)
+        frames = infer_frame_constraints(me, op)
+        matches = match_radical(contacts, frames)
+        assert len(matches) > 0
+        assert matches[0].radical_name == "MNT"
+        assert matches[0].confidence > matches[-1].confidence
+
+    def test_back_control_matches_bctr(self):
+        """Same CON pattern but FacingAligned must match BCTR, not MNT."""
+        me, op = _back_control_poses()
+        contacts = infer_contacts(me, op)
+        frames = infer_frame_constraints(me, op)
+        matches = match_radical(contacts, frames)
+        assert len(matches) > 0
+        assert matches[0].radical_name == "BCTR"
+
+    def test_single_con_matches_when_no_multi_con(self):
+        """Two standing figures should match single-CON radicals, not MNT/BCTR."""
+        me = _standing_pose(x=0, y=0)
+        op = _standing_pose(x=50, y=0)
+        contacts = infer_contacts(me, op)
+        frames = infer_frame_constraints(me, op)
+        matches = match_radical(contacts, frames)
+        if matches:
+            assert matches[0].radical_name not in ("MNT", "BCTR")
 
 
 # ── integration on real data ──────────────────────────────────────

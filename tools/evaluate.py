@@ -12,8 +12,8 @@ from tools.annotate import FPTRecord, annotate_batch, export_fpt, load_fpt
 BLISP_TO_RADICALS = {
     "MNT":     {"MNT"},
     "BCTR":    {"BCTR"},
-    "GRD":     {"DLR", "SLX", "RDLR", "LSSO", "OMOP"},
-    "GRD_CLP": {"DLR", "SLX", "RDLR"},
+    "GRD":     {"DLR", "SLX", "RDLR", "LSSO", "OMOP", "CGRD"},
+    "GRD_CLP": {"CGRD", "DLR", "SLX", "RDLR"},
     "HGRD":    {"DLR", "SLX", "RDLR"},
     "5050":    {"DLR", "SLX"},
     "SCTR":    set(),
