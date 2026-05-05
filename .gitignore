@@ -6,3 +6,5 @@ images_full.zip
 __pycache__/
 *.pyc
 .pytest_cache/
+*.pt
+outputs/
