@@ -1522,3 +1522,15 @@ img { max-width: 100%; display: block; }
 
   .closing-text { font-size: 20px; }
 }
+
+/* demo nav button */
+.nav-demo {
+  background: var(--accent) !important;
+  color: #fff !important;
+  padding: 0.35em 0.9em;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+  transition: background 0.15s !important;
+}
+.nav-demo:hover { background: #5a50b0 !important; color: #fff !important; }

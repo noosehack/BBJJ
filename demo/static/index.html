@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlawkOps -- Image to Algebra</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1><span>BlawkOps</span> Image to Algebra</h1>
+      <p>Experimental demo. Drop a BJJ image. Get the position's algebraic structure.</p>
+      <p class="demo-caveat">The current demo uses a general-purpose pose detector. It works best when both athletes are visually separable. Grappling-specific pose detection is the next layer.</p>
+    </header>
+
+    <!-- upload -->
+    <div class="drop-zone" id="dropZone">
+      <div class="drop-zone-icon">&#8679;</div>
+      <div class="drop-zone-text">Drag &amp; drop an image here, or <strong>click to browse</strong></div>
+      <div class="drop-zone-hint">JPEG or PNG, up to 20 MB. Two athletes must be visible.</div>
+      <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp">
+    </div>
+
+    <!-- preview -->
+    <div class="preview-row" id="previewRow">
+      <div class="preview-card">
+        <div class="preview-label">Original</div>
+        <img id="previewOriginal" alt="Uploaded image">
+      </div>
+      <div class="preview-card">
+        <div class="preview-label">Skeleton Overlay</div>
+        <img id="previewOverlay" alt="Skeleton overlay">
+      </div>
+    </div>
+
+    <!-- loading -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <div class="loading-text">Detecting poses and computing algebra...</div>
+    </div>
+
+    <!-- error -->
+    <div class="error-block" id="errorBlock">
+      <div class="error-title" id="errorTitle">Detection failed</div>
+      <div class="error-message" id="errorMessage"></div>
+      <div class="error-hint" id="errorHint"></div>
+    </div>
+
+    <!-- results -->
+    <div class="results" id="results">
+
+      <div class="low-conf-warning" id="lowConfWarning">
+        Pose detection is approximate. Entangled positions (mount, side control, back control) often produce incorrect results because the pose model cannot reliably separate overlapping bodies. Check the skeleton overlay to verify keypoint placement.
+      </div>
+
+      <div class="rad-hero">
+        <div class="rad-name" id="radName"></div>
+        <div class="rad-conf">Confidence: <span class="conf-value" id="radConf"></span></div>
+        <div class="rad-pov" id="radPov"></div>
+        <div class="rad-explanation" id="radExplanation"></div>
+        <div class="matches-bar" id="matchesBar"></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <div class="detail-card-header">Connections (CON)</div>
+          <div class="detail-card-body" id="conList"></div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-card-header">Frame Constraints (FRM)</div>
+          <div class="detail-card-body" id="frmList"></div>
+        </div>
+      </div>
+
+      <div class="sexpr-block">
+        <div class="sexpr-header">
+          <span class="sexpr-title">BLISP S-Expression</span>
+          <button class="copy-btn" id="copyBtn">Copy</button>
+        </div>
+        <pre class="sexpr-code" id="sexprCode"></pre>
+      </div>
+
+      <div class="try-again">
+        <button id="resetBtn">Analyze another image</button>
+      </div>
+
+    </div>
+
+    <footer>
+      <a href="https://www.blawkops.com">BlawkOps</a> &mdash; Algebraic structure for jiu-jitsu
+    </footer>
+
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
