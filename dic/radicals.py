@@ -122,6 +122,18 @@ SCTR_STRICT = Radical("SCTR_STRICT",
     ),
 )
 
+HGRD = Radical("HGRD",
+    frame_constraints=(
+        FacingOpposed(),
+        OnGround(_ref("Me", "Ba")),
+    ),
+    contacts=(
+        CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("Le", "+", "Fo", "Hp"), "d1", "-"),
+        CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("Le", "+", "Fo", "Hp"), "d2", "-"),
+        CON(_me_ax("Fo", "-", "Fo", "Kn"), _me_ax("Fo", "+", "Fo", "Kn"), "d3", "0"),
+    ),
+)
+
 CGRD = Radical("CGRD",
     frame_constraints=(
         NotOnGround(_ref("Op", "Ba")),
@@ -139,6 +151,7 @@ ALL_RADICALS = {
     "BCTR": BCTR,
     "SCTR": SCTR,
     "CGRD": CGRD,
+    "HGRD": HGRD,
     "DLR": DLR,
     "SLX": SLX,
     "RDLR": RDLR,

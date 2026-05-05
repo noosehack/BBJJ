@@ -130,25 +130,26 @@ def _mount_poses():
 def _back_control_poses():
     """Me behind Op, both facing right (side view). Me's feet hook Op torso.
     Shoulders spread vertically, torsos extend along x-axis.
-    Me is slightly lower (wrapping from behind) so NotOnGround(Op.Ba) is detected."""
+    Both fighters at similar height (no ground detection) so BCTR's NotOnGround
+    frame gets 0.5 confidence. Ankles bracket Op's torso axis."""
     me = Pose([
-        Keypoint(250, 185, 0.9),   # 0  nose (right of sh_mid -> facing right)
-        Keypoint(252, 183, 0.9),   # 1
-        Keypoint(248, 183, 0.9),   # 2
-        Keypoint(255, 185, 0.9),   # 3
-        Keypoint(245, 185, 0.9),   # 4
-        Keypoint(200, 205, 0.9),   # 5  l_shoulder
-        Keypoint(200, 165, 0.9),   # 6  r_shoulder
-        Keypoint(170, 220, 0.9),   # 7  l_elbow (wrapping Op)
-        Keypoint(170, 150, 0.9),   # 8  r_elbow
-        Keypoint(280, 210, 0.9),   # 9  l_wrist (grip on Op)
-        Keypoint(280, 160, 0.9),   # 10 r_wrist
-        Keypoint(130, 205, 0.9),   # 11 l_hip
-        Keypoint(130, 165, 0.9),   # 12 r_hip
-        Keypoint(200, 215, 0.9),   # 13 l_knee (hooking)
-        Keypoint(200, 155, 0.9),   # 14 r_knee
-        Keypoint(250, 210, 0.9),   # 15 l_ankle (hook on Op torso)
-        Keypoint(250, 160, 0.9),   # 16 r_ankle (hook on Op torso)
+        Keypoint(250, 178, 0.9),   # 0  nose (right of sh_mid -> facing right)
+        Keypoint(252, 176, 0.9),   # 1
+        Keypoint(248, 176, 0.9),   # 2
+        Keypoint(255, 178, 0.9),   # 3
+        Keypoint(245, 178, 0.9),   # 4
+        Keypoint(200, 190, 0.9),   # 5  l_shoulder
+        Keypoint(200, 155, 0.9),   # 6  r_shoulder
+        Keypoint(170, 205, 0.9),   # 7  l_elbow (wrapping Op)
+        Keypoint(170, 145, 0.9),   # 8  r_elbow
+        Keypoint(280, 190, 0.9),   # 9  l_wrist (grip on Op)
+        Keypoint(280, 150, 0.9),   # 10 r_wrist
+        Keypoint(130, 190, 0.9),   # 11 l_hip
+        Keypoint(130, 155, 0.9),   # 12 r_hip
+        Keypoint(220, 182, 0.9),   # 13 l_knee (hooking near Op hip-side)
+        Keypoint(220, 148, 0.9),   # 14 r_knee (hooking near Op shoulder-side)
+        Keypoint(260, 172, 0.9),   # 15 l_ankle (hook on Op torso, hip-side)
+        Keypoint(260, 148, 0.9),   # 16 r_ankle (hook on Op torso, sh-side)
     ])
     op = Pose([
         Keypoint(370, 160, 0.9),   # 0  nose (right of sh_mid -> facing right)
@@ -636,6 +637,112 @@ class TestSCTRSyntheticPose:
         frames = infer_frame_constraints(me, op)
         kbr = [f for f in frames if isinstance(f.constraint, KneeBracket)]
         assert len(kbr) == 1, f"Expected KneeBracket, got: {[type(f.constraint).__name__ for f in frames]}"
+
+
+# ── HGRD matching tests ───────────────────────────────────────────
+
+def _bilateral_le_le_cons():
+    """Both Me legs on Op.Le+ — half guard pattern (without closure)."""
+    me_le_plus = AxisDef(LimbRef("Me", "Le", "+"), "Fo", "Hp")
+    me_le_minus = AxisDef(LimbRef("Me", "Le", "-"), "Fo", "Hp")
+    op_le_plus = AxisDef(LimbRef("Op", "Le", "+"), "Fo", "Hp")
+    return [
+        InferredCON(CON(me_le_plus, op_le_plus, "d1", "-"), 0.5, 0.08),
+        InferredCON(CON(me_le_minus, op_le_plus, "d2", "-"), 0.5, 0.10),
+    ]
+
+
+def _fo_closure():
+    """Foot closure — ankles locked together (cycle edge)."""
+    fo_l = AxisDef(LimbRef("Me", "Fo", "-"), "Fo", "Kn")
+    fo_r = AxisDef(LimbRef("Me", "Fo", "+"), "Fo", "Kn")
+    return InferredCON(CON(fo_l, fo_r, "deep", "0"), 0.6, 0.05)
+
+
+def _hgrd_contacts():
+    """Full HGRD contact set: bilateral Le→Le + closure."""
+    return _bilateral_le_le_cons() + [_fo_closure()]
+
+
+def _on_ground_me():
+    from dic.frames import OnGround
+    return [InferredFrame(OnGround(LimbRef("Me", "Ba", "")), 0.9)]
+
+
+def _facing_opposed():
+    from dic.frames import FacingOpposed
+    return [InferredFrame(FacingOpposed(), 0.85)]
+
+
+class TestHGRDMatching:
+
+    def test_hgrd_positive_with_closure(self):
+        """Bilateral Le→Le + closure + OnGround(Me) + FacingOpposed → HGRD."""
+        contacts = _hgrd_contacts()
+        frames = _on_ground_me() + _facing_opposed()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "HGRD" in names
+
+    def test_hgrd_outscores_dlr(self):
+        """HGRD (3 CON + 2 FRM) outscores DLR (1 CON + 0 FRM)."""
+        contacts = _hgrd_contacts()
+        frames = _on_ground_me() + _facing_opposed()
+        matches = match_radical(contacts, frames)
+        hgrd = [m for m in matches if m.radical_name == "HGRD"]
+        dlr = [m for m in matches if m.radical_name == "DLR"]
+        assert len(hgrd) == 1
+        if dlr:
+            assert hgrd[0].confidence > dlr[0].confidence
+
+    def test_hgrd_fails_without_closure(self):
+        """Bilateral Le→Le WITHOUT closure must NOT match HGRD."""
+        contacts = _bilateral_le_le_cons()
+        frames = _on_ground_me() + _facing_opposed()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "HGRD" not in names
+
+    def test_hgrd_fails_without_ground(self):
+        """HGRD requires OnGround(Me.Ba); without it, HGRD must not match."""
+        from dic.frames import NotOnGround
+        contacts = _hgrd_contacts()
+        frames = [InferredFrame(NotOnGround(LimbRef("Me", "Ba", "")), 0.9)] + _facing_opposed()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "HGRD" not in names
+
+    def test_hgrd_fails_with_single_le(self):
+        """Single Le→Le + closure should not match HGRD (only 1 of 2 inter-body CON)."""
+        me_le_minus = AxisDef(LimbRef("Me", "Le", "-"), "Fo", "Hp")
+        op_le_plus = AxisDef(LimbRef("Op", "Le", "+"), "Fo", "Hp")
+        contacts = [
+            InferredCON(CON(me_le_minus, op_le_plus, "d", "-"), 0.5, 0.08),
+            _fo_closure(),
+        ]
+        frames = _on_ground_me() + _facing_opposed()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "HGRD" not in names
+
+    def test_hgrd_does_not_match_le_to_to(self):
+        """Le→To contacts + closure should not trigger HGRD."""
+        contacts = _le_to_cons() + [_fo_closure()]
+        frames = _on_ground_me() + _facing_opposed()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "HGRD" not in names
+
+    def test_hgrd_coexists_with_dlr(self):
+        """Both HGRD and DLR can match the same frame — HGRD ranks higher."""
+        contacts = _hgrd_contacts()
+        frames = _on_ground_me() + _facing_opposed()
+        matches = match_radical(contacts, frames)
+        names = [m.radical_name for m in matches]
+        assert "HGRD" in names
+        dlr_matches = [n for n in names if n in ("DLR", "SLX", "RDLR")]
+        assert len(dlr_matches) > 0
+        assert names.index("HGRD") < names.index(dlr_matches[0])
 
 
 # ── integration on real data ──────────────────────────────────────

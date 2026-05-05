@@ -274,12 +274,26 @@ def _match_all_contacts(
     required: tuple[CON, ...],
     inferred: list[InferredCON],
 ) -> Optional[list[InferredCON]]:
+    """Each required contact must match a distinct inferred contact."""
     hits = []
+    used: set[int] = set()
     for req in required:
-        best = _find_contact(req, inferred)
-        if best is None:
+        best = None
+        best_score = 0.0
+        best_idx = None
+        for i, cand in enumerate(inferred):
+            if i in used:
+                continue
+            s = _con_similarity(req, cand.con)
+            w = s * cand.confidence
+            if w > best_score:
+                best_score = w
+                best = cand
+                best_idx = i
+        if best is None or best_score <= CON_MATCH_THRESHOLD:
             return None
-        hits.append(best)
+        used.add(best_idx)
+        hits.append(InferredCON(best.con, best_score, best.distance))
     return hits
 
 

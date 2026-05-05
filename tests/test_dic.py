@@ -189,6 +189,99 @@ def test_sctr_strict_not_in_all_radicals():
     assert "SCTR" in ALL_RADICALS
 
 
+# ── HGRD structural tests ───────────────────────────────────────
+
+def test_hgrd_has_bilateral_le_to_le_plus_closure():
+    """HGRD has two Me.Le → Op.Le contacts plus Fo-Fo closure (3 total)."""
+    from dic.radicals import HGRD
+    assert len(HGRD.contacts) == 3
+    inter = [c for c in HGRD.contacts if c.axis.limb_ref.role == "Op"]
+    intra = [c for c in HGRD.contacts if c.axis.limb_ref.role == "Me"]
+    assert len(inter) == 2
+    assert len(intra) == 1
+    for c in inter:
+        assert c.attacker.limb_ref.role == "Me"
+        assert c.attacker.limb_ref.part == "Le"
+        assert c.axis.limb_ref.part == "Le"
+
+
+def test_hgrd_both_legs_target_same_op_leg():
+    """Both inter-body contacts target the same Op.Le sign."""
+    from dic.radicals import HGRD
+    inter = [c for c in HGRD.contacts if c.axis.limb_ref.role == "Op"]
+    ax_signs = {c.axis.limb_ref.sign for c in inter}
+    assert len(ax_signs) == 1, f"Expected same Op.Le target, got signs: {ax_signs}"
+
+
+def test_hgrd_uses_different_me_legs():
+    """HGRD uses Me.Le+ and Me.Le- (both attacker legs)."""
+    from dic.radicals import HGRD
+    inter = [c for c in HGRD.contacts if c.axis.limb_ref.role == "Op"]
+    att_signs = {c.attacker.limb_ref.sign for c in inter}
+    assert att_signs == {"+", "-"}
+
+
+def test_hgrd_has_intra_body_closure():
+    """HGRD must include a Me→Me Fo-Fo CON with helicity 0 (cycle)."""
+    from dic.radicals import HGRD
+    closure = [c for c in HGRD.contacts
+               if c.attacker.limb_ref.role == "Me"
+               and c.axis.limb_ref.role == "Me"]
+    assert len(closure) == 1
+    c = closure[0]
+    assert c.attacker.limb_ref.part == "Fo"
+    assert c.axis.limb_ref.part == "Fo"
+    assert c.helicity == "0"
+    assert c.depth == "d3"
+
+
+def test_hgrd_requires_me_on_ground():
+    """HGRD requires OnGround(Me.Ba) — bottom player."""
+    from dic.radicals import HGRD
+    from dic.frames import OnGround
+    ground = [f for f in HGRD.frame_constraints if isinstance(f, OnGround)]
+    assert len(ground) == 1
+    assert ground[0].part.role == "Me"
+    assert ground[0].part.part == "Ba"
+
+
+def test_hgrd_requires_facing_opposed():
+    """HGRD requires FacingOpposed."""
+    from dic.radicals import HGRD
+    from dic.frames import FacingOpposed
+    facing = [f for f in HGRD.frame_constraints if isinstance(f, FacingOpposed)]
+    assert len(facing) == 1
+
+
+def test_hgrd_differs_from_cgrd_by_target():
+    """HGRD targets Op.Le (leg entanglement), CGRD targets Op.To (torso wrap).
+    Both share the same Fo-Fo closure pattern."""
+    from dic.radicals import HGRD, CGRD
+    hgrd_inter = [c for c in HGRD.contacts if c.axis.limb_ref.role == "Op"]
+    for c in hgrd_inter:
+        assert c.axis.limb_ref.part == "Le"
+    cgrd_inter = [c for c in CGRD.contacts if c.axis.limb_ref.role == "Op"]
+    for c in cgrd_inter:
+        assert c.axis.limb_ref.part == "To"
+    hgrd_closure = [c for c in HGRD.contacts if c.axis.limb_ref.role == "Me"]
+    cgrd_closure = [c for c in CGRD.contacts if c.axis.limb_ref.role == "Me"]
+    assert len(hgrd_closure) == 1
+    assert len(cgrd_closure) == 1
+    assert hgrd_closure[0].helicity == cgrd_closure[0].helicity == "0"
+
+
+def test_hgrd_differs_from_dlr_by_count():
+    """DLR has 1 contact, HGRD has 3 (bilateral leg entanglement + closure)."""
+    from dic.radicals import HGRD, DLR
+    assert len(DLR.contacts) == 1
+    assert len(HGRD.contacts) == 3
+
+
+def test_hgrd_in_all_radicals():
+    from dic.radicals import ALL_RADICALS
+    assert "HGRD" in ALL_RADICALS
+
+
 # ── intra-body CON / cycle tests ─────────────────────────────────
 
 def test_cgrd_has_intra_body_closure():
