@@ -61,16 +61,20 @@ class TestSelectAthletes:
         with pytest.raises(ValueError, match="Need two athletes"):
             select_athletes([])
 
-    def test_three_selects_two_largest(self):
-        big_a = _make_pose(x_offset=0, conf=0.95)
-        big_b = _make_pose(x_offset=300, conf=0.95)
-        small = [[x * 0.3, y * 0.3, 0.5] for x, y, _ in _make_pose(x_offset=600)]
-        sel_a, sel_b = select_athletes([big_a, big_b, small])
-        area_a = _bbox_area(sel_a)
-        area_b = _bbox_area(sel_b)
-        area_small = _bbox_area(small)
-        assert area_a > area_small
-        assert area_b > area_small
+    def test_three_selects_closest_pair(self):
+        close_a = _make_pose(x_offset=0, conf=0.95)
+        close_b = _make_pose(x_offset=300, conf=0.95)
+        far = _make_pose(x_offset=900, conf=0.95)
+        sel_a, sel_b = select_athletes([close_a, close_b, far])
+        from tools.axis_reconstruction import torso_center
+        from data.schema import Pose
+        pa, pb = Pose.from_raw(sel_a), Pose.from_raw(sel_b)
+        pf = Pose.from_raw(far)
+        selected_dist = (torso_center(pa) - torso_center(pb)).length()
+        far_dist_a = (torso_center(pa) - torso_center(pf)).length()
+        far_dist_b = (torso_center(pb) - torso_center(pf)).length()
+        assert selected_dist < far_dist_a
+        assert selected_dist < far_dist_b
 
     def test_low_confidence_filtered(self):
         good_a = _make_pose(conf=0.9)

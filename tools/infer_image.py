@@ -83,8 +83,7 @@ class YoloPoseBackend:
             )
         self._model = YOLO(model_name)
 
-    def detect(self, image_path: str) -> list[list[list[float]]]:
-        results = self._model(image_path, verbose=False)
+    def _extract(self, results) -> list[list[list[float]]]:
         persons = []
         for r in results:
             if r.keypoints is None:
@@ -96,6 +95,15 @@ class YoloPoseBackend:
                     person.append([x, y, c])
                 if len(person) == 17:
                     persons.append(person)
+        return persons
+
+    def detect(self, image_path: str) -> list[list[list[float]]]:
+        persons = self._extract(self._model(image_path, verbose=False))
+        if len(persons) >= 2:
+            return persons
+        # Grappling: occluded athletes often have low box confidence
+        # but good keypoints. Retry with permissive threshold.
+        persons = self._extract(self._model(image_path, verbose=False, conf=0.01))
         return persons
 
 
@@ -130,37 +138,90 @@ def _mean_conf(kps: list[list[float]]) -> float:
     return sum(c for _, _, c in kps) / len(kps) if kps else 0.0
 
 
+def _kp_bbox(kps: list[list[float]], conf_thresh: float = 0.2):
+    visible = [(x, y) for x, y, c in kps if c > conf_thresh]
+    if len(visible) < 4:
+        return None
+    xs = [p[0] for p in visible]
+    ys = [p[1] for p in visible]
+    return min(xs), min(ys), max(xs), max(ys)
+
+
+def _iou(a, b) -> float:
+    x1 = max(a[0], b[0])
+    y1 = max(a[1], b[1])
+    x2 = min(a[2], b[2])
+    y2 = min(a[3], b[3])
+    inter = max(0, x2 - x1) * max(0, y2 - y1)
+    area_a = (a[2] - a[0]) * (a[3] - a[1])
+    area_b = (b[2] - b[0]) * (b[3] - b[1])
+    union = area_a + area_b - inter
+    return inter / union if union > 0 else 0.0
+
+
+def _nms_keypoints(
+    detections: list[list[list[float]]],
+    iou_thresh: float = 0.5,
+) -> list[list[list[float]]]:
+    """Remove duplicate detections by keypoint-bbox IoU."""
+    scored = []
+    for d in detections:
+        bbox = _kp_bbox(d)
+        if bbox is None:
+            continue
+        scored.append((_mean_conf(d), bbox, d))
+    scored.sort(key=lambda t: -t[0])
+
+    keep = []
+    for mc, bbox, d in scored:
+        suppressed = False
+        for _, kept_bbox, _ in keep:
+            if _iou(bbox, kept_bbox) > iou_thresh:
+                suppressed = True
+                break
+        if not suppressed:
+            keep.append((mc, bbox, d))
+    return [d for _, _, d in keep]
+
+
+def _select_closest_pair(viable):
+    import itertools
+    best_pair = None
+    best_dist = float("inf")
+    for (i, a), (j, b) in itertools.combinations(viable, 2):
+        pa = Pose.from_raw(a)
+        pb = Pose.from_raw(b)
+        d = (torso_center(pa) - torso_center(pb)).length()
+        if d < best_dist:
+            best_dist = d
+            best_pair = (a, b)
+    return best_pair
+
+
 def select_athletes(
     detections: list[list[list[float]]],
     strategy: str = "largest_pair",
 ) -> tuple[list[list[float]], list[list[float]]]:
+    detections = _nms_keypoints(detections)
     viable = [(i, d) for i, d in enumerate(detections) if _mean_conf(d) > 0.15]
 
     if len(viable) < 2:
         n = len(viable)
         raise ValueError(f"Need two athletes detected; found {n}.")
 
-    if strategy == "largest_pair":
-        viable.sort(key=lambda t: -_bbox_area(t[1]))
-    elif strategy == "closest_pair":
-        import itertools
-        best_pair = None
-        best_dist = float("inf")
-        for (i, a), (j, b) in itertools.combinations(viable, 2):
-            pa = Pose.from_raw(a)
-            pb = Pose.from_raw(b)
-            d = (torso_center(pa) - torso_center(pb)).length()
-            if d < best_dist:
-                best_dist = d
-                best_pair = (a, b)
-        return best_pair
+    if len(viable) == 2:
+        return viable[0][1], viable[1][1]
 
-    if len(viable) > 2:
-        print(
-            f"Warning: {len(viable)} people detected, selecting two largest.",
-            file=sys.stderr,
-        )
+    # >2 detections: closest pair avoids picking ghost detections
+    if strategy == "closest_pair" or len(viable) > 2:
+        if len(viable) > 2:
+            print(
+                f"Warning: {len(viable)} people detected, selecting closest pair.",
+                file=sys.stderr,
+            )
+        return _select_closest_pair(viable)
 
+    viable.sort(key=lambda t: -_bbox_area(t[1]))
     return viable[0][1], viable[1][1]
 
 
@@ -337,6 +398,8 @@ def visualize(result: InferenceResult, image_path: str, output_dir: str) -> str:
                 )
 
     img = Image.open(image_path)
+    if img.mode != "RGB":
+        img = img.convert("RGB")
     draw = ImageDraw.Draw(img)
     draw_pose(draw, result.me_pose, ME_COLOR)
     draw_pose(draw, result.op_pose, OP_COLOR)

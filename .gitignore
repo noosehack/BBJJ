@@ -9,3 +9,5 @@ __pycache__/
 *.pt
 outputs/
 blisp/export/*.json
+demo/uploads/
+demo/results/
