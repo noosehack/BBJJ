@@ -2,6 +2,8 @@ import pytest
 from data.schema import Pose, Keypoint
 from data.loader import DEFAULT_PATH
 from data.label_map import normalize
+from dic.body_parts import LimbRef, AxisDef
+from dic.relations import CON
 from dic.frames import FacingOpposed, FacingAligned, OnGround
 from tools.axis_reconstruction import (
     reconstruct_axes, torso_length, torso_center, facing_direction,
@@ -9,6 +11,7 @@ from tools.axis_reconstruction import (
 )
 from tools.contact_inference import (
     infer_contacts, infer_frame_constraints, match_radical,
+    InferredCON, InferredFrame,
 )
 
 
@@ -345,12 +348,7 @@ class TestRadicalMatching:
 
 # ── cycle / forbidden contact tests ──────────────────────────────
 
-from dic.body_parts import LimbRef, AxisDef
-from dic.relations import CON
-from tools.contact_inference import (
-    InferredCON, InferredFrame, _has_forbidden_contact,
-    PROXIMITY_THRESHOLD,
-)
+from tools.contact_inference import _has_forbidden_contact, PROXIMITY_THRESHOLD
 from dic.frames import NotOnGround
 
 
@@ -796,6 +794,126 @@ class TestBottleneckScoring:
         matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
         assert names[0] == "CGRD"
+
+
+# ── closure memory tests ─────────────────────────────────────────
+
+class TestClosureMemory:
+
+    def _make_norm(self, image, frame, has_pose=True):
+        from data.label_map import NormalizedAnnotation
+        if has_pose:
+            me = Pose([Keypoint(0, 0, 0.9)] * 17)
+            op = Pose([Keypoint(0, 0, 0.9)] * 17)
+        else:
+            me, op = None, None
+        return NormalizedAnnotation(
+            vicos_position="closed_guard1", blisp_label="GRD_CLP",
+            ambiguity="low", image=image, frame=frame,
+            me_pose=me, op_pose=op,
+        )
+
+    def _make_contacts_with_closure(self, conf=0.5):
+        from tools.contact_inference import InferredCON
+        fo_l = AxisDef(LimbRef("Me", "Fo", "-"), "Fo", "Kn")
+        fo_r = AxisDef(LimbRef("Me", "Fo", "+"), "Fo", "Kn")
+        return [InferredCON(CON(fo_l, fo_r, "deep", "0"), conf, 0.05)]
+
+    def _make_contacts_without_closure(self):
+        le = AxisDef(LimbRef("Me", "Le", "+"), "Fo", "Hp")
+        op_to = AxisDef(LimbRef("Op", "To", ""), "Hp", "Sh")
+        return [InferredCON(CON(le, op_to, "d1", "-"), 0.5, 0.1)]
+
+    def test_fills_one_frame_gap(self):
+        """Closure in frames 1 and 3 should inject into frame 2."""
+        from tools.annotate import _inject_closure_memory, _find_closure_conf
+        n1 = self._make_norm("0100001", 1)
+        n2 = self._make_norm("0100002", 2)
+        n3 = self._make_norm("0100003", 3)
+        c1 = self._make_contacts_with_closure(0.6)
+        c2 = self._make_contacts_without_closure()
+        c3 = self._make_contacts_with_closure(0.4)
+        per_frame = [
+            (n1, c1, []),
+            (n2, c2, []),
+            (n3, c3, []),
+        ]
+        _inject_closure_memory(per_frame, k=3)
+        assert _find_closure_conf(per_frame[0][1]) == 0.6
+        injected = _find_closure_conf(per_frame[1][1])
+        assert injected > 0, "Frame 2 should have injected closure"
+        assert injected < 0.6, "Injected closure should be decayed"
+        assert _find_closure_conf(per_frame[2][1]) == 0.4
+
+    def test_does_not_cross_video_boundary(self):
+        """Closure in video 01 must not leak into video 02."""
+        from tools.annotate import _inject_closure_memory, _find_closure_conf
+        n_v1 = self._make_norm("0100010", 10)
+        n_v2 = self._make_norm("0200001", 1)
+        c_v1 = self._make_contacts_with_closure(0.8)
+        c_v2 = self._make_contacts_without_closure()
+        per_frame = [
+            (n_v1, c_v1, []),
+            (n_v2, c_v2, []),
+        ]
+        _inject_closure_memory(per_frame, k=5)
+        assert _find_closure_conf(per_frame[0][1]) == 0.8
+        assert _find_closure_conf(per_frame[1][1]) == 0.0
+
+    def test_does_not_affect_hgrd(self):
+        """Injecting closure should not help HGRD match (HGRD has no closure req)."""
+        from tools.annotate import _inject_closure_memory
+        from tools.contact_inference import InferredCON, InferredFrame
+
+        me_le_minus = AxisDef(LimbRef("Me", "Le", "-"), "Fo", "Hp")
+        op_le_plus = AxisDef(LimbRef("Op", "Le", "+"), "Fo", "Hp")
+        single_le = [InferredCON(CON(me_le_minus, op_le_plus, "d", "-"), 0.5, 0.08)]
+
+        n1 = self._make_norm("0100001", 1)
+        n2 = self._make_norm("0100002", 2)
+        c1 = self._make_contacts_with_closure(0.8)
+        per_frame = [
+            (n1, c1, []),
+            (n2, list(single_le), []),
+        ]
+        _inject_closure_memory(per_frame, k=3)
+
+        frames = _on_ground_me() + _facing_opposed()
+        matches_after = match_radical(per_frame[1][1], frames)
+        names = [m.radical_name for m in matches_after]
+        assert "HGRD" not in names
+        assert "HGRD_L" not in names
+
+    def test_decay_is_distance_proportional(self):
+        """Closer frames provide stronger closure evidence."""
+        from tools.annotate import _inject_closure_memory, _find_closure_conf
+        norms = [self._make_norm(f"01000{i:02d}", i) for i in range(1, 8)]
+        contacts = [self._make_contacts_without_closure() for _ in range(7)]
+        contacts[0] = self._make_contacts_with_closure(0.6)
+        per_frame = [(n, c, []) for n, c in zip(norms, contacts)]
+        _inject_closure_memory(per_frame, k=5)
+        conf_at_1 = _find_closure_conf(per_frame[1][1])
+        conf_at_3 = _find_closure_conf(per_frame[3][1])
+        assert conf_at_1 > conf_at_3 > 0
+
+    def test_no_injection_when_closure_exists(self):
+        """Frames that already have closure should not get a second one."""
+        from tools.annotate import _inject_closure_memory, _find_closure_conf
+        n1 = self._make_norm("0100001", 1)
+        n2 = self._make_norm("0100002", 2)
+        c1 = self._make_contacts_with_closure(0.8)
+        c2 = self._make_contacts_with_closure(0.3)
+        per_frame = [
+            (n1, c1, []),
+            (n2, c2, []),
+        ]
+        _inject_closure_memory(per_frame, k=3)
+        assert _find_closure_conf(per_frame[1][1]) == 0.3
+        closure_count = sum(
+            1 for c in per_frame[1][1]
+            if c.con.helicity == "0" and c.con.attacker.limb_ref.part == "Fo"
+        )
+        assert closure_count == 1
 
 
 # ── integration on real data ──────────────────────────────────────

@@ -316,11 +316,31 @@ Deferred until Phase 0+1 pass all tests. See previous plan for details on:
 - Phase 6: Algebraic law validation
 - Phase 7: CLI interface
 
+### Temporal closure memory (`--closure-k K`)
+
+Carries Fo-Fo closure evidence across ±K nearby frames within the same video.
+Only affects CGRD (the only radical requiring closure). Linear decay:
+`conf * (1 - |dist|/(K+1))`.
+
+Two-pass annotation: infer contacts → inject closure memory → match radicals.
+
+| Metric | k=0 | k=3 | k=5 | k=8 |
+|---|---|---|---|---|
+| GRD_CLP | 50.5% | 61.7% | 64.7% | 66.4% |
+| GRD | 74.9% | 74.9% | 74.9% | 74.9% |
+| BCTR | 49.8% | 49.2% | 47.4% | 46.6% |
+| MNT | 30.6% | 30.6% | 30.6% | 30.6% |
+| SCTR | 71.5% | 71.5% | 71.5% | 71.5% |
+
+k=5 is the recommended default: +14.2pp GRD_CLP with only -2.4pp BCTR regression.
+BCTR regression is caused by false CGRD matches in back control (Me's feet near
+each other → injected Fo-Fo closure → CGRD competes). GRD/MNT/SCTR are stable.
+
 ---
 
-## Known Caveats (v0.3)
+## Known Caveats (v0.4)
 
-- **CGRD/GRD_CLP regression under bottleneck scoring**: CGRD requires 3 contacts including Fo-Fo closure, which is often weak in 2D. The bottleneck (geometric mean) penalizes this heavily. Future work: class-specific closure reliability or temporal closure memory for CGRD.
+- **BCTR regression under closure memory**: Closure memory can inject false Fo-Fo closure in non-guard positions (e.g. back control with crossed ankles), enabling CGRD to compete with BCTR. Regression is -2.4pp at k=5. Future work: gate closure injection on guard-compatible frame constraints.
 
 ---
 

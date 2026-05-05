@@ -130,6 +130,8 @@ if __name__ == "__main__":
                         help="Disable default persistence filter")
     parser.add_argument("--videos", type=str, default=None,
                         help="Comma-separated video prefixes to include (e.g. 00,14,15)")
+    parser.add_argument("--closure-k", type=int, default=0, metavar="K",
+                        help="Apply temporal closure memory with ±K frame window")
     parser.add_argument("--flicker", action="store_true",
                         help="Report label flicker rate per video")
     args = parser.parse_args()
@@ -147,8 +149,12 @@ if __name__ == "__main__":
             print(f"Filtered to videos {prefixes}: {len(annotations)} annotations", file=sys.stderr)
         if args.limit:
             annotations = annotations[:args.limit]
-        print(f"Annotating {len(annotations)} images...", file=sys.stderr)
-        records = annotate_batch(annotations, progress=True)
+        closure_k = args.closure_k
+        if closure_k > 0:
+            print(f"Annotating {len(annotations)} images (closure memory k={closure_k})...", file=sys.stderr)
+        else:
+            print(f"Annotating {len(annotations)} images...", file=sys.stderr)
+        records = annotate_batch(annotations, progress=True, closure_memory_k=closure_k)
         if args.export:
             export_fpt(records, args.export)
             print(f"Exported to {args.export}", file=sys.stderr)
