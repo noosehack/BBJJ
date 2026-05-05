@@ -11,3 +11,5 @@ outputs/
 blisp/export/*.json
 demo/uploads/
 demo/results/
+data/yolo_pose/
+models_pose/
