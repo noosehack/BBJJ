@@ -212,7 +212,26 @@ SCTR_STRICT = Radical("SCTR_STRICT",    # diagnostic only, not in ALL_RADICALS
 - Main confuser: MNT (38% of SCTR frames) — MNT's 2 CON + 2 FRM outscores SCTR's 1 CON + 1 FRM
   when Me's legs happen to be near Op's torso.
 
-Remaining radicals (GRD, HGRD, 5050, TRI, KMR, BFLY, KGRD) -- stubbed with TODO, to be filled in as explicit canonical forms.
+5050 = Radical("5050",
+  contacts=[
+    CON(Me.Le-, Op.Le+_{Fo->Hp}, "d1", "-"),
+    CON(Me.Le+, Op.Le-_{Fo->Hp}, "d2", "-"),
+  ],
+  forbidden_bilateral=[
+    CON(Me.Le+, Op.To_{Hp->Sh}, "d", "-"),
+    CON(Me.Le-, Op.To_{Hp->Sh}, "d", "+"),
+  ])
+
+**5050 design (2026-05-05):**
+- Cross-leg pattern: each Me leg hooks a DIFFERENT Op leg (Me.Le- → Op.Le+, Me.Le+ → Op.Le-).
+  Distinguishes from HGRD (both legs → same Op leg).
+- Forbidden bilateral Le→To prevents matching in BCTR/MNT frames where both legs wrap torso.
+- No mirror variant (5050_R was dropped: same-side pattern Me.Le→Op.Le caused 12pp BCTR regression).
+- No frame constraints (bilateral cross is distinctive enough).
+- 5050=46.7%, HGRD=78.1%, BCTR=50.0%, GRD=72.4%, MNT=40.4%.
+- GRD -2.5pp regression from competitive dynamics; MNT +9.8pp from reduced DLR/RDLR competition.
+
+Remaining radicals (TRI, KMR, BFLY, KGRD) -- stubbed with TODO, to be filled in as explicit canonical forms.
 
 ### data/loader.py
 

@@ -144,6 +144,17 @@ HGRD_L = Radical("HGRD_L",
     ),
 )
 
+FIFTY_FIFTY = Radical("5050",
+    contacts=(
+        CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("Le", "+", "Fo", "Hp"), "d1", "-"),
+        CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("Le", "-", "Fo", "Hp"), "d2", "-"),
+    ),
+    forbidden_bilateral=(
+        CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d", "-"),
+        CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d", "+"),
+    ),
+)
+
 CGRD = Radical("CGRD",
     frame_constraints=(
         NotOnGround(_ref("Op", "Ba")),
@@ -163,6 +174,7 @@ ALL_RADICALS = {
     "CGRD": CGRD,
     "HGRD": HGRD,
     "HGRD_L": HGRD_L,
+    "5050": FIFTY_FIFTY,
     "DLR": DLR,
     "SLX": SLX,
     "RDLR": RDLR,

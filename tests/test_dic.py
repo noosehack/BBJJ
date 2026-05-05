@@ -284,6 +284,55 @@ def test_hgrd_l_mirrors_hgrd():
         assert c.axis.limb_ref.sign == "+"
 
 
+# ── 5050 radical tests ───────────────────────────────────────────
+
+def test_5050_has_bilateral_cross_le():
+    """5050 has two contacts: each Me leg hooks a DIFFERENT Op leg."""
+    from dic.radicals import FIFTY_FIFTY
+    assert len(FIFTY_FIFTY.contacts) == 2
+    ax_signs = {c.axis.limb_ref.sign for c in FIFTY_FIFTY.contacts}
+    atk_signs = {c.attacker.limb_ref.sign for c in FIFTY_FIFTY.contacts}
+    assert atk_signs == {"+", "-"}, "Must use both Me legs"
+    assert ax_signs == {"+", "-"}, "Must target different Op legs"
+
+
+def test_5050_uses_le_to_le():
+    """Both contacts are Le→Le (leg-to-leg)."""
+    from dic.radicals import FIFTY_FIFTY
+    for c in FIFTY_FIFTY.contacts:
+        assert c.attacker.limb_ref.part == "Le"
+        assert c.axis.limb_ref.part == "Le"
+
+
+def test_5050_no_frame_constraints():
+    """5050 has no frame constraints (bilateral cross is sufficient)."""
+    from dic.radicals import FIFTY_FIFTY
+    assert len(FIFTY_FIFTY.frame_constraints) == 0
+
+
+def test_5050_forbids_bilateral_le_to_to():
+    """5050 is blocked when both Me legs wrap Op's torso (BCTR/MNT signal)."""
+    from dic.radicals import FIFTY_FIFTY
+    assert len(FIFTY_FIFTY.forbidden_bilateral) == 2
+    for fb in FIFTY_FIFTY.forbidden_bilateral:
+        assert fb.attacker.limb_ref.part == "Le"
+        assert fb.axis.limb_ref.part == "To"
+
+
+def test_5050_differs_from_hgrd_by_target():
+    """5050 targets different Op legs (cross); HGRD targets same Op leg."""
+    from dic.radicals import FIFTY_FIFTY, HGRD
+    hgrd_targets = {c.axis.limb_ref.sign for c in HGRD.contacts}
+    fifty_targets = {c.axis.limb_ref.sign for c in FIFTY_FIFTY.contacts}
+    assert len(hgrd_targets) == 1, "HGRD both contacts target same Op leg"
+    assert len(fifty_targets) == 2, "5050 contacts target different Op legs"
+
+
+def test_5050_in_all_radicals():
+    from dic.radicals import ALL_RADICALS
+    assert "5050" in ALL_RADICALS
+
+
 # ── intra-body CON / cycle tests ─────────────────────────────────
 
 def test_cgrd_has_intra_body_closure():
