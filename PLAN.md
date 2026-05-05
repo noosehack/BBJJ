@@ -318,6 +318,12 @@ Deferred until Phase 0+1 pass all tests. See previous plan for details on:
 
 ---
 
+## Known Caveats (v0.3)
+
+- **CGRD/GRD_CLP regression under bottleneck scoring**: CGRD requires 3 contacts including Fo-Fo closure, which is often weak in 2D. The bottleneck (geometric mean) penalizes this heavily. Future work: class-specific closure reliability or temporal closure memory for CGRD.
+
+---
+
 ## Verification (Phase 0+1)
 
 1. `pytest tests/test_dic.py` -- every body part code resolves, every radical parses, COCO map covers all 17 keypoints

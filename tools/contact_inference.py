@@ -251,16 +251,18 @@ def match_radical(
 
         frame_hits = hard_hits + facing_hits
         n_con = len(contact_hits)
-        n_frame = len(frame_hits)
         n_facing_missing = len(facing_reqs) - len(facing_hits)
-        avg_conf = (
-            sum(c.confidence for c in contact_hits) / n_con if n_con > 0 else 0.0
-        )
-        specificity = n_con + n_frame
-        score = 10 * n_con + 5 * n_frame + avg_conf + specificity
 
-        if frame_hits:
-            score *= min(f.confidence for f in frame_hits)
+        con_qualities = [c.confidence for c in contact_hits]
+        geo_quality = 1.0
+        for q in con_qualities:
+            geo_quality *= q
+        geo_quality = geo_quality ** (1.0 / n_con) if n_con > 0 else 0.0
+
+        con_count_factor = 1.0 + 0.5 * (n_con - 1)
+        frame_bonus = 1.0 + 0.4 * sum(f.confidence for f in frame_hits)
+        score = geo_quality * con_count_factor * frame_bonus
+
         if n_facing_missing > 0:
             score *= MISSING_FACING_PENALTY ** n_facing_missing
 
@@ -404,6 +406,10 @@ def _con_similarity(required: CON, candidate: CON) -> float:
     if candidate.attacker.limb_ref.part != att_part:
         return 0.0
     if candidate.axis.limb_ref.part != ax_part:
+        return 0.0
+
+    req_ax_sign = required.axis.limb_ref.sign
+    if req_ax_sign and req_ax_sign != candidate.axis.limb_ref.sign:
         return 0.0
 
     score = 0.6
