@@ -19,9 +19,11 @@ DEFAULT_IMG = Path(__file__).resolve().parent.parent / "data" / "raw" / "images"
 DEFAULT_OUT = Path(__file__).resolve().parent.parent / "data" / "yolo_pose"
 
 SPLITS = {
-    "train": ["00", "01", "03", "04", "06", "07", "09", "11", "12", "14"],
-    "val":   ["02", "05", "10"],
+    "train": ["00", "01", "03", "04", "06", "09", "11", "14"],
+    "val":   ["02", "05", "07", "10", "12"],
 }
+
+DEFAULT_STRIDE = 5
 
 
 def _conf_to_vis(conf: float) -> int:
@@ -64,8 +66,8 @@ def _format_person(kps, img_w, img_h):
 
     parts = [f"0 {cx:.6f} {cy:.6f} {w:.6f} {h:.6f}"]
     for x, y, c in kps:
-        nx = x / img_w
-        ny = y / img_h
+        nx = max(0.0, min(1.0, x / img_w))
+        ny = max(0.0, min(1.0, y / img_h))
         vis = _conf_to_vis(c)
         parts.append(f"{nx:.6f} {ny:.6f} {vis}")
     return " ".join(parts)
@@ -76,6 +78,7 @@ def export(
     img_dir: Path = DEFAULT_IMG,
     out_dir: Path = DEFAULT_OUT,
     require_both: bool = True,
+    stride: int = DEFAULT_STRIDE,
     progress: bool = True,
 ):
     with open(ann_path) as f:
@@ -91,14 +94,22 @@ def export(
         for v in vids:
             vid_to_split[v] = split
 
-    stats = {"train": 0, "val": 0, "skipped_no_both": 0, "skipped_no_image": 0, "skipped_bad_kp": 0}
+    stats = {"train": 0, "val": 0, "skipped_no_both": 0, "skipped_no_image": 0,
+             "skipped_bad_kp": 0, "skipped_stride": 0}
     total = len(data)
+    vid_frame_count = {}
 
     for i, d in enumerate(data):
         img_id = d["image"]
         vid_id = img_id[:2]
         split = vid_to_split.get(vid_id)
         if split is None:
+            continue
+
+        seq = vid_frame_count.get(vid_id, 0)
+        vid_frame_count[vid_id] = seq + 1
+        if stride > 1 and seq % stride != 0:
+            stats["skipped_stride"] += 1
             continue
 
         p1 = d.get("pose1")
@@ -164,6 +175,7 @@ names:
     print(f"Export complete:", file=sys.stderr)
     print(f"  Train: {stats['train']}", file=sys.stderr)
     print(f"  Val:   {stats['val']}", file=sys.stderr)
+    print(f"  Skipped (stride {stride}):    {stats['skipped_stride']}", file=sys.stderr)
     print(f"  Skipped (no both poses): {stats['skipped_no_both']}", file=sys.stderr)
     print(f"  Skipped (no image):      {stats['skipped_no_image']}", file=sys.stderr)
     print(f"  Skipped (bad keypoints): {stats['skipped_bad_kp']}", file=sys.stderr)
@@ -176,5 +188,7 @@ if __name__ == "__main__":
     parser.add_argument("--out", type=str, default=str(DEFAULT_OUT))
     parser.add_argument("--single-pose", action="store_true",
                         help="Include images with only one pose annotation")
+    parser.add_argument("--stride", type=int, default=DEFAULT_STRIDE,
+                        help=f"Take every Nth frame per video (default {DEFAULT_STRIDE}, 1=all)")
     args = parser.parse_args()
-    export(out_dir=Path(args.out), require_both=not args.single_pose)
+    export(out_dir=Path(args.out), require_both=not args.single_pose, stride=args.stride)
