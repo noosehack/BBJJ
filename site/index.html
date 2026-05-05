@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlawkOps — A Formal Algebra for Brazilian Jiu-Jitsu</title>
+  <meta name="description" content="BlawkOps is building a machine-readable symbolic language for Brazilian Jiu-Jitsu. Positions become radicals, contacts become typed connections, and videos become morphism sequences.">
+  <meta property="og:title" content="BlawkOps — A Formal Algebra for Brazilian Jiu-Jitsu">
+  <meta property="og:description" content="BJJ is a logographic language. BlawkOps is its writing system.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.blawkops.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9651;</text></svg>">
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-mark">&#9651;</span>BlawkOps
+      </a>
+      <div class="nav-links">
+        <a href="#why">Why</a>
+        <a href="#algebra">Algebra</a>
+        <a href="#radicals">Radicals</a>
+        <a href="#system">Pipeline</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#results">Results</a>
+        <a href="#involved">Contact</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="container hero-content">
+      <p class="hero-tag">BJJ-BLISP &middot; Open Research</p>
+      <h1>BJJ is a logographic language.<br>We are building its writing system.</h1>
+      <p class="hero-sub">
+        Music has staff notation. Chemistry has SMILES. Chess has algebraic notation.
+        Martial arts has never had a formal symbolic language.
+        <strong>BlawkOps</strong> is building one for Brazilian Jiu-Jitsu &mdash;
+        a machine-readable algebra where positions become <em>radicals</em>,
+        body contacts become <em>typed connections</em>, and match footage becomes
+        <em>morphism sequences</em>.
+      </p>
+      <div class="hero-actions">
+        <a href="#why" class="btn btn-primary">Read the Thesis</a>
+        <a href="#radicals" class="btn btn-ghost">See the Dictionary</a>
+      </div>
+      <div class="hero-formula">
+        <div class="formula-label">The only primitive relation</div>
+        <code>CON( attacker<sub>{from&rarr;to}</sub> , axis<sub>{from&rarr;to}</sub> , depth , helicity )</code>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ STATS STRIP ═══ -->
+  <section class="stats-strip">
+    <div class="container stats-grid">
+      <div class="stat">
+        <span class="stat-num">120,279</span>
+        <span class="stat-label">labelled frames</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">34</span>
+        <span class="stat-label">keypoints / frame</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">12</span>
+        <span class="stat-label">canonical radicals</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">primitive relation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHY: LOGOGRAPHIC vs ALPHABETIC ═══ -->
+  <section id="why" class="section">
+    <div class="container">
+      <h2 class="section-title">Why BJJ Needs a Writing System</h2>
+      <p class="section-intro">
+        Not all martial arts encode information the same way.
+        The difference is structural &mdash; and it determines how the art should be
+        taught, analysed, and computed.
+      </p>
+
+      <div class="two-col">
+        <div class="card card-alpha">
+          <div class="card-badge">Alphabetic</div>
+          <h3>Striking Arts</h3>
+          <p>
+            Boxing, Muay Thai, Karate. In an <strong>alphabetic</strong> system,
+            symbols represent individual sounds &mdash; meaning is built by
+            sequencing letters. A jab is a letter. It has no meaning alone.
+            Sequence it &mdash; jab, cross, hook &mdash; and you get a word.
+          </p>
+          <p>
+            Striking is <em>generative</em>: you combine atomic actions in time.
+            A finite alphabet produces infinite sequences.
+            The natural mathematical framework is <strong>control theory</strong> &mdash;
+            trajectories through a state space of joint angles.
+          </p>
+          <div class="card-analogy">
+            <span>Analogy:</span> English. 26 letters &rarr; infinite words.
+          </div>
+        </div>
+
+        <div class="card card-logo">
+          <div class="card-badge">Logographic</div>
+          <h3>Brazilian Jiu-Jitsu</h3>
+          <p>
+            In a <strong>logographic</strong> system, symbols represent meaning units.
+            A Chinese character is not a sequence of sounds &mdash; it is a whole idea,
+            a <em>morpheme</em>. You don't read it left-to-right; you recognize its
+            global structure.
+          </p>
+          <p>
+            BJJ works the same way. The smallest unit of meaning is not a movement &mdash;
+            it is a <strong>position</strong>. Mount is a character. Guard is a character.
+            You recognize them by their structural invariants, not by
+            reading a sequence of moves. The natural framework is
+            <strong>category theory</strong> &mdash; objects and morphisms.
+          </p>
+          <div class="card-analogy">
+            <span>Analogy:</span> Chinese. Characters = positions. Radicals = invariants.
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-block">
+        <div class="insight-left">
+          <h3>The Pedagogical Problem</h3>
+          <p>
+            Most BJJ instruction uses an alphabetic approach: memorise this sweep,
+            drill that escape, chain these submissions. Students drown in unrelated
+            techniques &mdash; strokes without characters.
+          </p>
+          <p>
+            The logographic model says: teach the <strong>characters</strong> first
+            (positions), then the <strong>radicals</strong> (structural invariants
+            that make a position what it is), then the <strong>strokes</strong>
+            (grip details, angle refinements, micro-adjustments).
+          </p>
+        </div>
+        <div class="insight-right">
+          <div class="insight-steps">
+            <div class="istep">
+              <span class="istep-num">1</span>
+              <div>
+                <strong>Positional Literacy</strong>
+                <p>Can the student recognise and name the position? Mount, Guard, Back, Side, Turtle.</p>
+              </div>
+            </div>
+            <div class="istep">
+              <span class="istep-num">2</span>
+              <div>
+                <strong>Structural Invariants</strong>
+                <p>What makes Mount <em>Mount</em>? Bilateral leg contact around the torso, facing opposed, opponent grounded. Lose the invariant, lose the position.</p>
+              </div>
+            </div>
+            <div class="istep">
+              <span class="istep-num">3</span>
+              <div>
+                <strong>Semantic Stability</strong>
+                <p>High Mount, Low Mount, Grapevine Mount are the same character in different fonts. Seatbelt Back Control and Body Triangle Back Control preserve the same radical.</p>
+              </div>
+            </div>
+            <div class="istep">
+              <span class="istep-num">4</span>
+              <div>
+                <strong>Transitions as Morphisms</strong>
+                <p>A sweep is not a "move." It is a morphism &mdash; a structure-preserving map that transforms one radical into another by changing the constraint geometry.</p>
+              </div>
+            </div>
+            <div class="istep">
+              <span class="istep-num">5</span>
+              <div>
+                <strong>Stroke Order (Last)</strong>
+                <p>Whether your elbow is flared 30&deg; or 40&deg; is stroke order &mdash; vital for mastery, confusing for literacy. Teach it last, not first.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ THE ALGEBRA ═══ -->
+  <section id="algebra" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">The Algebra: BLISP</h2>
+      <p class="section-intro">
+        BLISP encodes every grappling position as a composition of a single
+        primitive &mdash; the <strong>CON</strong> relation &mdash; plus geometric frame constraints.
+        No other relation types exist. GRP, HOOK, CLP, PIN are all derived macros.
+        One primitive. Everything else is structure.
+      </p>
+
+      <div class="two-col">
+        <div class="card card-dark">
+          <h3>CON &mdash; The Primitive</h3>
+          <p>A typed contact between two oriented body axes:</p>
+          <pre><code>CON(attacker, axis, depth, helicity)
+
+  attacker  &mdash;  the limb doing the wrapping
+  axis      &mdash;  the limb being wrapped around
+  depth     &mdash;  symbolic depth (d, d1, d2, ...)
+  helicity  &mdash;  winding direction (+, -, or 0)</code></pre>
+          <p class="card-note">
+            Both attacker and axis carry role (Me/Op), body part,
+            laterality sign (+/&minus;), and orientation (from &rarr; to endpoints).
+          </p>
+        </div>
+
+        <div class="card card-dark">
+          <h3>Frame Constraints</h3>
+          <p>Geometric predicates on the spatial configuration:</p>
+          <pre><code>FacingOpposed()    &mdash;  y = -y&prime;  (face to face)
+FacingAligned()    &mdash;  y =  y&prime;  (same direction)
+OnGround(X)       &mdash;  Z0(X)   (part X grounded)
+NotOnGround(X)    &mdash;  &not;Z0(X)  (part X elevated)
+KneeBracket(X)    &mdash;  KBR(X)  (knees straddle X)
+NotKneeBracket(X) &mdash;  &not;KBR(X)</code></pre>
+          <p class="card-note">
+            Frames narrow the spatial context without adding new primitives.
+            KBR is a derived geometric predicate over joint positions.
+          </p>
+        </div>
+      </div>
+
+      <div class="algebra-ops">
+        <h3>Algebraic Operations</h3>
+        <p>Four operations transform CON tuples. Three are involutions &mdash; applying twice returns the original:</p>
+        <div class="ops-grid">
+          <div class="op">
+            <div class="op-name">HEL-FLIP</div>
+            <div class="op-desc">Flip helicity, preserve everything else. Involution.</div>
+            <code>HEL-FLIP(CON(a, b, d, h)) &rarr; CON(a, b, d, &not;h)</code>
+          </div>
+          <div class="op">
+            <div class="op-name">AX-REV</div>
+            <div class="op-desc">Reverse axis orientation &mdash; swap from/to endpoints. Involution.</div>
+            <code>AX-REV(CON(a, AX(x,p,q), d, h)) &rarr; CON(a, AX(x,q,p), d, h)</code>
+          </div>
+          <div class="op">
+            <div class="op-name">AX-SUB</div>
+            <div class="op-desc">Substitute the target axis with a new one.</div>
+            <code>AX-SUB(CON(a, b, d, h), c) &rarr; CON(a, c, d, h)</code>
+          </div>
+          <div class="op">
+            <div class="op-name">POV-SWAP</div>
+            <div class="op-desc">Swap attacker/axis, flip helicity, rename Me&harr;Op. Involution. Changes the observer.</div>
+            <code>POV-SWAP(CON(a, b, d, h)) &rarr; CON(b&prime;, a&prime;, d, &not;h)</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="algebra-example">
+        <h3>Example: DLR and SLX are HEL-FLIP Duals</h3>
+        <div class="example-pair">
+          <div class="example-item">
+            <div class="example-label">De La Riva</div>
+            <code>CON(Me.Le&minus;, Op.Le+, d, <strong>&minus;</strong>)</code>
+          </div>
+          <div class="example-arrow">HEL-FLIP &harr;</div>
+          <div class="example-item">
+            <div class="example-label">Single-Leg X</div>
+            <code>CON(Me.Le&minus;, Op.Le+, d, <strong>+</strong>)</code>
+          </div>
+        </div>
+        <p class="example-note">Same attacker, same axis, same depth. Only the winding direction differs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RADICALS ═══ -->
+  <section id="radicals" class="section">
+    <div class="container">
+      <h2 class="section-title">The Radical Dictionary</h2>
+      <p class="section-intro">
+        In Chinese writing, a <strong>radical</strong> is the component that gives a character
+        its semantic family. In BLISP, a radical is a named bundle of required CON contacts,
+        frame constraints, and forbidden patterns &mdash; the structural invariant that makes
+        a position what it is. 12 canonical radicals are currently defined.
+      </p>
+
+      <div class="radical-grid">
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">MNT</span>
+            <span class="radical-full">Mount</span>
+          </div>
+          <div class="radical-body">
+            <div class="radical-tags">
+              <span class="tag tag-frame">FacingOpposed</span>
+              <span class="tag tag-frame">Z0(Op.Ba)</span>
+            </div>
+            <pre>CON(Me.Le+, Op.To, d1, -)
+CON(Me.Le-, Op.To, d2, +)</pre>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">BCTR</span>
+            <span class="radical-full">Back Control</span>
+          </div>
+          <div class="radical-body">
+            <div class="radical-tags">
+              <span class="tag tag-frame">FacingAligned</span>
+              <span class="tag tag-frame">&not;Z0(Op.Ba)</span>
+            </div>
+            <pre>CON(Me.Le+, Op.To, d1, -)
+CON(Me.Le-, Op.To, d2, +)
+<span class="forbidden">FORBID Me.Fo&minus; &harr; Me.Fo+</span></pre>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">SCTR</span>
+            <span class="radical-full">Side Control</span>
+          </div>
+          <div class="radical-body">
+            <div class="radical-tags">
+              <span class="tag tag-frame">Z0(Op.Ba)</span>
+            </div>
+            <pre>CON(Me.Ar+, Op.To, d1, -)</pre>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">CGRD</span>
+            <span class="radical-full">Closed Guard</span>
+          </div>
+          <div class="radical-body">
+            <div class="radical-tags">
+              <span class="tag tag-frame">&not;Z0(Op.Ba)</span>
+            </div>
+            <pre>CON(Me.Le+, Op.To, d1, -)
+CON(Me.Le-, Op.To, d2, +)
+CON(Me.Fo-, Me.Fo+, d3, 0)</pre>
+            <p class="radical-note">Achiral foot closure (h=0) distinguishes from mount</p>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">HGRD</span>
+            <span class="radical-full">Half Guard</span>
+          </div>
+          <div class="radical-body">
+            <div class="radical-tags">
+              <span class="tag tag-frame">FacingOpposed</span>
+              <span class="tag tag-frame">Z0(Me.Ba)</span>
+            </div>
+            <pre>CON(Me.Le+, Op.Le+, d1, -)
+CON(Me.Le-, Op.Le+, d2, -)</pre>
+            <p class="radical-note">Both legs wrap same Op leg. Dual variant HGRD_L covers Op.Le&minus;</p>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">5050</span>
+            <span class="radical-full">Fifty-Fifty</span>
+          </div>
+          <div class="radical-body">
+            <pre>CON(Me.Le-, Op.Le+, d1, -)
+CON(Me.Le+, Op.Le-, d2, -)
+<span class="forbidden">FORBID bilateral Le&rarr;To</span></pre>
+            <p class="radical-note">Cross-leg entangle: each Me leg hooks a different Op leg</p>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">DLR</span>
+            <span class="radical-full">De La Riva</span>
+          </div>
+          <div class="radical-body">
+            <pre>CON(Me.Le-, Op.Le+, d, -)</pre>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">SLX</span>
+            <span class="radical-full">Single-Leg X</span>
+          </div>
+          <div class="radical-body">
+            <pre>CON(Me.Le-, Op.Le+, d, +)</pre>
+            <p class="radical-note">Same axis as DLR, opposite helicity</p>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">RDLR</span>
+            <span class="radical-full">Reverse De La Riva</span>
+          </div>
+          <div class="radical-body">
+            <pre>CON(Me.Le-, Op.Le-, d, -)</pre>
+            <p class="radical-note">Same helicity as DLR, hooks opposite Op leg</p>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">LSSO</span>
+            <span class="radical-full">Lasso</span>
+          </div>
+          <div class="radical-body">
+            <pre>CON(Me.Le-, Op.Ar+, d, +)</pre>
+            <p class="radical-note">Leg wraps arm instead of leg</p>
+          </div>
+        </div>
+
+        <div class="radical-card">
+          <div class="radical-header">
+            <span class="radical-name">OMOP</span>
+            <span class="radical-full">Omoplata</span>
+          </div>
+          <div class="radical-body">
+            <pre>CON(Me.Le-, Op.Ar+<sub>rev</sub>, d, +)</pre>
+            <p class="radical-note">Reversed arm axis &mdash; AX-REV of Lasso</p>
+          </div>
+        </div>
+
+        <div class="radical-card radical-card-aux">
+          <div class="radical-header">
+            <span class="radical-name">HGRD_L</span>
+            <span class="radical-full">Half Guard (L)</span>
+          </div>
+          <div class="radical-body">
+            <p class="radical-note">Mirror variant for COCO left/right sign coverage. Targets Op.Le&minus; instead of Op.Le+.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section id="system" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">The Pipeline</h2>
+      <p class="section-intro">
+        Four stages convert raw video frames into symbolic position sequences.
+        No neural network classifies the position &mdash; contacts are inferred from
+        keypoint geometry and matched algebraically against the radical dictionary.
+      </p>
+
+      <div class="pipeline">
+        <div class="pipeline-step">
+          <div class="step-num">01</div>
+          <h3>Pose Extraction</h3>
+          <p>
+            COCO 17-keypoint poses for both athletes. Virtual parts
+            (torso, back, neck, shin) reconstructed from joint geometry.
+          </p>
+        </div>
+        <div class="pipeline-arrow"></div>
+        <div class="pipeline-step">
+          <div class="step-num">02</div>
+          <h3>Contact Inference</h3>
+          <p>
+            Candidate CON tuples generated by limb-axis proximity.
+            Each carries confidence from distance and joint visibility.
+          </p>
+        </div>
+        <div class="pipeline-arrow"></div>
+        <div class="pipeline-step">
+          <div class="step-num">03</div>
+          <h3>Radical Matching</h3>
+          <p>
+            Bottleneck scoring: weakest required contact dominates via
+            geometric mean. Strong single-contact beats weak multi-contact.
+          </p>
+        </div>
+        <div class="pipeline-arrow"></div>
+        <div class="pipeline-step">
+          <div class="step-num">04</div>
+          <h3>Temporal Filtering</h3>
+          <p>
+            Persistence (N=8) suppresses flicker. Closure memory
+            carries intermittent Fo-Fo evidence across nearby frames.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DATASET ═══ -->
+  <section id="dataset" class="section">
+    <div class="container">
+      <h2 class="section-title">The Dataset</h2>
+      <p class="section-intro">
+        Built on the <strong>Brazilian Jiu-Jitsu Positions Dataset</strong> from the
+        ViCoS Lab, University of Ljubljana &mdash; the largest public BJJ pose dataset.
+      </p>
+
+      <div class="dataset-grid">
+        <div class="dataset-card">
+          <div class="dataset-num">120,279</div>
+          <div class="dataset-label">Labelled images</div>
+          <p>6 sparring sequences, 3 smartphone cameras, ~30 fps.</p>
+        </div>
+        <div class="dataset-card">
+          <div class="dataset-num">2 &times; 17</div>
+          <div class="dataset-label">Keypoints per frame</div>
+          <p>MS-COCO format for both athletes. Manually verified.</p>
+        </div>
+        <div class="dataset-card">
+          <div class="dataset-num">18</div>
+          <div class="dataset-label">Position classes</div>
+          <p>10 base positions &times; athlete role. 2 symmetric (Standing, 50-50).</p>
+        </div>
+      </div>
+
+      <div class="dataset-positions">
+        <h3>Position Classes</h3>
+        <div class="position-table">
+          <div class="pos-row pos-header">
+            <span>Position</span>
+            <span>Classes</span>
+            <span>Notes</span>
+          </div>
+          <div class="pos-row"><span>Standing</span><span>1</span><span>Symmetric</span></div>
+          <div class="pos-row"><span>Takedown</span><span>2</span><span></span></div>
+          <div class="pos-row"><span>Open Guard</span><span>2</span><span>Aggregates DLR, Spider, Lasso, X-guard, etc.</span></div>
+          <div class="pos-row"><span>Half Guard</span><span>2</span><span></span></div>
+          <div class="pos-row"><span>Closed Guard</span><span>2</span><span></span></div>
+          <div class="pos-row"><span>50-50 Guard</span><span>1</span><span>Symmetric</span></div>
+          <div class="pos-row"><span>Side Control</span><span>2</span><span>Includes north-south, knee-on-belly</span></div>
+          <div class="pos-row"><span>Mount</span><span>2</span><span></span></div>
+          <div class="pos-row"><span>Back Control</span><span>2</span><span></span></div>
+          <div class="pos-row"><span>Turtle</span><span>2</span><span></span></div>
+        </div>
+      </div>
+
+      <div class="dataset-cite">
+        <p>
+          Hudovernik, V. &amp; Skocaj, D. (2022).
+          <em>Video-Based Detection of Combat Positions and Automatic Scoring in Jiu-jitsu.</em>
+          ACM Multimedia Workshop MMSports&rsquo;22, Lisbon.
+          &mdash;
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>,
+          ViCoS Lab, University of Ljubljana.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RESULTS ═══ -->
+  <section id="results" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Current Results</h2>
+      <p class="section-intro">
+        Recognition accuracy using purely algebraic matching &mdash;
+        no neural network for classification. Contacts inferred from 2D keypoints,
+        scored against the radical dictionary with bottleneck matching and temporal persistence.
+      </p>
+
+      <div class="results-table-wrap">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Radical</th>
+              <th>Accuracy</th>
+              <th>Key mechanism</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Half Guard</td>
+              <td><code>HGRD</code></td>
+              <td class="acc acc-good">78.1%</td>
+              <td>Dual signed variants + facing + grounded</td>
+            </tr>
+            <tr>
+              <td>Open Guard</td>
+              <td><code>DLR / SLX / RDLR / ...</code></td>
+              <td class="acc acc-good">72.4%</td>
+              <td>Family of single-hook leg entangles</td>
+            </tr>
+            <tr>
+              <td>Side Control</td>
+              <td><code>SCTR</code></td>
+              <td class="acc acc-good">71.2%</td>
+              <td>Arm&rarr;Torso + ground constraint</td>
+            </tr>
+            <tr>
+              <td>Closed Guard</td>
+              <td><code>CGRD</code></td>
+              <td class="acc acc-mid">64.7%</td>
+              <td>Foot closure + temporal closure memory</td>
+            </tr>
+            <tr>
+              <td>Back Control</td>
+              <td><code>BCTR</code></td>
+              <td class="acc acc-mid">50.0%</td>
+              <td>Facing-aligned + elevated + forbidden closure</td>
+            </tr>
+            <tr>
+              <td>50-50 Guard</td>
+              <td><code>5050</code></td>
+              <td class="acc acc-mid">46.7%</td>
+              <td>Cross-leg bilateral + forbidden Le&rarr;To</td>
+            </tr>
+            <tr>
+              <td>Mount</td>
+              <td><code>MNT</code></td>
+              <td class="acc acc-wip">40.4%</td>
+              <td>Bilateral Le&rarr;To + facing + ground</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="results-notes">
+        <div class="note">
+          <strong>No learned classifier.</strong>
+          Every number above comes from purely symbolic matching.
+          The system infers contacts from keypoint geometry and scores them algebraically.
+        </div>
+        <div class="note">
+          <strong>Coarse ground truth.</strong>
+          The ViCoS labels collapse all open-guard subtypes into one class.
+          The algebra distinguishes DLR from SLX from RDLR &mdash; the metric measures
+          whether the predicted radical falls within the correct position family.
+        </div>
+        <div class="note">
+          <strong>2D projection limit.</strong>
+          All inference runs on 2D keypoints from a single camera.
+          Depth ambiguity is the main error source. 3D pose or multi-view would improve every number.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DESIGN PRINCIPLES ═══ -->
+  <section id="principles" class="section">
+    <div class="container">
+      <h2 class="section-title">Design Principles</h2>
+
+      <div class="principles-grid">
+        <div class="principle">
+          <h3>One Primitive</h3>
+          <p>
+            CON is the only relation. GRP, HOOK, CLP, PIN are
+            derived macros over CON + frame constraints.
+            No relation-type proliferation.
+          </p>
+        </div>
+        <div class="principle">
+          <h3>Algebraic Closure</h3>
+          <p>
+            HEL-FLIP, AX-REV, and POV-SWAP are involutions.
+            Applying any twice returns the original.
+            Self-consistent by construction.
+          </p>
+        </div>
+        <div class="principle">
+          <h3>Observer-Invariant</h3>
+          <p>
+            POV-SWAP transforms any position to the opponent's
+            perspective. Mount from top becomes mount from bottom.
+            Both views are algebraically encoded.
+          </p>
+        </div>
+        <div class="principle">
+          <h3>Explicit Radicals</h3>
+          <p>
+            Every position is a hand-written literal.
+            No auto-generation, no learned embeddings.
+            If you can read the radical, you understand the position.
+          </p>
+        </div>
+        <div class="principle">
+          <h3>Bottleneck Scoring</h3>
+          <p>
+            Match quality is dominated by the weakest required contact
+            via geometric mean. Specificity is rewarded, not punished.
+          </p>
+        </div>
+        <div class="principle">
+          <h3>Temporal Coherence</h3>
+          <p>
+            Persistence + closure memory smooth predictions.
+            Label flicker: 0.21 &rarr; 0.01 switches per frame.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GET INVOLVED ═══ -->
+  <section id="involved" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Get Involved</h2>
+      <p class="section-intro">
+        BlawkOps is early-stage research. We are looking for collaborators across
+        BJJ, computer science, and algebraic modelling.
+      </p>
+
+      <div class="involved-grid">
+        <div class="involved-card">
+          <h3>BJJ Domain Experts</h3>
+          <p>
+            Validate radical definitions, identify edge cases,
+            stress-test the algebra against competition footage.
+          </p>
+        </div>
+        <div class="involved-card">
+          <h3>Researchers</h3>
+          <p>
+            Pose estimation, action recognition, algebraic topology,
+            category theory. Collaboration on papers and extensions.
+          </p>
+        </div>
+        <div class="involved-card">
+          <h3>Builders &amp; Investors</h3>
+          <p>
+            Competition scoring, training analytics, broadcast annotation.
+            A machine-readable BJJ language opens real applications.
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-block">
+        <p><a href="mailto:noosehack@protonmail.com">noosehack@protonmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="logo-mark">&#9651;</span> BlawkOps
+      </div>
+      <div class="footer-mid">
+        <p>BJJ-BLISP is open research built on the ViCoS BJJ dataset (CC BY-NC-SA 4.0).</p>
+        <p>Hudovernik &amp; Skocaj, MMSports&rsquo;22, University of Ljubljana.</p>
+      </div>
+      <div class="footer-right">
+        <p>www.blawkops.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
