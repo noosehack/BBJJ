@@ -108,12 +108,32 @@ Expected: `CUDA: True` / `GPU: Tesla T4`
 
 ## 4. Train
 
+### Strategy C: pose-head-only (recommended first run)
+
+Freezes backbone + neck + detection head. Trains only keypoint branch (858K params).
+Detection recall stays at baseline. Only keypoint placement adapts to grappling.
+
 ```bash
 ssh ubuntu@$GPU 'cd /home/ubuntu/BBJJ && nohup python3 -m tools.train_pose \
   --epochs 50 \
   --imgsz 640 \
   --batch 32 \
-  --name bjj_v1 \
+  --pose-head-only \
+  --name bjj_v2_posehead \
+  > train.log 2>&1 &'
+```
+
+### Fallback — Strategy A: freeze backbone, train neck + full head
+
+Use only if Strategy C fails to improve RAD accuracy.
+
+```bash
+ssh ubuntu@$GPU 'cd /home/ubuntu/BBJJ && nohup python3 -m tools.train_pose \
+  --epochs 50 \
+  --imgsz 640 \
+  --batch 32 \
+  --freeze 22 \
+  --name bjj_v1_neck \
   > train.log 2>&1 &'
 ```
 
@@ -129,13 +149,14 @@ Expected runtime: **2-4 hours** on T4 with 7.5K train images at 640px.
 ```bash
 GPU=<gpu-instance-private-ip>
 
-# Copy best model weights
-scp ubuntu@$GPU:/home/ubuntu/BBJJ/models_pose/bjj_v1/weights/best.pt \
-  /home/ubuntu/BBJJ/models_pose/bjj_v1/weights/best.pt
+# Copy best model weights (Strategy C)
+mkdir -p /home/ubuntu/BBJJ/models_pose/bjj_v2_posehead/weights
+scp ubuntu@$GPU:/home/ubuntu/BBJJ/models_pose/bjj_v2_posehead/weights/best.pt \
+  /home/ubuntu/BBJJ/models_pose/bjj_v2_posehead/weights/best.pt
 
 # Copy training results/plots
-rsync -avz ubuntu@$GPU:/home/ubuntu/BBJJ/models_pose/bjj_v1/ \
-  /home/ubuntu/BBJJ/models_pose/bjj_v1/
+rsync -avz ubuntu@$GPU:/home/ubuntu/BBJJ/models_pose/bjj_v2_posehead/ \
+  /home/ubuntu/BBJJ/models_pose/bjj_v2_posehead/
 
 # Copy training log
 scp ubuntu@$GPU:/home/ubuntu/BBJJ/train.log /home/ubuntu/BBJJ/train.log
@@ -144,22 +165,30 @@ scp ubuntu@$GPU:/home/ubuntu/BBJJ/train.log /home/ubuntu/BBJJ/train.log
 ## 6. Evaluate (back on this server)
 
 ```bash
-# Compare general vs fine-tuned on test set (videos 08, 13, 15)
-python3 -m tools.eval_pose_model --compare yolo11m-pose.pt models_pose/bjj_v1/weights/best.pt
+# Single model eval — pose-head-only
+python3 -m tools.eval_pose_model --model models_pose/bjj_v2_posehead/weights/best.pt
 
-# Quick inference test
-python3 -m tools.infer_image some_mount_image.jpg --model models_pose/bjj_v1/weights/best.pt
+# Compare baseline vs pose-head-only on test set (videos 08, 13, 15)
+python3 -m tools.eval_pose_model --compare yolo11m-pose.pt models_pose/bjj_v2_posehead/weights/best.pt
+
+# Quick inference test on a hard class image
+python3 -m tools.infer_image some_mount_image.jpg --model models_pose/bjj_v2_posehead/weights/best.pt
 ```
+
+Key metrics to check:
+- Two-person detection rate must not regress vs baseline
+- Hard classes (mount, side_control, back, closed_guard) reported separately
+- RAD accuracy should improve over baseline
 
 ## 7. If spot is interrupted
 
-YOLO saves checkpoints to `models_pose/bjj_v1/weights/last.pt` after every epoch.
+YOLO saves checkpoints to `models_pose/bjj_v2_posehead/weights/last.pt` after every epoch.
 
 To resume:
 ```bash
 ssh ubuntu@$GPU 'cd /home/ubuntu/BBJJ && python3 -c "
 from ultralytics import YOLO
-model = YOLO(\"models_pose/bjj_v1/weights/last.pt\")
+model = YOLO(\"models_pose/bjj_v2_posehead/weights/last.pt\")
 model.train(resume=True)
 "'
 ```
