@@ -32,16 +32,19 @@ TRAIN_VIDEOS = {"00", "01", "03", "06", "09", "11", "12", "14"}
 VAL_VIDEOS   = {"02", "05", "08"}
 TEST_VIDEOS  = {"04", "07", "10", "13", "15"}
 
-# 8 fundamental positions only. 5050 and TKDN excluded:
+# 7 ground positions only. Excluded classes:
 #   - 5050: 8453 samples (7%) in ViCoS but extremely rare in real BJJ.
 #     Overrepresented because ViCoS filmed extensive 50/50 drilling.
 #     Model was confidently predicting 5050 on real-world images that
 #     were clearly other positions (SCTR, HGRD, etc.).
 #   - TKDN: transitional class, not a stable position. Noisy keypoints
 #     during transitions cause false TKDN predictions on static positions.
+#   - STND: largest class (16722, 14%) but not useful — nobody uploads
+#     a photo of two people standing to ask what position it is. Becomes
+#     a high-prior default bucket that absorbs bad-keypoint predictions.
 # These can be re-added later with proper class balancing or as a
-# separate transition detector.
-TARGET_CLASSES = {"MNT", "SCTR", "BCTR", "CGRD", "OGRD", "HGRD", "TRTL", "STND"}
+# separate pre-filter (e.g. standing vs ground detector).
+TARGET_CLASSES = {"MNT", "SCTR", "BCTR", "CGRD", "OGRD", "HGRD", "TRTL"}
 
 
 def _bad(feats):
