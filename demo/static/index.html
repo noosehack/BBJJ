@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlawkOps -- Image to Algebra</title>
+  <title>BlawkOps -- Geometry-Based Radical Classification</title>
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -12,15 +12,15 @@
   <div class="container">
 
     <header>
-      <h1><span>BlawkOps</span> Image to Algebra</h1>
-      <p>Experimental demo. Drop a BJJ image. Get the position's algebraic structure.</p>
-      <p class="demo-caveat">The current demo uses a general-purpose pose detector. It works best when both athletes are visually separable. Grappling-specific pose detection is the next layer.</p>
+      <h1><span>BlawkOps</span> Radical Classifier</h1>
+      <p>Body-frame geometry classifier for fundamental BJJ positions.</p>
+      <p class="demo-caveat">Geometry + ordered projective constraints (MLP on 635 features, 76K samples). Benchmark: <strong>91% from clean keypoints</strong>, <strong>76% end-to-end with YOLO</strong>.</p>
     </header>
 
     <!-- upload -->
     <div class="drop-zone" id="dropZone">
       <div class="drop-zone-icon">&#8679;</div>
-      <div class="drop-zone-text">Drag &amp; drop an image here, or <strong>click to browse</strong></div>
+      <div class="drop-zone-text">Drag &amp; drop a BJJ image, or <strong>click to browse</strong></div>
       <div class="drop-zone-hint">JPEG or PNG, up to 20 MB. Two athletes must be visible.</div>
       <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp">
     </div>
@@ -32,20 +32,20 @@
         <img id="previewOriginal" alt="Uploaded image">
       </div>
       <div class="preview-card">
-        <div class="preview-label">Skeleton Overlay</div>
-        <img id="previewOverlay" alt="Skeleton overlay">
+        <div class="preview-label">Geometry Overlay</div>
+        <img id="previewOverlay" alt="Geometry overlay">
       </div>
     </div>
 
     <!-- loading -->
     <div class="loading" id="loading">
       <div class="spinner"></div>
-      <div class="loading-text">Detecting poses and computing algebra...</div>
+      <div class="loading-text">Detecting poses and computing body-frame geometry...</div>
     </div>
 
     <!-- error -->
     <div class="error-block" id="errorBlock">
-      <div class="error-title" id="errorTitle">Detection failed</div>
+      <div class="error-title">Detection failed</div>
       <div class="error-message" id="errorMessage"></div>
       <div class="error-hint" id="errorHint"></div>
     </div>
@@ -53,35 +53,41 @@
     <!-- results -->
     <div class="results" id="results">
 
-      <div class="low-conf-warning" id="lowConfWarning">
-        Pose detection is approximate. Entangled positions (mount, side control, back control) often produce incorrect results because the pose model cannot reliably separate overlapping bodies. Check the skeleton overlay to verify keypoint placement.
+      <!-- Pose quality status -->
+      <div class="pose-quality-bar" id="poseQualityBar"></div>
+
+      <!-- Classification verdict -->
+      <div class="match-verdict" id="matchVerdict">
+        <div class="verdict-source" id="verdictSource"></div>
+        <div class="verdict-radical" id="verdictRadical"></div>
+        <div class="verdict-score" id="verdictScore"></div>
+        <div class="verdict-pov" id="verdictPov"></div>
+        <div class="verdict-explanation" id="verdictExplanation"></div>
+        <div class="top-predictions" id="topPredictions"></div>
       </div>
 
-      <div class="rad-hero">
-        <div class="rad-name" id="radName"></div>
-        <div class="rad-conf">Confidence: <span class="conf-value" id="radConf"></span></div>
-        <div class="rad-pov" id="radPov"></div>
-        <div class="rad-explanation" id="radExplanation"></div>
-        <div class="matches-bar" id="matchesBar"></div>
-      </div>
+      <!-- Three-panel geometry display -->
+      <div class="geometry-panels">
 
-      <div class="detail-grid">
-        <div class="detail-card">
-          <div class="detail-card-header">Connections (CON)</div>
-          <div class="detail-card-body" id="conList"></div>
+        <!-- Orientation panel -->
+        <div class="geo-panel orientation-panel">
+          <div class="panel-header">Orientation</div>
+          <div id="orientationContent"></div>
         </div>
-        <div class="detail-card">
-          <div class="detail-card-header">Frame Constraints (FRM)</div>
-          <div class="detail-card-body" id="frmList"></div>
-        </div>
-      </div>
 
-      <div class="sexpr-block">
-        <div class="sexpr-header">
-          <span class="sexpr-title">BLISP S-Expression</span>
-          <button class="copy-btn" id="copyBtn">Copy</button>
+        <!-- Radical conditions panel -->
+        <div class="geo-panel conditions-panel">
+          <div class="panel-header">Radical Conditions</div>
+          <div class="panel-sub" id="conditionsSub"></div>
+          <div id="conditionsContent"></div>
         </div>
-        <pre class="sexpr-code" id="sexprCode"></pre>
+
+        <!-- Body frames panel -->
+        <div class="geo-panel frames-panel">
+          <div class="panel-header">Body Frames</div>
+          <div id="framesContent"></div>
+        </div>
+
       </div>
 
       <div class="try-again">

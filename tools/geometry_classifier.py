@@ -6,6 +6,7 @@ Loads the serialized body-frame model and provides:
   3. Debug geometry for visualization (torso axes, centerlines, etc.)
 """
 
+import json
 import math
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -24,16 +25,37 @@ _model = None
 _scaler = None
 _feature_names = None
 _label_encoder = None
+_model_type = None
 
 
 def _load():
-    global _model, _scaler, _feature_names, _label_encoder
+    global _model, _scaler, _feature_names, _label_encoder, _model_type
     if _model is not None:
         return
     _model = joblib.load(MODEL_DIR / "model.joblib")
     _scaler = joblib.load(MODEL_DIR / "scaler.joblib")
     _feature_names = joblib.load(MODEL_DIR / "feature_names.joblib")
     _label_encoder = joblib.load(MODEL_DIR / "label_encoder.joblib")
+    config_path = MODEL_DIR / "config.json"
+    if config_path.exists():
+        with open(config_path) as f:
+            cfg = json.load(f)
+        _model_type = cfg.get("classifier_source", "learned_geometry")
+    else:
+        _model_type = "learned_geometry"
+
+
+def _extract_combined_features(kps_a, kps_b):
+    """Extract geo + ordered_cr confidence-weighted features (635 total)."""
+    from tools.cross_ratio_features import extract_geo_confidence_weighted
+    from tools.ordered_cross_ratio import (
+        extract_ordered_cr_features, confidence_weight_ordered_cr,
+    )
+    geo, geo_n = extract_all_features(kps_a, kps_b)
+    ocr, ocr_n = extract_ordered_cr_features(kps_a, kps_b)
+    gcw, gcw_n = extract_geo_confidence_weighted(geo, geo_n, kps_a, kps_b)
+    ocrw, ocrw_n = confidence_weight_ordered_cr(ocr, ocr_n)
+    return gcw + ocrw, gcw_n + ocrw_n
 
 
 RADICAL_EXPLANATIONS = {
@@ -323,7 +345,10 @@ def classify(kps_a: list, kps_b: list, pov_label: str = "") -> GeometryResult:
     bf_a = BodyFrame(kps_a)
     bf_b = BodyFrame(kps_b)
 
-    feats, _ = extract_all_features(kps_a, kps_b)
+    if _model_type == "geo_ordered_cr_cw":
+        feats, _ = _extract_combined_features(kps_a, kps_b)
+    else:
+        feats, _ = extract_all_features(kps_a, kps_b)
     feats_arr = np.array([feats], dtype=np.float32)
     feats_scaled = np.nan_to_num(_scaler.transform(feats_arr), 0)
 
@@ -337,12 +362,15 @@ def classify(kps_a: list, kps_b: list, pov_label: str = "") -> GeometryResult:
 
     orient = _orientation_debug(bf_a, bf_b)
     conditions = _check_radical_conditions(radical, bf_a, bf_b, orient)
+    for c in conditions:
+        c.met = bool(c.met)
+        c.value = float(c.value)
 
     return GeometryResult(
         radical=radical,
         confidence=round(confidence, 4),
         explanation=RADICAL_EXPLANATIONS.get(radical, "Unknown position."),
-        classifier_source="learned_geometry",
+        classifier_source=_model_type or "learned_geometry",
         probabilities=proba,
         body_frame_a=_bf_debug(bf_a),
         body_frame_b=_bf_debug(bf_b),

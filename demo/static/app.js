@@ -37,7 +37,6 @@ function reset() {
   hide(loading);
   hide(errorBlock);
   hide(results);
-  hide(document.getElementById('lowConfWarning'));
   dropZone.style.display = '';
   fileInput.value = '';
 }
@@ -60,10 +59,7 @@ async function handleFile(file) {
     if (!res.ok) {
       const err = await res.json().catch(() => ({ detail: { message: res.statusText } }));
       const detail = err.detail || {};
-      showError(
-        detail.message || `Server error (${res.status})`,
-        detail.hint || ''
-      );
+      showError(detail.message || `Server error (${res.status})`, detail.hint || '');
       return;
     }
 
@@ -92,68 +88,134 @@ function renderResults(data) {
   previewOver.src = data.overlay_url;
   show(previewRow);
 
-  // low confidence warning
-  const warn = document.getElementById('lowConfWarning');
-  if (data.confidence < 0.5) show(warn); else hide(warn);
+  // Pose quality status bar
+  const qualBar = document.getElementById('poseQualityBar');
+  const q = data.pose_quality || 'unknown';
+  const qd = data.pose_detail || {};
+  const qLabels = {
+    good: 'Pose quality: Good',
+    uncertain: 'Pose quality: Uncertain — classification may be unreliable',
+    poor: 'Pose quality: Poor — keypoints likely incorrect',
+  };
+  const qDetail = qd.conf_a != null
+    ? ` (A: ${(qd.conf_a * 100).toFixed(0)}% conf/${qd.high_conf_kps_a} kps, B: ${(qd.conf_b * 100).toFixed(0)}% conf/${qd.high_conf_kps_b} kps)`
+    : '';
+  qualBar.textContent = (qLabels[q] || 'Pose quality: unknown') + qDetail;
+  qualBar.className = 'pose-quality-bar quality-' + q;
 
-  // radical hero
-  const radName = document.getElementById('radName');
-  radName.textContent = data.radical;
+  // Classifier source
+  const sourceMap = {
+    'learned_geometry': 'Geometry Classifier (203 features)',
+    'geo_ordered_cr_cw': 'Geometry + Ordered CR Classifier (635 features)',
+  };
+  const source = sourceMap[data.classifier_source] || data.classifier_source;
+  document.getElementById('verdictSource').textContent = source;
 
-  const confEl = document.getElementById('radConf');
-  confEl.textContent = (data.confidence * 100).toFixed(1) + '%';
-  confEl.className = 'conf-value';
-  if (data.confidence === 0) confEl.classList.add('none');
-  else if (data.confidence < 0.3) confEl.classList.add('low');
+  // Verdict
+  document.getElementById('verdictRadical').textContent = data.radical;
+  const scoreEl = document.getElementById('verdictScore');
+  scoreEl.textContent = (data.confidence * 100).toFixed(1) + '%';
+  scoreEl.className = 'verdict-score';
+  if (data.confidence < 0.3) scoreEl.classList.add('low');
+  else if (data.confidence >= 0.7) scoreEl.classList.add('high');
 
-  document.getElementById('radPov').textContent = 'POV: ' + data.pov;
-  document.getElementById('radExplanation').textContent = data.explanation;
+  document.getElementById('verdictPov').textContent = 'POV: ' + data.pov;
+  document.getElementById('verdictExplanation').textContent = data.explanation;
 
-  // all matches
-  const bar = document.getElementById('matchesBar');
+  // Top predictions bar (top 3 prominent, rest smaller)
+  const bar = document.getElementById('topPredictions');
   bar.innerHTML = '';
-  (data.all_matches || []).forEach(m => {
+  (data.top_predictions || []).slice(0, 5).forEach((p, i) => {
     const chip = document.createElement('span');
-    chip.className = 'match-chip';
-    chip.innerHTML = `<span class="chip-name">${m.radical}</span><span class="chip-conf">${(m.confidence * 100).toFixed(1)}%</span>`;
+    const cls = i === 0 ? 'match-chip active' : i < 3 ? 'match-chip runner-up' : 'match-chip';
+    chip.className = cls;
+    chip.innerHTML = `<span class="chip-name">${p.radical}</span><span class="chip-conf">${(p.confidence * 100).toFixed(1)}%</span>`;
     bar.appendChild(chip);
   });
 
-  // connections
-  const conList = document.getElementById('conList');
-  conList.innerHTML = '';
-  (data.contacts || []).forEach(c => {
+  // ── Orientation panel ──
+  const orient = data.orientation;
+  const orientEl = document.getElementById('orientationContent');
+  orientEl.innerHTML = '';
+
+  const orientRows = [
+    ['Torso alignment', orientLabel(orient.torso_axis_dot), orient.orientation_label],
+    ['Facing relation', facingLabel(orient.facing_dot), fmtDot(orient.facing_dot)],
+    ['Shoulder axes', fmtDot(orient.sh_axis_dot), orient.sh_axis_dot > 0.5 ? 'aligned' : orient.sh_axis_dot < -0.5 ? 'opposed' : 'oblique'],
+    ['Hip axes', fmtDot(orient.hp_axis_dot), orient.hp_axis_dot > 0.5 ? 'aligned' : orient.hp_axis_dot < -0.5 ? 'opposed' : 'oblique'],
+    ['Vertical dominance', fmtNum(orient.vert_dominance), orient.top_label.replace('_', ' ')],
+    ['Center distance', fmtNum(orient.center_dist) + ' torso-lengths', ''],
+    ['Hip distance', fmtNum(orient.hip_dist) + ' torso-lengths', ''],
+  ];
+
+  orientRows.forEach(([label, value, note]) => {
     const row = document.createElement('div');
     row.className = 'row';
-    row.innerHTML = `<span class="label">${c.attacker} &rarr; ${c.axis}</span><span class="value">${c.helicity === '0' ? 'closure' : c.helicity} ${(c.confidence * 100).toFixed(0)}%</span>`;
-    conList.appendChild(row);
+    row.innerHTML = `<span class="label">${label}</span><span class="value">${value} <span class="note">${note}</span></span>`;
+    orientEl.appendChild(row);
   });
-  if (!data.contacts || data.contacts.length === 0) {
-    conList.innerHTML = '<span class="label">No connections detected</span>';
+
+  // ── Conditions panel ──
+  const condSub = document.getElementById('conditionsSub');
+  condSub.textContent = 'Geometry checks for ' + data.radical;
+  const condEl = document.getElementById('conditionsContent');
+  condEl.innerHTML = '';
+
+  if (data.conditions && data.conditions.length > 0) {
+    data.conditions.forEach(c => {
+      const row = document.createElement('div');
+      row.className = 'row condition-row';
+      const status = c.met
+        ? '<span class="cond-pass">PASS</span>'
+        : '<span class="cond-fail">FAIL</span>';
+      row.innerHTML = `
+        <div class="cond-main">
+          ${status}
+          <span class="cond-name">${c.name}</span>
+          <span class="cond-val">${fmtNum(c.value)} ${c.threshold}</span>
+        </div>
+        <div class="cond-desc">${c.description}</div>`;
+      condEl.appendChild(row);
+    });
+  } else {
+    condEl.innerHTML = '<div class="row"><span class="label dim">No specific conditions defined</span></div>';
   }
 
-  // frame constraints
-  const frmList = document.getElementById('frmList');
-  frmList.innerHTML = '';
-  (data.frame_constraints || []).forEach(f => {
-    const row = document.createElement('div');
-    row.className = 'row';
-    const part = f.part ? ' ' + f.part : '';
-    row.innerHTML = `<span class="label">${f.type}${part}</span><span class="value">${(f.confidence * 100).toFixed(0)}%</span>`;
-    frmList.appendChild(row);
+  // ── Body frames panel ──
+  const framesEl = document.getElementById('framesContent');
+  framesEl.innerHTML = '';
+
+  [['Athlete A (Me)', data.body_frame_a], ['Athlete B (Op)', data.body_frame_b]].forEach(([title, bf]) => {
+    const section = document.createElement('div');
+    section.className = 'frame-section';
+    section.innerHTML = `
+      <div class="frame-title">${title}</div>
+      <div class="row"><span class="label">Torso angle</span><span class="value">${bf.torso_angle_deg.toFixed(1)}&deg;</span></div>
+      <div class="row"><span class="label">Torso length</span><span class="value">${bf.torso_len.toFixed(0)}px</span></div>
+      <div class="row"><span class="label">Shoulder width</span><span class="value">${bf.sh_width.toFixed(0)}px</span></div>
+      <div class="row"><span class="label">Hip width</span><span class="value">${bf.hp_width.toFixed(0)}px</span></div>
+      <div class="row"><span class="label">Facing conf</span><span class="value">${(bf.facing_conf * 100).toFixed(0)}%</span></div>
+      <div class="row"><span class="label">Center</span><span class="value">(${bf.center[0].toFixed(0)}, ${bf.center[1].toFixed(0)})</span></div>
+    `;
+    framesEl.appendChild(section);
   });
 
-  // sexpr
-  document.getElementById('sexprCode').textContent = data.sexpr;
-
-  // copy button
-  document.getElementById('copyBtn').onclick = () => {
-    navigator.clipboard.writeText(data.sexpr).then(() => {
-      const btn = document.getElementById('copyBtn');
-      btn.textContent = 'Copied';
-      setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
-    });
-  };
-
   show(results);
+}
+
+// ── helpers ────────────────────────────────────
+
+function fmtNum(n) { return n >= 0 ? '+' + n.toFixed(2) : n.toFixed(2); }
+function fmtDot(d) { return (d * 100).toFixed(0) + '%'; }
+
+function orientLabel(dot) {
+  if (dot > 0.5) return 'same direction';
+  if (dot < -0.5) return 'opposed';
+  return 'perpendicular/oblique';
+}
+
+function facingLabel(dot) {
+  if (dot < -0.3) return 'face-to-face';
+  if (dot > 0.3) return 'same way';
+  return 'angled';
 }
