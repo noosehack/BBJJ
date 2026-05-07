@@ -13,3 +13,5 @@ demo/uploads/
 demo/results/
 data/yolo_pose/
 models_pose/
+models_geometry/
+benchmark_perception/results/

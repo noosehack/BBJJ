@@ -1,0 +1,811 @@
+{
+  "geometry_only": {
+    "gt_acc": 0.8156424581005587,
+    "gt_total": 358,
+    "gt_correct": 292,
+    "yolo_acc": 0.5924855491329479,
+    "yolo_total": 346,
+    "yolo_correct": 205,
+    "degradation": 0.22315690896761076,
+    "gt_per_class": {
+      "BCTR": {
+        "n": 32,
+        "correct": 20
+      },
+      "CGRD": {
+        "n": 49,
+        "correct": 40
+      },
+      "HGRD": {
+        "n": 48,
+        "correct": 39
+      },
+      "MNT": {
+        "n": 48,
+        "correct": 34
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 44
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 43
+      },
+      "STND": {
+        "n": 50,
+        "correct": 49
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 23
+      }
+    },
+    "yolo_per_class": {
+      "BCTR": {
+        "n": 31,
+        "correct": 11
+      },
+      "CGRD": {
+        "n": 47,
+        "correct": 26
+      },
+      "HGRD": {
+        "n": 42,
+        "correct": 15
+      },
+      "MNT": {
+        "n": 47,
+        "correct": 17
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 47
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 29
+      },
+      "STND": {
+        "n": 48,
+        "correct": 45
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 15
+      }
+    },
+    "gt_confusion": {
+      "BCTR": {
+        "TKDN": 11,
+        "5050": 1
+      },
+      "CGRD": {
+        "TKDN": 1,
+        "5050": 1,
+        "SCTR": 6,
+        "MNT": 1
+      },
+      "HGRD": {
+        "MNT": 1,
+        "SCTR": 8
+      },
+      "MNT": {
+        "HGRD": 12,
+        "CGRD": 2
+      },
+      "OGRD": {
+        "SCTR": 4,
+        "STND": 1,
+        "5050": 1
+      },
+      "SCTR": {
+        "HGRD": 4,
+        "TRTL": 1,
+        "OGRD": 1
+      },
+      "STND": {
+        "MNT": 1
+      },
+      "TRTL": {
+        "TKDN": 6,
+        "MNT": 1,
+        "SCTR": 1,
+        "OGRD": 1
+      }
+    },
+    "yolo_confusion": {
+      "BCTR": {
+        "TKDN": 19,
+        "TRTL": 1
+      },
+      "CGRD": {
+        "SCTR": 14,
+        "TKDN": 2,
+        "5050": 2,
+        "MNT": 2,
+        "STND": 1
+      },
+      "HGRD": {
+        "OGRD": 5,
+        "MNT": 5,
+        "SCTR": 14,
+        "5050": 2,
+        "STND": 1
+      },
+      "MNT": {
+        "HGRD": 21,
+        "OGRD": 1,
+        "SCTR": 3,
+        "TKDN": 3,
+        "BCTR": 1,
+        "5050": 1
+      },
+      "OGRD": {
+        "5050": 2,
+        "STND": 1
+      },
+      "SCTR": {
+        "MNT": 3,
+        "HGRD": 13,
+        "TKDN": 2,
+        "CGRD": 1,
+        "OGRD": 1
+      },
+      "STND": {
+        "TKDN": 3
+      },
+      "TRTL": {
+        "OGRD": 5,
+        "TKDN": 7,
+        "CGRD": 2,
+        "SCTR": 1,
+        "MNT": 1,
+        "HGRD": 1
+      }
+    }
+  },
+  "cross_ratio_only": {
+    "gt_acc": 0.88268156424581,
+    "gt_total": 358,
+    "gt_correct": 316,
+    "yolo_acc": 0.43641618497109824,
+    "yolo_total": 346,
+    "yolo_correct": 151,
+    "degradation": 0.44626537927471177,
+    "gt_per_class": {
+      "BCTR": {
+        "n": 32,
+        "correct": 25
+      },
+      "CGRD": {
+        "n": 49,
+        "correct": 45
+      },
+      "HGRD": {
+        "n": 48,
+        "correct": 44
+      },
+      "MNT": {
+        "n": 48,
+        "correct": 39
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 46
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 42
+      },
+      "STND": {
+        "n": 50,
+        "correct": 50
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 25
+      }
+    },
+    "yolo_per_class": {
+      "BCTR": {
+        "n": 31,
+        "correct": 19
+      },
+      "CGRD": {
+        "n": 47,
+        "correct": 24
+      },
+      "HGRD": {
+        "n": 42,
+        "correct": 10
+      },
+      "MNT": {
+        "n": 47,
+        "correct": 11
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 25
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 14
+      },
+      "STND": {
+        "n": 48,
+        "correct": 46
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 2
+      }
+    },
+    "gt_confusion": {
+      "BCTR": {
+        "TRTL": 2,
+        "TKDN": 4,
+        "STND": 1
+      },
+      "CGRD": {
+        "BCTR": 2,
+        "SCTR": 1,
+        "OGRD": 1
+      },
+      "HGRD": {
+        "CGRD": 1,
+        "5050": 1,
+        "SCTR": 1,
+        "TRTL": 1
+      },
+      "MNT": {
+        "CGRD": 2,
+        "HGRD": 4,
+        "TKDN": 3
+      },
+      "OGRD": {
+        "STND": 2,
+        "5050": 1,
+        "TRTL": 1
+      },
+      "SCTR": {
+        "HGRD": 5,
+        "CGRD": 2
+      },
+      "TRTL": {
+        "OGRD": 1,
+        "BCTR": 1,
+        "TKDN": 4,
+        "STND": 1
+      }
+    },
+    "yolo_confusion": {
+      "BCTR": {
+        "STND": 4,
+        "TKDN": 8
+      },
+      "CGRD": {
+        "TKDN": 8,
+        "STND": 8,
+        "OGRD": 5,
+        "HGRD": 2
+      },
+      "HGRD": {
+        "STND": 16,
+        "TKDN": 7,
+        "MNT": 2,
+        "OGRD": 5,
+        "SCTR": 2
+      },
+      "MNT": {
+        "TKDN": 19,
+        "OGRD": 3,
+        "STND": 10,
+        "HGRD": 2,
+        "BCTR": 1,
+        "5050": 1
+      },
+      "OGRD": {
+        "STND": 25
+      },
+      "SCTR": {
+        "CGRD": 3,
+        "STND": 8,
+        "TKDN": 16,
+        "OGRD": 4,
+        "HGRD": 2,
+        "MNT": 1,
+        "5050": 1
+      },
+      "STND": {
+        "TKDN": 1,
+        "BCTR": 1
+      },
+      "TRTL": {
+        "STND": 13,
+        "TKDN": 17
+      }
+    }
+  },
+  "combined": {
+    "gt_acc": 0.8575418994413407,
+    "gt_total": 358,
+    "gt_correct": 307,
+    "yolo_acc": 0.4913294797687861,
+    "yolo_total": 346,
+    "yolo_correct": 170,
+    "degradation": 0.36621241967255463,
+    "gt_per_class": {
+      "BCTR": {
+        "n": 32,
+        "correct": 21
+      },
+      "CGRD": {
+        "n": 49,
+        "correct": 42
+      },
+      "HGRD": {
+        "n": 48,
+        "correct": 43
+      },
+      "MNT": {
+        "n": 48,
+        "correct": 34
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 48
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 43
+      },
+      "STND": {
+        "n": 50,
+        "correct": 50
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 26
+      }
+    },
+    "yolo_per_class": {
+      "BCTR": {
+        "n": 31,
+        "correct": 8
+      },
+      "CGRD": {
+        "n": 47,
+        "correct": 16
+      },
+      "HGRD": {
+        "n": 42,
+        "correct": 22
+      },
+      "MNT": {
+        "n": 47,
+        "correct": 16
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 42
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 10
+      },
+      "STND": {
+        "n": 48,
+        "correct": 47
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 9
+      }
+    },
+    "gt_confusion": {
+      "BCTR": {
+        "HGRD": 1,
+        "TKDN": 10
+      },
+      "CGRD": {
+        "TRTL": 1,
+        "SCTR": 6
+      },
+      "HGRD": {
+        "MNT": 1,
+        "SCTR": 4
+      },
+      "MNT": {
+        "HGRD": 11,
+        "CGRD": 2,
+        "5050": 1
+      },
+      "OGRD": {
+        "5050": 1,
+        "SCTR": 1
+      },
+      "SCTR": {
+        "HGRD": 4,
+        "CGRD": 1,
+        "OGRD": 1
+      },
+      "TRTL": {
+        "TKDN": 4,
+        "OGRD": 1,
+        "MNT": 1
+      }
+    },
+    "yolo_confusion": {
+      "BCTR": {
+        "TKDN": 23
+      },
+      "CGRD": {
+        "OGRD": 2,
+        "TKDN": 17,
+        "SCTR": 3,
+        "MNT": 7,
+        "STND": 2
+      },
+      "HGRD": {
+        "TKDN": 10,
+        "CGRD": 1,
+        "STND": 6,
+        "OGRD": 2,
+        "5050": 1
+      },
+      "MNT": {
+        "TKDN": 19,
+        "OGRD": 1,
+        "STND": 2,
+        "HGRD": 5,
+        "BCTR": 1,
+        "TRTL": 1,
+        "CGRD": 1,
+        "5050": 1
+      },
+      "OGRD": {
+        "STND": 7,
+        "5050": 1
+      },
+      "SCTR": {
+        "HGRD": 13,
+        "TKDN": 17,
+        "MNT": 3,
+        "OGRD": 2,
+        "STND": 3,
+        "5050": 1
+      },
+      "STND": {
+        "TKDN": 1
+      },
+      "TRTL": {
+        "TKDN": 18,
+        "OGRD": 3,
+        "STND": 2
+      }
+    }
+  },
+  "geo_conf_weighted": {
+    "gt_acc": 0.8184357541899442,
+    "gt_total": 358,
+    "gt_correct": 293,
+    "yolo_acc": 0.6705202312138728,
+    "yolo_total": 346,
+    "yolo_correct": 232,
+    "degradation": 0.14791552297607136,
+    "gt_per_class": {
+      "BCTR": {
+        "n": 32,
+        "correct": 20
+      },
+      "CGRD": {
+        "n": 49,
+        "correct": 42
+      },
+      "HGRD": {
+        "n": 48,
+        "correct": 38
+      },
+      "MNT": {
+        "n": 48,
+        "correct": 35
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 44
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 40
+      },
+      "STND": {
+        "n": 50,
+        "correct": 50
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 24
+      }
+    },
+    "yolo_per_class": {
+      "BCTR": {
+        "n": 31,
+        "correct": 13
+      },
+      "CGRD": {
+        "n": 47,
+        "correct": 34
+      },
+      "HGRD": {
+        "n": 42,
+        "correct": 27
+      },
+      "MNT": {
+        "n": 47,
+        "correct": 21
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 45
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 27
+      },
+      "STND": {
+        "n": 48,
+        "correct": 46
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 19
+      }
+    },
+    "gt_confusion": {
+      "BCTR": {
+        "TKDN": 11,
+        "5050": 1
+      },
+      "CGRD": {
+        "TKDN": 1,
+        "SCTR": 5,
+        "MNT": 1
+      },
+      "HGRD": {
+        "SCTR": 9,
+        "MNT": 1
+      },
+      "MNT": {
+        "HGRD": 11,
+        "CGRD": 2
+      },
+      "OGRD": {
+        "5050": 2,
+        "SCTR": 3,
+        "STND": 1
+      },
+      "SCTR": {
+        "HGRD": 7,
+        "CGRD": 1,
+        "OGRD": 1
+      },
+      "TRTL": {
+        "TKDN": 4,
+        "HGRD": 1,
+        "SCTR": 2,
+        "OGRD": 1
+      }
+    },
+    "yolo_confusion": {
+      "BCTR": {
+        "TKDN": 15,
+        "HGRD": 3
+      },
+      "CGRD": {
+        "OGRD": 1,
+        "SCTR": 6,
+        "5050": 2,
+        "STND": 1,
+        "HGRD": 2,
+        "MNT": 1
+      },
+      "HGRD": {
+        "MNT": 3,
+        "TKDN": 1,
+        "SCTR": 6,
+        "5050": 1,
+        "OGRD": 2,
+        "STND": 2
+      },
+      "MNT": {
+        "HGRD": 22,
+        "OGRD": 1,
+        "TKDN": 2,
+        "SCTR": 1
+      },
+      "OGRD": {
+        "5050": 3,
+        "SCTR": 1,
+        "STND": 1
+      },
+      "SCTR": {
+        "MNT": 2,
+        "HGRD": 14,
+        "TKDN": 1,
+        "OGRD": 1,
+        "CGRD": 2,
+        "TRTL": 2
+      },
+      "STND": {
+        "TKDN": 2
+      },
+      "TRTL": {
+        "OGRD": 1,
+        "TKDN": 7,
+        "CGRD": 3,
+        "SCTR": 1,
+        "HGRD": 1
+      }
+    }
+  },
+  "conf_weighted": {
+    "gt_acc": 0.8575418994413407,
+    "gt_total": 358,
+    "gt_correct": 307,
+    "yolo_acc": 0.6907514450867052,
+    "yolo_total": 346,
+    "yolo_correct": 239,
+    "degradation": 0.16679045435463558,
+    "gt_per_class": {
+      "BCTR": {
+        "n": 32,
+        "correct": 24
+      },
+      "CGRD": {
+        "n": 49,
+        "correct": 42
+      },
+      "HGRD": {
+        "n": 48,
+        "correct": 42
+      },
+      "MNT": {
+        "n": 48,
+        "correct": 34
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 49
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 41
+      },
+      "STND": {
+        "n": 50,
+        "correct": 50
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 25
+      }
+    },
+    "yolo_per_class": {
+      "BCTR": {
+        "n": 31,
+        "correct": 19
+      },
+      "CGRD": {
+        "n": 47,
+        "correct": 32
+      },
+      "HGRD": {
+        "n": 42,
+        "correct": 24
+      },
+      "MNT": {
+        "n": 47,
+        "correct": 22
+      },
+      "OGRD": {
+        "n": 50,
+        "correct": 45
+      },
+      "SCTR": {
+        "n": 49,
+        "correct": 31
+      },
+      "STND": {
+        "n": 48,
+        "correct": 47
+      },
+      "TRTL": {
+        "n": 32,
+        "correct": 19
+      }
+    },
+    "gt_confusion": {
+      "BCTR": {
+        "TKDN": 6,
+        "HGRD": 1,
+        "CGRD": 1
+      },
+      "CGRD": {
+        "TKDN": 1,
+        "SCTR": 5,
+        "HGRD": 1
+      },
+      "HGRD": {
+        "MNT": 2,
+        "SCTR": 3,
+        "5050": 1
+      },
+      "MNT": {
+        "HGRD": 11,
+        "CGRD": 2,
+        "5050": 1
+      },
+      "OGRD": {
+        "SCTR": 1
+      },
+      "SCTR": {
+        "HGRD": 5,
+        "CGRD": 2,
+        "OGRD": 1
+      },
+      "TRTL": {
+        "TKDN": 5,
+        "OGRD": 1,
+        "MNT": 1
+      }
+    },
+    "yolo_confusion": {
+      "BCTR": {
+        "TKDN": 12
+      },
+      "CGRD": {
+        "SCTR": 4,
+        "TKDN": 5,
+        "OGRD": 3,
+        "MNT": 2,
+        "STND": 1
+      },
+      "HGRD": {
+        "MNT": 2,
+        "CGRD": 1,
+        "TKDN": 2,
+        "OGRD": 4,
+        "SCTR": 4,
+        "STND": 3,
+        "5050": 2
+      },
+      "MNT": {
+        "HGRD": 13,
+        "OGRD": 1,
+        "CGRD": 2,
+        "TKDN": 5,
+        "BCTR": 1,
+        "TRTL": 1,
+        "SCTR": 2
+      },
+      "OGRD": {
+        "STND": 5
+      },
+      "SCTR": {
+        "CGRD": 4,
+        "TKDN": 4,
+        "HGRD": 8,
+        "STND": 1,
+        "TRTL": 1
+      },
+      "STND": {
+        "TKDN": 1
+      },
+      "TRTL": {
+        "OGRD": 2,
+        "TKDN": 11
+      }
+    }
+  }
+}

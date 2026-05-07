@@ -1,0 +1,649 @@
+{
+  "geo_cw": {
+    "gt_acc": 0.8184357541899442,
+    "gt_n": 358,
+    "gt_ok": 293,
+    "yolo_acc": 0.6705202312138728,
+    "yolo_n": 346,
+    "yolo_ok": 232,
+    "degrad": 0.14791552297607136,
+    "gt_cls": {
+      "BCTR": {
+        "n": 32,
+        "ok": 20
+      },
+      "CGRD": {
+        "n": 49,
+        "ok": 42
+      },
+      "HGRD": {
+        "n": 48,
+        "ok": 38
+      },
+      "MNT": {
+        "n": 48,
+        "ok": 35
+      },
+      "OGRD": {
+        "n": 50,
+        "ok": 44
+      },
+      "SCTR": {
+        "n": 49,
+        "ok": 40
+      },
+      "STND": {
+        "n": 50,
+        "ok": 50
+      },
+      "TRTL": {
+        "n": 32,
+        "ok": 24
+      }
+    },
+    "yolo_cls": {
+      "BCTR": {
+        "n": 31,
+        "ok": 13
+      },
+      "CGRD": {
+        "n": 47,
+        "ok": 34
+      },
+      "HGRD": {
+        "n": 42,
+        "ok": 27
+      },
+      "MNT": {
+        "n": 47,
+        "ok": 21
+      },
+      "OGRD": {
+        "n": 50,
+        "ok": 45
+      },
+      "SCTR": {
+        "n": 49,
+        "ok": 27
+      },
+      "STND": {
+        "n": 48,
+        "ok": 46
+      },
+      "TRTL": {
+        "n": 32,
+        "ok": 19
+      }
+    },
+    "gt_conf": {
+      "BCTR": {
+        "TKDN": 11,
+        "5050": 1
+      },
+      "CGRD": {
+        "TKDN": 1,
+        "SCTR": 5,
+        "MNT": 1
+      },
+      "HGRD": {
+        "SCTR": 9,
+        "MNT": 1
+      },
+      "MNT": {
+        "HGRD": 11,
+        "CGRD": 2
+      },
+      "OGRD": {
+        "5050": 2,
+        "SCTR": 3,
+        "STND": 1
+      },
+      "SCTR": {
+        "HGRD": 7,
+        "CGRD": 1,
+        "OGRD": 1
+      },
+      "TRTL": {
+        "TKDN": 4,
+        "HGRD": 1,
+        "SCTR": 2,
+        "OGRD": 1
+      }
+    },
+    "yolo_conf": {
+      "BCTR": {
+        "TKDN": 15,
+        "HGRD": 3
+      },
+      "CGRD": {
+        "OGRD": 1,
+        "SCTR": 6,
+        "5050": 2,
+        "STND": 1,
+        "HGRD": 2,
+        "MNT": 1
+      },
+      "HGRD": {
+        "MNT": 3,
+        "TKDN": 1,
+        "SCTR": 6,
+        "5050": 1,
+        "OGRD": 2,
+        "STND": 2
+      },
+      "MNT": {
+        "HGRD": 22,
+        "OGRD": 1,
+        "TKDN": 2,
+        "SCTR": 1
+      },
+      "OGRD": {
+        "5050": 3,
+        "SCTR": 1,
+        "STND": 1
+      },
+      "SCTR": {
+        "MNT": 2,
+        "HGRD": 14,
+        "TKDN": 1,
+        "OGRD": 1,
+        "CGRD": 2,
+        "TRTL": 2
+      },
+      "STND": {
+        "TKDN": 2
+      },
+      "TRTL": {
+        "OGRD": 1,
+        "TKDN": 7,
+        "CGRD": 3,
+        "SCTR": 1,
+        "HGRD": 1
+      }
+    }
+  },
+  "naked_cr_cw": {
+    "gt_acc": 0.8854748603351955,
+    "gt_n": 358,
+    "gt_ok": 317,
+    "yolo_acc": 0.5606936416184971,
+    "yolo_n": 346,
+    "yolo_ok": 194,
+    "degrad": 0.3247812187166984,
+    "gt_cls": {
+      "BCTR": {
+        "n": 32,
+        "ok": 27
+      },
+      "CGRD": {
+        "n": 49,
+        "ok": 40
+      },
+      "HGRD": {
+        "n": 48,
+        "ok": 46
+      },
+      "MNT": {
+        "n": 48,
+        "ok": 39
+      },
+      "OGRD": {
+        "n": 50,
+        "ok": 47
+      },
+      "SCTR": {
+        "n": 49,
+        "ok": 46
+      },
+      "STND": {
+        "n": 50,
+        "ok": 49
+      },
+      "TRTL": {
+        "n": 32,
+        "ok": 23
+      }
+    },
+    "yolo_cls": {
+      "BCTR": {
+        "n": 31,
+        "ok": 22
+      },
+      "CGRD": {
+        "n": 47,
+        "ok": 30
+      },
+      "HGRD": {
+        "n": 42,
+        "ok": 14
+      },
+      "MNT": {
+        "n": 47,
+        "ok": 17
+      },
+      "OGRD": {
+        "n": 50,
+        "ok": 34
+      },
+      "SCTR": {
+        "n": 49,
+        "ok": 29
+      },
+      "STND": {
+        "n": 48,
+        "ok": 44
+      },
+      "TRTL": {
+        "n": 32,
+        "ok": 4
+      }
+    },
+    "gt_conf": {
+      "BCTR": {
+        "TRTL": 2,
+        "TKDN": 3
+      },
+      "CGRD": {
+        "OGRD": 2,
+        "SCTR": 4,
+        "HGRD": 2,
+        "MNT": 1
+      },
+      "HGRD": {
+        "CGRD": 1,
+        "TRTL": 1
+      },
+      "MNT": {
+        "CGRD": 1,
+        "SCTR": 1,
+        "TKDN": 2,
+        "OGRD": 1,
+        "HGRD": 4
+      },
+      "OGRD": {
+        "5050": 1,
+        "TRTL": 1,
+        "STND": 1
+      },
+      "SCTR": {
+        "HGRD": 1,
+        "CGRD": 1,
+        "TKDN": 1
+      },
+      "STND": {
+        "TKDN": 1
+      },
+      "TRTL": {
+        "OGRD": 2,
+        "TKDN": 4,
+        "BCTR": 1,
+        "5050": 1,
+        "STND": 1
+      }
+    },
+    "yolo_conf": {
+      "BCTR": {
+        "TKDN": 8,
+        "STND": 1
+      },
+      "CGRD": {
+        "SCTR": 3,
+        "TKDN": 5,
+        "OGRD": 4,
+        "HGRD": 2,
+        "STND": 2,
+        "MNT": 1
+      },
+      "HGRD": {
+        "STND": 6,
+        "MNT": 1,
+        "OGRD": 7,
+        "TKDN": 9,
+        "SCTR": 2,
+        "CGRD": 2,
+        "5050": 1
+      },
+      "MNT": {
+        "TKDN": 10,
+        "OGRD": 3,
+        "STND": 6,
+        "SCTR": 3,
+        "HGRD": 4,
+        "BCTR": 1,
+        "5050": 1,
+        "CGRD": 2
+      },
+      "OGRD": {
+        "STND": 16
+      },
+      "SCTR": {
+        "STND": 3,
+        "TKDN": 13,
+        "BCTR": 1,
+        "MNT": 1,
+        "HGRD": 1,
+        "CGRD": 1
+      },
+      "STND": {
+        "TKDN": 3,
+        "BCTR": 1
+      },
+      "TRTL": {
+        "STND": 9,
+        "BCTR": 1,
+        "TKDN": 18
+      }
+    }
+  },
+  "ordered_cr_cw": {
+    "gt_acc": 0.9078212290502793,
+    "gt_n": 358,
+    "gt_ok": 325,
+    "yolo_acc": 0.7398843930635838,
+    "yolo_n": 346,
+    "yolo_ok": 256,
+    "degrad": 0.1679368359866955,
+    "gt_cls": {
+      "BCTR": {
+        "n": 32,
+        "ok": 28
+      },
+      "CGRD": {
+        "n": 49,
+        "ok": 44
+      },
+      "HGRD": {
+        "n": 48,
+        "ok": 45
+      },
+      "MNT": {
+        "n": 48,
+        "ok": 40
+      },
+      "OGRD": {
+        "n": 50,
+        "ok": 46
+      },
+      "SCTR": {
+        "n": 49,
+        "ok": 47
+      },
+      "STND": {
+        "n": 50,
+        "ok": 49
+      },
+      "TRTL": {
+        "n": 32,
+        "ok": 26
+      }
+    },
+    "yolo_cls": {
+      "BCTR": {
+        "n": 31,
+        "ok": 24
+      },
+      "CGRD": {
+        "n": 47,
+        "ok": 37
+      },
+      "HGRD": {
+        "n": 42,
+        "ok": 26
+      },
+      "MNT": {
+        "n": 47,
+        "ok": 29
+      },
+      "OGRD": {
+        "n": 50,
+        "ok": 39
+      },
+      "SCTR": {
+        "n": 49,
+        "ok": 38
+      },
+      "STND": {
+        "n": 48,
+        "ok": 46
+      },
+      "TRTL": {
+        "n": 32,
+        "ok": 17
+      }
+    },
+    "gt_conf": {
+      "BCTR": {
+        "TKDN": 4
+      },
+      "CGRD": {
+        "HGRD": 3,
+        "SCTR": 2
+      },
+      "HGRD": {
+        "SCTR": 2,
+        "OGRD": 1
+      },
+      "MNT": {
+        "HGRD": 8
+      },
+      "OGRD": {
+        "TKDN": 2,
+        "5050": 1,
+        "CGRD": 1
+      },
+      "SCTR": {
+        "HGRD": 2
+      },
+      "STND": {
+        "TKDN": 1
+      },
+      "TRTL": {
+        "OGRD": 3,
+        "TKDN": 3
+      }
+    },
+    "yolo_conf": {
+      "BCTR": {
+        "TKDN": 7
+      },
+      "CGRD": {
+        "HGRD": 2,
+        "5050": 1,
+        "MNT": 1,
+        "STND": 1,
+        "TKDN": 3,
+        "OGRD": 2
+      },
+      "HGRD": {
+        "CGRD": 1,
+        "5050": 2,
+        "OGRD": 3,
+        "SCTR": 3,
+        "STND": 3,
+        "TKDN": 3,
+        "MNT": 1
+      },
+      "MNT": {
+        "TKDN": 10,
+        "OGRD": 2,
+        "SCTR": 2,
+        "HGRD": 3,
+        "STND": 1
+      },
+      "OGRD": {
+        "STND": 5,
+        "5050": 2,
+        "SCTR": 1,
+        "TKDN": 3
+      },
+      "SCTR": {
+        "TKDN": 7,
+        "HGRD": 3,
+        "OGRD": 1
+      },
+      "STND": {
+        "BCTR": 1,
+        "TKDN": 1
+      },
+      "TRTL": {
+        "TKDN": 13,
+        "STND": 1,
+        "HGRD": 1
+      }
+    }
+  },
+  "geo_ordered_cr_cw": {
+    "gt_acc": 0.8910614525139665,
+    "gt_n": 358,
+    "gt_ok": 319,
+    "yolo_acc": 0.7572254335260116,
+    "yolo_n": 346,
+    "yolo_ok": 262,
+    "degrad": 0.13383601898795494,
+    "gt_cls": {
+      "BCTR": {
+        "n": 32,
+        "ok": 25
+      },
+      "CGRD": {
+        "n": 49,
+        "ok": 40
+      },
+      "HGRD": {
+        "n": 48,
+        "ok": 44
+      },
+      "MNT": {
+        "n": 48,
+        "ok": 44
+      },
+      "OGRD": {
+        "n": 50,
+        "ok": 48
+      },
+      "SCTR": {
+        "n": 49,
+        "ok": 43
+      },
+      "STND": {
+        "n": 50,
+        "ok": 50
+      },
+      "TRTL": {
+        "n": 32,
+        "ok": 25
+      }
+    },
+    "yolo_cls": {
+      "BCTR": {
+        "n": 31,
+        "ok": 19
+      },
+      "CGRD": {
+        "n": 47,
+        "ok": 33
+      },
+      "HGRD": {
+        "n": 42,
+        "ok": 31
+      },
+      "MNT": {
+        "n": 47,
+        "ok": 28
+      },
+      "OGRD": {
+        "n": 50,
+        "ok": 49
+      },
+      "SCTR": {
+        "n": 49,
+        "ok": 32
+      },
+      "STND": {
+        "n": 48,
+        "ok": 46
+      },
+      "TRTL": {
+        "n": 32,
+        "ok": 24
+      }
+    },
+    "gt_conf": {
+      "BCTR": {
+        "TKDN": 7
+      },
+      "CGRD": {
+        "TRTL": 1,
+        "SCTR": 6,
+        "5050": 1,
+        "MNT": 1
+      },
+      "HGRD": {
+        "SCTR": 3,
+        "MNT": 1
+      },
+      "MNT": {
+        "HGRD": 4
+      },
+      "OGRD": {
+        "MNT": 1,
+        "SCTR": 1
+      },
+      "SCTR": {
+        "HGRD": 4,
+        "CGRD": 1,
+        "MNT": 1
+      },
+      "TRTL": {
+        "MNT": 1,
+        "TKDN": 5,
+        "HGRD": 1
+      }
+    },
+    "yolo_conf": {
+      "BCTR": {
+        "TKDN": 12
+      },
+      "CGRD": {
+        "SCTR": 4,
+        "TKDN": 5,
+        "OGRD": 2,
+        "MNT": 1,
+        "HGRD": 2
+      },
+      "HGRD": {
+        "SCTR": 3,
+        "OGRD": 4,
+        "5050": 1,
+        "TKDN": 2,
+        "STND": 1
+      },
+      "MNT": {
+        "TKDN": 4,
+        "HGRD": 12,
+        "STND": 1,
+        "BCTR": 1,
+        "TRTL": 1
+      },
+      "OGRD": {
+        "TKDN": 1
+      },
+      "SCTR": {
+        "TKDN": 5,
+        "HGRD": 9,
+        "STND": 1,
+        "OGRD": 1,
+        "CGRD": 1
+      },
+      "STND": {
+        "TKDN": 1,
+        "CGRD": 1
+      },
+      "TRTL": {
+        "TKDN": 6,
+        "OGRD": 1,
+        "HGRD": 1
+      }
+    }
+  }
+}
