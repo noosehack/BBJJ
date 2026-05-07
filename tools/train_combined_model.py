@@ -32,6 +32,17 @@ TRAIN_VIDEOS = {"00", "01", "03", "06", "09", "11", "12", "14"}
 VAL_VIDEOS   = {"02", "05", "08"}
 TEST_VIDEOS  = {"04", "07", "10", "13", "15"}
 
+# 8 fundamental positions only. 5050 and TKDN excluded:
+#   - 5050: 8453 samples (7%) in ViCoS but extremely rare in real BJJ.
+#     Overrepresented because ViCoS filmed extensive 50/50 drilling.
+#     Model was confidently predicting 5050 on real-world images that
+#     were clearly other positions (SCTR, HGRD, etc.).
+#   - TKDN: transitional class, not a stable position. Noisy keypoints
+#     during transitions cause false TKDN predictions on static positions.
+# These can be re-added later with proper class balancing or as a
+# separate transition detector.
+TARGET_CLASSES = {"MNT", "SCTR", "BCTR", "CGRD", "OGRD", "HGRD", "TRTL", "STND"}
+
 
 def _bad(feats):
     return any(math.isnan(f) or math.isinf(f) for f in feats)
@@ -58,6 +69,9 @@ def load_and_featurize():
         me_kps, op_kps = (p2, p1) if suffix == "2" else (p1, p2)
         video = item["image"][:2]
         label = FINE_MAP[pos]
+
+        if label not in TARGET_CLASSES:
+            continue
 
         if video in TEST_VIDEOS:
             X_list, y_list = X_test, y_test
@@ -140,6 +154,8 @@ def main():
         "features": len(feature_names),
         "feature_set": "geo_cw(203) + ordered_cr_cw(432) = 635",
         "classes": list(le.classes_),
+        "excluded_classes": ["5050", "TKDN"],
+        "excluded_reason": "5050 overrepresented in ViCoS (7%) but rare in real BJJ; TKDN is transitional, not a stable position",
         "train_samples": len(y_train),
         "test_samples": len(y_test),
         "test_accuracy": round(acc, 4),
