@@ -1,11 +1,25 @@
 # GPU Training Handoff — g4dn.xlarge spot
 
-## Current server info
+## Server info
+
+### CPU server (demo/API)
+- IP: 172.31.24.112
+- Role: demo serving, lightweight eval, code editing
+
+### GPU server (blawkops-gpu)
+- IP: **172.31.22.223**
+- Instance: g4dn.xlarge (T4 16GB, 4 vCPU, 16GB RAM)
 - Region: eu-west-2
+- SSH: `ssh ubuntu@172.31.22.223` (from CPU server, ed25519 key)
+- Data path: `/mnt/gpu/BBJJ/`
+- Rsync: `rsync -avz --progress /home/ubuntu/BBJJ/ ubuntu@172.31.22.223:/mnt/gpu/BBJJ/`
+- PyTorch: 2.11.0+cu130, CUDA enabled
+- Verified working: 2026-05-07
+
+### AWS
 - VPC: vpc-0937cd3f60afc7089
 - Subnet: subnet-0e70b254b36f4552d
 - Security group: sg-047ee2ffb80d1fd41
-- This server IP: 172.31.24.112
 - SSH key: noosehack@protonmail.com (ed25519)
 
 ## 1. Launch GPU spot instance
