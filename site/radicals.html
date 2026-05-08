@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlawkOps — Radicals</title>
+  <meta name="description" content="Radical definition, defense lines, structural distance, and positional transitions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9651;</text></svg>">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="logo-mark">&#9651;</span>BlawkOps</a>
+      <div class="nav-links">
+        <a href="index.html#example">Example</a>
+        <a href="index.html#kanji">Kanji</a>
+        <a href="graph.html">Graph</a>
+        <a href="radicals.html" class="nav-active">Radicals</a>
+        <a href="index.html#teaching">Teaching</a>
+        <a href="index.html#system">System</a>
+        <a href="index.html#data">Data</a>
+        <a href="tryit.html">Try it</a>
+        <a href="soundtrack.html">Soundtrack</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <h1>Radicals</h1>
+      <p class="page-sub">7 fundamental positions &mdash; from OGRD at the bottom to MNT at the top &mdash; each defined by two layers.</p>
+    </div>
+  </header>
+
+  <!-- WHAT IS A RADICAL -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">What is a radical</h2>
+
+      <p class="section-lead">A radical is a named tuple of constraints that defines a BJJ position. Two layers, two primitives.</p>
+
+      <div class="radical-def-wrap">
+        <pre class="radical-diagram">Radical = Frames + CONs
+             |        |
+             |        |-- required  (must exist)
+             |        |-- forbidden (must not exist)
+             |        '-- forbidden_bilateral (must not both exist)
+             |
+             '-- facing, ground state</pre>
+      </div>
+
+      <div class="radical-layers">
+        <div class="radical-layer">
+          <div class="layer-label">Frames</div>
+          <p>Global spatial facts about the two bodies. Four types:</p>
+          <div class="layer-tags">
+            <code>FacingOpposed</code>
+            <code>FacingAligned</code>
+            <code>OnGround(X)</code>
+            <code>NotOnGround(X)</code>
+          </div>
+        </div>
+        <div class="radical-layer">
+          <div class="layer-label">CON</div>
+          <p>One wrapping contact between two limb axes. 9 independent fields:</p>
+          <div class="con-fields">
+            <div class="con-field-group">
+              <span class="con-field-head">Attacker</span>
+              <code>role</code> <code>part</code> <code>sign</code> <code>dir</code>
+            </div>
+            <div class="con-field-group">
+              <span class="con-field-head">Axis</span>
+              <code>role</code> <code>part</code> <code>sign</code> <code>dir</code>
+            </div>
+            <div class="con-field-group">
+              <span class="con-field-head">Wrap</span>
+              <code>helicity</code>
+            </div>
+          </div>
+          <p class="con-note">Two primitives, one data type for contacts, three quantifiers over it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEFENSE LINES -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Defense lines</h2>
+
+      <p class="section-lead">Guard players defend through three barriers. Each level cleared brings the passer closer to a dominant position.</p>
+
+      <div class="level-grid">
+        <div class="level-card level-3">
+          <div class="level-num">Level 3</div>
+          <div class="level-name">Feet</div>
+          <div class="level-positions">OGRD &mdash; DLR, SLX, RDLR, LSSO, OMOP</div>
+          <p>First line of defense. Feet and legs create distance, hooks, and entanglements.</p>
+        </div>
+        <div class="level-card level-2">
+          <div class="level-num">Level 2</div>
+          <div class="level-name">Knees</div>
+          <div class="level-positions">HGRD</div>
+          <p>Feet cleared. One knee entangles the opponent's leg &mdash; half guard.</p>
+        </div>
+        <div class="level-card level-1">
+          <div class="level-num">Level 1</div>
+          <div class="level-name">Hips</div>
+          <div class="level-positions">CGRD</div>
+          <p>Last barrier. Both legs wrap the torso, feet locked. Closed guard.</p>
+        </div>
+        <div class="level-card level-0">
+          <div class="level-num">Level 0</div>
+          <div class="level-name">Passed</div>
+          <div class="level-positions">MNT, SCTR, BCTR, TRTL</div>
+          <p>Guard passed. Dominant positions: mount, side control, back control, turtle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRUCTURAL DISTANCE -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Structural distance</h2>
+
+      <div class="distance-explain">
+        <div class="dist-block">
+          <div class="dist-label">How it works</div>
+          <p>Each radical is defined by <strong>frame constraints</strong> and <strong>CON primitives</strong>. A CON has 9 independent fields: attacker role, part, sign, direction; axis role, part, sign, direction; helicity.</p>
+          <p>Distance = number of fields that differ. One field change = one structural edit.</p>
+        </div>
+
+        <div class="dist-block">
+          <div class="dist-label">Adding a contact</div>
+          <p>An unmatched CON costs <strong>9</strong> &mdash; the number of independent fields. Going from no contact to a specific contact means specifying all 9 fields from nothing.</p>
+        </div>
+
+        <div class="dist-block">
+          <div class="dist-label">The chain</div>
+          <p>Each step is exactly one field change:</p>
+          <div class="chain-steps">
+            <code>DLR</code>
+            <span class="chain-arrow">&rarr;<span class="chain-label">helicity</span></span>
+            <code>SLX</code>
+            <span class="chain-arrow">&rarr;<span class="chain-label">ax_part</span></span>
+            <code>LSSO</code>
+            <span class="chain-arrow">&rarr;<span class="chain-label">ax_dir</span></span>
+            <code>OMOP</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- DISTANCE MATRIX: FUNDAMENTALS -->
+      <h3 class="subsection-title">Distance matrix &mdash; 7 fundamental positions</h3>
+      <div class="matrix-wrap">
+        <table class="dist-matrix">
+          <thead>
+            <tr><th></th><th>MNT</th><th>SCTR</th><th>BCTR</th><th>CGRD</th><th>OGRD</th><th>HGRD</th><th>TRTL</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>MNT</th> <td class="diag">&middot;</td><td>29</td><td>13</td><td>12</td><td>20</td><td>13</td><td>35</td></tr>
+            <tr><th>SCTR</th><td>29</td><td class="diag">&middot;</td><td>27</td><td>39</td><td>30</td><td>24</td><td>18</td></tr>
+            <tr><th>BCTR</th><td>13</td><td>27</td><td class="diag">&middot;</td><td>19</td><td>31</td><td>24</td><td>29</td></tr>
+            <tr><th>CGRD</th><td>12</td><td>39</td><td>19</td><td class="diag">&middot;</td><td>30</td><td>23</td><td>43</td></tr>
+            <tr><th>OGRD</th><td>20</td><td>30</td><td>31</td><td>30</td><td class="diag">&middot;</td><td>9</td><td>30</td></tr>
+            <tr><th>HGRD</th><td>13</td><td>24</td><td>24</td><td>23</td><td>9</td><td class="diag">&middot;</td><td>26</td></tr>
+            <tr><th>TRTL</th><td>35</td><td>18</td><td>29</td><td>43</td><td>30</td><td>26</td><td class="diag">&middot;</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- DISTANCE MATRIX: OGRD SUBTYPES -->
+      <h3 class="subsection-title">Distance matrix &mdash; open guard subtypes</h3>
+      <div class="matrix-wrap">
+        <table class="dist-matrix">
+          <thead>
+            <tr><th></th><th>OGRD</th><th>DLR</th><th>SLX</th><th>RDLR</th><th>LSSO</th><th>OMOP</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>OGRD</th><td class="diag">&middot;</td><td>11</td><td>11</td><td>11</td><td>11</td><td>11</td></tr>
+            <tr><th>DLR</th> <td>11</td><td class="diag">&middot;</td><td>1</td><td>1</td><td>2</td><td>3</td></tr>
+            <tr><th>SLX</th> <td>11</td><td>1</td><td class="diag">&middot;</td><td>2</td><td>1</td><td>2</td></tr>
+            <tr><th>RDLR</th><td>11</td><td>1</td><td>2</td><td class="diag">&middot;</td><td>3</td><td>4</td></tr>
+            <tr><th>LSSO</th><td>11</td><td>2</td><td>1</td><td>3</td><td class="diag">&middot;</td><td>1</td></tr>
+            <tr><th>OMOP</th><td>11</td><td>3</td><td>2</td><td>4</td><td>1</td><td class="diag">&middot;</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSITIONS -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Transitions</h2>
+
+      <div class="transitions-grid">
+        <div class="trans-group">
+          <div class="trans-type trans-pass">Pass / Advance</div>
+          <div class="trans-list">OGRD&rarr;HGRD, OGRD&rarr;SCTR, HGRD&rarr;SCTR, CGRD&rarr;SCTR, CGRD&rarr;MNT, SCTR&rarr;MNT, SCTR&rarr;BCTR, TRTL&rarr;BCTR</div>
+        </div>
+        <div class="trans-group">
+          <div class="trans-type trans-recover">Recover / Escape</div>
+          <div class="trans-list">SCTR&rarr;HGRD, SCTR&rarr;OGRD, SCTR&rarr;TRTL, MNT&rarr;OGRD, MNT&rarr;HGRD, BCTR&rarr;TRTL, BCTR&rarr;OGRD, TRTL&rarr;OGRD</div>
+        </div>
+        <div class="trans-group">
+          <div class="trans-type trans-close">Close guard</div>
+          <div class="trans-list">OGRD&rarr;CGRD, HGRD&rarr;CGRD</div>
+        </div>
+        <div class="trans-group">
+          <div class="trans-type trans-lateral">Lateral (subtype switch)</div>
+          <div class="trans-list">DLR&harr;SLX, DLR&harr;RDLR, SLX&harr;LSSO, LSSO&harr;OMOP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo"><span class="logo-mark">&#9651;</span> BlawkOps</span>
+      <span class="footer-url">www.blawkops.com</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
