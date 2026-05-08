@@ -2,7 +2,6 @@ from dic.body_parts import LimbRef, AxisDef
 from dic.relations import CON, neg_helicity
 from dic.frames import (
     FrameConstraint, FacingOpposed, FacingAligned, OnGround, NotOnGround,
-    KneeBracket, NotKneeBracket,
 )
 from dic.radicals import Radical
 
@@ -44,10 +43,6 @@ def pov_swap_frame(fc: FrameConstraint) -> FrameConstraint:
         return OnGround(_swap_role_limb(fc.part))
     if isinstance(fc, NotOnGround):
         return NotOnGround(_swap_role_limb(fc.part))
-    if isinstance(fc, KneeBracket):
-        return KneeBracket(_swap_role_limb(fc.part))
-    if isinstance(fc, NotKneeBracket):
-        return NotKneeBracket(_swap_role_limb(fc.part))
     raise TypeError(f"unknown frame constraint: {fc}")
 
 

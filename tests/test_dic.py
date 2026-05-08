@@ -164,14 +164,11 @@ def test_sctr_differs_from_mnt_by_limb():
         assert c.attacker.limb_ref.part == "Ar"
 
 
-def test_sctr_has_kbr_and_forbidden_legs():
-    """SCTR has NotKneeBracket + forbidden leg-to-leg contacts."""
+def test_sctr_has_forbidden_legs():
+    """SCTR has forbidden leg-to-leg contacts."""
     from dic.radicals import SCTR
-    from dic.frames import NotKneeBracket
     assert len(SCTR.contacts) == 1
-    assert len(SCTR.frame_constraints) == 2
-    kbr = [f for f in SCTR.frame_constraints if isinstance(f, NotKneeBracket)]
-    assert len(kbr) == 1
+    assert len(SCTR.frame_constraints) == 1
     assert len(SCTR.forbidden_contacts) == 2
     for c in SCTR.forbidden_contacts:
         assert c.attacker.limb_ref.part == "Le"

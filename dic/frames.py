@@ -26,16 +26,4 @@ class NotOnGround:
     part: LimbRef
 
 
-@dataclass(frozen=True)
-class KneeBracket:
-    """KBR(X) : Me's knees bracket X (one near head-end, one near hip-end)."""
-    part: LimbRef
-
-
-@dataclass(frozen=True)
-class NotKneeBracket:
-    """¬KBR(X) : Me's knees do NOT bracket X."""
-    part: LimbRef
-
-
-FrameConstraint = FacingOpposed | FacingAligned | OnGround | NotOnGround | KneeBracket | NotKneeBracket
+FrameConstraint = FacingOpposed | FacingAligned | OnGround | NotOnGround

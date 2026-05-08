@@ -431,7 +431,6 @@ class TestCycleMatching:
 
 # ── SCTR matching tests ──────────────────────────────────────────
 
-from dic.frames import KneeBracket, NotKneeBracket
 
 
 def _ar_to_cons():
@@ -451,11 +450,10 @@ def _on_ground_op():
 
 
 def _sctr_frames():
-    """Full frame constraints for side control: OnGround(Op) + NotKneeBracket."""
+    """Full frame constraints for side control: OnGround(Op)."""
     from dic.frames import OnGround
     return [
         InferredFrame(OnGround(LimbRef("Op", "Ba", "")), 0.9),
-        InferredFrame(NotKneeBracket(LimbRef("Op", "To", "")), 0.7),
     ]
 
 
@@ -516,25 +514,12 @@ class TestSCTRMatching:
         names = [m.radical_name for m in matches]
         assert "SCTR" not in names
 
-    def test_sctr_blocked_by_kbr(self):
-        """SCTR requires NotKneeBracket; KBR present blocks it."""
-        from dic.frames import OnGround
-        contacts = _ar_to_cons()
-        frames = [
-            InferredFrame(OnGround(LimbRef("Op", "Ba", "")), 0.9),
-            InferredFrame(KneeBracket(LimbRef("Op", "To", "")), 0.8),
-        ]
-        matches = match_radical(contacts, frames)
-        names = [m.radical_name for m in matches]
-        assert "SCTR" not in names
-
     def test_mnt_matches_when_legs_present(self):
         """MNT matches when legs bracket torso + facing opposed."""
         from dic.frames import FacingOpposed
         contacts = _le_to_cons() + _ar_to_cons()
         frames = _on_ground_op() + [
             InferredFrame(FacingOpposed(), 0.95),
-            InferredFrame(KneeBracket(LimbRef("Op", "To", "")), 0.8),
         ]
         matches = match_radical(contacts, frames)
         mnt = [m for m in matches if m.radical_name == "MNT"]
@@ -598,25 +583,6 @@ class TestSCTRSyntheticPose:
                     and c.con.axis.limb_ref.part == "To"]
         assert len(ar_to_to) >= 1
 
-    def test_side_control_not_kbr_detected(self):
-        """Side control with sprawled knees must produce NotKneeBracket."""
-        me, op = _side_control_poses()
-        frames = infer_frame_constraints(me, op)
-        nkbr = [f for f in frames if isinstance(f.constraint, NotKneeBracket)]
-        assert len(nkbr) == 1, f"Expected NotKneeBracket, got: {[type(f.constraint).__name__ for f in frames]}"
-
-    def test_mount_straddle_kbr_detected(self):
-        """Mount with knees straddling (one near head, one near hip) must produce KneeBracket."""
-        me_base, op = _mount_poses()
-        kps = list(me_base.keypoints)
-        kps[13] = Keypoint(170, 300, 0.9)   # l_knee near Op shoulders (y=290)
-        kps[14] = Keypoint(230, 360, 0.9)   # r_knee near Op hips (y=370)
-        kps[15] = Keypoint(170, 340, 0.9)   # l_ankle
-        kps[16] = Keypoint(230, 400, 0.9)   # r_ankle
-        me = Pose(kps)
-        frames = infer_frame_constraints(me, op)
-        kbr = [f for f in frames if isinstance(f.constraint, KneeBracket)]
-        assert len(kbr) == 1, f"Expected KneeBracket, got: {[type(f.constraint).__name__ for f in frames]}"
 
 
 # ── HGRD matching tests ───────────────────────────────────────────

@@ -4,7 +4,6 @@ from dic.radicals import ALL_RADICALS, OGRD_SUBTYPES, Radical
 from dic.relations import CON
 from dic.frames import (
     FacingOpposed, FacingAligned, OnGround, NotOnGround,
-    KneeBracket, NotKneeBracket,
 )
 
 
@@ -76,7 +75,6 @@ def _frame_vec(rad):
         "facing_opposed": 0, "facing_aligned": 0,
         "ground_me": 0, "ground_op": 0,
         "elevated_me": 0, "elevated_op": 0,
-        "kbr": 0, "no_kbr": 0,
     }
     for fc in rad.frame_constraints:
         if isinstance(fc, FacingOpposed):   v["facing_opposed"] = 1
@@ -85,8 +83,6 @@ def _frame_vec(rad):
             v["ground_me" if fc.part.role == "Me" else "ground_op"] = 1
         elif isinstance(fc, NotOnGround):
             v["elevated_me" if fc.part.role == "Me" else "elevated_op"] = 1
-        elif isinstance(fc, KneeBracket):    v["kbr"] = 1
-        elif isinstance(fc, NotKneeBracket): v["no_kbr"] = 1
     return v
 
 

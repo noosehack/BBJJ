@@ -90,8 +90,6 @@ _FRAME_SLOTS = [
     ("OnGround", "Me.Ba"),
     ("NotOnGround", "Op.Ba"),
     ("NotOnGround", "Me.Ba"),
-    ("KneeBracket", "Op.To"),
-    ("NotKneeBracket", "Op.To"),
 ]
 
 RADICAL_SCORE_SCALE = 30.0

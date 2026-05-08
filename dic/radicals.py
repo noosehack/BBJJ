@@ -3,7 +3,6 @@ from dic.body_parts import LimbRef, AxisDef
 from dic.relations import CON
 from dic.frames import (
     FrameConstraint, FacingOpposed, FacingAligned, OnGround, NotOnGround,
-    KneeBracket, NotKneeBracket,
 )
 
 
@@ -102,7 +101,6 @@ OMOP = Radical("OMOP",
 SCTR = Radical("SCTR",
     frame_constraints=(
         OnGround(_ref("Op", "Ba")),
-        NotKneeBracket(_ref("Op", "To")),
     ),
     contacts=(
         CON(_me_ax("Ar", "+", "Wr", "Sh"), _op_ax("To", "", "Hp", "Sh"), "d1", "-"),

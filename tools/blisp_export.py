@@ -27,10 +27,6 @@ def _format_frame(f: dict) -> str:
         return f"(Z0 {part})"
     if t == "NotOnGround":
         return f"(NOT (Z0 {part}))"
-    if t == "KneeBracket":
-        return f"(KBR {part})"
-    if t == "NotKneeBracket":
-        return f"(NOT (KBR {part}))"
     return f"({t})"
 
 
