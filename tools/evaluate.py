@@ -14,7 +14,7 @@ BLISP_TO_RADICALS = {
     "BCTR":    {"BCTR"},
     "OGRD":    {"DLR", "SLX", "RDLR", "LSSO", "OMOP", "CGRD", "5050"},
     "CGRD":    {"CGRD"},
-    "HGRD":    {"HGRD", "HGRD_L", "5050", "DLR", "SLX", "RDLR"},
+    "HGRD":    {"HGRD", "5050", "DLR", "SLX", "RDLR"},
     "5050":    {"5050", "DLR", "SLX"},
     "SCTR":    {"SCTR"},
     "TRTL":    {"TRTL"},

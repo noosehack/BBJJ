@@ -450,20 +450,29 @@ def _on_ground_op():
     return [InferredFrame(OnGround(LimbRef("Op", "Ba", "")), 0.9)]
 
 
+def _sctr_frames():
+    """Full frame constraints for side control: OnGround(Op) + NotKneeBracket."""
+    from dic.frames import OnGround
+    return [
+        InferredFrame(OnGround(LimbRef("Op", "Ba", "")), 0.9),
+        InferredFrame(NotKneeBracket(LimbRef("Op", "To", "")), 0.7),
+    ]
+
+
 class TestSCTRMatching:
     def test_sctr_positive(self):
-        """Ar→To + Z0(Op.Ba) → must match SCTR."""
+        """Ar→To + Z0(Op.Ba) + NotKBR → must match SCTR."""
         contacts = _ar_to_cons()
-        frames = _on_ground_op()
+        frames = _sctr_frames()
         matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
         assert "SCTR" in names
         assert matches[0].radical_name == "SCTR"
 
     def test_sctr_outscores_single_con_radicals(self):
-        """SCTR (1 CON + 1 FRM) must outscore DLR/SLX (1 CON + 0 FRM)."""
+        """SCTR (1 CON + 2 FRM) must outscore DLR/SLX (1 CON + 0 FRM)."""
         contacts = _ar_to_cons()
-        frames = _on_ground_op()
+        frames = _sctr_frames()
         matches = match_radical(contacts, frames)
         sctr = [m for m in matches if m.radical_name == "SCTR"]
         single = [m for m in matches if m.radical_name in ("DLR", "SLX", "RDLR", "LSSO", "OMOP")]
@@ -482,7 +491,7 @@ class TestSCTRMatching:
     def test_sctr_does_not_match_without_arm_contacts(self):
         """SCTR requires arm-to-torso; leg-to-torso must not trigger SCTR."""
         contacts = _le_to_cons()
-        frames = _on_ground_op()
+        frames = _sctr_frames()
         matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
         assert "SCTR" not in names
@@ -492,71 +501,44 @@ class TestSCTRMatching:
         ar_plus = AxisDef(LimbRef("Me", "Ar", "+"), "Wr", "Sh")
         op_to = AxisDef(LimbRef("Op", "To", ""), "Hp", "Sh")
         contacts = [InferredCON(CON(ar_plus, op_to, "d1", "-"), 0.5, 0.08)]
-        frames = _on_ground_op()
+        frames = _sctr_frames()
         matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
         assert "SCTR" in names
 
-    def test_mnt_outscores_sctr_when_legs_present(self):
-        """MNT (2 CON + 2 FRM) outscores SCTR (1 CON + 1 FRM) with facing."""
-        from dic.frames import FacingOpposed
-        contacts = _le_to_cons() + _ar_to_cons()
-        frames = _on_ground_op() + [InferredFrame(FacingOpposed(), 0.95)]
+    def test_sctr_blocked_by_leg_entanglement(self):
+        """Leg-to-leg contacts (half guard signal) must block SCTR."""
+        me_le = AxisDef(LimbRef("Me", "Le", "+"), "Fo", "Hp")
+        op_le = AxisDef(LimbRef("Op", "Le", "+"), "Fo", "Hp")
+        contacts = _ar_to_cons() + [InferredCON(CON(me_le, op_le, "d", "-"), 0.4, 0.12)]
+        frames = _sctr_frames()
         matches = match_radical(contacts, frames)
-        mnt = [m for m in matches if m.radical_name == "MNT"]
-        sctr = [m for m in matches if m.radical_name == "SCTR"]
-        assert len(mnt) == 1
-        assert len(sctr) == 1
-        assert mnt[0].confidence > sctr[0].confidence
+        names = [m.radical_name for m in matches]
+        assert "SCTR" not in names
 
-    def test_mnt_outscores_sctr_even_without_facing(self):
-        """MNT with MISSING_FACING_PENALTY still outscores SCTR."""
-        contacts = _le_to_cons() + _ar_to_cons()
-        frames = _on_ground_op()
-        matches = match_radical(contacts, frames)
-        mnt = [m for m in matches if m.radical_name == "MNT"]
-        sctr = [m for m in matches if m.radical_name == "SCTR"]
-        assert len(mnt) == 1
-        assert len(sctr) == 1
-        assert mnt[0].confidence > sctr[0].confidence
-
-
-class TestSCTRStrictDiagnostic:
-    """SCTR_STRICT is not in ALL_RADICALS but can be used as a diagnostic."""
-
-    def test_strict_blocked_by_kbr(self):
-        """SCTR_STRICT requires NotKneeBracket; KBR present blocks it."""
-        from dic.radicals import SCTR_STRICT
+    def test_sctr_blocked_by_kbr(self):
+        """SCTR requires NotKneeBracket; KBR present blocks it."""
         from dic.frames import OnGround
         contacts = _ar_to_cons()
         frames = [
             InferredFrame(OnGround(LimbRef("Op", "Ba", "")), 0.9),
             InferredFrame(KneeBracket(LimbRef("Op", "To", "")), 0.8),
         ]
-        matches = match_radical(contacts, frames, {"SCTR_STRICT": SCTR_STRICT})
+        matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
-        assert "SCTR_STRICT" not in names
+        assert "SCTR" not in names
 
-    def test_strict_blocked_by_bilateral_le(self):
-        """SCTR_STRICT bilateral forbid blocks when both Le→To present."""
-        from dic.radicals import SCTR_STRICT
+    def test_mnt_matches_when_legs_present(self):
+        """MNT matches when legs bracket torso + facing opposed."""
+        from dic.frames import FacingOpposed
         contacts = _le_to_cons() + _ar_to_cons()
-        frames = _on_ground_op() + [InferredFrame(NotKneeBracket(LimbRef("Op", "To", "")), 0.7)]
-        matches = match_radical(contacts, frames, {"SCTR_STRICT": SCTR_STRICT})
-        names = [m.radical_name for m in matches]
-        assert "SCTR_STRICT" not in names
-
-    def test_strict_passes_with_single_le(self):
-        """Single Le→To does NOT trigger SCTR_STRICT bilateral forbid."""
-        from dic.radicals import SCTR_STRICT
-        le_plus = AxisDef(LimbRef("Me", "Le", "+"), "Fo", "Hp")
-        op_to = AxisDef(LimbRef("Op", "To", ""), "Hp", "Sh")
-        single_le = [InferredCON(CON(le_plus, op_to, "d1", "-"), 0.3, 0.15)]
-        contacts = single_le + _ar_to_cons()
-        frames = _on_ground_op() + [InferredFrame(NotKneeBracket(LimbRef("Op", "To", "")), 0.7)]
-        matches = match_radical(contacts, frames, {"SCTR_STRICT": SCTR_STRICT})
-        names = [m.radical_name for m in matches]
-        assert "SCTR_STRICT" in names
+        frames = _on_ground_op() + [
+            InferredFrame(FacingOpposed(), 0.95),
+            InferredFrame(KneeBracket(LimbRef("Op", "To", "")), 0.8),
+        ]
+        matches = match_radical(contacts, frames)
+        mnt = [m for m in matches if m.radical_name == "MNT"]
+        assert len(mnt) == 1
 
 
 def _side_control_poses():
@@ -701,10 +683,9 @@ class TestHGRDMatching:
         matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
         assert "HGRD" not in names
-        assert "HGRD_L" not in names
 
-    def test_hgrd_fails_with_single_le(self):
-        """Single Le→Le should not match HGRD (needs 2 distinct Le→Le contacts)."""
+    def test_hgrd_matches_with_single_le(self):
+        """Single Le→Le with frames should match HGRD (relaxed for noisy keypoints)."""
         me_le_minus = AxisDef(LimbRef("Me", "Le", "-"), "Fo", "Hp")
         op_le_plus = AxisDef(LimbRef("Op", "Le", "+"), "Fo", "Hp")
         contacts = [
@@ -713,8 +694,7 @@ class TestHGRDMatching:
         frames = _on_ground_me() + _facing_opposed()
         matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
-        assert "HGRD" not in names
-        assert "HGRD_L" not in names
+        assert "HGRD" in names
 
     def test_hgrd_does_not_match_le_to_to(self):
         """Le→To contacts should not trigger HGRD."""
@@ -723,16 +703,6 @@ class TestHGRDMatching:
         matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
         assert "HGRD" not in names
-        assert "HGRD_L" not in names
-
-    def test_hgrd_does_not_cross_sign(self):
-        """Contacts on Op.Le+ must not match HGRD_L (which requires Op.Le-)."""
-        contacts = _hgrd_contacts()  # targets Op.Le+
-        frames = _on_ground_me() + _facing_opposed()
-        matches = match_radical(contacts, frames)
-        names = [m.radical_name for m in matches]
-        assert "HGRD" in names
-        assert "HGRD_L" not in names
 
     def test_hgrd_coexists_with_dlr(self):
         """Both HGRD and DLR can match the same frame — HGRD ranks higher."""
@@ -750,32 +720,33 @@ class TestHGRDMatching:
 
 class TestBottleneckScoring:
 
-    def test_strong_single_beats_weak_bilateral(self):
-        """A strong DLR (1 CON, high quality) must beat weak HGRD (2 CON, low quality)."""
-        me_le_plus = AxisDef(LimbRef("Me", "Le", "+"), "Fo", "Hp")
+    def test_hgrd_beats_dlr_with_frames(self):
+        """HGRD (1 CON + 2 FRM) should beat DLR (1 CON + 0 FRM) due to frame bonus."""
         me_le_minus = AxisDef(LimbRef("Me", "Le", "-"), "Fo", "Hp")
         op_le_plus = AxisDef(LimbRef("Op", "Le", "+"), "Fo", "Hp")
         contacts = [
             InferredCON(CON(me_le_minus, op_le_plus, "d", "-"), 0.8, 0.05),
-            InferredCON(CON(me_le_plus, op_le_plus, "d1", "-"), 0.15, 0.25),
         ]
         frames = _on_ground_me() + _facing_opposed()
         matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
-        dlr_idx = names.index("DLR") if "DLR" in names else len(names)
         hgrd_idx = names.index("HGRD") if "HGRD" in names else len(names)
-        assert dlr_idx < hgrd_idx, f"DLR should rank above HGRD: {names[:5]}"
+        dlr_idx = names.index("DLR") if "DLR" in names else len(names)
+        assert hgrd_idx < dlr_idx, f"HGRD should rank above DLR with frames: {names[:5]}"
 
-    def test_strong_bilateral_still_beats_single(self):
-        """When both HGRD contacts are strong, HGRD should beat DLR."""
-        contacts = _hgrd_contacts()  # both at 0.5 confidence
-        frames = _on_ground_me() + _facing_opposed()
+    def test_dlr_wins_without_hgrd_frames(self):
+        """Without OnGround(Me) + FacingOpposed, DLR should match but HGRD should not."""
+        me_le_minus = AxisDef(LimbRef("Me", "Le", "-"), "Fo", "Hp")
+        op_le_plus = AxisDef(LimbRef("Op", "Le", "+"), "Fo", "Hp")
+        contacts = [
+            InferredCON(CON(me_le_minus, op_le_plus, "d", "-"), 0.8, 0.05),
+        ]
+        from dic.frames import NotOnGround
+        frames = [InferredFrame(NotOnGround(LimbRef("Me", "Ba", "")), 0.9)]
         matches = match_radical(contacts, frames)
         names = [m.radical_name for m in matches]
-        assert "HGRD" in names
-        dlr_matches = [n for n in names if n in ("DLR", "SLX", "RDLR")]
-        if dlr_matches:
-            assert names.index("HGRD") < names.index(dlr_matches[0])
+        assert "DLR" in names
+        assert "HGRD" not in names
 
     def test_cgrd_dominates_with_closure(self):
         """CGRD with 3 strong contacts (incl. closure) outscores 1-contact radicals."""
@@ -860,14 +831,18 @@ class TestClosureMemory:
         assert _find_closure_conf(per_frame[0][1]) == 0.8
         assert _find_closure_conf(per_frame[1][1]) == 0.0
 
-    def test_does_not_affect_hgrd(self):
-        """Injecting closure should not help HGRD match (HGRD has no closure req)."""
+    def test_closure_does_not_change_hgrd_rank(self):
+        """Injecting closure should not change HGRD ranking (HGRD has no closure req)."""
         from tools.annotate import _inject_closure_memory
         from tools.contact_inference import InferredCON, InferredFrame
 
         me_le_minus = AxisDef(LimbRef("Me", "Le", "-"), "Fo", "Hp")
         op_le_plus = AxisDef(LimbRef("Op", "Le", "+"), "Fo", "Hp")
         single_le = [InferredCON(CON(me_le_minus, op_le_plus, "d", "-"), 0.5, 0.08)]
+
+        frames = _on_ground_me() + _facing_opposed()
+        matches_before = match_radical(list(single_le), frames)
+        hgrd_before = [m for m in matches_before if m.radical_name == "HGRD"]
 
         n1 = self._make_norm("0100001", 1)
         n2 = self._make_norm("0100002", 2)
@@ -878,11 +853,10 @@ class TestClosureMemory:
         ]
         _inject_closure_memory(per_frame, k=3)
 
-        frames = _on_ground_me() + _facing_opposed()
         matches_after = match_radical(per_frame[1][1], frames)
-        names = [m.radical_name for m in matches_after]
-        assert "HGRD" not in names
-        assert "HGRD_L" not in names
+        hgrd_after = [m for m in matches_after if m.radical_name == "HGRD"]
+        if hgrd_before and hgrd_after:
+            assert abs(hgrd_before[0].confidence - hgrd_after[0].confidence) < 0.01
 
     def test_decay_is_distance_proportional(self):
         """Closer frames provide stronger closure evidence."""

@@ -249,18 +249,13 @@ def test_hgrd_differs_from_dlr_by_frames():
 def test_hgrd_in_all_radicals():
     from dic.radicals import ALL_RADICALS
     assert "HGRD" in ALL_RADICALS
-    assert "HGRD_L" in ALL_RADICALS
 
 
-def test_hgrd_l_mirrors_hgrd():
-    """HGRD_L targets Op.Le- (mirror of HGRD targeting Op.Le+)."""
-    from dic.radicals import HGRD, HGRD_L
-    assert len(HGRD_L.contacts) == len(HGRD.contacts)
-    assert HGRD_L.frame_constraints == HGRD.frame_constraints
-    for c in HGRD_L.contacts:
-        assert c.axis.limb_ref.sign == "-"
+def test_hgrd_unsigned_axis():
+    """HGRD axis sign is unsigned (either leg)."""
+    from dic.radicals import HGRD
     for c in HGRD.contacts:
-        assert c.axis.limb_ref.sign == "+"
+        assert c.axis.limb_ref.sign == ""
 
 
 # ── 5050 radical tests ───────────────────────────────────────────

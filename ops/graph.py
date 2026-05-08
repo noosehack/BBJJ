@@ -17,7 +17,7 @@ from dic.frames import (
 
 DEFENSE_LEVEL = {
     "OGRD": 3, "DLR": 3, "SLX": 3, "RDLR": 3, "LSSO": 3, "OMOP": 3,
-    "HGRD": 2, "HGRD_L": 2,
+    "HGRD": 2,
     "CGRD": 1,
     "SCTR": 0, "MNT": 0, "BCTR": 0, "TRTL": 0,
 }
@@ -141,7 +141,10 @@ def feature_vector(rad):
 #
 # Contact distance aligns CONs by minimum edit cost.
 # Independent CON fields (endpoints are entailed by part):
-#   att_role, att_part, att_sign, ax_role, ax_part, ax_sign, ax_dir, helicity
+#   att_role, att_part, att_sign, att_dir, ax_role, ax_part, ax_sign, ax_dir, helicity
+#
+# Unmatched penalty = N_CON_FIELDS (9): adding/removing a contact means
+# specifying all 9 fields from nothing, same as max possible edit distance.
 
 from dic.body_parts import DEFAULT_AXIS_ENDPOINTS
 
@@ -176,9 +179,12 @@ def _frame_dist(r1, r2):
     return sum(abs(f1[k] - f2[k]) for k in f1)
 
 
+N_CON_FIELDS = 9
+
+
 def _align_contacts(list1, list2):
-    """Min-cost alignment of two contact lists. Unmatched contacts cost 5 (half a full CON)."""
-    UNMATCHED = 5
+    """Min-cost alignment of two contact lists. Unmatched = N_CON_FIELDS."""
+    UNMATCHED = N_CON_FIELDS
     if not list1 and not list2:
         return 0
     if not list1:

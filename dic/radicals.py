@@ -119,17 +119,7 @@ HGRD = Radical("HGRD",
         OnGround(_ref("Me", "Ba")),
     ),
     contacts=(
-        CON(_me_ax("Le", "", "Fo", "Hp"), _op_ax("Le", "+", "Fo", "Hp"), "d1", "-"),
-    ),
-)
-
-HGRD_L = Radical("HGRD_L",
-    frame_constraints=(
-        FacingOpposed(),
-        OnGround(_ref("Me", "Ba")),
-    ),
-    contacts=(
-        CON(_me_ax("Le", "", "Fo", "Hp"), _op_ax("Le", "-", "Fo", "Hp"), "d1", "-"),
+        CON(_me_ax("Le", "", "Fo", "Hp"), _op_ax("Le", "", "Fo", "Hp"), "d1", "-"),
     ),
 )
 
@@ -185,7 +175,6 @@ ALL_RADICALS = {
     "CGRD": CGRD,
     "OGRD": OGRD,
     "HGRD": HGRD,
-    "HGRD_L": HGRD_L,
     "TRTL": TRTL,
     "DLR": DLR,
     "SLX": SLX,
