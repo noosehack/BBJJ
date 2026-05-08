@@ -32,9 +32,11 @@ def test_default_axis_endpoints_defined():
 
 
 def test_all_radicals_have_contacts():
+    SUPERCLASS_RADICALS = {"OGRD"}
     for name, rad in ALL_RADICALS.items():
         assert isinstance(rad, Radical)
-        assert len(rad.contacts) > 0, f"{name} has no contacts"
+        if name not in SUPERCLASS_RADICALS:
+            assert len(rad.contacts) > 0, f"{name} has no contacts"
 
 
 def test_radical_contacts_are_con():
@@ -162,60 +164,37 @@ def test_sctr_differs_from_mnt_by_limb():
         assert c.attacker.limb_ref.part == "Ar"
 
 
-def test_sctr_v1_minimal():
-    """Canonical SCTR has 1 CON + 1 FRM, no forbidden contacts."""
+def test_sctr_has_kbr_and_forbidden_legs():
+    """SCTR has NotKneeBracket + forbidden leg-to-leg contacts."""
     from dic.radicals import SCTR
-    assert len(SCTR.contacts) == 1
-    assert len(SCTR.frame_constraints) == 1
-    assert len(SCTR.forbidden_contacts) == 0
-    assert len(SCTR.forbidden_bilateral) == 0
-
-
-def test_sctr_strict_has_kbr_and_bilateral():
-    """SCTR_STRICT adds NotKneeBracket + bilateral Le→To forbid."""
-    from dic.radicals import SCTR_STRICT
     from dic.frames import NotKneeBracket
-    kbr = [f for f in SCTR_STRICT.frame_constraints if isinstance(f, NotKneeBracket)]
+    assert len(SCTR.contacts) == 1
+    assert len(SCTR.frame_constraints) == 2
+    kbr = [f for f in SCTR.frame_constraints if isinstance(f, NotKneeBracket)]
     assert len(kbr) == 1
-    assert len(SCTR_STRICT.forbidden_bilateral) == 2
-    parts = {c.attacker.limb_ref.sign for c in SCTR_STRICT.forbidden_bilateral}
-    assert parts == {"+", "-"}
-
-
-def test_sctr_strict_not_in_all_radicals():
-    """SCTR_STRICT is diagnostic only, not in the default radical dict."""
-    from dic.radicals import ALL_RADICALS
-    assert "SCTR_STRICT" not in ALL_RADICALS
-    assert "SCTR" in ALL_RADICALS
+    assert len(SCTR.forbidden_contacts) == 2
+    for c in SCTR.forbidden_contacts:
+        assert c.attacker.limb_ref.part == "Le"
+        assert c.axis.limb_ref.part == "Le"
 
 
 # ── HGRD structural tests ───────────────────────────────────────
 
-def test_hgrd_has_bilateral_le_to_le():
-    """HGRD has two Me.Le → Op.Le contacts (both legs on same Op leg)."""
+def test_hgrd_has_single_le_to_le():
+    """HGRD has one Me.Le → Op.Le contact (relaxed for noisy keypoints)."""
     from dic.radicals import HGRD
-    assert len(HGRD.contacts) == 2
-    for c in HGRD.contacts:
-        assert c.attacker.limb_ref.role == "Me"
-        assert c.attacker.limb_ref.part == "Le"
-        assert c.axis.limb_ref.role == "Op"
-        assert c.axis.limb_ref.part == "Le"
+    assert len(HGRD.contacts) == 1
+    c = HGRD.contacts[0]
+    assert c.attacker.limb_ref.role == "Me"
+    assert c.attacker.limb_ref.part == "Le"
+    assert c.axis.limb_ref.role == "Op"
+    assert c.axis.limb_ref.part == "Le"
 
 
-def test_hgrd_both_legs_target_same_op_leg():
-    """Both inter-body contacts target the same Op.Le sign."""
+def test_hgrd_attacker_sign_is_flexible():
+    """HGRD attacker has empty sign to match either leg."""
     from dic.radicals import HGRD
-    inter = [c for c in HGRD.contacts if c.axis.limb_ref.role == "Op"]
-    ax_signs = {c.axis.limb_ref.sign for c in inter}
-    assert len(ax_signs) == 1, f"Expected same Op.Le target, got signs: {ax_signs}"
-
-
-def test_hgrd_uses_different_me_legs():
-    """HGRD uses Me.Le+ and Me.Le- (both attacker legs)."""
-    from dic.radicals import HGRD
-    inter = [c for c in HGRD.contacts if c.axis.limb_ref.role == "Op"]
-    att_signs = {c.attacker.limb_ref.sign for c in inter}
-    assert att_signs == {"+", "-"}
+    assert HGRD.contacts[0].attacker.limb_ref.sign == ""
 
 
 def test_hgrd_no_closure():
@@ -260,11 +239,11 @@ def test_hgrd_differs_from_cgrd_by_target():
     assert len(hgrd_closure) == 0
 
 
-def test_hgrd_differs_from_dlr_by_count():
-    """DLR has 1 contact, HGRD has 2 (bilateral leg entanglement)."""
+def test_hgrd_differs_from_dlr_by_frames():
+    """HGRD has FacingOpposed + OnGround(Me.Ba), DLR has no frame constraints."""
     from dic.radicals import HGRD, DLR
-    assert len(DLR.contacts) == 1
-    assert len(HGRD.contacts) == 2
+    assert len(HGRD.frame_constraints) == 2
+    assert len(DLR.frame_constraints) == 0
 
 
 def test_hgrd_in_all_radicals():
@@ -328,9 +307,16 @@ def test_5050_differs_from_hgrd_by_target():
     assert len(fifty_targets) == 2, "5050 contacts target different Op legs"
 
 
-def test_5050_in_all_radicals():
+def test_trtl_in_all_radicals():
     from dic.radicals import ALL_RADICALS
-    assert "5050" in ALL_RADICALS
+    assert "TRTL" in ALL_RADICALS
+
+
+def test_ogrd_is_superclass():
+    from dic.radicals import OGRD, OGRD_SUBTYPES, ALL_RADICALS
+    assert len(OGRD.contacts) == 0
+    for sub in OGRD_SUBTYPES:
+        assert sub in ALL_RADICALS
 
 
 # ── intra-body CON / cycle tests ─────────────────────────────────

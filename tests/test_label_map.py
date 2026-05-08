@@ -43,7 +43,7 @@ class TestMapping:
             blisp_label("nonexistent")
 
     def test_blisp_labels_are_expected(self):
-        expected_labels = {"STND", "TKDN", "GRD", "GRD_CLP", "HGRD", "5050",
+        expected_labels = {"STND", "TKDN", "OGRD", "CGRD", "HGRD", "5050",
                            "SCTR", "MNT", "BCTR", "TRTL"}
         actual = {blisp_label(c) for c in ALL_VICOS_CLASSES}
         assert actual == expected_labels
@@ -107,7 +107,7 @@ class TestPOVNormalization:
     def test_blisp_label_propagated(self):
         ann = Annotation("open_guard1", "0000001", 1, None, None)
         norm = normalize(ann)
-        assert norm.blisp_label == "GRD"
+        assert norm.blisp_label == "OGRD"
         assert norm.ambiguity == "high"
 
 

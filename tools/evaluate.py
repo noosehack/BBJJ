@@ -12,12 +12,12 @@ from tools.annotate import FPTRecord, annotate_batch, export_fpt, load_fpt
 BLISP_TO_RADICALS = {
     "MNT":     {"MNT"},
     "BCTR":    {"BCTR"},
-    "GRD":     {"DLR", "SLX", "RDLR", "LSSO", "OMOP", "CGRD", "5050"},
-    "GRD_CLP": {"CGRD", "DLR", "SLX", "RDLR", "5050"},
+    "OGRD":    {"DLR", "SLX", "RDLR", "LSSO", "OMOP", "CGRD", "5050"},
+    "CGRD":    {"CGRD"},
     "HGRD":    {"HGRD", "HGRD_L", "5050", "DLR", "SLX", "RDLR"},
     "5050":    {"5050", "DLR", "SLX"},
     "SCTR":    {"SCTR"},
-    "TRTL":    set(),
+    "TRTL":    {"TRTL"},
     "STND":    set(),
     "TKDN":    set(),
 }

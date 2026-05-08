@@ -36,7 +36,7 @@ BLISP_TO_RADICALS = {
     "SCTR":    ["SCTR"],
     "GRD_CLP": ["CGRD"],
     "HGRD":    ["HGRD", "HGRD_L"],
-    "GRD":     ["DLR", "SLX", "RDLR", "LSSO", "OMOP", "CGRD", "HGRD", "HGRD_L"],
+    "OGRD":    ["DLR", "SLX", "RDLR", "LSSO", "OMOP", "CGRD", "HGRD", "HGRD_L"],
     "5050":    ["5050"],
     "TRTL":    [],
     "TKDN":    [],

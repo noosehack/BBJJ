@@ -102,23 +102,14 @@ OMOP = Radical("OMOP",
 SCTR = Radical("SCTR",
     frame_constraints=(
         OnGround(_ref("Op", "Ba")),
-    ),
-    contacts=(
-        CON(_me_ax("Ar", "+", "Wr", "Sh"), _op_ax("To", "", "Hp", "Sh"), "d1", "-"),
-    ),
-)
-
-SCTR_STRICT = Radical("SCTR_STRICT",
-    frame_constraints=(
-        OnGround(_ref("Op", "Ba")),
         NotKneeBracket(_ref("Op", "To")),
     ),
     contacts=(
         CON(_me_ax("Ar", "+", "Wr", "Sh"), _op_ax("To", "", "Hp", "Sh"), "d1", "-"),
     ),
-    forbidden_bilateral=(
-        CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d", "-"),
-        CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("To", "", "Hp", "Sh"), "d", "+"),
+    forbidden_contacts=(
+        CON(_me_ax("Le", "", "Fo", "Hp"), _op_ax("Le", "+", "Fo", "Hp"), "d", "-"),
+        CON(_me_ax("Le", "", "Fo", "Hp"), _op_ax("Le", "-", "Fo", "Hp"), "d", "-"),
     ),
 )
 
@@ -128,8 +119,7 @@ HGRD = Radical("HGRD",
         OnGround(_ref("Me", "Ba")),
     ),
     contacts=(
-        CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("Le", "+", "Fo", "Hp"), "d1", "-"),
-        CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("Le", "+", "Fo", "Hp"), "d2", "-"),
+        CON(_me_ax("Le", "", "Fo", "Hp"), _op_ax("Le", "+", "Fo", "Hp"), "d1", "-"),
     ),
 )
 
@@ -139,8 +129,7 @@ HGRD_L = Radical("HGRD_L",
         OnGround(_ref("Me", "Ba")),
     ),
     contacts=(
-        CON(_me_ax("Le", "+", "Fo", "Hp"), _op_ax("Le", "-", "Fo", "Hp"), "d1", "-"),
-        CON(_me_ax("Le", "-", "Fo", "Hp"), _op_ax("Le", "-", "Fo", "Hp"), "d2", "-"),
+        CON(_me_ax("Le", "", "Fo", "Hp"), _op_ax("Le", "-", "Fo", "Hp"), "d1", "-"),
     ),
 )
 
@@ -166,15 +155,38 @@ CGRD = Radical("CGRD",
     ),
 )
 
+TRTL = Radical("TRTL",
+    frame_constraints=(
+        FacingAligned(),
+    ),
+    contacts=(
+        CON(_op_ax("To", "", "Hp", "Sh"), _me_ax("To", "", "Hp", "Sh"), "d1", "0"),
+    ),
+    forbidden_contacts=(
+        CON(_op_ax("Le", "+", "Fo", "Hp"), _me_ax("To", "", "Hp", "Sh"), "d", "-"),
+        CON(_op_ax("Le", "-", "Fo", "Hp"), _me_ax("To", "", "Hp", "Sh"), "d", "+"),
+    ),
+)
+
+OGRD = Radical("OGRD",
+    frame_constraints=(
+        FacingOpposed(),
+        OnGround(_ref("Me", "Ba")),
+    ),
+)
+
+OGRD_SUBTYPES = ("DLR", "SLX", "RDLR", "LSSO", "OMOP")
+
 
 ALL_RADICALS = {
     "MNT": MNT,
     "BCTR": BCTR,
     "SCTR": SCTR,
     "CGRD": CGRD,
+    "OGRD": OGRD,
     "HGRD": HGRD,
     "HGRD_L": HGRD_L,
-    "5050": FIFTY_FIFTY,
+    "TRTL": TRTL,
     "DLR": DLR,
     "SLX": SLX,
     "RDLR": RDLR,
