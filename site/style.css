@@ -2473,18 +2473,42 @@ img { max-width: 100%; display: block; }
   opacity: 0.85;
 }
 
-/* Legend */
+/* Legend / Filters */
 .ct-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  font-size: 0.78rem;
+  gap: 10px;
+  font-size: 0.82rem;
   color: var(--text-dim);
 }
 .ct-leg-item {
   padding: 3px 8px;
   background: var(--surface);
   border-radius: 4px;
+}
+.ct-filter {
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid #3a3a4a;
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.15s, background 0.15s, border-color 0.15s;
+  user-select: none;
+}
+.ct-filter.active {
+  background: rgba(124, 110, 240, 0.12);
+  border-color: var(--accent);
+  color: #fff;
+}
+.ct-filter:not(.active) {
+  opacity: 0.4;
+}
+.ct-filter:hover {
+  border-color: var(--accent);
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
