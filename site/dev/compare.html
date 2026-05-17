@@ -24,13 +24,18 @@
 
   <div class="tac-wrap">
     <div class="tac-title">Curriculum Philosophy Comparison</div>
-    <div class="tac-sub">Structural comparison of teaching philosophies. These are conceptual assessments, not empirical measurements.</div>
+    <div class="tac-sub">Structural comparison of teaching philosophies. Conceptual ratings are subjective; structural metrics are computed from data.</div>
 
     <div class="box" style="margin-bottom:12px">
-      <div class="box-head">Comparison Matrix</div>
+      <div class="box-head">Philosophy Comparison <span style="font-weight:400;font-size:8px;color:var(--text3)">(conceptual — not empirical)</span></div>
       <div class="box-body" style="overflow-x:auto">
         <table class="cmp-table" id="cmp-table"></table>
       </div>
+    </div>
+
+    <div class="box" style="margin-bottom:12px">
+      <div class="box-head">Fieldboard Structural Metrics <span style="font-weight:400;font-size:8px;color:var(--text3)">(computed from data)</span></div>
+      <div class="box-body" id="struct-metrics"></div>
     </div>
 
     <div class="tac-cols tac-2" style="gap:12px;background:transparent">
@@ -95,7 +100,6 @@
       { key: "progression",        label: "Dominant progression",   desc: "Side→mount→back importance in teaching" }
     ];
 
-    // Conceptual ratings 1-5 (NOT empirical — philosophy comparison only)
     const RATINGS = {
       gb:         [2, 5, 1, 3, 4, 5, 2, 4],
       roger:      [1, 5, 1, 2, 5, 5, 1, 5],
@@ -104,9 +108,18 @@
       fieldboard: [3, 4, 2, 3, 5, 5, 2, 4]
     };
 
-    function init() {
+    let roads, checkpointsData, yearPlan, depGraph;
+
+    async function init() {
+      [roads, checkpointsData, yearPlan, depGraph] = await Promise.all([
+        fetch('data/roads.json').then(r=>r.json()),
+        fetch('data/checkpoint_library.json').then(r=>r.json()),
+        fetch('data/year_plan.json').then(r=>r.json()),
+        fetch('data/road_dependency_graph.json').then(r=>r.json()),
+      ]);
       renderTable();
       renderDimKey();
+      renderStructMetrics();
     }
 
     function renderTable() {
@@ -154,6 +167,81 @@
       for (const d of DIMENSIONS) {
         h += `<div style="margin-bottom:6px"><div style="font-size:10px;font-weight:600;color:var(--text2)">${d.label}</div><div style="font-size:10px;color:var(--text3);font-family:var(--sans)">${d.desc}</div></div>`;
       }
+      el.innerHTML = h;
+    }
+
+    function renderStructMetrics() {
+      const el = document.getElementById('struct-metrics');
+
+      // Compute metrics from actual data
+      const totalRoads = roads.length;
+      const spineCount = roads.filter(r => r.tier === 'spine').length;
+      const branchCount = roads.filter(r => r.tier === 'branch').length;
+      const networkCount = roads.filter(r => r.tier === 'network').length;
+
+      // Unique cells touched
+      const allCells = new Set();
+      for (const r of roads) for (const raw of r.fieldboard) for (const c of raw.split('/')) allCells.add(c.trim());
+
+      // Position coverage per year
+      const positionsY1 = new Set();
+      const spineRoads = roads.filter(r => r.tier === 'spine');
+      for (const r of spineRoads) for (const raw of r.fieldboard) for (const c of raw.split('/')) {
+        positionsY1.add(c.trim().split('.')[0]);
+      }
+
+      // Action distribution
+      const actionCounts = { CTRL: 0, TRZ: 0, SWP: 0, SUB: 0 };
+      for (const r of roads) for (const s of r.sequence) if (s.action) actionCounts[s.action]++;
+      const totalActions = Object.values(actionCounts).reduce((a, b) => a + b, 0);
+
+      // Failure topology
+      const failCounts = { safe: 0, recoverable: 0, risky: 0 };
+      roads.forEach(r => failCounts[r.failure.classification]++);
+
+      // Checkpoints
+      const cpCount = Object.keys(checkpointsData).length;
+      const cpRoadCounts = Object.values(checkpointsData).map(cp => cp.roads.length);
+      const avgCpReuse = (cpRoadCounts.reduce((a, b) => a + b, 0) / cpRoadCounts.length).toFixed(1);
+      const maxCpReuse = Math.max(...cpRoadCounts);
+      const maxCpName = Object.entries(checkpointsData).find(([, cp]) => cp.roads.length === maxCpReuse)?.[1].name;
+
+      // Avg sequence length
+      const seqLens = roads.map(r => r.sequence.length);
+      const avgSeqLen = (seqLens.reduce((a, b) => a + b, 0) / seqLens.length).toFixed(1);
+
+      // Dependency depth
+      const depths = {};
+      function getDepth(rid) {
+        if (depths[rid] !== undefined) return depths[rid];
+        const node = depGraph.nodes.find(n => n.road_id === rid);
+        if (!node || !node.prerequisites.length) { depths[rid] = 0; return 0; }
+        depths[rid] = 1 + Math.max(...node.prerequisites.map(getDepth));
+        return depths[rid];
+      }
+      roads.forEach(r => getDepth(r.id));
+      const maxDepth = Math.max(...Object.values(depths));
+      const deepestRoad = Object.entries(depths).find(([, d]) => d === maxDepth)?.[0];
+
+      // Render as compact metric rows
+      const metrics = [
+        ['roads', `${totalRoads}`, `${spineCount} spine · ${branchCount} branch · ${networkCount} network`],
+        ['cells touched', `${allCells.size}`, 'unique fieldboard coordinates across all roads'],
+        ['Y1 positions', `${positionsY1.size} / 7`, [...positionsY1].sort().join(', ')],
+        ['avg seq length', `${avgSeqLen}`, `range: ${Math.min(...seqLens)}–${Math.max(...seqLens)} steps`],
+        ['action split', '', `CTRL ${actionCounts.CTRL} (${(actionCounts.CTRL/totalActions*100).toFixed(0)}%) · TRZ ${actionCounts.TRZ} (${(actionCounts.TRZ/totalActions*100).toFixed(0)}%) · SWP ${actionCounts.SWP} (${(actionCounts.SWP/totalActions*100).toFixed(0)}%) · SUB ${actionCounts.SUB} (${(actionCounts.SUB/totalActions*100).toFixed(0)}%)`],
+        ['failure profile', '', `${failCounts.safe} safe · ${failCounts.recoverable} recoverable · ${failCounts.risky} risky`],
+        ['checkpoints', `${cpCount}`, `avg reuse: ${avgCpReuse} roads · max: ${maxCpReuse} (${maxCpName})`],
+        ['dep depth', `${maxDepth}`, `deepest chain terminates at ${deepestRoad}`],
+      ];
+
+      let h = '<div style="display:grid;grid-template-columns:120px 60px 1fr;gap:0;font-size:10px">';
+      for (const [label, value, detail] of metrics) {
+        h += `<div style="padding:4px 0;border-bottom:1px solid var(--border);color:var(--text3)">${label}</div>`;
+        h += `<div style="padding:4px 0;border-bottom:1px solid var(--border);color:var(--accent);font-weight:600;text-align:right;padding-right:8px">${value}</div>`;
+        h += `<div style="padding:4px 0;border-bottom:1px solid var(--border);color:var(--text2);font-family:var(--sans)">${detail}</div>`;
+      }
+      h += '</div>';
       el.innerHTML = h;
     }
 

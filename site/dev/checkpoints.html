@@ -6,6 +6,16 @@
   <title>/dev/checkpoints</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tac.css">
+  <style>
+    .week-bar { display: flex; gap: 0; height: 10px; margin-top: 4px; }
+    .week-tick { width: 4px; height: 10px; border-right: 1px solid var(--bg); }
+    .week-tick.active { background: var(--accent); opacity: 0.7; }
+    .week-tick.inactive { background: var(--bg2); }
+    .pos-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin: 0 1px; vertical-align: middle; }
+    .matrix-dot { font-size: 11px; line-height: 1; }
+    .matrix-dot.on { color: var(--accent); }
+    .matrix-dot.off { color: var(--border); }
+  </style>
 </head>
 <body>
   <div class="tbar">
@@ -24,9 +34,9 @@
 
   <div class="tac-wrap">
     <div class="tac-title">Checkpoint Explorer</div>
-    <div class="tac-sub">Reusable structural concepts. Techniques compress into checkpoints that transfer across roads.</div>
+    <div class="tac-sub">Reusable structural concepts. Techniques compress into checkpoints that transfer across roads and curriculum weeks.</div>
 
-    <div style="margin-bottom:8px;display:flex;gap:6px">
+    <div style="margin-bottom:8px;display:flex;gap:6px;align-items:center">
       <button class="tag tag-ctrl" data-f="all" onclick="setFilter(this)">all</button>
       <button class="tag" data-f="control" onclick="setFilter(this)">control</button>
       <button class="tag" data-f="stabilization" onclick="setFilter(this)">stabilization</button>
@@ -46,8 +56,22 @@
           </div>
         </div>
 
+        <div class="box" style="margin-top:8px">
+          <div class="box-head">Week Revisits <span style="font-weight:400;font-size:8px;color:var(--text3)" id="week-label"></span></div>
+          <div class="box-body" id="week-body">
+            <div style="color:var(--text3);font-size:10px">Select a checkpoint to see curriculum week coverage</div>
+          </div>
+        </div>
+
+        <div class="box" style="margin-top:8px">
+          <div class="box-head">Position Reinforcement <span style="font-weight:400;font-size:8px;color:var(--text3)" id="pos-label"></span></div>
+          <div class="box-body" id="pos-body">
+            <div style="color:var(--text3);font-size:10px">Select a checkpoint to see which positions reinforce it</div>
+          </div>
+        </div>
+
         <div class="box" style="margin-top:8px" id="cp-matrix-box">
-          <div class="box-head">Road × Checkpoint Matrix</div>
+          <div class="box-head">Road × Checkpoint Matrix <span style="font-weight:400;font-size:8px;color:var(--text3)">(all roads)</span></div>
           <div class="box-body" style="overflow-x:auto">
             <table class="cmp-table" id="cp-matrix"></table>
           </div>
@@ -57,13 +81,14 @@
   </div>
 
   <script>
-    let checkpoints, roads;
+    let checkpoints, roads, yearPlan;
     let filter = 'all', selected = null;
 
     async function init() {
-      [checkpoints, roads] = await Promise.all([
+      [checkpoints, roads, yearPlan] = await Promise.all([
         fetch('data/checkpoint_library.json').then(r=>r.json()),
-        fetch('data/roads.json').then(r=>r.json())
+        fetch('data/roads.json').then(r=>r.json()),
+        fetch('data/year_plan.json').then(r=>r.json()),
       ]);
       render();
       renderMatrix();
@@ -71,7 +96,7 @@
 
     function setFilter(btn) {
       filter = btn.dataset.f;
-      document.querySelectorAll('.tac-wrap .tag').forEach(b => b.className = 'tag');
+      document.querySelectorAll('.tac-wrap > div:first-of-type .tag').forEach(b => b.className = 'tag');
       btn.classList.add('tag-ctrl');
       render();
     }
@@ -86,18 +111,18 @@
       let h = '';
       for (const [key, cp] of filtered) {
         const isSel = selected === key;
-        const catTag = cp.category.slice(0,4);
+        const catCls = { control: 'tag-ctrl', stabilization: 'tag-stab', transition: 'tag-trans', submission: 'tag-subm' }[cp.category] || '';
         h += `<div class="spine-row${isSel?' sel':''}" onclick="selectCp('${key}')">`;
-        h += `<span class="tag tag-${catTag}">${catTag}</span>`;
+        h += `<span class="tag ${catCls}">${cp.category.slice(0,4)}</span>`;
         h += `<span class="spine-name" style="margin-left:4px">${cp.name}</span>`;
-        h += `<span style="font-size:9px;color:var(--text3);flex-shrink:0">${cp.roads.length} roads</span>`;
+        h += `<span style="font-size:9px;color:var(--text3);flex-shrink:0">${cp.roads.length}r</span>`;
         h += '</div>';
       }
       el.innerHTML = h;
     }
 
     function selectCp(key) {
-      if (selected === key) { selected = null; render(); return; }
+      if (selected === key) { selected = null; render(); clearPanels(); return; }
       selected = key;
       render();
 
@@ -105,7 +130,8 @@
       document.getElementById('cpd-title').textContent = cp.name;
 
       let h = '<div class="detail">';
-      h += `<div class="detail-row"><div class="detail-k">category</div><div class="detail-v"><span class="tag tag-${cp.category.slice(0,4)}">${cp.category}</span></div></div>`;
+      const catCls = { control: 'tag-ctrl', stabilization: 'tag-stab', transition: 'tag-trans', submission: 'tag-subm' }[cp.category] || '';
+      h += `<div class="detail-row"><div class="detail-k">category</div><div class="detail-v"><span class="tag ${catCls}">${cp.category}</span></div></div>`;
       h += `<div class="detail-row"><div class="detail-k">definition</div><div class="detail-v" style="font-family:var(--sans)">${cp.definition}</div></div>`;
       h += `<div class="detail-row"><div class="detail-k">body concept</div><div class="detail-v" style="font-family:var(--sans)">${cp.body_concept}</div></div>`;
       h += `<div class="detail-row"><div class="detail-k">roads</div><div class="detail-v">`;
@@ -118,24 +144,126 @@
       h += '</div></div>';
       h += `<div class="detail-row"><div class="detail-k">reinforced</div><div class="detail-v" style="font-family:var(--sans);color:var(--text2)">${cp.reinforced_by.join('. ')}</div></div>`;
       h += '</div>';
-
       document.getElementById('cpd-body').innerHTML = h;
+
+      renderWeekRevisits(cp);
+      renderPositionReinforcement(cp);
+    }
+
+    function clearPanels() {
+      document.getElementById('cpd-body').innerHTML = '<div style="color:var(--text3);font-size:10px">Click a checkpoint to inspect</div>';
+      document.getElementById('cpd-title').textContent = '—';
+      document.getElementById('week-body').innerHTML = '<div style="color:var(--text3);font-size:10px">Select a checkpoint to see curriculum week coverage</div>';
+      document.getElementById('week-label').textContent = '';
+      document.getElementById('pos-body').innerHTML = '<div style="color:var(--text3);font-size:10px">Select a checkpoint to see which positions reinforce it</div>';
+      document.getElementById('pos-label').textContent = '';
+    }
+
+    function renderWeekRevisits(cp) {
+      const el = document.getElementById('week-body');
+      const label = document.getElementById('week-label');
+
+      // Build road -> week mapping from year_plan
+      const allPhases = [...(yearPlan.beginner||[]), ...(yearPlan.intermediate||[]), ...(yearPlan.advanced||[])];
+      const roadWeeks = {};
+      for (const r of allPhases) roadWeeks[r.id] = { start: r.week_start, end: r.week_end, phase: r.teaching_phase };
+
+      // Find which weeks this checkpoint appears in
+      const weekHits = new Set();
+      const roadEntries = [];
+      for (const rid of cp.roads) {
+        const rw = roadWeeks[rid];
+        if (rw) {
+          for (let w = rw.start; w <= rw.end; w++) weekHits.add(w);
+          roadEntries.push({ id: rid, ...rw });
+        }
+      }
+
+      const maxWeek = Math.max(...allPhases.map(r => r.week_end), 48);
+      label.textContent = `${weekHits.size} weeks covered`;
+
+      let h = '';
+
+      // Per-road week bars
+      for (const re of roadEntries.sort((a, b) => a.start - b.start)) {
+        const tierColor = { beginner: 'var(--spine)', intermediate: 'var(--branch)', advanced: 'var(--network)' }[re.phase] || 'var(--accent)';
+        h += `<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">`;
+        h += `<span style="width:20px;font-size:9px;color:var(--text3);text-align:right;flex-shrink:0">${re.id}</span>`;
+        h += '<div class="week-bar">';
+        for (let w = 1; w <= maxWeek; w++) {
+          const active = w >= re.start && w <= re.end;
+          h += `<div class="week-tick ${active?'active':'inactive'}" style="${active?'background:'+tierColor:''}"></div>`;
+        }
+        h += '</div>';
+        h += `<span style="font-size:8px;color:var(--text3);width:36px;flex-shrink:0">w${re.start}-${re.end}</span>`;
+        h += '</div>';
+      }
+
+      // Summary: aggregate week bar
+      h += `<div style="display:flex;align-items:center;gap:6px;margin-top:4px;padding-top:4px;border-top:1px solid var(--border)">`;
+      h += `<span style="width:20px;font-size:8px;color:var(--text3);text-align:right;flex-shrink:0">all</span>`;
+      h += '<div class="week-bar">';
+      for (let w = 1; w <= maxWeek; w++) {
+        h += `<div class="week-tick ${weekHits.has(w)?'active':'inactive'}"></div>`;
+      }
+      h += '</div>';
+      h += `<span style="font-size:8px;color:var(--accent);width:36px;flex-shrink:0">${weekHits.size}w</span>`;
+      h += '</div>';
+
+      el.innerHTML = h;
+    }
+
+    function renderPositionReinforcement(cp) {
+      const el = document.getElementById('pos-body');
+      const label = document.getElementById('pos-label');
+
+      // Find which positions this checkpoint touches
+      const posCount = {};
+      for (const rid of cp.roads) {
+        const road = roads.find(r => r.id === rid);
+        if (!road) continue;
+        for (const raw of road.fieldboard) {
+          for (const c of raw.split('/')) {
+            const pos = c.trim().split('.')[0];
+            posCount[pos] = (posCount[pos] || 0) + 1;
+          }
+        }
+      }
+
+      const posEntries = Object.entries(posCount).sort((a, b) => b[1] - a[1]);
+      label.textContent = `${posEntries.length} positions`;
+
+      if (!posEntries.length) { el.innerHTML = '<div style="color:var(--text3);font-size:10px">No position data</div>'; return; }
+
+      const maxCount = posEntries[0][1];
+      let h = '';
+      for (const [pos, count] of posEntries) {
+        const pct = (count / maxCount * 100).toFixed(0);
+        h += `<div style="display:flex;align-items:center;gap:6px;padding:2px 0">`;
+        h += `<span style="width:40px;font-size:10px;color:var(--text2);text-align:right;flex-shrink:0;font-weight:600">${pos}</span>`;
+        h += `<div style="flex:1;height:8px;background:var(--bg2);border:1px solid var(--border)">`;
+        h += `<div style="width:${pct}%;height:100%;background:var(--accent);opacity:0.6"></div>`;
+        h += '</div>';
+        h += `<span style="font-size:9px;color:var(--text3);width:16px;flex-shrink:0">${count}</span>`;
+        h += '</div>';
+      }
+      el.innerHTML = h;
     }
 
     function renderMatrix() {
       const cpKeys = Object.keys(checkpoints);
-      const spineRoads = roads.filter(r => r.tier === 'spine');
 
       let h = '<thead><tr><th></th>';
-      for (const r of spineRoads) h += `<th>${r.id}</th>`;
+      for (const r of roads) h += `<th style="font-size:8px;writing-mode:vertical-lr;transform:rotate(180deg);height:50px;padding:2px"><span class="rtier ${r.tier}" style="font-size:6px;margin-bottom:2px">${r.tier[0]}</span>${r.id}</th>`;
       h += '</tr></thead><tbody>';
 
       for (const ck of cpKeys) {
         const cp = checkpoints[ck];
-        h += `<tr><td style="font-size:9px;white-space:nowrap">${cp.name}</td>`;
-        for (const r of spineRoads) {
+        const catCls = { control: 'tag-ctrl', stabilization: 'tag-stab', transition: 'tag-trans', submission: 'tag-subm' }[cp.category] || '';
+        h += `<tr><td style="font-size:9px;white-space:nowrap"><span class="tag ${catCls}" style="margin-right:3px;font-size:7px">${cp.category.slice(0,1)}</span>${cp.name}</td>`;
+        for (const r of roads) {
           const has = cp.roads.includes(r.id);
-          h += `<td>${has ? '<span style="color:var(--accent)">●</span>' : '<span style="color:var(--border)">·</span>'}</td>`;
+          h += `<td><span class="matrix-dot ${has?'on':'off'}">${has ? '●' : '·'}</span></td>`;
         }
         h += '</tr>';
       }

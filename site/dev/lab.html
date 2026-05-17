@@ -3,9 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>/dev/lab</title>
+  <title>/dev/lab — operations room</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tac.css">
+  <style>
+    .ops-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1px;
+      background: var(--border);
+      min-height: calc(100vh - 44px);
+    }
+    .ops-grid > * { background: var(--bg); }
+    .ops-tl { grid-column: 1; grid-row: 1; }
+    .ops-tr { grid-column: 2; grid-row: 1; }
+    .ops-bl { grid-column: 1; grid-row: 2; }
+    .ops-br { grid-column: 2; grid-row: 2; }
+
+    .road-check { display: flex; align-items: center; gap: 6px; padding: 3px 6px; cursor: pointer; font-size: 10px; border-bottom: 1px solid var(--border); transition: background 0.1s; }
+    .road-check:hover { background: var(--bg2); }
+    .road-check.active { background: rgba(91,155,213,0.06); }
+    .road-check input { accent-color: var(--accent); cursor: pointer; }
+    .road-check .rtier { font-size: 7px; }
+    .road-check .rc-id { color: var(--text3); width: 22px; }
+    .road-check .rc-name { color: var(--text2); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .preset-bar { display: flex; gap: 4px; padding: 6px; flex-wrap: wrap; border-bottom: 1px solid var(--border); }
+    .preset-btn { font-size: 8px; font-family: var(--mono); padding: 2px 6px; border: 1px solid var(--border); background: var(--bg1); color: var(--text3); cursor: pointer; text-transform: uppercase; letter-spacing: 0.06em; }
+    .preset-btn:hover { border-color: var(--accent); color: var(--text2); }
+    .preset-btn.on { border-color: var(--accent); color: var(--accent); background: rgba(91,155,213,0.08); }
+
+    .density-num { position: absolute; bottom: 1px; right: 2px; font-size: 7px; font-weight: 700; color: var(--text3); }
+    .cell.density-1 { background: rgba(91,155,213,0.04); }
+    .cell.density-2 { background: rgba(91,155,213,0.08); }
+    .cell.density-3 { background: rgba(91,155,213,0.14); }
+    .cell.density-4 { background: rgba(91,155,213,0.20); }
+
+    .sync-panel { padding: 8px; }
+    .sync-section { margin-bottom: 8px; }
+    .sync-head { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); padding: 4px 0; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
+
+    .vec-row { display: flex; align-items: center; gap: 4px; padding: 2px 0; font-size: 10px; }
+    .vec-rid { color: var(--text3); width: 20px; flex-shrink: 0; font-weight: 600; }
+    .vec-steps { display: flex; gap: 1px; flex-wrap: wrap; }
+
+    .cp-row { display: flex; align-items: flex-start; gap: 6px; padding: 3px 0; border-bottom: 1px solid var(--border); font-size: 10px; }
+    .cp-name { font-weight: 500; min-width: 100px; }
+    .cp-cat { font-size: 8px; padding: 0 3px; border-radius: 1px; }
+    .cp-roads { font-size: 9px; color: var(--text3); }
+    .cp-roads .cp-active { color: var(--accent); font-weight: 600; }
+
+    .dep-node { display: inline-flex; align-items: center; gap: 3px; padding: 1px 4px; font-size: 9px; border: 1px solid var(--border); margin: 1px; }
+    .dep-node.dep-active { border-color: var(--accent); color: var(--accent); }
+    .dep-arrow { color: var(--text3); font-size: 8px; margin: 0 2px; }
+
+    .fail-row { display: flex; align-items: center; gap: 6px; padding: 3px 0; border-bottom: 1px solid var(--border); font-size: 10px; }
+    .fail-rid { width: 20px; color: var(--text3); font-weight: 600; flex-shrink: 0; }
+
+    .stats-bar { display: flex; gap: 12px; padding: 6px 8px; font-size: 9px; color: var(--text3); border-bottom: 1px solid var(--border); }
+    .stats-bar span { white-space: nowrap; }
+    .stats-val { color: var(--accent); font-weight: 600; }
+
+    @media (max-width: 1100px) {
+      .ops-grid { grid-template-columns: 1fr; }
+      .ops-tl, .ops-tr, .ops-bl, .ops-br { grid-column: 1; }
+    }
+  </style>
 </head>
 <body>
   <div class="tbar">
@@ -22,41 +86,69 @@
     <a href="curriculum.html">curriculum</a>
   </div>
 
-  <div class="tac-wrap">
-    <div class="tac-title">Fieldboard Laboratory</div>
-    <div class="tac-sub">Experimental layouts. Switch between compact/expanded/flat views of the position×action grid.</div>
+  <div class="stats-bar" id="stats-bar">
+    <span>selected: <span class="stats-val" id="st-sel">0</span></span>
+    <span>cells hit: <span class="stats-val" id="st-cells">0</span></span>
+    <span>checkpoints: <span class="stats-val" id="st-cps">0</span></span>
+    <span>failure: <span class="stats-val" id="st-fail">—</span></span>
+    <span style="margin-left:auto">density max: <span class="stats-val" id="st-dmax">0</span></span>
+  </div>
 
-    <div style="margin-bottom:8px;font-size:10px;color:var(--text3)">
-      road tiers: <span class="rtier spine">S</span> spine (beginner, linear, safe failure) · <span class="rtier branch">B</span> branch (intermediate, new chains) · <span class="rtier network">N</span> network (advanced, decision trees)
-    </div>
-
-    <div style="margin-bottom:12px;display:flex;gap:6px">
-      <button class="tag tag-ctrl" onclick="setMode('compact')" id="btn-compact">compact</button>
-      <button class="tag" onclick="setMode('expanded')" id="btn-expanded">expanded</button>
-      <button class="tag" onclick="setMode('flat')" id="btn-flat">flat</button>
-      <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="stats"></span>
-    </div>
-
-    <div class="tac-cols tac-rl">
-      <div class="scroll-y" style="padding:8px">
-        <table class="fb" id="grid"></table>
+  <div class="ops-grid">
+    <!-- TOP LEFT: fieldboard -->
+    <div class="ops-tl scroll-y" style="padding:8px">
+      <div class="box">
+        <div class="box-head">Fieldboard <span id="fb-label" style="color:var(--accent);font-weight:400"></span></div>
+        <div class="box-body" style="overflow-x:auto">
+          <table class="fb" id="grid"></table>
+        </div>
       </div>
 
-      <div class="scroll-y" style="padding:8px">
-        <div class="box">
-          <div class="box-head">Inspector</div>
-          <div class="box-body" id="inspector">
-            <div style="color:var(--text3);font-size:10px">Click any cell</div>
-          </div>
+      <div class="box" style="margin-top:8px">
+        <div class="box-head">Sequence Vectors</div>
+        <div class="box-body" id="vec-body">
+          <div style="color:var(--text3);font-size:10px">Select roads to trace</div>
         </div>
+      </div>
+    </div>
 
-        <div class="box" style="margin-top:8px">
-          <div class="box-head">Road Highlight</div>
-          <div class="box-body">
-            <select id="road-select" style="width:100%;background:var(--bg);color:var(--text);border:1px solid var(--border);padding:3px 6px;font-family:var(--mono);font-size:10px">
-              <option value="">-- none --</option>
-            </select>
-          </div>
+    <!-- TOP RIGHT: road selector -->
+    <div class="ops-tr scroll-y">
+      <div class="box-head">Road Overlay</div>
+      <div class="preset-bar" id="presets"></div>
+      <div id="road-checks"></div>
+    </div>
+
+    <!-- BOTTOM LEFT: checkpoints + deps -->
+    <div class="ops-bl scroll-y" style="padding:8px">
+      <div class="box">
+        <div class="box-head">Active Checkpoints <span id="cp-count" style="color:var(--text3);font-weight:400;font-size:9px"></span></div>
+        <div class="box-body" id="cp-body">
+          <div style="color:var(--text3);font-size:10px">Select roads to see checkpoints</div>
+        </div>
+      </div>
+
+      <div class="box" style="margin-top:8px">
+        <div class="box-head">Dependency Graph</div>
+        <div class="box-body" id="dep-body">
+          <div style="color:var(--text3);font-size:10px">Select roads to see dependencies</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM RIGHT: failure topology + timeline -->
+    <div class="ops-br scroll-y" style="padding:8px">
+      <div class="box">
+        <div class="box-head">Failure Topology</div>
+        <div class="box-body" id="fail-body">
+          <div style="color:var(--text3);font-size:10px">Select roads to see failure paths</div>
+        </div>
+      </div>
+
+      <div class="box" style="margin-top:8px">
+        <div class="box-head">Curriculum Window</div>
+        <div class="box-body" id="timeline-body">
+          <div style="color:var(--text3);font-size:10px">Select roads to see timeline</div>
         </div>
       </div>
     </div>
@@ -64,138 +156,394 @@
 
   <script>
     const ACTIONS = ['CTRL','TRZ','SWP','SUB'];
-    let fb, roads, cellIdx = {}, mode = 'compact';
+    let fb, roads, depGraph, checkpoints, yearPlan;
+    let cellIdx = {};
+    let selected = new Set();
+
+    const PRESETS = [
+      { id: 'spine', label: 'spine', filter: r => r.tier === 'spine' },
+      { id: 'branch', label: 'branch', filter: r => r.tier === 'branch' },
+      { id: 'network', label: 'network', filter: r => r.tier === 'network' },
+      { id: 'mount', label: 'mount-focused', filter: r => r.fieldboard.some(c => c.startsWith('MNT.')) },
+      { id: 'guard', label: 'guard', filter: r => r.fieldboard.some(c => c.startsWith('CGRD.') || c.startsWith('OGRD.') || c.startsWith('HGRD.')) },
+      { id: 'back', label: 'back-control', filter: r => r.fieldboard.some(c => c.startsWith('BCTR.')) },
+      { id: 'safe', label: 'safe-fail', filter: r => r.failure.classification === 'safe' },
+      { id: 'clear', label: 'clear all', filter: null },
+    ];
 
     async function init() {
-      [fb, roads] = await Promise.all([
+      [fb, roads, depGraph, checkpoints, yearPlan] = await Promise.all([
         fetch('data/fieldboard.json').then(r=>r.json()),
-        fetch('data/roads.json').then(r=>r.json())
+        fetch('data/roads.json').then(r=>r.json()),
+        fetch('data/road_dependency_graph.json').then(r=>r.json()),
+        fetch('data/checkpoint_library.json').then(r=>r.json()),
+        fetch('data/year_plan.json').then(r=>r.json()),
       ]);
       buildIndex();
-      render();
-      fillSelect();
+      renderGrid();
+      renderRoadChecks();
+      renderPresets();
+      syncAll();
     }
 
     function buildIndex() {
       cellIdx = {};
-      for (const r of roads) {
-        for (const raw of r.fieldboard) {
-          for (const c of raw.split('/')) {
-            const k = c.trim();
-            if (!cellIdx[k]) cellIdx[k] = [];
-            cellIdx[k].push(r);
-          }
-        }
+      for (const r of roads) for (const raw of r.fieldboard) for (const c of raw.split('/')) {
+        const k = c.trim();
+        (cellIdx[k] = cellIdx[k] || []).push(r);
       }
     }
 
-    function setMode(m) {
-      mode = m;
-      document.querySelectorAll('.tac-wrap .tag').forEach(b => b.className = 'tag');
-      document.getElementById('btn-' + m).classList.add('tag-ctrl');
-      render();
-    }
-
-    function render() {
-      const t = document.getElementById('grid');
+    // --- Fieldboard ---
+    function renderGrid() {
       let h = '<thead><tr><th>pos</th>';
-      for (const a of ACTIONS) h += `<th class="c-${a.toLowerCase()}">${a}</th>`;
+      ACTIONS.forEach(a => h += `<th class="c-${a.toLowerCase()}">${a}</th>`);
       h += '</tr></thead><tbody>';
-
-      let populated = 0, total = 0;
       for (const pos of fb.positions) {
         h += `<tr><td><div class="fb-pos ${pos.tier==='defense'?'def':'off'}"`;
-        if (pos.subtopologies.length && mode !== 'flat') {
-          h += ` onclick="toggleSub('${pos.id}')"`;
-          h += `><span class="ch" id="ch-${pos.id}">▶</span>`;
-        } else { h += `>`; }
+        if (pos.subtopologies.length) h += ` onclick="toggleSub('${pos.id}')"><span class="ch" id="ch-${pos.id}">▶</span>`;
+        else h += '>';
         h += `${pos.id}</div></td>`;
-        for (const a of ACTIONS) {
+        ACTIONS.forEach(a => {
           const c = `${pos.id}.${a}`;
           const has = cellIdx[c];
-          total++;
-          if (has) populated++;
-          h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}" onclick="inspect('${c}')"></td>`;
-        }
+          h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}"></td>`;
+        });
         h += '</tr>';
-
-        if (pos.subtopologies.length) {
-          for (const sub of pos.subtopologies) {
-            const sid = sub.id.split('.')[1];
-            const vis = mode === 'expanded' || mode === 'flat';
-            h += `<tr class="fb-sub${vis?' show':''}" data-par="${pos.id}"><td>${sid}</td>`;
-            for (const a of ACTIONS) {
-              const c = `${pos.id}.${sid}.${a}`;
-              const has = cellIdx[c];
-              total++;
-              if (has) populated++;
-              h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}" onclick="inspect('${c}')"></td>`;
-            }
-            h += '</tr>';
-          }
+        for (const sub of pos.subtopologies) {
+          const sid = sub.id.split('.')[1];
+          h += `<tr class="fb-sub" data-par="${pos.id}"><td>${sid}</td>`;
+          ACTIONS.forEach(a => {
+            const c = `${pos.id}.${sid}.${a}`;
+            const has = cellIdx[c];
+            h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}"></td>`;
+          });
+          h += '</tr>';
         }
       }
       h += '</tbody>';
-      t.innerHTML = h;
-      document.getElementById('stats').textContent = `${populated}/${total} populated`;
+      document.getElementById('grid').innerHTML = h;
     }
 
     function toggleSub(pid) {
-      const rows = document.querySelectorAll(`tr[data-par="${pid}"]`);
-      const ch = document.getElementById('ch-'+pid);
-      const show = !rows[0].classList.contains('show');
-      rows.forEach(r => r.classList.toggle('show', show));
-      if (ch) ch.classList.toggle('open', show);
+      document.querySelectorAll(`tr[data-par="${pid}"]`).forEach(r => r.classList.toggle('show'));
+      document.getElementById('ch-'+pid)?.classList.toggle('open');
     }
 
-    function inspect(coord) {
-      document.querySelectorAll('.cell.hi').forEach(c => c.classList.remove('hi'));
-      document.querySelector(`.cell[data-c="${coord}"]`)?.classList.add('hi');
-
-      const el = document.getElementById('inspector');
-      const rds = cellIdx[coord] || [];
-      let h = `<div class="coord-vec" style="margin-bottom:6px"><span>${coord}</span></div>`;
-      if (!rds.length) {
-        h += '<div style="color:var(--text3);font-size:10px">empty cell</div>';
-      } else {
-        h += `<div style="font-size:10px;color:var(--text2);margin-bottom:4px">${rds.length} road${rds.length>1?'s':''}</div>`;
-        for (const r of rds) {
-          h += `<div class="ritem" style="border:none;padding:2px 0"><span class="rtier ${r.tier}">${r.tier[0]}</span><span class="rid">${r.id}</span><span class="rname">${r.name}</span></div>`;
-        }
+    // --- Road Checkboxes ---
+    function renderRoadChecks() {
+      const el = document.getElementById('road-checks');
+      let h = '';
+      for (const r of roads) {
+        h += `<label class="road-check" data-rid="${r.id}">`;
+        h += `<input type="checkbox" value="${r.id}" onchange="toggleRoad('${r.id}', this.checked)">`;
+        h += `<span class="rtier ${r.tier}">${r.tier[0].toUpperCase()}</span>`;
+        h += `<span class="rc-id">${r.id}</span>`;
+        h += `<span class="rc-name">${r.name}</span>`;
+        h += `</label>`;
       }
       el.innerHTML = h;
     }
 
-    function fillSelect() {
-      const sel = document.getElementById('road-select');
-      for (const r of roads) {
-        sel.innerHTML += `<option value="${r.id}">${r.id} ${r.name}</option>`;
-      }
-      sel.addEventListener('change', () => highlightRoad(sel.value));
+    function toggleRoad(rid, on) {
+      if (on) selected.add(rid); else selected.delete(rid);
+      document.querySelector(`.road-check[data-rid="${rid}"]`).classList.toggle('active', on);
+      syncAll();
     }
 
-    function highlightRoad(rid) {
-      document.querySelectorAll('.cell.hi').forEach(c => c.classList.remove('hi'));
-      document.querySelectorAll('.cell .sn').forEach(s => s.remove());
-      if (!rid) return;
-      const road = roads.find(r => r.id === rid);
-      if (!road) return;
-      let step = 1;
-      for (const raw of road.fieldboard) {
-        for (const c of raw.split('/')) {
-          const cell = document.querySelector(`.cell[data-c="${c.trim()}"]`);
-          if (cell) {
-            cell.classList.add('hi');
-            const sn = document.createElement('span');
-            sn.className = 'sn';
-            sn.textContent = step;
-            cell.appendChild(sn);
-            const par = cell.closest('tr[data-par]');
-            if (par) { par.classList.add('show'); }
+    function setSelection(rids) {
+      selected = new Set(rids);
+      document.querySelectorAll('.road-check input').forEach(cb => {
+        cb.checked = selected.has(cb.value);
+        cb.closest('.road-check').classList.toggle('active', cb.checked);
+      });
+      updatePresetBtns();
+      syncAll();
+    }
+
+    // --- Presets ---
+    function renderPresets() {
+      const el = document.getElementById('presets');
+      let h = '';
+      for (const p of PRESETS) {
+        h += `<button class="preset-btn" data-preset="${p.id}" onclick="applyPreset('${p.id}')">${p.label}</button>`;
+      }
+      el.innerHTML = h;
+    }
+
+    function applyPreset(pid) {
+      const preset = PRESETS.find(p => p.id === pid);
+      if (pid === 'clear') { setSelection([]); return; }
+      const matching = roads.filter(preset.filter).map(r => r.id);
+      const allOn = matching.every(id => selected.has(id));
+      if (allOn) {
+        matching.forEach(id => selected.delete(id));
+      } else {
+        matching.forEach(id => selected.add(id));
+      }
+      setSelection([...selected]);
+    }
+
+    function updatePresetBtns() {
+      for (const p of PRESETS) {
+        if (!p.filter) continue;
+        const btn = document.querySelector(`[data-preset="${p.id}"]`);
+        const matching = roads.filter(p.filter).map(r => r.id);
+        const allOn = matching.length > 0 && matching.every(id => selected.has(id));
+        btn.classList.toggle('on', allOn);
+      }
+    }
+
+    // --- Sync Everything ---
+    function syncAll() {
+      const sel = [...selected].map(id => roads.find(r => r.id === id)).filter(Boolean);
+      syncFieldboard(sel);
+      syncVectors(sel);
+      syncCheckpoints(sel);
+      syncDeps(sel);
+      syncFailure(sel);
+      syncTimeline(sel);
+      syncStats(sel);
+      updatePresetBtns();
+    }
+
+    function syncFieldboard(sel) {
+      // Clear
+      document.querySelectorAll('.cell').forEach(c => {
+        c.classList.remove('hi','density-1','density-2','density-3','density-4');
+        c.querySelectorAll('.sn, .density-num').forEach(s => s.remove());
+      });
+
+      if (!sel.length) {
+        document.getElementById('fb-label').textContent = '';
+        return;
+      }
+
+      document.getElementById('fb-label').textContent = sel.length === 1
+        ? `${sel[0].id}: ${sel[0].name}`
+        : `${sel.length} roads`;
+
+      // Build density map
+      const density = {};
+      const COLORS = ['#5b9bd5','#4caf50','#e8a030','#c050e0','#d04040','#708090','#c0a060','#60c0c0'];
+
+      for (let ri = 0; ri < sel.length; ri++) {
+        const road = sel[ri];
+        let step = 1;
+        for (const raw of road.fieldboard) {
+          for (const c of raw.split('/')) {
+            const coord = c.trim();
+            if (!density[coord]) density[coord] = [];
+            density[coord].push({ road, step, color: COLORS[ri % COLORS.length] });
+            step++;
           }
-          step++;
         }
       }
+
+      for (const [coord, entries] of Object.entries(density)) {
+        const cell = document.querySelector(`.cell[data-c="${coord}"]`);
+        if (!cell) continue;
+
+        cell.classList.add('hi');
+        const d = Math.min(entries.length, 4);
+        cell.classList.add(`density-${d}`);
+
+        // Show step numbers for single road, density count for multi
+        if (sel.length === 1) {
+          const sn = document.createElement('span');
+          sn.className = 'sn';
+          sn.textContent = entries[0].step;
+          cell.appendChild(sn);
+        } else if (entries.length > 1) {
+          const dn = document.createElement('span');
+          dn.className = 'density-num';
+          dn.textContent = entries.length;
+          cell.appendChild(dn);
+        }
+
+        // Expand subtopology rows
+        const par = cell.closest('tr[data-par]');
+        if (par) par.classList.add('show');
+      }
+    }
+
+    function syncVectors(sel) {
+      const el = document.getElementById('vec-body');
+      if (!sel.length) { el.innerHTML = '<div style="color:var(--text3);font-size:10px">Select roads to trace</div>'; return; }
+
+      let h = '';
+      for (const road of sel) {
+        h += '<div class="vec-row">';
+        h += `<span class="vec-rid">${road.id}</span>`;
+        h += '<span class="vec-steps">';
+        for (let i = 0; i < road.sequence.length; i++) {
+          const s = road.sequence[i];
+          const act = (s.action || '').toLowerCase();
+          if (i > 0) h += '<span class="seq-arr">→</span>';
+          h += `<span class="seq-step a-${act}">${s.position}</span>`;
+        }
+        h += '</span></div>';
+      }
+      el.innerHTML = h;
+    }
+
+    function syncCheckpoints(sel) {
+      const el = document.getElementById('cp-body');
+      const countEl = document.getElementById('cp-count');
+      if (!sel.length) {
+        el.innerHTML = '<div style="color:var(--text3);font-size:10px">Select roads to see checkpoints</div>';
+        countEl.textContent = '';
+        return;
+      }
+
+      const selIds = new Set(sel.map(r => r.id));
+      const relevant = [];
+      for (const [key, cp] of Object.entries(checkpoints)) {
+        const active = cp.roads.filter(r => selIds.has(r));
+        if (active.length > 0) relevant.push({ key, cp, active });
+      }
+
+      relevant.sort((a, b) => b.active.length - a.active.length);
+      countEl.textContent = `${relevant.length} / ${Object.keys(checkpoints).length}`;
+
+      let h = '';
+      for (const { cp, active } of relevant) {
+        const catCls = { control: 'tag-ctrl', stabilization: 'tag-stab', transition: 'tag-trans', submission: 'tag-subm' }[cp.category] || '';
+        h += '<div class="cp-row">';
+        h += `<span class="cp-cat ${catCls}">${cp.category.slice(0,4)}</span>`;
+        h += `<span class="cp-name">${cp.name}</span>`;
+        h += '<span class="cp-roads">';
+        h += cp.roads.map(r => selIds.has(r) ? `<span class="cp-active">${r}</span>` : r).join(' ');
+        h += '</span></div>';
+      }
+      el.innerHTML = h;
+
+      // Update stats
+      document.getElementById('st-cps').textContent = relevant.length;
+    }
+
+    function syncDeps(sel) {
+      const el = document.getElementById('dep-body');
+      if (!sel.length) { el.innerHTML = '<div style="color:var(--text3);font-size:10px">Select roads to see dependencies</div>'; return; }
+
+      const selIds = new Set(sel.map(r => r.id));
+
+      // Collect all relevant edges
+      const prereqEdges = depGraph.edges.filter(e => selIds.has(e.to));
+      const unlockEdges = depGraph.edges.filter(e => selIds.has(e.from));
+
+      // All nodes in the dependency neighborhood
+      const allNodes = new Set([...selIds]);
+      prereqEdges.forEach(e => allNodes.add(e.from));
+      unlockEdges.forEach(e => allNodes.add(e.to));
+
+      // Render as node graph
+      let h = '<div style="margin-bottom:6px">';
+      h += '<div style="font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">prerequisites</div>';
+      if (prereqEdges.length === 0) {
+        h += '<div style="font-size:10px;color:var(--text3)">root nodes — no prerequisites</div>';
+      } else {
+        for (const e of prereqEdges) {
+          h += `<span class="dep-node${selIds.has(e.from)?' dep-active':''}">${e.from}</span>`;
+          h += `<span class="dep-arrow">→</span>`;
+          h += `<span class="dep-node dep-active">${e.to}</span> `;
+        }
+      }
+      h += '</div>';
+
+      h += '<div style="margin-top:6px">';
+      h += '<div style="font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">unlocks</div>';
+      if (unlockEdges.length === 0) {
+        h += '<div style="font-size:10px;color:var(--text3)">terminal nodes</div>';
+      } else {
+        for (const e of unlockEdges) {
+          h += `<span class="dep-node dep-active">${e.from}</span>`;
+          h += `<span class="dep-arrow">→</span>`;
+          h += `<span class="dep-node${selIds.has(e.to)?' dep-active':''}">${e.to}</span> `;
+        }
+      }
+      h += '</div>';
+      el.innerHTML = h;
+    }
+
+    function syncFailure(sel) {
+      const el = document.getElementById('fail-body');
+      if (!sel.length) { el.innerHTML = '<div style="color:var(--text3);font-size:10px">Select roads to see failure paths</div>'; return; }
+
+      let h = '';
+      for (const road of sel) {
+        h += '<div class="fail-row">';
+        h += `<span class="fail-rid">${road.id}</span>`;
+        h += `<span class="tag tag-${road.failure.classification}">${road.failure.classification}</span>`;
+
+        const failEntries = Object.entries(road.failure).filter(([k]) => k !== 'classification');
+        h += '<span style="font-size:9px;color:var(--text2);margin-left:6px">';
+        h += failEntries.map(([k, v]) => `${k.replace(/_/g,' ')}: ${v}`).join(' · ');
+        h += '</span></div>';
+      }
+
+      // Summary
+      const counts = { safe: 0, recoverable: 0, risky: 0 };
+      sel.forEach(r => counts[r.failure.classification]++);
+      const parts = Object.entries(counts).filter(([,v]) => v > 0).map(([k,v]) => `${v} ${k}`);
+      document.getElementById('st-fail').textContent = parts.join(', ');
+
+      el.innerHTML = h;
+    }
+
+    function syncTimeline(sel) {
+      const el = document.getElementById('timeline-body');
+      if (!sel.length) { el.innerHTML = '<div style="color:var(--text3);font-size:10px">Select roads to see timeline</div>'; return; }
+
+      const selIds = new Set(sel.map(r => r.id));
+
+      // Find matching year_plan entries
+      const allPhases = [...(yearPlan.beginner||[]), ...(yearPlan.intermediate||[]), ...(yearPlan.advanced||[])];
+      const matching = allPhases.filter(r => selIds.has(r.id));
+
+      if (!matching.length) { el.innerHTML = '<div style="color:var(--text3);font-size:10px">No timeline data</div>'; return; }
+
+      matching.sort((a, b) => a.week_start - b.week_start);
+      const maxWeek = Math.max(...matching.map(r => r.week_end));
+
+      let h = '<div style="font-size:9px;color:var(--text3);margin-bottom:4px">week 1–' + maxWeek + '</div>';
+
+      for (const r of matching) {
+        const pct_start = (r.week_start / maxWeek * 100).toFixed(1);
+        const pct_width = ((r.week_end - r.week_start + 1) / maxWeek * 100).toFixed(1);
+        const tierColor = { spine: 'var(--spine)', branch: 'var(--branch)', network: 'var(--network)' }[r.road_type] || 'var(--accent)';
+
+        h += '<div style="display:flex;align-items:center;gap:6px;padding:2px 0">';
+        h += `<span style="width:20px;font-size:9px;color:var(--text3);text-align:right;flex-shrink:0">${r.id}</span>`;
+        h += '<div style="flex:1;height:12px;position:relative;background:var(--bg1);border:1px solid var(--border)">';
+        h += `<div style="position:absolute;left:${pct_start}%;width:${pct_width}%;height:100%;background:${tierColor};opacity:0.6"></div>`;
+        h += '</div>';
+        h += `<span style="font-size:8px;color:var(--text3);width:40px;flex-shrink:0">w${r.week_start}-${r.week_end}</span>`;
+        h += '</div>';
+      }
+
+      el.innerHTML = h;
+    }
+
+    function syncStats(sel) {
+      document.getElementById('st-sel').textContent = sel.length;
+
+      // Count unique cells
+      const cells = new Set();
+      let maxD = 0;
+      const density = {};
+      for (const road of sel) {
+        for (const raw of road.fieldboard) {
+          for (const c of raw.split('/')) {
+            const k = c.trim();
+            cells.add(k);
+            density[k] = (density[k] || 0) + 1;
+            if (density[k] > maxD) maxD = density[k];
+          }
+        }
+      }
+      document.getElementById('st-cells').textContent = cells.size;
+      document.getElementById('st-dmax').textContent = maxD;
     }
 
     init();
