@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>/dev/checkpoints</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tac.css">
+</head>
+<body>
+  <div class="tbar">
+    <span class="tbar-id">/dev/checkpoints</span>
+    <span class="tbar-sep">|</span>
+    <a href="lab.html">lab</a>
+    <a href="compare.html">compare</a>
+    <a href="spines.html">spines</a>
+    <a href="checkpoints.html" class="here">checkpoints</a>
+    <a href="paths.html">paths</a>
+    <span class="tbar-sep">|</span>
+    <a href="index.html">fieldboard</a>
+    <a href="roads.html">roads</a>
+    <a href="curriculum.html">curriculum</a>
+  </div>
+
+  <div class="tac-wrap">
+    <div class="tac-title">Checkpoint Explorer</div>
+    <div class="tac-sub">Reusable structural concepts. Techniques compress into checkpoints that transfer across roads.</div>
+
+    <div style="margin-bottom:8px;display:flex;gap:6px">
+      <button class="tag tag-ctrl" data-f="all" onclick="setFilter(this)">all</button>
+      <button class="tag" data-f="control" onclick="setFilter(this)">control</button>
+      <button class="tag" data-f="stabilization" onclick="setFilter(this)">stabilization</button>
+      <button class="tag" data-f="transition" onclick="setFilter(this)">transition</button>
+      <button class="tag" data-f="submission" onclick="setFilter(this)">submission</button>
+      <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="cp-count"></span>
+    </div>
+
+    <div class="tac-cols tac-wide-lr" style="height:calc(100vh - 100px)">
+      <div class="scroll-y" id="cp-list"></div>
+
+      <div class="scroll-y" style="padding:8px">
+        <div class="box" id="cp-detail">
+          <div class="box-head" id="cpd-title">—</div>
+          <div class="box-body" id="cpd-body">
+            <div style="color:var(--text3);font-size:10px">Click a checkpoint to inspect</div>
+          </div>
+        </div>
+
+        <div class="box" style="margin-top:8px" id="cp-matrix-box">
+          <div class="box-head">Road × Checkpoint Matrix</div>
+          <div class="box-body" style="overflow-x:auto">
+            <table class="cmp-table" id="cp-matrix"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let checkpoints, roads;
+    let filter = 'all', selected = null;
+
+    async function init() {
+      [checkpoints, roads] = await Promise.all([
+        fetch('data/checkpoint_library.json').then(r=>r.json()),
+        fetch('data/roads.json').then(r=>r.json())
+      ]);
+      render();
+      renderMatrix();
+    }
+
+    function setFilter(btn) {
+      filter = btn.dataset.f;
+      document.querySelectorAll('.tac-wrap .tag').forEach(b => b.className = 'tag');
+      btn.classList.add('tag-ctrl');
+      render();
+    }
+
+    function render() {
+      const el = document.getElementById('cp-list');
+      const entries = Object.entries(checkpoints);
+      const filtered = filter === 'all' ? entries : entries.filter(([,cp]) => cp.category === filter);
+
+      document.getElementById('cp-count').textContent = `${filtered.length} checkpoints`;
+
+      let h = '';
+      for (const [key, cp] of filtered) {
+        const isSel = selected === key;
+        const catTag = cp.category.slice(0,4);
+        h += `<div class="spine-row${isSel?' sel':''}" onclick="selectCp('${key}')">`;
+        h += `<span class="tag tag-${catTag}">${catTag}</span>`;
+        h += `<span class="spine-name" style="margin-left:4px">${cp.name}</span>`;
+        h += `<span style="font-size:9px;color:var(--text3);flex-shrink:0">${cp.roads.length} roads</span>`;
+        h += '</div>';
+      }
+      el.innerHTML = h;
+    }
+
+    function selectCp(key) {
+      if (selected === key) { selected = null; render(); return; }
+      selected = key;
+      render();
+
+      const cp = checkpoints[key];
+      document.getElementById('cpd-title').textContent = cp.name;
+
+      let h = '<div class="detail">';
+      h += `<div class="detail-row"><div class="detail-k">category</div><div class="detail-v"><span class="tag tag-${cp.category.slice(0,4)}">${cp.category}</span></div></div>`;
+      h += `<div class="detail-row"><div class="detail-k">definition</div><div class="detail-v" style="font-family:var(--sans)">${cp.definition}</div></div>`;
+      h += `<div class="detail-row"><div class="detail-k">body concept</div><div class="detail-v" style="font-family:var(--sans)">${cp.body_concept}</div></div>`;
+      h += `<div class="detail-row"><div class="detail-k">roads</div><div class="detail-v">`;
+      for (const rid of cp.roads) {
+        const road = roads.find(r => r.id === rid);
+        if (road) {
+          h += `<div style="margin-bottom:2px"><span class="rtier ${road.tier}" style="margin-right:4px">${road.tier[0]}</span><span style="color:var(--text3)">${rid}</span> ${road.name}</div>`;
+        }
+      }
+      h += '</div></div>';
+      h += `<div class="detail-row"><div class="detail-k">reinforced</div><div class="detail-v" style="font-family:var(--sans);color:var(--text2)">${cp.reinforced_by.join('. ')}</div></div>`;
+      h += '</div>';
+
+      document.getElementById('cpd-body').innerHTML = h;
+    }
+
+    function renderMatrix() {
+      const cpKeys = Object.keys(checkpoints);
+      const spineRoads = roads.filter(r => r.tier === 'spine');
+
+      let h = '<thead><tr><th></th>';
+      for (const r of spineRoads) h += `<th>${r.id}</th>`;
+      h += '</tr></thead><tbody>';
+
+      for (const ck of cpKeys) {
+        const cp = checkpoints[ck];
+        h += `<tr><td style="font-size:9px;white-space:nowrap">${cp.name}</td>`;
+        for (const r of spineRoads) {
+          const has = cp.roads.includes(r.id);
+          h += `<td>${has ? '<span style="color:var(--accent)">●</span>' : '<span style="color:var(--border)">·</span>'}</td>`;
+        }
+        h += '</tr>';
+      }
+      h += '</tbody>';
+      document.getElementById('cp-matrix').innerHTML = h;
+    }
+
+    init();
+  </script>
+</body>
+</html>

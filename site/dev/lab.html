@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>/dev/lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tac.css">
+</head>
+<body>
+  <div class="tbar">
+    <span class="tbar-id">/dev/lab</span>
+    <span class="tbar-sep">|</span>
+    <a href="lab.html" class="here">lab</a>
+    <a href="compare.html">compare</a>
+    <a href="spines.html">spines</a>
+    <a href="checkpoints.html">checkpoints</a>
+    <a href="paths.html">paths</a>
+    <span class="tbar-sep">|</span>
+    <a href="index.html">fieldboard</a>
+    <a href="roads.html">roads</a>
+    <a href="curriculum.html">curriculum</a>
+  </div>
+
+  <div class="tac-wrap">
+    <div class="tac-title">Fieldboard Laboratory</div>
+    <div class="tac-sub">Experimental layouts. Switch between compact/expanded/flat views of the position×action grid.</div>
+
+    <div style="margin-bottom:12px;display:flex;gap:6px">
+      <button class="tag tag-ctrl" onclick="setMode('compact')" id="btn-compact">compact</button>
+      <button class="tag" onclick="setMode('expanded')" id="btn-expanded">expanded</button>
+      <button class="tag" onclick="setMode('flat')" id="btn-flat">flat</button>
+      <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="stats"></span>
+    </div>
+
+    <div class="tac-cols tac-rl">
+      <div class="scroll-y" style="padding:8px">
+        <table class="fb" id="grid"></table>
+      </div>
+
+      <div class="scroll-y" style="padding:8px">
+        <div class="box">
+          <div class="box-head">Inspector</div>
+          <div class="box-body" id="inspector">
+            <div style="color:var(--text3);font-size:10px">Click any cell</div>
+          </div>
+        </div>
+
+        <div class="box" style="margin-top:8px">
+          <div class="box-head">Road Highlight</div>
+          <div class="box-body">
+            <select id="road-select" style="width:100%;background:var(--bg);color:var(--text);border:1px solid var(--border);padding:3px 6px;font-family:var(--mono);font-size:10px">
+              <option value="">-- none --</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ACTIONS = ['CTRL','TRZ','SWP','SUB'];
+    let fb, roads, cellIdx = {}, mode = 'compact';
+
+    async function init() {
+      [fb, roads] = await Promise.all([
+        fetch('data/fieldboard.json').then(r=>r.json()),
+        fetch('data/roads.json').then(r=>r.json())
+      ]);
+      buildIndex();
+      render();
+      fillSelect();
+    }
+
+    function buildIndex() {
+      cellIdx = {};
+      for (const r of roads) {
+        for (const raw of r.fieldboard) {
+          for (const c of raw.split('/')) {
+            const k = c.trim();
+            if (!cellIdx[k]) cellIdx[k] = [];
+            cellIdx[k].push(r);
+          }
+        }
+      }
+    }
+
+    function setMode(m) {
+      mode = m;
+      document.querySelectorAll('.tac-wrap .tag').forEach(b => b.className = 'tag');
+      document.getElementById('btn-' + m).classList.add('tag-ctrl');
+      render();
+    }
+
+    function render() {
+      const t = document.getElementById('grid');
+      let h = '<thead><tr><th>pos</th>';
+      for (const a of ACTIONS) h += `<th class="c-${a.toLowerCase()}">${a}</th>`;
+      h += '</tr></thead><tbody>';
+
+      let populated = 0, total = 0;
+      for (const pos of fb.positions) {
+        h += `<tr><td><div class="fb-pos ${pos.tier==='defense'?'def':'off'}"`;
+        if (pos.subtopologies.length && mode !== 'flat') {
+          h += ` onclick="toggleSub('${pos.id}')"`;
+          h += `><span class="ch" id="ch-${pos.id}">▶</span>`;
+        } else { h += `>`; }
+        h += `${pos.id}</div></td>`;
+        for (const a of ACTIONS) {
+          const c = `${pos.id}.${a}`;
+          const has = cellIdx[c];
+          total++;
+          if (has) populated++;
+          h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}" onclick="inspect('${c}')"></td>`;
+        }
+        h += '</tr>';
+
+        if (pos.subtopologies.length) {
+          for (const sub of pos.subtopologies) {
+            const sid = sub.id.split('.')[1];
+            const vis = mode === 'expanded' || mode === 'flat';
+            h += `<tr class="fb-sub${vis?' show':''}" data-par="${pos.id}"><td>${sid}</td>`;
+            for (const a of ACTIONS) {
+              const c = `${pos.id}.${sid}.${a}`;
+              const has = cellIdx[c];
+              total++;
+              if (has) populated++;
+              h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}" onclick="inspect('${c}')"></td>`;
+            }
+            h += '</tr>';
+          }
+        }
+      }
+      h += '</tbody>';
+      t.innerHTML = h;
+      document.getElementById('stats').textContent = `${populated}/${total} populated`;
+    }
+
+    function toggleSub(pid) {
+      const rows = document.querySelectorAll(`tr[data-par="${pid}"]`);
+      const ch = document.getElementById('ch-'+pid);
+      const show = !rows[0].classList.contains('show');
+      rows.forEach(r => r.classList.toggle('show', show));
+      if (ch) ch.classList.toggle('open', show);
+    }
+
+    function inspect(coord) {
+      document.querySelectorAll('.cell.hi').forEach(c => c.classList.remove('hi'));
+      document.querySelector(`.cell[data-c="${coord}"]`)?.classList.add('hi');
+
+      const el = document.getElementById('inspector');
+      const rds = cellIdx[coord] || [];
+      let h = `<div class="coord-vec" style="margin-bottom:6px"><span>${coord}</span></div>`;
+      if (!rds.length) {
+        h += '<div style="color:var(--text3);font-size:10px">empty cell</div>';
+      } else {
+        h += `<div style="font-size:10px;color:var(--text2);margin-bottom:4px">${rds.length} road${rds.length>1?'s':''}</div>`;
+        for (const r of rds) {
+          h += `<div class="ritem" style="border:none;padding:2px 0"><span class="rtier ${r.tier}">${r.tier[0]}</span><span class="rid">${r.id}</span><span class="rname">${r.name}</span></div>`;
+        }
+      }
+      el.innerHTML = h;
+    }
+
+    function fillSelect() {
+      const sel = document.getElementById('road-select');
+      for (const r of roads) {
+        sel.innerHTML += `<option value="${r.id}">${r.id} ${r.name}</option>`;
+      }
+      sel.addEventListener('change', () => highlightRoad(sel.value));
+    }
+
+    function highlightRoad(rid) {
+      document.querySelectorAll('.cell.hi').forEach(c => c.classList.remove('hi'));
+      document.querySelectorAll('.cell .sn').forEach(s => s.remove());
+      if (!rid) return;
+      const road = roads.find(r => r.id === rid);
+      if (!road) return;
+      let step = 1;
+      for (const raw of road.fieldboard) {
+        for (const c of raw.split('/')) {
+          const cell = document.querySelector(`.cell[data-c="${c.trim()}"]`);
+          if (cell) {
+            cell.classList.add('hi');
+            const sn = document.createElement('span');
+            sn.className = 'sn';
+            sn.textContent = step;
+            cell.appendChild(sn);
+            const par = cell.closest('tr[data-par]');
+            if (par) { par.classList.add('show'); }
+          }
+          step++;
+        }
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

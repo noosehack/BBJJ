@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>/dev/paths</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tac.css">
+</head>
+<body>
+  <div class="tbar">
+    <span class="tbar-id">/dev/paths</span>
+    <span class="tbar-sep">|</span>
+    <a href="lab.html">lab</a>
+    <a href="compare.html">compare</a>
+    <a href="spines.html">spines</a>
+    <a href="checkpoints.html">checkpoints</a>
+    <a href="paths.html" class="here">paths</a>
+    <span class="tbar-sep">|</span>
+    <a href="index.html">fieldboard</a>
+    <a href="roads.html">roads</a>
+    <a href="curriculum.html">curriculum</a>
+  </div>
+
+  <div class="tac-wrap">
+    <div class="tac-title">Path Debugger</div>
+    <div class="tac-sub">Graph traversal explorer. Select a road to trace its sequence, branches, and failure topology.</div>
+
+    <div class="tac-cols tac-wide-lr" style="height:calc(100vh - 80px)">
+      <div class="scroll-y">
+        <div class="box">
+          <div class="box-head">Roads</div>
+        </div>
+        <ul class="rlist" id="road-list"></ul>
+      </div>
+
+      <div class="scroll-y" style="padding:8px">
+        <!-- Fieldboard -->
+        <div class="box" style="margin-bottom:8px">
+          <div class="box-head">Fieldboard <span id="fb-label" style="color:var(--accent);font-weight:400"></span></div>
+          <div class="box-body" style="overflow-x:auto">
+            <table class="fb" id="grid"></table>
+          </div>
+        </div>
+
+        <!-- Sequence -->
+        <div class="box" style="margin-bottom:8px" id="seq-box" style="display:none">
+          <div class="box-head">Sequence</div>
+          <div class="box-body" id="seq-body"></div>
+        </div>
+
+        <!-- Failure topology -->
+        <div class="box" style="margin-bottom:8px" id="fail-box" style="display:none">
+          <div class="box-head">Failure Topology</div>
+          <div class="box-body" id="fail-body"></div>
+        </div>
+
+        <!-- Branching -->
+        <div class="box" style="margin-bottom:8px;display:none" id="branch-box">
+          <div class="box-head">Branching Points</div>
+          <div class="box-body" id="branch-body"></div>
+        </div>
+
+        <!-- Dependencies -->
+        <div class="box" id="dep-box" style="display:none">
+          <div class="box-head">Dependency Chain</div>
+          <div class="box-body" id="dep-body"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ACTIONS = ['CTRL','TRZ','SWP','SUB'];
+    let fb, roads, depGraph, cellIdx = {}, selected = null;
+
+    async function init() {
+      [fb, roads, depGraph] = await Promise.all([
+        fetch('data/fieldboard.json').then(r=>r.json()),
+        fetch('data/roads.json').then(r=>r.json()),
+        fetch('data/road_dependency_graph.json').then(r=>r.json())
+      ]);
+      buildIndex();
+      renderGrid();
+      renderRoadList();
+    }
+
+    function buildIndex() {
+      cellIdx = {};
+      for (const r of roads) for (const raw of r.fieldboard) for (const c of raw.split('/')) {
+        const k = c.trim();
+        (cellIdx[k] = cellIdx[k] || []).push(r);
+      }
+    }
+
+    function renderGrid() {
+      let h = '<thead><tr><th>pos</th>';
+      ACTIONS.forEach(a => h += `<th class="c-${a.toLowerCase()}">${a}</th>`);
+      h += '</tr></thead><tbody>';
+      for (const pos of fb.positions) {
+        h += `<tr><td><div class="fb-pos ${pos.tier==='defense'?'def':'off'}"`;
+        if (pos.subtopologies.length) h += ` onclick="toggleSub('${pos.id}')"><span class="ch" id="ch-${pos.id}">▶</span>`;
+        else h += '>';
+        h += `${pos.id}</div></td>`;
+        ACTIONS.forEach(a => {
+          const c = `${pos.id}.${a}`, has = cellIdx[c];
+          h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}"></td>`;
+        });
+        h += '</tr>';
+        for (const sub of pos.subtopologies) {
+          const sid = sub.id.split('.')[1];
+          h += `<tr class="fb-sub" data-par="${pos.id}"><td>${sid}</td>`;
+          ACTIONS.forEach(a => {
+            const c = `${pos.id}.${sid}.${a}`, has = cellIdx[c];
+            h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}"></td>`;
+          });
+          h += '</tr>';
+        }
+      }
+      h += '</tbody>';
+      document.getElementById('grid').innerHTML = h;
+    }
+
+    function toggleSub(pid) {
+      document.querySelectorAll(`tr[data-par="${pid}"]`).forEach(r => r.classList.toggle('show'));
+      document.getElementById('ch-'+pid)?.classList.toggle('open');
+    }
+
+    function renderRoadList() {
+      const el = document.getElementById('road-list');
+      let h = '';
+      for (const r of roads) {
+        h += `<li class="ritem${selected===r.id?' sel':''}" onclick="selectRoad('${r.id}')">`;
+        h += `<span class="rtier ${r.tier}">${r.tier[0].toUpperCase()}</span>`;
+        h += `<span class="rid">${r.id}</span>`;
+        h += `<span class="rname">${r.name}</span>`;
+        h += '</li>';
+      }
+      el.innerHTML = h;
+    }
+
+    function selectRoad(rid) {
+      // Clear
+      document.querySelectorAll('.cell.hi').forEach(c => c.classList.remove('hi'));
+      document.querySelectorAll('.cell .sn').forEach(s => s.remove());
+
+      if (selected === rid) {
+        selected = null;
+        renderRoadList();
+        document.getElementById('fb-label').textContent = '';
+        ['seq-box','fail-box','branch-box','dep-box'].forEach(id => document.getElementById(id).style.display = 'none');
+        return;
+      }
+
+      selected = rid;
+      renderRoadList();
+      const road = roads.find(r => r.id === rid);
+      document.getElementById('fb-label').textContent = `${road.id}: ${road.name}`;
+
+      // Highlight cells
+      let step = 1;
+      for (const raw of road.fieldboard) {
+        for (const c of raw.split('/')) {
+          const coord = c.trim();
+          const cell = document.querySelector(`.cell[data-c="${coord}"]`);
+          if (cell) {
+            cell.classList.add('hi');
+            const sn = document.createElement('span');
+            sn.className = 'sn'; sn.textContent = step;
+            cell.appendChild(sn);
+            const par = cell.closest('tr[data-par]');
+            if (par) par.classList.add('show');
+          }
+          step++;
+        }
+      }
+
+      // Sequence detail
+      renderSequence(road);
+      renderFailure(road);
+      renderBranching(road);
+      renderDeps(road);
+    }
+
+    function renderSequence(road) {
+      const el = document.getElementById('seq-body');
+      const box = document.getElementById('seq-box');
+      box.style.display = '';
+
+      let h = '';
+      // Step-by-step
+      road.sequence.forEach((s, i) => {
+        const act = (s.action || '').toLowerCase();
+        h += `<div style="display:flex;align-items:flex-start;gap:8px;padding:4px 0;border-bottom:1px solid var(--border)">`;
+        h += `<span style="color:var(--text3);width:16px;text-align:right;flex-shrink:0">${i+1}</span>`;
+        h += `<span class="seq-step a-${act}" style="flex-shrink:0">${s.position}</span>`;
+        h += `<span style="color:var(--text2);font-family:var(--sans);font-size:10px">${s.detail}</span>`;
+        h += '</div>';
+      });
+
+      // Coordinate vector
+      h += '<div class="coord-vec" style="margin-top:6px">';
+      h += road.fieldboard.map(c => `<span>${c}</span>`).join(' → ');
+      h += '</div>';
+
+      el.innerHTML = h;
+    }
+
+    function renderFailure(road) {
+      const el = document.getElementById('fail-body');
+      document.getElementById('fail-box').style.display = '';
+
+      let h = `<div style="margin-bottom:6px"><span class="tag tag-${road.failure.classification}">${road.failure.classification}</span></div>`;
+      h += '<div class="fail-diagram">';
+
+      for (const [k, v] of Object.entries(road.failure)) {
+        if (k === 'classification') continue;
+        h += '<div class="fail-path">';
+        h += `<span class="fail-node" style="border-color:var(--risky)">${k.replace(/_/g,' ')}</span>`;
+        h += '<span class="fail-edge">→</span>';
+        h += `<span style="font-family:var(--sans);font-size:10px;color:var(--text2)">${v}</span>`;
+        h += '</div>';
+      }
+      h += '</div>';
+      el.innerHTML = h;
+    }
+
+    function renderBranching(road) {
+      const box = document.getElementById('branch-box');
+      const el = document.getElementById('branch-body');
+      if (!road.branching) { box.style.display = 'none'; return; }
+      box.style.display = '';
+
+      let h = '';
+      for (const [trigger, outcome] of Object.entries(road.branching)) {
+        h += '<div class="fail-path">';
+        h += `<span class="fail-node" style="border-color:var(--accent)">${trigger.replace(/_/g,' ')}</span>`;
+        h += '<span class="fail-edge">→</span>';
+        h += `<span style="font-family:var(--sans);font-size:10px;color:var(--text2)">${outcome}</span>`;
+        h += '</div>';
+      }
+      el.innerHTML = h;
+    }
+
+    function renderDeps(road) {
+      const el = document.getElementById('dep-body');
+      document.getElementById('dep-box').style.display = '';
+
+      const node = depGraph.nodes?.find(n => n.road_id === road.id);
+      const prereqs = node?.prerequisites || [];
+
+      if (!prereqs.length) {
+        el.innerHTML = '<div style="color:var(--text3);font-size:10px">No prerequisites — root node</div>';
+        return;
+      }
+
+      let h = '';
+      for (const pid of prereqs) {
+        const pr = roads.find(r => r.id === pid);
+        h += `<div style="display:flex;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid var(--border)">`;
+        h += `<span class="rid">${pid}</span>`;
+        h += `<span class="seq-arr">→</span>`;
+        h += `<span class="rid" style="color:var(--accent)">${road.id}</span>`;
+        if (pr) h += `<span style="color:var(--text2);font-size:10px;margin-left:8px">${pr.name}</span>`;
+        h += '</div>';
+      }
+
+      // Also show what depends on this road
+      const dependents = depGraph.edges?.filter(e => e.from === road.id).map(e => e.to) || [];
+      if (dependents.length) {
+        h += `<div style="margin-top:8px;font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em">unlocks</div>`;
+        for (const did of dependents) {
+          const dr = roads.find(r => r.id === did);
+          h += `<div style="display:flex;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid var(--border)">`;
+          h += `<span class="rid" style="color:var(--accent)">${road.id}</span>`;
+          h += `<span class="seq-arr">→</span>`;
+          h += `<span class="rid">${did}</span>`;
+          if (dr) h += `<span style="color:var(--text2);font-size:10px;margin-left:8px">${dr.name}</span>`;
+          h += '</div>';
+        }
+      }
+
+      el.innerHTML = h;
+    }
+
+    init();
+  </script>
+</body>
+</html>

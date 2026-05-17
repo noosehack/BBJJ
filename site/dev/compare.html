@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>/dev/compare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tac.css">
+</head>
+<body>
+  <div class="tbar">
+    <span class="tbar-id">/dev/compare</span>
+    <span class="tbar-sep">|</span>
+    <a href="lab.html">lab</a>
+    <a href="compare.html" class="here">compare</a>
+    <a href="spines.html">spines</a>
+    <a href="checkpoints.html">checkpoints</a>
+    <a href="paths.html">paths</a>
+    <span class="tbar-sep">|</span>
+    <a href="index.html">fieldboard</a>
+    <a href="roads.html">roads</a>
+    <a href="curriculum.html">curriculum</a>
+  </div>
+
+  <div class="tac-wrap">
+    <div class="tac-title">Curriculum Philosophy Comparison</div>
+    <div class="tac-sub">Structural comparison of teaching philosophies. These are conceptual assessments, not empirical measurements.</div>
+
+    <div class="box" style="margin-bottom:12px">
+      <div class="box-head">Comparison Matrix</div>
+      <div class="box-body" style="overflow-x:auto">
+        <table class="cmp-table" id="cmp-table"></table>
+      </div>
+    </div>
+
+    <div class="tac-cols tac-2" style="gap:12px;background:transparent">
+      <div class="box" id="sys-detail">
+        <div class="box-head">System Detail</div>
+        <div class="box-body" style="font-size:10px;color:var(--text3)">Click a column header to inspect</div>
+      </div>
+      <div class="box">
+        <div class="box-head">Dimension Key</div>
+        <div class="box-body" id="dim-key"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SYSTEMS = {
+      gb: {
+        name: "Gracie Barra",
+        short: "GB",
+        philosophy: "Position-before-submission. Structured 96-technique curriculum with fixed teaching order. Heavy self-defense integration. Compliance-oriented — every school teaches the same material.",
+        emphasis: "Control-first. Sweep-then-submit. Safe failure at every step. Self-defense woven in.",
+        source: "GB1 Fundamentals (96 techniques, 8 positions)"
+      },
+      roger: {
+        name: "Roger Gracie",
+        short: "Roger",
+        philosophy: "Fundamental pressure. Closed guard and mount dominance. Minimal technique count, maximum depth. \"Master 5 techniques rather than learn 500.\"",
+        emphasis: "Closed guard cross-choke. Mount cross-choke. Pressure passing. Weight distribution mastery.",
+        source: "Roger Gracie Fundamental System (bjjgraph)"
+      },
+      danaher: {
+        name: "Danaher / New Wave",
+        short: "Danaher",
+        philosophy: "Systems-based. Each position is a complete attack system with decision trees. Heavy leg lock integration. No-gi focused. Conceptual teaching over technique drilling.",
+        emphasis: "Submission systems. Leg entanglements. Decision trees. Positional dilemmas. Back attack system.",
+        source: "Conceptual (Enter the System series)"
+      },
+      aoj: {
+        name: "AOJ / Mendes Bros",
+        short: "AOJ",
+        philosophy: "Guard-first. Early berimbolo and modern guard play. High movement density. Competition-oriented. Emphasis on guard retention and dynamic transitions.",
+        emphasis: "De La Riva. Berimbolo. Guard retention. Dynamic movement. Early competition readiness.",
+        source: "Art of Jiu Jitsu curriculum"
+      },
+      fieldboard: {
+        name: "Fieldboard",
+        short: "FBoard",
+        philosophy: "Position-graph traversal. All 7 positions in Year 1. Reusable checkpoint mechanics. Failure topology analysis. Dual-perspective teaching (attack and defense simultaneously).",
+        emphasis: "Graph coverage. Checkpoint reuse. Safe failure. Duality. Structural completeness before depth.",
+        source: "This project (24 roads, 19 checkpoints)"
+      }
+    };
+
+    const DIMENSIONS = [
+      { key: "road_density",       label: "Road density",           desc: "How many technique paths are introduced early" },
+      { key: "control_emphasis",   label: "Control-first emphasis", desc: "Stabilization priority before attacks" },
+      { key: "branching",          label: "Branching complexity",   desc: "Beginner cognitive load from decision points" },
+      { key: "sweep_sub_bias",     label: "Sweep vs submission",   desc: "Strategic preference: positional advance vs finish" },
+      { key: "checkpoint_density", label: "Checkpoint density",     desc: "How often stable pauses exist in sequences" },
+      { key: "failure_safety",     label: "Failure safety",         desc: "What happens when techniques fail" },
+      { key: "movement_density",   label: "Movement density",       desc: "Static pressure vs dynamic flow" },
+      { key: "progression",        label: "Dominant progression",   desc: "Side→mount→back importance in teaching" }
+    ];
+
+    // Conceptual ratings 1-5 (NOT empirical — philosophy comparison only)
+    const RATINGS = {
+      gb:         [2, 5, 1, 3, 4, 5, 2, 4],
+      roger:      [1, 5, 1, 2, 5, 5, 1, 5],
+      danaher:    [4, 3, 4, 5, 3, 3, 3, 3],
+      aoj:        [4, 2, 4, 3, 2, 2, 5, 2],
+      fieldboard: [3, 4, 2, 3, 5, 5, 2, 4]
+    };
+
+    function init() {
+      renderTable();
+      renderDimKey();
+    }
+
+    function renderTable() {
+      const t = document.getElementById('cmp-table');
+      const sysKeys = Object.keys(SYSTEMS);
+
+      let h = '<thead><tr><th>dimension</th>';
+      for (const sk of sysKeys) {
+        h += `<th style="cursor:pointer" onclick="showSystem('${sk}')">${SYSTEMS[sk].short}</th>`;
+      }
+      h += '</tr></thead><tbody>';
+
+      for (let i = 0; i < DIMENSIONS.length; i++) {
+        const d = DIMENSIONS[i];
+        h += `<tr><td title="${d.desc}">${d.label}</td>`;
+        for (const sk of sysKeys) {
+          const v = RATINGS[sk][i];
+          const w = v * 20;
+          const color = sk === 'fieldboard' ? 'var(--accent)' : 'var(--text3)';
+          h += `<td><span class="cmp-bar" style="width:${w}px;background:${color}"></span> <span style="font-size:9px;color:var(--text3)">${v}</span></td>`;
+        }
+        h += '</tr>';
+      }
+      h += '</tbody>';
+      t.innerHTML = h;
+    }
+
+    function showSystem(sk) {
+      const s = SYSTEMS[sk];
+      const el = document.getElementById('sys-detail');
+      el.innerHTML = `
+        <div class="box-head">${s.name}</div>
+        <div class="box-body">
+          <div class="detail">
+            <div class="detail-row"><div class="detail-k">philosophy</div><div class="detail-v" style="font-family:var(--sans)">${s.philosophy}</div></div>
+            <div class="detail-row"><div class="detail-k">emphasis</div><div class="detail-v" style="font-family:var(--sans)">${s.emphasis}</div></div>
+            <div class="detail-row"><div class="detail-k">source</div><div class="detail-v">${s.source}</div></div>
+          </div>
+        </div>`;
+    }
+
+    function renderDimKey() {
+      const el = document.getElementById('dim-key');
+      let h = '';
+      for (const d of DIMENSIONS) {
+        h += `<div style="margin-bottom:6px"><div style="font-size:10px;font-weight:600;color:var(--text2)">${d.label}</div><div style="font-size:10px;color:var(--text3);font-family:var(--sans)">${d.desc}</div></div>`;
+      }
+      el.innerHTML = h;
+    }
+
+    init();
+  </script>
+</body>
+</html>

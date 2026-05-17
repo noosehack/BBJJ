@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>/dev/spines</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tac.css">
+</head>
+<body>
+  <div class="tbar">
+    <span class="tbar-id">/dev/spines</span>
+    <span class="tbar-sep">|</span>
+    <a href="lab.html">lab</a>
+    <a href="compare.html">compare</a>
+    <a href="spines.html" class="here">spines</a>
+    <a href="checkpoints.html">checkpoints</a>
+    <a href="paths.html">paths</a>
+    <span class="tbar-sep">|</span>
+    <a href="index.html">fieldboard</a>
+    <a href="roads.html">roads</a>
+    <a href="curriculum.html">curriculum</a>
+  </div>
+
+  <div class="tac-wrap">
+    <div class="tac-title">Spine Map</div>
+    <div class="tac-sub">Selected curriculum roads projected on the fieldboard. Click a road to trace its path.</div>
+
+    <div style="margin-bottom:8px;display:flex;gap:6px">
+      <button class="tag tag-ctrl" data-f="all" onclick="setFilter(this)">all</button>
+      <button class="tag" data-f="spine" onclick="setFilter(this)">spine</button>
+      <button class="tag" data-f="branch" onclick="setFilter(this)">branch</button>
+      <button class="tag" data-f="network" onclick="setFilter(this)">network</button>
+    </div>
+
+    <div class="tac-cols tac-wide-lr" style="height:calc(100vh - 100px)">
+      <div class="scroll-y">
+        <div id="road-list"></div>
+      </div>
+
+      <div class="scroll-y" style="padding:8px">
+        <div class="box" style="margin-bottom:8px">
+          <div class="box-head">Fieldboard <span id="fb-label" style="color:var(--accent);font-weight:400"></span></div>
+          <div class="box-body" style="overflow-x:auto">
+            <table class="fb" id="grid"></table>
+          </div>
+        </div>
+
+        <div class="box" id="road-detail" style="display:none">
+          <div class="box-head" id="rd-title">—</div>
+          <div class="box-body" id="rd-body"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ACTIONS = ['CTRL','TRZ','SWP','SUB'];
+    let fb, roads, cellIdx = {}, selected = null, filter = 'all';
+
+    async function init() {
+      [fb, roads] = await Promise.all([
+        fetch('data/fieldboard.json').then(r=>r.json()),
+        fetch('data/roads.json').then(r=>r.json())
+      ]);
+      buildIndex();
+      renderGrid();
+      renderList();
+    }
+
+    function buildIndex() {
+      cellIdx = {};
+      for (const r of roads) for (const raw of r.fieldboard) for (const c of raw.split('/')) {
+        const k = c.trim();
+        (cellIdx[k] = cellIdx[k] || []).push(r);
+      }
+    }
+
+    function setFilter(btn) {
+      filter = btn.dataset.f;
+      document.querySelectorAll('.tac-wrap .tag').forEach(b => b.className = 'tag');
+      btn.classList.add('tag-ctrl');
+      selected = null;
+      clearHighlight();
+      renderList();
+    }
+
+    function renderGrid() {
+      let h = '<thead><tr><th>pos</th>';
+      ACTIONS.forEach(a => h += `<th class="c-${a.toLowerCase()}">${a}</th>`);
+      h += '</tr></thead><tbody>';
+
+      for (const pos of fb.positions) {
+        h += `<tr><td><div class="fb-pos ${pos.tier==='defense'?'def':'off'}"`;
+        if (pos.subtopologies.length) h += ` onclick="toggleSub('${pos.id}')"><span class="ch" id="ch-${pos.id}">▶</span>`;
+        else h += '>';
+        h += `${pos.id}</div></td>`;
+        ACTIONS.forEach(a => {
+          const c = `${pos.id}.${a}`;
+          const has = cellIdx[c];
+          h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}"></td>`;
+        });
+        h += '</tr>';
+        for (const sub of pos.subtopologies) {
+          const sid = sub.id.split('.')[1];
+          h += `<tr class="fb-sub" data-par="${pos.id}"><td>${sid}</td>`;
+          ACTIONS.forEach(a => {
+            const c = `${pos.id}.${sid}.${a}`;
+            const has = cellIdx[c];
+            h += `<td class="cell${has?' pop a-'+a.toLowerCase():''}" data-c="${c}"></td>`;
+          });
+          h += '</tr>';
+        }
+      }
+      h += '</tbody>';
+      document.getElementById('grid').innerHTML = h;
+    }
+
+    function toggleSub(pid) {
+      document.querySelectorAll(`tr[data-par="${pid}"]`).forEach(r => r.classList.toggle('show'));
+      const ch = document.getElementById('ch-'+pid);
+      if (ch) ch.classList.toggle('open');
+    }
+
+    function renderList() {
+      const el = document.getElementById('road-list');
+      const filtered = filter === 'all' ? roads : roads.filter(r => r.tier === filter);
+      let h = '';
+      let idx = 1;
+      for (const r of filtered) {
+        const isSel = selected === r.id;
+        h += `<div class="spine-row${isSel?' sel':''}" onclick="selectRoad('${r.id}')">`;
+        h += `<span class="spine-idx">${idx}</span>`;
+        h += `<span class="rtier ${r.tier}">${r.tier[0].toUpperCase()}</span>`;
+        h += `<span class="spine-id">${r.id}</span>`;
+        h += `<span class="spine-name">${r.name}</span>`;
+        h += `<span class="tag tag-${r.failure.classification}">${r.failure.classification}</span>`;
+        h += `<span class="spine-vec">`;
+        for (const raw of r.fieldboard) {
+          for (const c of raw.split('/')) {
+            const act = c.trim().split('.').pop().toLowerCase();
+            h += `<span class="spine-dot" style="color:var(--${act})">${act[0].toUpperCase()}</span>`;
+          }
+        }
+        h += '</span></div>';
+        idx++;
+      }
+      el.innerHTML = h;
+    }
+
+    function clearHighlight() {
+      document.querySelectorAll('.cell.hi').forEach(c => c.classList.remove('hi'));
+      document.querySelectorAll('.cell .sn').forEach(s => s.remove());
+      document.getElementById('fb-label').textContent = '';
+      document.getElementById('road-detail').style.display = 'none';
+    }
+
+    function selectRoad(rid) {
+      clearHighlight();
+      if (selected === rid) { selected = null; renderList(); return; }
+      selected = rid;
+      renderList();
+
+      const road = roads.find(r => r.id === rid);
+      document.getElementById('fb-label').textContent = `${road.id}: ${road.name}`;
+
+      let step = 1;
+      for (const raw of road.fieldboard) {
+        for (const c of raw.split('/')) {
+          const coord = c.trim();
+          const cell = document.querySelector(`.cell[data-c="${coord}"]`);
+          if (cell) {
+            cell.classList.add('hi');
+            const sn = document.createElement('span');
+            sn.className = 'sn';
+            sn.textContent = step;
+            cell.appendChild(sn);
+            const par = cell.closest('tr[data-par]');
+            if (par) par.classList.add('show');
+          }
+          step++;
+        }
+      }
+
+      // Detail
+      const det = document.getElementById('road-detail');
+      document.getElementById('rd-title').textContent = `${road.id} — ${road.name}`;
+      let h = '<div class="detail">';
+
+      // Sequence vector
+      h += '<div class="detail-row"><div class="detail-k">sequence</div><div class="detail-v"><div class="seq">';
+      road.sequence.forEach((s, i) => {
+        if (i) h += '<span class="seq-arr">→</span>';
+        h += `<span class="seq-step a-${(s.action||'').toLowerCase()}">${s.position}</span>`;
+      });
+      h += '</div></div></div>';
+
+      // Coordinate vector
+      h += `<div class="detail-row"><div class="detail-k">coords</div><div class="detail-v"><div class="coord-vec">${road.fieldboard.map(c => `<span>${c}</span>`).join(' → ')}</div></div></div>`;
+
+      // Checkpoints
+      const cps = [];
+      for (const [cat, items] of Object.entries(road.checkpoints || {})) {
+        items.forEach(item => cps.push(`<span class="tag tag-${cat.slice(0,4)}">${cat.slice(0,4)}</span> ${item}`));
+      }
+      if (cps.length) h += `<div class="detail-row"><div class="detail-k">checkpoints</div><div class="detail-v" style="font-family:var(--sans)">${cps.join('<br>')}</div></div>`;
+
+      // Failure
+      h += `<div class="detail-row"><div class="detail-k">failure</div><div class="detail-v"><span class="tag tag-${road.failure.classification}">${road.failure.classification}</span>`;
+      for (const [k, v] of Object.entries(road.failure)) {
+        if (k !== 'classification') h += `<div style="margin-top:2px;font-size:10px;color:var(--text2);font-family:var(--sans)"><span style="color:var(--text3)">${k}:</span> ${v}</div>`;
+      }
+      h += '</div></div>';
+
+      // Duality
+      h += `<div class="detail-row"><div class="detail-k">duality</div><div class="detail-v" style="font-family:var(--sans)">${road.duality}</div></div>`;
+
+      // Mechanics
+      h += `<div class="detail-row"><div class="detail-k">mechanics</div><div class="detail-v">${road.mechanics.join(', ')}</div></div>`;
+
+      h += '</div>';
+      document.getElementById('rd-body').innerHTML = h;
+      det.style.display = '';
+    }
+
+    init();
+  </script>
+</body>
+</html>
