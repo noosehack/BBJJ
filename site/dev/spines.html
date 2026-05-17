@@ -26,6 +26,14 @@
     <div class="tac-title">Spine Map</div>
     <div class="tac-sub">Selected curriculum roads projected on the fieldboard. Click a road to trace its path.</div>
 
+    <div class="box" style="margin-bottom:10px">
+      <div class="box-body" style="display:flex;gap:20px;font-size:10px">
+        <div><span class="rtier spine">S</span> <strong style="color:var(--spine)">spine</strong> <span style="color:var(--text3)">— beginner highways. linear, minimal branching, safe failure. the core roads every student must learn.</span></div>
+        <div><span class="rtier branch">B</span> <strong style="color:var(--branch)">branch</strong> <span style="color:var(--text3)">— intermediate expansions. build on spines, introduce new chains and positions.</span></div>
+        <div><span class="rtier network">N</span> <strong style="color:var(--network)">network</strong> <span style="color:var(--text3)">— advanced decision trees. multiple branches, opponent-reading, synthesize prior roads.</span></div>
+      </div>
+    </div>
+
     <div style="margin-bottom:8px;display:flex;gap:6px">
       <button class="tag tag-ctrl" data-f="all" onclick="setFilter(this)">all</button>
       <button class="tag" data-f="spine" onclick="setFilter(this)">spine</button>
