@@ -2,7 +2,7 @@
   "posture_break": {
     "name": "Posture Break",
     "category": "control",
-    "definition": "Breaking opponent's upright alignment from guard \u2014 pulling head/shoulders below their hips to neutralize their base and strikes.",
+    "definition": "Breaking opponent's upright alignment from guard — pulling head/shoulders below their hips to neutralize their base and strikes.",
     "body_concept": "Pull collar or head down, close distance between your chest and theirs. Their hands go to the mat = vulnerability.",
     "roads": [
       "S1",
@@ -15,13 +15,13 @@
       "N5"
     ],
     "reinforced_by": [
-      "Any closed guard class \u2014 this is the root of all bottom attacks"
+      "Any closed guard class — this is the root of all bottom attacks"
     ]
   },
   "mount_stabilization": {
     "name": "Mount Stabilization",
     "category": "stabilization",
-    "definition": "Maintaining mount against bridging and shrimping \u2014 keeping hips heavy, base wide, reacting to escape attempts.",
+    "definition": "Maintaining mount against bridging and shrimping — keeping hips heavy, base wide, reacting to escape attempts.",
     "body_concept": "Grapevines or heels on hips. Knees squeeze. Hips heavy. Hands post when they bridge. Ride the wave.",
     "roads": [
       "S1",
@@ -34,7 +34,7 @@
       "N2"
     ],
     "reinforced_by": [
-      "Every class that ends in mount \u2014 practice stabilization before submission"
+      "Every class that ends in mount — practice stabilization before submission"
     ]
   },
   "crossface": {
@@ -75,7 +75,7 @@
     "name": "Seatbelt Grip",
     "category": "control",
     "definition": "Chest-to-back control with one arm over the shoulder and one under the armpit, hands clasped across opponent's chest.",
-    "body_concept": "Over-arm controls the choking lane. Under-arm prevents them turning in. Chest glued to their back \u2014 zero space.",
+    "body_concept": "Over-arm controls the choking lane. Under-arm prevents them turning in. Chest glued to their back — zero space.",
     "roads": [
       "S2",
       "B2",
@@ -83,28 +83,28 @@
       "N3"
     ],
     "reinforced_by": [
-      "Any back control class \u2014 seatbelt is the root grip"
+      "Any back control class — seatbelt is the root grip"
     ]
   },
   "hip_escape": {
     "name": "Hip Escape (Shrimp)",
     "category": "transition",
     "definition": "Moving hips away from opponent to create space or change angle. The most fundamental defensive and offensive movement in BJJ.",
-    "body_concept": "Bridge onto shoulder \u2192 slide hips away \u2192 face opponent. Used to escape, re-guard, set up sweeps, and create angles for submissions.",
+    "body_concept": "Bridge onto shoulder → slide hips away → face opponent. Used to escape, re-guard, set up sweeps, and create angles for submissions.",
     "roads": [
       "S1",
       "S2",
       "B5"
     ],
     "reinforced_by": [
-      "Guard recovery drills, mount escape, side control escape \u2014 appears everywhere"
+      "Guard recovery drills, mount escape, side control escape — appears everywhere"
     ]
   },
   "bridge": {
     "name": "Bridge (Upa)",
     "category": "transition",
     "definition": "Explosive hip elevation to off-balance or escape from bottom. The primary mount escape mechanism.",
-    "body_concept": "Feet flat, drive hips to ceiling. Direction matters \u2014 bridge over one shoulder toward trapped arm side.",
+    "body_concept": "Feet flat, drive hips to ceiling. Direction matters — bridge over one shoulder toward trapped arm side.",
     "roads": [
       "S1",
       "B8"
@@ -122,16 +122,17 @@
       "S5",
       "S7",
       "S8",
+      "S9",
       "B3"
     ],
     "reinforced_by": [
-      "Gi-specific classes \u2014 collar grip is the gi equivalent of clinch control"
+      "Gi-specific classes — collar grip is the gi equivalent of clinch control"
     ]
   },
   "figure_four_lock": {
     "name": "Figure-Four Lock",
     "category": "submission",
-    "definition": "Interlocking grip where your wrist controls their wrist and your other hand grabs your own wrist \u2014 creates a lever system.",
+    "definition": "Interlocking grip where your wrist controls their wrist and your other hand grabs your own wrist — creates a lever system.",
     "body_concept": "Appears in kimura, americana, armbar grip, RNC. Same grip shape, different application angles.",
     "roads": [
       "S1",
@@ -145,7 +146,7 @@
   "arm_isolation": {
     "name": "Arm Isolation",
     "category": "transition",
-    "definition": "Separating one of opponent's arms from their body to attack it \u2014 the prerequisite for armbar, americana, kimura.",
+    "definition": "Separating one of opponent's arms from their body to attack it — the prerequisite for armbar, americana, kimura.",
     "body_concept": "Two-on-one control. Pin at wrist or elbow. Create separation between their arm and their torso.",
     "roads": [
       "S1",
@@ -167,7 +168,7 @@
       "N3"
     ],
     "reinforced_by": [
-      "Back control classes \u2014 hooks are the retention system"
+      "Back control classes — hooks are the retention system"
     ]
   },
   "knee_slice": {
@@ -196,17 +197,18 @@
       "N1"
     ],
     "reinforced_by": [
-      "Every sweep class \u2014 kuzushi is the universal setup"
+      "Every sweep class — kuzushi is the universal setup"
     ]
   },
   "guard_retention": {
     "name": "Guard Retention",
     "category": "control",
-    "definition": "Keeping opponent in your guard when they attempt to pass \u2014 using frames, hip movement, and leg pummeling to re-establish guard.",
+    "definition": "Keeping opponent in your guard when they attempt to pass — using frames, hip movement, and leg pummeling to re-establish guard.",
     "body_concept": "Frames on biceps/collar. Hips never flat. Knees track their hips. If they pass one leg, re-pummel the other.",
     "roads": [
       "S5",
       "S7",
+      "S9",
       "B7",
       "N5",
       "N6"
@@ -219,7 +221,7 @@
     "name": "Angle Cutting",
     "category": "transition",
     "definition": "Turning perpendicular to opponent to tighten a triangle, armbar, or create a sweep angle. The difference between a loose and tight submission.",
-    "body_concept": "Pivot on your shoulders. Walk your hips to a 45-90\u00b0 angle from opponent's centerline. Their arm/head is now trapped at maximum leverage.",
+    "body_concept": "Pivot on your shoulders. Walk your hips to a 45-90° angle from opponent's centerline. Their arm/head is now trapped at maximum leverage.",
     "roads": [
       "S7"
     ],
@@ -230,8 +232,8 @@
   "weight_distribution": {
     "name": "Weight Distribution",
     "category": "control",
-    "definition": "Controlling where your weight presses on the opponent \u2014 the invisible skill that separates heavy from light top pressure.",
-    "body_concept": "Shift weight into chest/shoulder contact point. Remove weight from hands and feet \u2014 they should be light. Opponent feels 200% of your weight on one spot.",
+    "definition": "Controlling where your weight presses on the opponent — the invisible skill that separates heavy from light top pressure.",
+    "body_concept": "Shift weight into chest/shoulder contact point. Remove weight from hands and feet — they should be light. Opponent feels 200% of your weight on one spot.",
     "roads": [
       "S6",
       "S8",
@@ -245,20 +247,20 @@
     "name": "Back Take Timing",
     "category": "transition",
     "definition": "Recognizing when opponent turns away (exposing their back) and immediately transitioning to back control before they complete the turn.",
-    "body_concept": "When they turn away: seatbelt FIRST, then chase hips, then insert hooks. Never hooks before seatbelt \u2014 you'll get shaken off.",
+    "body_concept": "When they turn away: seatbelt FIRST, then chase hips, then insert hooks. Never hooks before seatbelt — you'll get shaken off.",
     "roads": [
       "B2",
       "B6"
     ],
     "reinforced_by": [
-      "Side control \u2192 back take transitions, turtle top work"
+      "Side control → back take transitions, turtle top work"
     ]
   },
   "grip_fighting": {
     "name": "Grip Fighting",
     "category": "control",
-    "definition": "Establishing your grips while stripping theirs \u2014 the standing and guard-pulling meta-game.",
-    "body_concept": "Get your grips first. If they grip first, strip immediately \u2014 two-on-one break, circle wrist, push elbow. Never let them settle grips.",
+    "definition": "Establishing your grips while stripping theirs — the standing and guard-pulling meta-game.",
+    "body_concept": "Get your grips first. If they grip first, strip immediately — two-on-one break, circle wrist, push elbow. Never let them settle grips.",
     "roads": [
       "N5",
       "N6"
@@ -270,7 +272,7 @@
   "opponent_reading": {
     "name": "Opponent Reading",
     "category": "transition",
-    "definition": "Recognizing opponent's defensive reaction and choosing the correct attack branch \u2014 the core skill of network roads.",
+    "definition": "Recognizing opponent's defensive reaction and choosing the correct attack branch — the core skill of network roads.",
     "body_concept": "If they protect the neck: attack the arm. If they protect the arm: attack the neck. If they bridge: ride and re-attack. Read, don't guess.",
     "roads": [
       "N1",

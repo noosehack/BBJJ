@@ -89,7 +89,7 @@ CHECKPOINT_LIBRARY = {
         "category": "control",
         "definition": "Deep grip inside the gi collar, controlling the opponent's posture and setting up chokes and sweeps.",
         "body_concept": "Four fingers inside collar, deep past the label. Elbow stays tight. Pull down and toward you for posture break; cross-grip for choke.",
-        "roads": ["S5", "S7", "S8", "B3"],
+        "roads": ["S5", "S7", "S8", "S9", "B3"],
         "reinforced_by": ["Gi-specific classes — collar grip is the gi equivalent of clinch control"],
     },
     "figure_four_lock": {
@@ -137,7 +137,7 @@ CHECKPOINT_LIBRARY = {
         "category": "control",
         "definition": "Keeping opponent in your guard when they attempt to pass — using frames, hip movement, and leg pummeling to re-establish guard.",
         "body_concept": "Frames on biceps/collar. Hips never flat. Knees track their hips. If they pass one leg, re-pummel the other.",
-        "roads": ["S5", "S7", "B7", "N5", "N6"],
+        "roads": ["S5", "S7", "S9", "B7", "N5", "N6"],
         "reinforced_by": ["Open guard classes, guard recovery drills"],
     },
     "angle_cutting": {
@@ -191,6 +191,7 @@ CHECKPOINT_LIBRARY = {
 ROAD_DEPENDENCIES = {
     # SPINE — foundations, minimal prerequisites
     "S1": [],                        # First road taught. No prerequisites.
+    "S9": ["S1"],                    # Guard pull needs closed guard concept (from S1).
     "S5": [],                        # Scissor sweep — can parallel S1.
     "S7": ["S1"],                    # Triangle needs guard posture control (from S1).
     "S8": ["S1"],                    # Mount choke needs mount stabilization (from S1).
@@ -228,6 +229,7 @@ PREREQUISITE_MECHANICS = {
     "S2": ["hip escape", "posture break"],
     "S3": ["crossface", "underhook"],
     "S4": ["underhook", "off-balance"],
+    "S9": ["collar grip", "sleeve grip"],
     "S5": ["collar grip", "off-balance"],
     "S6": ["crossface", "weight distribution"],
     "S7": ["posture break", "hip elevation"],
@@ -258,6 +260,7 @@ DUALITY_LINKS = {
     "S2": {"attack": "arm drag to back, RNC", "defense": "posture in guard, back escape, RNC defense"},
     "S3": {"attack": "half guard pass, americana", "defense": "half guard retention, side escape, americana defense"},
     "S4": {"attack": "butterfly sweep", "defense": "butterfly passing, mount escape"},
+    "S9": {"attack": "collar-sleeve guard pull", "defense": "guard pull defense, staying standing, posture"},
     "S5": {"attack": "scissor sweep", "defense": "open guard passing, base maintenance"},
     "S6": {"attack": "positional advance SC→KOB→MNT", "defense": "side escape, KOB escape, mount escape"},
     "S7": {"attack": "triangle from guard", "defense": "posture, triangle defense, stack pass"},
@@ -284,7 +287,7 @@ DUALITY_LINKS = {
 
 TEACHING_PHASES = {
     "S1": "beginner", "S2": "beginner", "S3": "beginner", "S4": "beginner",
-    "S5": "beginner", "S6": "beginner", "S7": "beginner", "S8": "beginner",
+    "S5": "beginner", "S6": "beginner", "S7": "beginner", "S8": "beginner", "S9": "beginner",
     "B1": "intermediate", "B2": "intermediate", "B3": "intermediate",
     "B4": "intermediate", "B5": "intermediate", "B6": "intermediate",
     "B7": "intermediate", "B8": "intermediate",

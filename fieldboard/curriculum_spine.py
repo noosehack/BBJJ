@@ -318,6 +318,35 @@ SELECTED_ROADS = [
         "duality": "Op learns: mount escape (trap and roll, elbow-knee), choke defense",
     },
 
+    {
+        "id": "S9",
+        "name": "Collar-Sleeve Guard Pull to Closed Guard",
+        "tier": "spine",
+        "sequence": [
+            {"position": "Collar-Sleeve", "action": "CTRL", "detail": "collar grip + sleeve grip, foot on hip"},
+            {"position": "Closed Guard", "action": "TRZ", "detail": "pull to closed guard, lock feet"},
+        ],
+        "fieldboard": ["OGRD.ColSlv.CTRL", "CGRD.TRZ"],
+        "sources": ["bjj_graph_clj", "bjjgraph"],
+        "source_techniques": {
+            "bjj_graph_clj": "Guard Pull (Gracie Combatives)",
+            "bjjgraph": "Open Guard → Closed Guard transition",
+        },
+        "checkpoints": {
+            "control": ["Collar grip four fingers deep, sleeve grip at wrist — establish before pulling"],
+            "stabilization": [],
+            "transition": ["Foot on hip to control distance, pull collar down, swing hips under, lock feet behind back"],
+            "submission": [],
+        },
+        "failure": {
+            "pull_fails": "Still in open guard (safe — retain grips, try again)",
+            "guard_not_closed": "Feet don't lock — becomes open guard, not worse",
+            "classification": "safe",
+        },
+        "mechanics": ["collar grip", "sleeve grip", "foot on hip", "guard closing"],
+        "duality": "Op learns: guard pull defense, posture when pulled, staying standing vs seated guard",
+    },
+
     # ── BRANCH ROADS (intermediate expansions) ──────────────────────
 
     {

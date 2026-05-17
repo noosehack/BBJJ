@@ -1,8 +1,8 @@
 # Curriculum Spine — Selected Roads
 
 Generated: 2026-05-17
-Total roads: 23
-Spine: 8 | Branch: 8 | Network: 7
+Total roads: 24
+Spine: 9 | Branch: 8 | Network: 7
 
 ---
 
@@ -238,6 +238,31 @@ Spine: 8 | Branch: 8 | Network: 7
 **Duality**: Op learns: mount escape (trap and roll, elbow-knee), choke defense
 
 **Reusable mechanics**: mount pressure, collar grip, weight forward
+
+### S9: Collar-Sleeve Guard Pull to Closed Guard
+
+**Fieldboard**: OGRD.ColSlv.CTRL → CGRD.TRZ
+**Sources**: bjj_graph_clj, bjjgraph (2)
+
+**Sequence**:
+  1. **Collar-Sleeve** [CTRL] — collar grip + sleeve grip, foot on hip
+  1. **Closed Guard** [TRZ] — pull to closed guard, lock feet
+
+**Source evidence**:
+  - bjj_graph_clj: Guard Pull (Gracie Combatives)
+  - bjjgraph: Open Guard → Closed Guard transition
+
+**Checkpoints**:
+  - Control: Collar grip four fingers deep, sleeve grip at wrist — establish before pulling
+  - Transition: Foot on hip to control distance, pull collar down, swing hips under, lock feet behind back
+
+**Failure topology** [SAFE]:
+  - pull_fails: Still in open guard (safe — retain grips, try again)
+  - guard_not_closed: Feet don't lock — becomes open guard, not worse
+
+**Duality**: Op learns: guard pull defense, posture when pulled, staying standing vs seated guard
+
+**Reusable mechanics**: collar grip, sleeve grip, foot on hip, guard closing
 
 ---
 
@@ -684,6 +709,7 @@ Spine: 8 | Branch: 8 | Network: 7
 | S6 | Side Control to Mount Progression | spine | 4 | 2 | safe | SCTR.CTRL → SCTR.KOB.TRZ → MNT.TRZ → MNT.CTRL |
 | S7 | Closed Guard Triangle Choke | spine | 3 | 3 | safe | CGRD.CTRL → CGRD.TRZ → CGRD.SUB |
 | S8 | Mount Cross Collar Choke | spine | 2 | 3 | safe | MNT.CTRL → MNT.SUB |
+| S9 | Collar-Sleeve Guard Pull to Closed Guard | spine | 2 | 2 | safe | OGRD.ColSlv.CTRL → CGRD.TRZ |
 | B1 | Half Guard Underhook Sweep to Mount | branch | 2 | 2 | recoverable | HGRD.CTRL → MNT.SWP |
 | B2 | Half Guard to Side Control to Back Control | branch | 4 | 2 | safe | HGRD.CTRL → SCTR.TRZ → BCTR.TRZ → BCTR.SUB |
 | B3 | Closed Guard Flower Sweep to Mount | branch | 2 | 1 | safe | CGRD.CTRL → MNT.SWP |
@@ -710,8 +736,8 @@ All fundamental positions covered.
   seatbelt                       ████ (4 roads)
   crossface                      ████ (4 roads)
   underhook                      ████ (4 roads)
+  collar grip                    ████ (4 roads)
   hip escape                     ███ (3 roads)
-  collar grip                    ███ (3 roads)
   knee slice                     ██ (2 roads)
   leg dexterity                  ██ (2 roads)
   mount pressure                 ██ (2 roads)

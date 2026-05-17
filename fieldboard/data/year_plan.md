@@ -141,18 +141,33 @@ Every mechanic learned transfers to multiple roads later.
 **Failure**: safe — Still in mount (safe)
 **Mechanics learned**: mount pressure, collar grip, weight forward
 
-### Weeks 43–48: S3 — Half Guard Pass to Side Control Americana
+### Weeks 43–48: S9 — Collar-Sleeve Guard Pull to Closed Guard
+
+**Fieldboard**: OGRD.ColSlv.CTRL → CGRD.TRZ
+
+**Prerequisites**: S1
+
+**Week breakdown**:
+  - Week 43: CONTROL — Collar grip four fingers deep, sleeve grip at wrist — establish before pulling
+  - Week 44: TRANSITION — Foot on hip to control distance, pull collar down, swing hips under, lock feet behind back
+  - Weeks 45–48: DRILLING + positional sparring (this road only)
+
+**Duality cycle**: Attack = collar-sleeve guard pull. Defense = guard pull defense, staying standing, posture.
+
+**Failure**: safe — Still in open guard (safe — retain grips, try again)
+**Mechanics learned**: collar grip, sleeve grip, foot on hip, guard closing
+
+### Weeks 49–52: S3 — Half Guard Pass to Side Control Americana
 
 **Fieldboard**: HGRD.CTRL → SCTR.TRZ → SCTR.CTRL → SCTR.SUB
 
 **Prerequisites**: S1, S6
 
 **Week breakdown**:
-  - Week 43: CONTROL — Win underhook in half guard; Crossface + chest pressure in side control
-  - Week 44: TRANSITION — Knee slice: free trapped leg, slide knee across, clear to side control
-  - Week 45: STABILIZATION — Flatten opponent before passing — deny underhook
-  - Week 46: SUBMISSION — Pin wrist to mat → figure-four grip → paint brush away from head
-  - Weeks 47–48: DRILLING + positional sparring (this road only)
+  - Week 49: CONTROL — Win underhook in half guard; Crossface + chest pressure in side control
+  - Week 50: TRANSITION — Knee slice: free trapped leg, slide knee across, clear to side control
+  - Week 51: STABILIZATION — Flatten opponent before passing — deny underhook
+  - Week 52: SUBMISSION — Pin wrist to mat → figure-four grip → paint brush away from head
 
 **Duality cycle**: Attack = half guard pass, americana. Defense = half guard retention, side escape, americana defense.
 
@@ -430,21 +445,22 @@ Intentional baiting. Every network road synthesizes multiple spine+branch roads.
 | 6 | S6 | Side Control to Mount Progression | beginner | S1 |
 | 7 | S7 | Closed Guard Triangle Choke | beginner | S1 |
 | 8 | S8 | Mount Cross Collar Choke | beginner | S1 |
-| 9 | B6 | Turtle to Back Take | intermediate | S2 |
-| 10 | B7 | Open Guard Pass to Side Control | intermediate | S5, S6 |
-| 11 | S3 | Half Guard Pass to Side Control Americana | beginner | S1, S6 |
-| 12 | B5 | Kimura Sweep from Closed Guard | intermediate | S1, S7 |
-| 13 | N2 | Mount Attack Cycle: Choke-Armbar Dilemma | advanced | S1, S8 |
-| 14 | N3 | Back Control Attack System | advanced | S2, B6 |
-| 15 | N6 | Open Guard to Standing Takedown to Dominant | advanced | S5, B7 |
-| 16 | B1 | Half Guard Underhook Sweep to Mount | intermediate | S3 |
-| 17 | B2 | Half Guard to Side Control to Back Control | intermediate | S3, S2 |
-| 18 | B4 | Side Control Arm Triangle | intermediate | S3, S6 |
-| 19 | B8 | Closed Guard to Side Control Sweep | intermediate | S1, S3 |
-| 20 | N1 | Closed Guard Attack Tree: Sweep-or-Submit | advanced | S1, S7, B5 |
-| 21 | N4 | Half Guard Passing Network | advanced | S3, B1 |
-| 22 | N7 | Positional Ladder: Guard → Side → Mount → Bac | advanced | S3, S6, B2, N3 |
-| 23 | N5 | Guard Pull to Sweep-or-Submit Chain | advanced | S1, S5, N1 |
+| 9 | S9 | Collar-Sleeve Guard Pull to Closed Guard | beginner | S1 |
+| 10 | B6 | Turtle to Back Take | intermediate | S2 |
+| 11 | B7 | Open Guard Pass to Side Control | intermediate | S5, S6 |
+| 12 | S3 | Half Guard Pass to Side Control Americana | beginner | S1, S6 |
+| 13 | B5 | Kimura Sweep from Closed Guard | intermediate | S1, S7 |
+| 14 | N2 | Mount Attack Cycle: Choke-Armbar Dilemma | advanced | S1, S8 |
+| 15 | N3 | Back Control Attack System | advanced | S2, B6 |
+| 16 | N6 | Open Guard to Standing Takedown to Dominant | advanced | S5, B7 |
+| 17 | B1 | Half Guard Underhook Sweep to Mount | intermediate | S3 |
+| 18 | B2 | Half Guard to Side Control to Back Control | intermediate | S3, S2 |
+| 19 | B4 | Side Control Arm Triangle | intermediate | S3, S6 |
+| 20 | B8 | Closed Guard to Side Control Sweep | intermediate | S1, S3 |
+| 21 | N1 | Closed Guard Attack Tree: Sweep-or-Submit | advanced | S1, S7, B5 |
+| 22 | N4 | Half Guard Passing Network | advanced | S3, B1 |
+| 23 | N7 | Positional Ladder: Guard → Side → Mount → Bac | advanced | S3, S6, B2, N3 |
+| 24 | N5 | Guard Pull to Sweep-or-Submit Chain | advanced | S1, S5, N1 |
 
 ## Mechanic Progression
 
@@ -476,6 +492,9 @@ This table shows when each mechanic first appears:
 | angle cutting | S7 | beginner |
 | mount pressure | S8 | beginner |
 | weight forward | S8 | beginner |
+| sleeve grip | S9 | beginner |
+| foot on hip | S9 | beginner |
+| guard closing | S9 | beginner |
 | hook insertion | B6 | intermediate |
 | chair sit | B6 | intermediate |
 | toreando grip | B7 | intermediate |

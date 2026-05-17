@@ -388,11 +388,56 @@
     ]
   },
   {
+    "id": "S9",
+    "name": "Collar-Sleeve Guard Pull to Closed Guard",
+    "road_type": "spine",
+    "teaching_phase": "beginner",
+    "teaching_order": 9,
+    "prerequisite_roads": [
+      "S1"
+    ],
+    "prerequisite_mechanics": [
+      "collar grip",
+      "sleeve grip"
+    ],
+    "control_checkpoints": [
+      "Collar grip four fingers deep, sleeve grip at wrist \u2014 establish before pulling"
+    ],
+    "stabilization_checkpoints": [],
+    "transition_checkpoints": [
+      "Foot on hip to control distance, pull collar down, swing hips under, lock feet behind back"
+    ],
+    "submission_checkpoints": [],
+    "failure_topology": "safe",
+    "failure_detail": {
+      "pull_fails": "Still in open guard (safe \u2014 retain grips, try again)",
+      "guard_not_closed": "Feet don't lock \u2014 becomes open guard, not worse"
+    },
+    "reusable_mechanics": [
+      "collar grip",
+      "sleeve grip",
+      "foot on hip",
+      "guard closing"
+    ],
+    "duality_links": {
+      "attack": "collar-sleeve guard pull",
+      "defense": "guard pull defense, staying standing, posture"
+    },
+    "fieldboard": [
+      "OGRD.ColSlv.CTRL",
+      "CGRD.TRZ"
+    ],
+    "sources": [
+      "bjj_graph_clj",
+      "bjjgraph"
+    ]
+  },
+  {
     "id": "B6",
     "name": "Turtle to Back Take",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 9,
+    "teaching_order": 10,
     "prerequisite_roads": [
       "S2"
     ],
@@ -441,7 +486,7 @@
     "name": "Open Guard Pass to Side Control",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 10,
+    "teaching_order": 11,
     "prerequisite_roads": [
       "S5",
       "S6"
@@ -489,7 +534,7 @@
     "name": "Half Guard Pass to Side Control Americana",
     "road_type": "spine",
     "teaching_phase": "beginner",
-    "teaching_order": 11,
+    "teaching_order": 12,
     "prerequisite_roads": [
       "S1",
       "S6"
@@ -544,7 +589,7 @@
     "name": "Kimura Sweep from Closed Guard",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 12,
+    "teaching_order": 13,
     "prerequisite_roads": [
       "S1",
       "S7"
@@ -591,7 +636,7 @@
     "name": "Mount Attack Cycle: Choke-Armbar Dilemma",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 13,
+    "teaching_order": 14,
     "prerequisite_roads": [
       "S1",
       "S8"
@@ -639,7 +684,7 @@
     "name": "Back Control Attack System",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 14,
+    "teaching_order": 15,
     "prerequisite_roads": [
       "S2",
       "B6"
@@ -689,7 +734,7 @@
     "name": "Open Guard to Standing Takedown to Dominant",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 15,
+    "teaching_order": 16,
     "prerequisite_roads": [
       "S5",
       "B7"
@@ -736,7 +781,7 @@
     "name": "Half Guard Underhook Sweep to Mount",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 16,
+    "teaching_order": 17,
     "prerequisite_roads": [
       "S3"
     ],
@@ -780,7 +825,7 @@
     "name": "Half Guard to Side Control to Back Control",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 17,
+    "teaching_order": 18,
     "prerequisite_roads": [
       "S3",
       "S2"
@@ -834,7 +879,7 @@
     "name": "Side Control Arm Triangle",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 18,
+    "teaching_order": 19,
     "prerequisite_roads": [
       "S3",
       "S6"
@@ -883,7 +928,7 @@
     "name": "Closed Guard to Side Control Sweep",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 19,
+    "teaching_order": 20,
     "prerequisite_roads": [
       "S1",
       "S3"
@@ -935,7 +980,7 @@
     "name": "Closed Guard Attack Tree: Sweep-or-Submit",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 20,
+    "teaching_order": 21,
     "prerequisite_roads": [
       "S1",
       "S7",
@@ -987,7 +1032,7 @@
     "name": "Half Guard Passing Network",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 21,
+    "teaching_order": 22,
     "prerequisite_roads": [
       "S3",
       "B1"
@@ -1037,7 +1082,7 @@
     "name": "Positional Ladder: Guard \u2192 Side \u2192 Mount \u2192 Back \u2192 Finish",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 22,
+    "teaching_order": 23,
     "prerequisite_roads": [
       "S3",
       "S6",
@@ -1090,7 +1135,7 @@
     "name": "Guard Pull to Sweep-or-Submit Chain",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 23,
+    "teaching_order": 24,
     "prerequisite_roads": [
       "S1",
       "S5",

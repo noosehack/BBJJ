@@ -15,19 +15,19 @@
       "Mount base stabilization"
     ],
     "stabilization_checkpoints": [
-      "Secure mount before attacking \u2014 grapevines or heel hooks on hips"
+      "Secure mount before attacking — grapevines or heel hooks on hips"
     ],
     "transition_checkpoints": [
       "Hip bump mechanic: sit up, post hand, sweep over shoulder"
     ],
     "submission_checkpoints": [
-      "Isolate arm \u2192 figure-four grip \u2192 hips high \u2192 lean back to extend"
+      "Isolate arm → figure-four grip → hips high → lean back to extend"
     ],
     "failure_topology": "safe",
     "failure_detail": {
       "sweep_fails": "Still in closed guard (safe)",
-      "mount_lost": "Falls to half guard or guard \u2014 positions already taught",
-      "armbar_fails": "Opponent stacks \u2014 return to mount or closed guard"
+      "mount_lost": "Falls to half guard or guard — positions already taught",
+      "armbar_fails": "Opponent stacks — return to mount or closed guard"
     },
     "reusable_mechanics": [
       "hip escape",
@@ -66,15 +66,15 @@
       "Collar grip + sleeve grip, shin across belly"
     ],
     "stabilization_checkpoints": [
-      "Follow the sweep \u2014 post immediately on landing in mount"
+      "Follow the sweep — post immediately on landing in mount"
     ],
     "transition_checkpoints": [
-      "Shin across belly \u2192 pull collar down \u2192 kick bottom leg \u2192 roll over"
+      "Shin across belly → pull collar down → kick bottom leg → roll over"
     ],
     "submission_checkpoints": [],
     "failure_topology": "safe",
     "failure_detail": {
-      "sweep_fails": "Still in open guard (safe \u2014 retain grips)"
+      "sweep_fails": "Still in open guard (safe — retain grips)"
     },
     "reusable_mechanics": [
       "scissor motion",
@@ -113,7 +113,7 @@
     ],
     "stabilization_checkpoints": [],
     "transition_checkpoints": [
-      "Pull collar \u2192 kick far leg over \u2192 roll into mount"
+      "Pull collar → kick far leg over → roll into mount"
     ],
     "submission_checkpoints": [],
     "failure_topology": "safe",
@@ -161,13 +161,13 @@
       "Arm drag: 2-on-1, pull arm across, hip out, climb behind"
     ],
     "submission_checkpoints": [
-      "Clear collar defense \u2192 slide choking arm under chin \u2192 lock figure-four \u2192 squeeze"
+      "Clear collar defense → slide choking arm under chin → lock figure-four → squeeze"
     ],
     "failure_topology": "safe",
     "failure_detail": {
       "drag_fails": "Still in closed guard (safe)",
-      "back_lost": "Opponent turns in \u2014 land in mount or closed guard (safe)",
-      "rnc_fails": "Opponent defends chin \u2014 maintain back control, re-attack"
+      "back_lost": "Opponent turns in — land in mount or closed guard (safe)",
+      "rnc_fails": "Opponent defends chin — maintain back control, re-attack"
     },
     "reusable_mechanics": [
       "arm drag",
@@ -211,13 +211,13 @@
       "Land in mount, immediately establish base"
     ],
     "transition_checkpoints": [
-      "Off-balance to one side \u2192 hook lift \u2192 roll over \u2192 land in mount"
+      "Off-balance to one side → hook lift → roll over → land in mount"
     ],
     "submission_checkpoints": [],
     "failure_topology": "safe",
     "failure_detail": {
-      "sweep_fails": "Still seated in butterfly (safe \u2014 re-grip, re-try)",
-      "mount_lost": "Opponent bridges \u2014 fall to guard (safe)"
+      "sweep_fails": "Still seated in butterfly (safe — re-grip, re-try)",
+      "mount_lost": "Opponent bridges — fall to guard (safe)"
     },
     "reusable_mechanics": [
       "underhook",
@@ -258,16 +258,16 @@
       "Mount base"
     ],
     "stabilization_checkpoints": [
-      "Each position is stable \u2014 can pause and consolidate"
+      "Each position is stable — can pause and consolidate"
     ],
     "transition_checkpoints": [
-      "Side \u2192 KOB: slide knee onto belly. KOB \u2192 Mount: swing far leg over"
+      "Side → KOB: slide knee onto belly. KOB → Mount: swing far leg over"
     ],
     "submission_checkpoints": [],
     "failure_topology": "safe",
     "failure_detail": {
       "kob_lost": "Falls back to side control (safe)",
-      "mount_lost": "Falls to half guard (safe \u2014 already taught)"
+      "mount_lost": "Falls to half guard (safe — already taught)"
     },
     "reusable_mechanics": [
       "hip pressure",
@@ -275,7 +275,7 @@
       "weight distribution"
     ],
     "duality_links": {
-      "attack": "positional advance SC\u2192KOB\u2192MNT",
+      "attack": "positional advance SC→KOB→MNT",
       "defense": "side escape, KOB escape, mount escape"
     },
     "fieldboard": [
@@ -309,16 +309,16 @@
       "Lock triangle figure-four before finishing"
     ],
     "transition_checkpoints": [
-      "Push one arm across \u2192 hips up \u2192 leg over far shoulder \u2192 lock ankles"
+      "Push one arm across → hips up → leg over far shoulder → lock ankles"
     ],
     "submission_checkpoints": [
-      "Cut angle \u2192 pull head down \u2192 squeeze knees"
+      "Cut angle → pull head down → squeeze knees"
     ],
     "failure_topology": "safe",
     "failure_detail": {
       "setup_fails": "Still in closed guard (safe)",
-      "triangle_fails": "Opponent postures out of half-locked triangle \u2014 return to guard",
-      "stacking": "Opponent stacks \u2014 can unlock and return to guard, or sweep to mount"
+      "triangle_fails": "Opponent postures out of half-locked triangle — return to guard",
+      "stacking": "Opponent stacks — can unlock and return to guard, or sweep to mount"
     },
     "reusable_mechanics": [
       "hip elevation",
@@ -354,19 +354,19 @@
       "collar grip"
     ],
     "control_checkpoints": [
-      "High mount \u2014 walk knees to armpits"
+      "High mount — walk knees to armpits"
     ],
     "stabilization_checkpoints": [
       "Secure first grip deep in collar before attacking"
     ],
     "transition_checkpoints": [],
     "submission_checkpoints": [
-      "First hand deep in cross collar \u2192 second hand in \u2192 squeeze elbows together"
+      "First hand deep in cross collar → second hand in → squeeze elbows together"
     ],
     "failure_topology": "safe",
     "failure_detail": {
       "grip_stripped": "Still in mount (safe)",
-      "bridged_off": "Falls to guard (safe \u2014 already taught)"
+      "bridged_off": "Falls to guard (safe — already taught)"
     },
     "reusable_mechanics": [
       "mount pressure",
@@ -388,11 +388,56 @@
     ]
   },
   {
+    "id": "S9",
+    "name": "Collar-Sleeve Guard Pull to Closed Guard",
+    "road_type": "spine",
+    "teaching_phase": "beginner",
+    "teaching_order": 9,
+    "prerequisite_roads": [
+      "S1"
+    ],
+    "prerequisite_mechanics": [
+      "collar grip",
+      "sleeve grip"
+    ],
+    "control_checkpoints": [
+      "Collar grip four fingers deep, sleeve grip at wrist — establish before pulling"
+    ],
+    "stabilization_checkpoints": [],
+    "transition_checkpoints": [
+      "Foot on hip to control distance, pull collar down, swing hips under, lock feet behind back"
+    ],
+    "submission_checkpoints": [],
+    "failure_topology": "safe",
+    "failure_detail": {
+      "pull_fails": "Still in open guard (safe — retain grips, try again)",
+      "guard_not_closed": "Feet don't lock — becomes open guard, not worse"
+    },
+    "reusable_mechanics": [
+      "collar grip",
+      "sleeve grip",
+      "foot on hip",
+      "guard closing"
+    ],
+    "duality_links": {
+      "attack": "collar-sleeve guard pull",
+      "defense": "guard pull defense, staying standing, posture"
+    },
+    "fieldboard": [
+      "OGRD.ColSlv.CTRL",
+      "CGRD.TRZ"
+    ],
+    "sources": [
+      "bjj_graph_clj",
+      "bjjgraph"
+    ]
+  },
+  {
     "id": "B6",
     "name": "Turtle to Back Take",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 9,
+    "teaching_order": 10,
     "prerequisite_roads": [
       "S2"
     ],
@@ -404,18 +449,18 @@
       "Chest-to-back contact, seatbelt established"
     ],
     "stabilization_checkpoints": [
-      "Seatbelt first \u2192 then insert hooks one at a time"
+      "Seatbelt first → then insert hooks one at a time"
     ],
     "transition_checkpoints": [
-      "Seatbelt grip \u2192 hip to mat \u2192 insert bottom hook \u2192 top hook"
+      "Seatbelt grip → hip to mat → insert bottom hook → top hook"
     ],
     "submission_checkpoints": [
-      "Hand fight to clear collar grip \u2192 slide arm under chin \u2192 lock RNC"
+      "Hand fight to clear collar grip → slide arm under chin → lock RNC"
     ],
     "failure_topology": "recoverable",
     "failure_detail": {
-      "back_take_fails": "Opponent sits out \u2014 scramble to side control or re-engage turtle (recoverable)",
-      "hooks_lost": "Opponent rolls \u2014 can land in mount if hooks are lost (safe)"
+      "back_take_fails": "Opponent sits out — scramble to side control or re-engage turtle (recoverable)",
+      "hooks_lost": "Opponent rolls — can land in mount if hooks are lost (safe)"
     },
     "reusable_mechanics": [
       "seatbelt",
@@ -441,7 +486,7 @@
     "name": "Open Guard Pass to Side Control",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 10,
+    "teaching_order": 11,
     "prerequisite_roads": [
       "S5",
       "S6"
@@ -451,19 +496,19 @@
       "leg clearing"
     ],
     "control_checkpoints": [
-      "Grip fighting standing \u2014 control pants/ankles",
+      "Grip fighting standing — control pants/ankles",
       "Crossface in side control"
     ],
     "stabilization_checkpoints": [
       "Clear legs completely before settling side control"
     ],
     "transition_checkpoints": [
-      "Grip ankles \u2192 push legs to one side \u2192 pass to opposite side \u2192 settle"
+      "Grip ankles → push legs to one side → pass to opposite side → settle"
     ],
     "submission_checkpoints": [],
     "failure_topology": "safe",
     "failure_detail": {
-      "pass_fails": "Opponent re-guards \u2014 still in open guard (safe)"
+      "pass_fails": "Opponent re-guards — still in open guard (safe)"
     },
     "reusable_mechanics": [
       "toreando grip",
@@ -489,7 +534,7 @@
     "name": "Half Guard Pass to Side Control Americana",
     "road_type": "spine",
     "teaching_phase": "beginner",
-    "teaching_order": 11,
+    "teaching_order": 12,
     "prerequisite_roads": [
       "S1",
       "S6"
@@ -503,19 +548,19 @@
       "Crossface + chest pressure in side control"
     ],
     "stabilization_checkpoints": [
-      "Flatten opponent before passing \u2014 deny underhook"
+      "Flatten opponent before passing — deny underhook"
     ],
     "transition_checkpoints": [
       "Knee slice: free trapped leg, slide knee across, clear to side control"
     ],
     "submission_checkpoints": [
-      "Pin wrist to mat \u2192 figure-four grip \u2192 paint brush away from head"
+      "Pin wrist to mat → figure-four grip → paint brush away from head"
     ],
     "failure_topology": "safe",
     "failure_detail": {
       "pass_fails": "Still in half guard top (safe)",
-      "side_lost": "Opponent re-guards \u2014 back to half guard (safe)",
-      "americana_fails": "Opponent straightens arm \u2014 transition to armbar or maintain control"
+      "side_lost": "Opponent re-guards — back to half guard (safe)",
+      "americana_fails": "Opponent straightens arm — transition to armbar or maintain control"
     },
     "reusable_mechanics": [
       "crossface",
@@ -544,7 +589,7 @@
     "name": "Kimura Sweep from Closed Guard",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 12,
+    "teaching_order": 13,
     "prerequisite_roads": [
       "S1",
       "S7"
@@ -558,19 +603,19 @@
       "Posture break, isolate wrist"
     ],
     "stabilization_checkpoints": [
-      "Secure kimura grip \u2014 figure-four is locked before sweeping"
+      "Secure kimura grip — figure-four is locked before sweeping"
     ],
     "transition_checkpoints": [
-      "Hip out to kimura side \u2192 use grip leverage to sweep \u2192 land on top"
+      "Hip out to kimura side → use grip leverage to sweep → land on top"
     ],
     "submission_checkpoints": [],
     "failure_topology": "safe",
     "failure_detail": {
       "grip_fails": "Still in closed guard (safe)",
-      "sweep_fails": "Retain guard with kimura grip \u2014 can transition to armbar or triangle"
+      "sweep_fails": "Retain guard with kimura grip — can transition to armbar or triangle"
     },
     "reusable_mechanics": [
-      "kimura grip (reusable \u2014 appears in half guard, side control)",
+      "kimura grip (reusable — appears in half guard, side control)",
       "hip escape"
     ],
     "duality_links": {
@@ -591,7 +636,7 @@
     "name": "Mount Attack Cycle: Choke-Armbar Dilemma",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 13,
+    "teaching_order": 14,
     "prerequisite_roads": [
       "S1",
       "S8"
@@ -606,14 +651,14 @@
     ],
     "stabilization_checkpoints": [],
     "transition_checkpoints": [
-      "Read opponent's arm defense \u2014 neck or arms?"
+      "Read opponent's arm defense — neck or arms?"
     ],
     "submission_checkpoints": [
       "Choke: elbows open. Armbar: arms tight. Americana: arm pinned"
     ],
     "failure_topology": "safe",
     "failure_detail": {
-      "bridged_off": "Land in guard (safe \u2014 taught in S1/S7)"
+      "bridged_off": "Land in guard (safe — taught in S1/S7)"
     },
     "reusable_mechanics": [
       "mount pressure",
@@ -639,7 +684,7 @@
     "name": "Back Control Attack System",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 14,
+    "teaching_order": 15,
     "prerequisite_roads": [
       "S2",
       "B6"
@@ -663,7 +708,7 @@
     ],
     "failure_topology": "safe",
     "failure_detail": {
-      "opponent_escapes": "Opponent turns in \u2192 land in mount (safe \u2014 already best position)",
+      "opponent_escapes": "Opponent turns in → land in mount (safe — already best position)",
       "hooks_lost": "Transition to body triangle or re-insert"
     },
     "reusable_mechanics": [
@@ -689,7 +734,7 @@
     "name": "Open Guard to Standing Takedown to Dominant",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 15,
+    "teaching_order": 16,
     "prerequisite_roads": [
       "S5",
       "B7"
@@ -704,13 +749,13 @@
     ],
     "stabilization_checkpoints": [],
     "transition_checkpoints": [
-      "Technical standup \u2192 re-engage with takedown or pull guard"
+      "Technical standup → re-engage with takedown or pull guard"
     ],
     "submission_checkpoints": [],
     "failure_topology": "recoverable",
     "failure_detail": {
-      "standup_fails": "Opponent follows down \u2014 still in open guard (safe)",
-      "takedown_fails": "Opponent defends \u2014 standing neutral (recoverable)"
+      "standup_fails": "Opponent follows down — still in open guard (safe)",
+      "takedown_fails": "Opponent defends — standing neutral (recoverable)"
     },
     "reusable_mechanics": [
       "technical standup",
@@ -736,7 +781,7 @@
     "name": "Half Guard Underhook Sweep to Mount",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 16,
+    "teaching_order": 17,
     "prerequisite_roads": [
       "S3"
     ],
@@ -745,17 +790,17 @@
       "hip movement"
     ],
     "control_checkpoints": [
-      "Win underhook \u2014 get to hip, head under chin"
+      "Win underhook — get to hip, head under chin"
     ],
     "stabilization_checkpoints": [],
     "transition_checkpoints": [
-      "Come to knees \u2192 drive forward \u2192 sweep over trapped leg \u2192 land in mount"
+      "Come to knees → drive forward → sweep over trapped leg → land in mount"
     ],
     "submission_checkpoints": [],
     "failure_topology": "recoverable",
     "failure_detail": {
-      "underhook_lost": "Still in half guard bottom (safe \u2014 re-pummel)",
-      "sweep_fails": "Dogfight position \u2014 scramble back to half guard or re-attack"
+      "underhook_lost": "Still in half guard bottom (safe — re-pummel)",
+      "sweep_fails": "Dogfight position — scramble back to half guard or re-attack"
     },
     "reusable_mechanics": [
       "underhook",
@@ -780,7 +825,7 @@
     "name": "Half Guard to Side Control to Back Control",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 17,
+    "teaching_order": 18,
     "prerequisite_roads": [
       "S3",
       "S2"
@@ -799,15 +844,15 @@
       "Secure each position before advancing"
     ],
     "transition_checkpoints": [
-      "Pass half \u2192 settle side control \u2192 opponent turns \u2192 slide hooks in"
+      "Pass half → settle side control → opponent turns → slide hooks in"
     ],
     "submission_checkpoints": [
-      "Seatbelt \u2192 hand fight \u2192 sink RNC"
+      "Seatbelt → hand fight → sink RNC"
     ],
     "failure_topology": "safe",
     "failure_detail": {
       "pass_fails": "Still in half guard top (safe)",
-      "back_lost": "Opponent turns in \u2014 land in mount or side control (safe)"
+      "back_lost": "Opponent turns in — land in mount or side control (safe)"
     },
     "reusable_mechanics": [
       "passing",
@@ -815,7 +860,7 @@
       "seatbelt"
     ],
     "duality_links": {
-      "attack": "pass\u2192side\u2192back chain",
+      "attack": "pass→side→back chain",
       "defense": "HG retention, side escape, back escape"
     },
     "fieldboard": [
@@ -834,7 +879,7 @@
     "name": "Side Control Arm Triangle",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 18,
+    "teaching_order": 19,
     "prerequisite_roads": [
       "S3",
       "S6"
@@ -844,21 +889,21 @@
       "weight distribution"
     ],
     "control_checkpoints": [
-      "Heavy crossface \u2014 opponent's chin forced to far side"
+      "Heavy crossface — opponent's chin forced to far side"
     ],
     "stabilization_checkpoints": [
       "Lock figure-four around head+arm before moving"
     ],
     "transition_checkpoints": [
-      "Walk around to opposite side or hop to mount \u2192 squeeze"
+      "Walk around to opposite side or hop to mount → squeeze"
     ],
     "submission_checkpoints": [
-      "Gable grip \u2192 chest to floor \u2192 squeeze elbows"
+      "Gable grip → chest to floor → squeeze elbows"
     ],
     "failure_topology": "safe",
     "failure_detail": {
       "setup_fails": "Still in side control (safe)",
-      "choke_fails": "Maintain side control \u2014 re-attack or transition"
+      "choke_fails": "Maintain side control — re-attack or transition"
     },
     "reusable_mechanics": [
       "crossface",
@@ -883,7 +928,7 @@
     "name": "Closed Guard to Side Control Sweep",
     "road_type": "branch",
     "teaching_phase": "intermediate",
-    "teaching_order": 19,
+    "teaching_order": 20,
     "prerequisite_roads": [
       "S1",
       "S3"
@@ -900,10 +945,10 @@
       "Settle side control before attacking"
     ],
     "transition_checkpoints": [
-      "Overhook + far leg \u2192 bridge and roll \u2192 land in side control"
+      "Overhook + far leg → bridge and roll → land in side control"
     ],
     "submission_checkpoints": [
-      "Pin wrist \u2192 figure-four \u2192 paint brush"
+      "Pin wrist → figure-four → paint brush"
     ],
     "failure_topology": "safe",
     "failure_detail": {
@@ -935,7 +980,7 @@
     "name": "Closed Guard Attack Tree: Sweep-or-Submit",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 20,
+    "teaching_order": 21,
     "prerequisite_roads": [
       "S1",
       "S7",
@@ -948,7 +993,7 @@
       "hip elevation"
     ],
     "control_checkpoints": [
-      "Posture break is the root \u2014 everything flows from here"
+      "Posture break is the root — everything flows from here"
     ],
     "stabilization_checkpoints": [],
     "transition_checkpoints": [
@@ -959,7 +1004,7 @@
     ],
     "failure_topology": "safe",
     "failure_detail": {
-      "all_fail": "Still in closed guard (safe \u2014 the safest position to fail from)"
+      "all_fail": "Still in closed guard (safe — the safest position to fail from)"
     },
     "reusable_mechanics": [
       "posture break",
@@ -987,7 +1032,7 @@
     "name": "Half Guard Passing Network",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 21,
+    "teaching_order": 22,
     "prerequisite_roads": [
       "S3",
       "B1"
@@ -999,17 +1044,17 @@
       "off-balance"
     ],
     "control_checkpoints": [
-      "Win the underhook battle \u2014 this determines everything"
+      "Win the underhook battle — this determines everything"
     ],
     "stabilization_checkpoints": [],
     "transition_checkpoints": [
-      "Read opponent's frame \u2192 choose pass \u2192 clear leg \u2192 settle"
+      "Read opponent's frame → choose pass → clear leg → settle"
     ],
     "submission_checkpoints": [],
     "failure_topology": "recoverable",
     "failure_detail": {
-      "pass_fails": "Still in half guard top (safe \u2014 dominant position)",
-      "swept": "Guard player sweeps \u2014 land in half guard bottom (recoverable)"
+      "pass_fails": "Still in half guard top (safe — dominant position)",
+      "swept": "Guard player sweeps — land in half guard bottom (recoverable)"
     },
     "reusable_mechanics": [
       "crossface",
@@ -1034,10 +1079,10 @@
   },
   {
     "id": "N7",
-    "name": "Positional Ladder: Guard \u2192 Side \u2192 Mount \u2192 Back \u2192 Finish",
+    "name": "Positional Ladder: Guard → Side → Mount → Back → Finish",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 22,
+    "teaching_order": 23,
     "prerequisite_roads": [
       "S3",
       "S6",
@@ -1051,23 +1096,23 @@
       "knee slice"
     ],
     "control_checkpoints": [
-      "Every position is a stable checkpoint \u2014 can pause at any step"
+      "Every position is a stable checkpoint — can pause at any step"
     ],
     "stabilization_checkpoints": [
       "Consolidate each position 3-5 seconds before advancing"
     ],
     "transition_checkpoints": [
-      "Pass \u2192 settle \u2192 advance \u2192 settle \u2192 advance \u2192 finish"
+      "Pass → settle → advance → settle → advance → finish"
     ],
     "submission_checkpoints": [
       "RNC from back control"
     ],
     "failure_topology": "safe",
     "failure_detail": {
-      "at_any_step": "Falling back one step is always safe (mount \u2192 side \u2192 guard)"
+      "at_any_step": "Falling back one step is always safe (mount → side → guard)"
     },
     "reusable_mechanics": [
-      "All prior mechanics combined \u2014 this is the synthesis road"
+      "All prior mechanics combined — this is the synthesis road"
     ],
     "duality_links": {
       "attack": "full positional ladder",
@@ -1090,7 +1135,7 @@
     "name": "Guard Pull to Sweep-or-Submit Chain",
     "road_type": "network",
     "teaching_phase": "advanced",
-    "teaching_order": 23,
+    "teaching_order": 24,
     "prerequisite_roads": [
       "S1",
       "S5",
@@ -1106,16 +1151,16 @@
       "Secure closed guard on landing"
     ],
     "stabilization_checkpoints": [
-      "Close guard immediately \u2014 don't settle in open guard if you want closed"
+      "Close guard immediately — don't settle in open guard if you want closed"
     ],
     "transition_checkpoints": [
-      "Grip \u2192 sit \u2192 pull into closed guard \u2192 immediate posture break"
+      "Grip → sit → pull into closed guard → immediate posture break"
     ],
     "submission_checkpoints": [],
     "failure_topology": "recoverable",
     "failure_detail": {
-      "pull_fails": "Opponent sprawls \u2014 seated in open guard (recoverable)",
-      "guard_passed": "Opponent passes during pull \u2014 land in half guard or side control bottom (risky if unprepared)"
+      "pull_fails": "Opponent sprawls — seated in open guard (recoverable)",
+      "guard_passed": "Opponent passes during pull — land in half guard or side control bottom (risky if unprepared)"
     },
     "reusable_mechanics": [
       "grip fighting",
