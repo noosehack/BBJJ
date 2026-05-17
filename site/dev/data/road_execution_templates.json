@@ -1,0 +1,697 @@
+{
+  "S1": {
+    "road_id": "S1",
+    "name": "Closed Guard Hip Bump Sweep to Mount Armbar",
+    "sessions": 3,
+    "identity": {
+      "position": "Closed Guard (bottom)",
+      "objective": "Break posture, sweep to mount, finish with armbar.",
+      "success": "Arrive in mount with control. Armbar is the natural finish.",
+      "failure": "Sweep fails — still in closed guard. Mount lost — fall to half guard. Both are safe."
+    },
+    "constraint": {
+      "task": "Hold closed guard for 2 minutes. Partner tries to posture up and open your guard.",
+      "discovery": "Students discover: legs control hips, angle matters, grip breaks posture."
+    },
+    "isolation": {
+      "remove": ["grips", "arms"],
+      "task": "Control posture using only legs and hips. No hands.",
+      "discovery": "Hip angle and leg pressure are the real posture-breaking mechanism. Hands assist but don't lead."
+    },
+    "tool_add": [
+      { "tool": "Collar grip", "effect": "Pull head down. Feel posture collapse. Recognize the moment of instability." },
+      { "tool": "Hip bump mechanic", "effect": "Sit up explosively, post hand behind you, drive opponent over your shoulder." },
+      { "tool": "Mount base", "effect": "Settle weight. Grapevines or heels on hips. No rush to submit." }
+    ],
+    "resistance": {
+      "level_1": "Partner allows sweep, holds mount passively.",
+      "level_2": "Partner postures at realistic speed. Does not resist sweep once off-balanced.",
+      "level_3": "Partner defends posture actively. Resists sweep attempt. Tries to open guard.",
+      "level_4": "Full resistance. Partner attempts guard breaks, posture recovery, mount escapes."
+    },
+    "specific_sparring": [
+      { "start": "CGRD.CTRL", "win": "Arrive in mount (MNT.CTRL)", "reset": "On guard open or sweep fail" },
+      { "start": "MNT.CTRL", "win": "Finish armbar (MNT.SUB)", "reset": "On mount loss" },
+      { "start": "CGRD.CTRL", "win": "Complete full road to MNT.SUB", "reset": "On any failure" }
+    ],
+    "live": "Free roll. Background objective: find closed guard → execute S1. Do not force it.",
+    "duality": {
+      "perspective": "Opponent",
+      "tasks": [
+        "Maintain posture in closed guard. Hands on hips, head up, spine straight.",
+        "Defend the hip bump. Base wide, post hand when they sit up.",
+        "Escape mount. Bridge and roll, or elbow-knee escape.",
+        "Defend the armbar. Stack, posture up, pull arm free."
+      ]
+    }
+  },
+  "S2": {
+    "road_id": "S2",
+    "name": "Closed Guard Arm Drag to Back Control RNC",
+    "sessions": 3,
+    "identity": {
+      "position": "Closed Guard (bottom)",
+      "objective": "Arm drag to expose the back, climb to back control, finish RNC.",
+      "success": "Seatbelt grip with hooks, choke locked.",
+      "failure": "Drag fails — still in closed guard. Back lost — land in mount or guard. Both safe."
+    },
+    "constraint": {
+      "task": "From closed guard, get to your partner's back without any specific technique instruction. 2 minutes.",
+      "discovery": "Students discover: they need to break alignment, create an angle, get chest-to-back."
+    },
+    "isolation": {
+      "remove": ["hooks", "legs below the knee"],
+      "task": "Control the back using only seatbelt grip and chest pressure. No hooks.",
+      "discovery": "Chest-to-back connection is the primary control. Hooks are retention, not control."
+    },
+    "tool_add": [
+      { "tool": "2-on-1 arm drag", "effect": "Pull arm across, hip out, angle changes. Opponent's back is exposed." },
+      { "tool": "Seatbelt grip", "effect": "Over-arm controls choking lane. Under-arm prevents turn-in. Hands clasped." },
+      { "tool": "Hook insertion", "effect": "Bottom hook first. Top hook second. Heels dig inward." }
+    ],
+    "resistance": {
+      "level_1": "Partner allows drag, stays still on back.",
+      "level_2": "Partner moves at realistic speed. Does not defend the drag.",
+      "level_3": "Partner defends the drag. Tries to turn in when back is taken.",
+      "level_4": "Full resistance. Partner defends drag, fights seatbelt, attempts back escape."
+    },
+    "specific_sparring": [
+      { "start": "CGRD.CTRL", "win": "Establish back control (BCTR.CTRL)", "reset": "On guard open" },
+      { "start": "BCTR.CTRL", "win": "Finish RNC (BCTR.SUB)", "reset": "On back escape" },
+      { "start": "CGRD.CTRL", "win": "Complete full road to BCTR.SUB", "reset": "On any failure" }
+    ],
+    "live": "Free roll. Objective: find closed guard → arm drag → back → RNC.",
+    "duality": {
+      "perspective": "Opponent",
+      "tasks": [
+        "Maintain posture in closed guard. Deny the 2-on-1.",
+        "When dragged: turn in immediately, face your partner, recover guard.",
+        "Defend back control: fight seatbelt, clear bottom hook, turn to face.",
+        "Defend RNC: protect neck, two hands on choking arm, create space to turn."
+      ]
+    }
+  },
+  "S3": {
+    "road_id": "S3",
+    "name": "Half Guard Pass to Side Control Americana",
+    "sessions": 3,
+    "identity": {
+      "position": "Half Guard (top)",
+      "objective": "Pass half guard with crossface pressure, stabilize side control, finish americana.",
+      "success": "Clean pass to chest-on-chest side control. Americana from dominant position.",
+      "failure": "Pass fails — still in half guard (safe). Side control lost — fall to half guard (safe)."
+    },
+    "constraint": {
+      "task": "From top half guard, free your trapped leg. 2 minutes. No specific technique.",
+      "discovery": "Shoulder pressure controls the head. Head control determines whether they can re-guard."
+    },
+    "isolation": {
+      "remove": ["underhook (bottom player)"],
+      "task": "Top player: pin with only crossface and chest pressure. No hands on the mat.",
+      "discovery": "Weight distribution is the invisible control layer. Heavy chest, light hands."
+    },
+    "tool_add": [
+      { "tool": "Crossface", "effect": "Shoulder blade drives into far cheek. Head turns away. Re-guard denied." },
+      { "tool": "Underhook", "effect": "Arm under their armpit, hand on shoulder blade. Controls their hip movement." },
+      { "tool": "Knee slice", "effect": "Shin slides across their thigh. Hip drops to clear. Land in side control." }
+    ],
+    "resistance": {
+      "level_1": "Bottom partner holds half guard loosely. Allows the pass.",
+      "level_2": "Bottom partner holds half guard at realistic tension. Does not re-guard after pass.",
+      "level_3": "Bottom partner actively fights for underhook, tries to re-guard.",
+      "level_4": "Full resistance. Bottom partner attempts sweeps, back takes, re-guard."
+    },
+    "specific_sparring": [
+      { "start": "HGRD.CTRL (top)", "win": "Pass to side control (SCTR.CTRL)", "reset": "On full guard recovery" },
+      { "start": "SCTR.CTRL", "win": "Finish americana (SCTR.SUB)", "reset": "On guard recovery" },
+      { "start": "HGRD.CTRL (top)", "win": "Complete full road to SCTR.SUB", "reset": "On any failure" }
+    ],
+    "live": "Free roll. Objective: find top half guard → pass → side control → americana.",
+    "duality": {
+      "perspective": "Opponent (bottom half guard)",
+      "tasks": [
+        "Fight for the underhook. Whoever wins the underhook controls the position.",
+        "Deny the crossface. Frame on their bicep and shoulder.",
+        "When passed: immediate hip escape to re-guard. Do not stay flat.",
+        "Defend americana: keep elbow tight to body, bridge toward the trapped arm."
+      ]
+    }
+  },
+  "S4": {
+    "road_id": "S4",
+    "name": "Mount Escape to Butterfly Sweep",
+    "sessions": 3,
+    "identity": {
+      "position": "Mount (bottom)",
+      "objective": "Escape mount, recover to butterfly guard, execute sweep to top.",
+      "success": "Clean mount escape. Butterfly hooks established. Sweep to top position.",
+      "failure": "Escape fails — still under mount (recoverable with bridge/shrimp cycle)."
+    },
+    "constraint": {
+      "task": "Survive mount for 2 minutes. Partner maintains but does not attack. Find ways to create space.",
+      "discovery": "Flat on back = stuck. Frames create distance. Bridge creates movement opportunities."
+    },
+    "isolation": {
+      "remove": ["arms (top player)"],
+      "task": "Top player: hold mount using only hips and legs. Bottom player: escape using only hips.",
+      "discovery": "Mount control is hip weight and base. Mount escape is hip movement and angle change."
+    },
+    "tool_add": [
+      { "tool": "Elbow-knee escape frame", "effect": "Elbow connects to knee. Creates a wedge. Slide knee through to half guard." },
+      { "tool": "Butterfly hook insertion", "effect": "Once space exists, insert instep hooks inside their thighs." },
+      { "tool": "Off-balance + sweep", "effect": "Overhook or underhook. Load their weight forward. Elevate with hooks. Sweep." }
+    ],
+    "resistance": {
+      "level_1": "Top partner stays still in mount. Allows escape.",
+      "level_2": "Top partner maintains mount at realistic weight. Does not re-mount after escape.",
+      "level_3": "Top partner actively re-mounts, adjusts base, blocks escape attempts.",
+      "level_4": "Full resistance. Top attacks while maintaining. Bottom must escape and sweep."
+    },
+    "specific_sparring": [
+      { "start": "MNT.CTRL (bottom)", "win": "Recover guard (any guard)", "reset": "On submission or stall" },
+      { "start": "OGRD.CTRL (butterfly)", "win": "Sweep to top (MNT.SWP)", "reset": "On guard pass" },
+      { "start": "MNT.CTRL (bottom)", "win": "Escape + sweep to top", "reset": "On submission" }
+    ],
+    "live": "Free roll. Objective: when mounted, execute escape → butterfly → sweep.",
+    "duality": {
+      "perspective": "Opponent (mount top)",
+      "tasks": [
+        "Maintain mount. Heavy hips. Grapevines or heels.",
+        "When they bridge: ride it, post, re-settle.",
+        "When they shrimp: follow their hips, deny space.",
+        "Recognize when butterfly hooks are inserted — kill the hooks before the sweep."
+      ]
+    }
+  },
+  "S5": {
+    "road_id": "S5",
+    "name": "Open Guard Collar-Sleeve Sweep to Mount Cross Choke",
+    "sessions": 3,
+    "identity": {
+      "position": "Open Guard (bottom, collar-sleeve grip)",
+      "objective": "Control distance with grips, sweep to mount, finish with cross choke.",
+      "success": "Grip control → sweep → mount → cross choke.",
+      "failure": "Sweep fails — still in open guard (safe). Grips stripped — re-grip cycle."
+    },
+    "constraint": {
+      "task": "Maintain open guard grips for 2 minutes. Partner tries to pass. Keep them at distance.",
+      "discovery": "Feet on hips/biceps are distance managers. Grips are steering wheels."
+    },
+    "isolation": {
+      "remove": ["hand grips"],
+      "task": "Control partner using only feet on hips and shins on biceps. No hands.",
+      "discovery": "Legs are the primary guard retention tool. Hands add precision but legs do the work."
+    },
+    "tool_add": [
+      { "tool": "Collar grip", "effect": "Deep four-finger grip. Pull down for posture break. Cross-grip for choke setup." },
+      { "tool": "Sleeve grip", "effect": "Control their posting hand. Deny base on one side. Sweep becomes available." },
+      { "tool": "Pendulum/scissor sweep", "effect": "Load weight to one side, kick legs in opposite direction, arrive in mount." }
+    ],
+    "resistance": {
+      "level_1": "Partner stands still. Allows grips and sweep.",
+      "level_2": "Partner moves at realistic speed. Allows sweep once off-balanced.",
+      "level_3": "Partner strips grips actively. Attempts passes.",
+      "level_4": "Full resistance. Partner passes, strips grips, defends sweeps."
+    },
+    "specific_sparring": [
+      { "start": "OGRD.CTRL", "win": "Sweep to mount (MNT.SWP)", "reset": "On guard pass" },
+      { "start": "MNT.CTRL", "win": "Finish cross choke (MNT.SUB)", "reset": "On mount loss" },
+      { "start": "OGRD.CTRL", "win": "Complete full road to MNT.SUB", "reset": "On any failure" }
+    ],
+    "live": "Free roll. Objective: pull to open guard → establish grips → sweep → mount → choke.",
+    "duality": {
+      "perspective": "Opponent (standing passer)",
+      "tasks": [
+        "Strip collar grip immediately — two-on-one break.",
+        "Kill the sleeve grip before they load the sweep.",
+        "When swept: post hand, base wide, deny the mount.",
+        "Defend cross choke: posture in mount, hands inside, deny deep collar access."
+      ]
+    }
+  },
+  "S6": {
+    "road_id": "S6",
+    "name": "Side Control Escape to Closed Guard",
+    "sessions": 2,
+    "identity": {
+      "position": "Side Control (bottom)",
+      "objective": "Survive side control, create frames, hip escape to recover closed guard.",
+      "success": "Guard recovered. Opponent is back inside your guard.",
+      "failure": "Escape fails — still under side control (recoverable with frame + shrimp cycle)."
+    },
+    "constraint": {
+      "task": "Survive under side control for 2 minutes. Partner maintains heavy pressure. Find breathing space.",
+      "discovery": "Flat = crushed. Frames on neck and hip create survival space. Getting to your side is critical."
+    },
+    "isolation": {
+      "remove": ["hands (bottom player)"],
+      "task": "Escape side control using only hip movement and shoulder turns. No arms.",
+      "discovery": "The hip escape is the engine. Arms add frames but hips create the actual distance."
+    },
+    "tool_add": [
+      { "tool": "Inside frame", "effect": "Forearm on their neck, elbow on their hip. Creates a cage they cannot collapse." },
+      { "tool": "Hip escape", "effect": "Bridge onto shoulder → slide hips away → create knee space." },
+      { "tool": "Knee insertion", "effect": "Slide knee into the space. Reconnect guard. Close guard immediately." }
+    ],
+    "resistance": {
+      "level_1": "Top partner holds side control loosely. Allows escape.",
+      "level_2": "Top partner holds at realistic pressure. Does not re-pass after escape.",
+      "level_3": "Top partner adjusts, re-passes, blocks hip escapes actively.",
+      "level_4": "Full resistance. Top attacks while maintaining. Bottom must escape under pressure."
+    },
+    "specific_sparring": [
+      { "start": "SCTR.CTRL (bottom)", "win": "Recover any guard", "reset": "On submission or re-pass" },
+      { "start": "SCTR.CTRL (bottom)", "win": "Recover specifically closed guard (CGRD.CTRL)", "reset": "On mount or back take" }
+    ],
+    "live": "Free roll. Objective: when stuck in side control, execute frame → escape → guard recovery.",
+    "duality": {
+      "perspective": "Opponent (side control top)",
+      "tasks": [
+        "Maintain side control. Crossface + underhook. Chest pressure heavy.",
+        "When they frame: swim through the frame, re-establish chest contact.",
+        "When they hip escape: follow their hips, deny the knee insertion.",
+        "Recognize when guard is about to close — pass or transition before it locks."
+      ]
+    }
+  },
+  "S7": {
+    "road_id": "S7",
+    "name": "Closed Guard Triangle Choke",
+    "sessions": 3,
+    "identity": {
+      "position": "Closed Guard (bottom)",
+      "objective": "Control posture, isolate one arm in and one arm out, lock triangle, cut the angle, finish.",
+      "success": "Triangle locked. Angle cut to 90°. Opponent taps.",
+      "failure": "Triangle not locked — still in closed guard (safe). Stacked — release and re-attack (safe)."
+    },
+    "constraint": {
+      "task": "From closed guard, try to get your legs around partner's head and one arm. 2 minutes. No technique instruction.",
+      "discovery": "One arm in, one arm out is the prerequisite. Posture break creates the opening."
+    },
+    "isolation": {
+      "remove": ["angle cutting"],
+      "task": "Lock the triangle position (legs around head+arm) without finishing. Hold it. Feel the shape.",
+      "discovery": "The lock itself is a position. It must be stable before the finish is possible."
+    },
+    "tool_add": [
+      { "tool": "Overhook arm drag", "effect": "Control one arm with overhook. Push the other arm across with same-side hand." },
+      { "tool": "Leg position", "effect": "Shin across back of neck. Lock ankle behind knee. Squeeze knees together." },
+      { "tool": "Angle cut", "effect": "Walk shoulders perpendicular to opponent. Pull head down. This is what finishes the choke." }
+    ],
+    "resistance": {
+      "level_1": "Partner allows posture break and arm isolation. Stays in triangle.",
+      "level_2": "Partner postures at realistic speed. Does not defend once triangle is locked.",
+      "level_3": "Partner postures up, stacks, defends arm isolation.",
+      "level_4": "Full resistance. Partner defends posture, stacks, attempts to pass out of triangle."
+    },
+    "specific_sparring": [
+      { "start": "CGRD.CTRL", "win": "Lock triangle position", "reset": "On guard open" },
+      { "start": "CGRD.CTRL (triangle locked)", "win": "Finish triangle (CGRD.SUB)", "reset": "On escape" },
+      { "start": "CGRD.CTRL", "win": "Full road: posture break → arm isolation → triangle finish", "reset": "On any failure" }
+    ],
+    "live": "Free roll. Objective: find closed guard → hunt for the triangle.",
+    "duality": {
+      "perspective": "Opponent",
+      "tasks": [
+        "Maintain posture. Hands on hips. Do not let head get pulled down.",
+        "When arm is isolated: pull it back immediately. Two-on-one to recover.",
+        "When triangle is locked: posture up, stack, walk around to pass side.",
+        "Defend the angle cut: drive forward, deny the perpendicular hip walk."
+      ]
+    }
+  },
+  "S8": {
+    "road_id": "S8",
+    "name": "Mount Cross Choke with Americana Trap",
+    "sessions": 2,
+    "identity": {
+      "position": "Mount (top)",
+      "objective": "Stabilize mount, attack cross choke. When they defend the choke, americana is exposed.",
+      "success": "Cross choke finish, or americana finish when they defend the choke.",
+      "failure": "Both attacks defended — still in mount (safe). Mount lost — fall to half guard (safe)."
+    },
+    "constraint": {
+      "task": "Maintain mount for 3 minutes. Partner tries to escape. No attacks — just maintain.",
+      "discovery": "Mount maintenance IS the technique. Without stable mount, no submission works."
+    },
+    "isolation": {
+      "remove": ["submissions"],
+      "task": "Ride mount for 3 minutes against active escapes. Grapevines, base adjustments, hip pressure only.",
+      "discovery": "Heavy hips and base adjustments are the foundation. Rushing submissions = mount loss."
+    },
+    "tool_add": [
+      { "tool": "Cross collar grip", "effect": "Deep grip, four fingers inside collar. Elbow tight to chest." },
+      { "tool": "Second collar grip", "effect": "Other hand mirrors first grip. Elbows drop. Forearms close around the neck." },
+      { "tool": "Americana trap", "effect": "When they push on your chest to defend: isolate the pushing arm. Figure-four. Paint brush to the mat." }
+    ],
+    "resistance": {
+      "level_1": "Bottom partner stays still. Allows grips and choke.",
+      "level_2": "Bottom partner escapes passively. Defends choke weakly.",
+      "level_3": "Bottom partner actively defends collar grips. Attempts mount escape.",
+      "level_4": "Full resistance. Bottom partner bridges, shrimps, strips grips, escapes."
+    },
+    "specific_sparring": [
+      { "start": "MNT.CTRL", "win": "Finish cross choke or americana (MNT.SUB)", "reset": "On mount loss" },
+      { "start": "MNT.CTRL", "win": "Maintain mount for 2 minutes, then attack", "reset": "On escape" }
+    ],
+    "live": "Free roll. Objective: find mount → stabilize → cross choke → americana trap.",
+    "duality": {
+      "perspective": "Opponent (mount bottom)",
+      "tasks": [
+        "Protect collar. Deny deep grips. Two hands strip immediately.",
+        "When choke is sinking: turn to side, create frame, begin escape.",
+        "Keep elbows tight to deny americana setup.",
+        "Bridge and roll when they commit both hands to choke — their base is compromised."
+      ]
+    }
+  },
+  "S9": {
+    "road_id": "S9",
+    "name": "Collar-Sleeve Guard Pull to Closed Guard",
+    "sessions": 2,
+    "identity": {
+      "position": "Standing / Open Guard",
+      "objective": "Establish collar and sleeve grips from standing, pull guard safely, arrive in closed guard with grips intact.",
+      "success": "Controlled guard pull. Closed guard established. Grips maintained throughout.",
+      "failure": "Grips stripped — re-grip (safe). Guard pull sloppy — land in open guard (safe, familiar position)."
+    },
+    "constraint": {
+      "task": "From standing, get your partner into your closed guard. 90 seconds. No grip instruction.",
+      "discovery": "Pulling guard without grips = landing on your back with no control. Grips BEFORE the pull."
+    },
+    "isolation": {
+      "remove": ["pulling motion"],
+      "task": "Establish and hold collar + sleeve grips for 60 seconds. Partner tries to strip them. Do not pull guard.",
+      "discovery": "Grip fighting is a separate skill. The pull is easy — winning grips is hard."
+    },
+    "tool_add": [
+      { "tool": "Collar grip", "effect": "Deep four-finger cross grip. Elbow pulls down. Controls their posture even while standing." },
+      { "tool": "Sleeve grip", "effect": "Same-side sleeve at the wrist. Denies their posting hand and controls distance." },
+      { "tool": "Guard pull mechanic", "effect": "Sit down. Feet on hips. Pull them into your guard using grips. Close guard immediately." }
+    ],
+    "resistance": {
+      "level_1": "Partner stands still. Allows grips and pull.",
+      "level_2": "Partner moves at realistic speed. Does not strip grips.",
+      "level_3": "Partner actively strips grips. Circles and changes angles.",
+      "level_4": "Full resistance. Partner strip-fights, sprawls, attempts to pass on the pull."
+    },
+    "specific_sparring": [
+      { "start": "Standing", "win": "Establish closed guard with grips (CGRD.CTRL)", "reset": "On takedown or guard pass" },
+      { "start": "Standing", "win": "Pull guard → immediately attack (link to S1 or S7)", "reset": "On failed pull" }
+    ],
+    "live": "Free roll starting standing. Objective: win grips → pull guard → establish closed guard → begin attacking.",
+    "duality": {
+      "perspective": "Opponent (standing)",
+      "tasks": [
+        "Strip collar grip immediately. Do not let them get deep.",
+        "When they pull guard: stay standing, break grips, begin passing.",
+        "Do not follow them to the ground with bad posture.",
+        "If they sit without grips: pressure pass immediately."
+      ]
+    }
+  },
+  "B1": {
+    "road_id": "B1",
+    "name": "Butterfly Hook Sweep to Knee Cut Pass",
+    "sessions": 3,
+    "identity": {
+      "position": "Open Guard (butterfly)",
+      "objective": "Off-balance with underhook, hook sweep to top, pass with knee cut to side control.",
+      "success": "Sweep to top. Clean knee cut pass. Arrive in side control.",
+      "failure": "Sweep fails — still in butterfly (safe). Pass fails — return to top half guard (recoverable)."
+    },
+    "constraint": {
+      "task": "From butterfly guard, try to make your partner fall to either side. 2 minutes.",
+      "discovery": "Hooks alone don't sweep. You need upper body control and off-balancing first."
+    },
+    "isolation": {
+      "remove": ["grips"],
+      "task": "Sweep using only hooks and body movement. No grips, no underhook.",
+      "discovery": "Loading their weight onto one hook while kicking the other is the engine."
+    },
+    "tool_add": [
+      { "tool": "Underhook", "effect": "Arm under their armpit. Head on their chest. Now you can direct where they fall." },
+      { "tool": "Butterfly elevation", "effect": "Load their weight forward. Kick one hook to the ceiling. They topple." },
+      { "tool": "Knee cut pass", "effect": "From top: crossface, knee slides across thigh, hip drops, arrive side control." }
+    ],
+    "resistance": {
+      "level_1": "Partner allows sweep and pass.",
+      "level_2": "Partner moves realistically. Does not resist once off-balanced.",
+      "level_3": "Partner fights the underhook. Bases out against sweep.",
+      "level_4": "Full resistance both phases."
+    },
+    "specific_sparring": [
+      { "start": "OGRD.CTRL (butterfly)", "win": "Sweep to top", "reset": "On guard pass" },
+      { "start": "Top half guard/open", "win": "Pass to SCTR.CTRL", "reset": "On re-guard" }
+    ],
+    "live": "Free roll. Find butterfly → sweep → pass.",
+    "duality": {
+      "perspective": "Opponent",
+      "tasks": ["Base wide against butterfly. Deny the underhook.", "When swept: recover guard before they consolidate.", "Defend knee cut: inside knee shield, re-pummel."]
+    }
+  },
+  "B2": {
+    "road_id": "B2",
+    "name": "Side Control to Back Take via Nearside Underhook",
+    "sessions": 2,
+    "identity": {
+      "position": "Side Control (top)",
+      "objective": "When opponent turns to escape, recognize back exposure and take the back.",
+      "success": "Seatbelt → hooks → back control.",
+      "failure": "Back take missed — still in side control (safe)."
+    },
+    "constraint": { "task": "From side control, make your partner turn away. 2 minutes. No technique.", "discovery": "Crossface pressure makes them turn away — which exposes the back." },
+    "isolation": { "remove": ["hooks"], "task": "Establish seatbelt from side control transition without hooks. Hold 30 seconds.", "discovery": "Seatbelt FIRST, then chase hips, then hooks. Never hooks before seatbelt." },
+    "tool_add": [
+      { "tool": "Crossface pressure", "effect": "Drive them to turn away — this is the trigger." },
+      { "tool": "Seatbelt", "effect": "Over-arm and under-arm. Chest glued to back." },
+      { "tool": "Hip chase + hooks", "effect": "Follow their hips. Bottom hook first. Top hook second." }
+    ],
+    "resistance": { "level_1": "Partner turns on cue.", "level_2": "Partner turns naturally under pressure.", "level_3": "Partner fights the seatbelt, tries to turn back in.", "level_4": "Full resistance back escape." },
+    "specific_sparring": [{ "start": "SCTR.CTRL", "win": "Take back (BCTR.CTRL)", "reset": "On guard recovery" }],
+    "live": "Free roll. Objective: find side control → pressure → back take.",
+    "duality": { "perspective": "Opponent", "tasks": ["When turning away: tuck elbows, protect neck, prepare to face back in.", "Never give seatbelt for free — fight the over-arm."] }
+  },
+  "B3": {
+    "road_id": "B3",
+    "name": "Open Guard Overhead Sweep to Mount",
+    "sessions": 2,
+    "identity": { "position": "Open Guard (bottom)", "objective": "Collar grip control, overhead sweep, arrive in mount.", "success": "Overhead sweep lands clean. Mount established.", "failure": "Sweep fails — still in open guard (safe)." },
+    "constraint": { "task": "From open guard, use only legs to off-balance standing partner. 2 minutes.", "discovery": "Feet on hips control distance. Pulling them forward with legs loads the sweep." },
+    "isolation": { "remove": ["grips"], "task": "Off-balance using only feet and leg hooks.", "discovery": "Weight loading onto your feet is the sweep setup. Grips direct the fall." },
+    "tool_add": [
+      { "tool": "Deep collar grip", "effect": "Controls posture and direction of fall." },
+      { "tool": "Overhead sweep mechanic", "effect": "Feet on hips, pull forward and overhead, kick legs to ceiling, roll them over you." },
+      { "tool": "Mount landing", "effect": "Follow the sweep immediately. Establish mount before they recover." }
+    ],
+    "resistance": { "level_1": "Partner allows sweep.", "level_2": "Partner bases but does not strongly resist.", "level_3": "Partner strips grips, bases wide.", "level_4": "Full pass attempts." },
+    "specific_sparring": [{ "start": "OGRD.CTRL", "win": "Sweep to MNT.CTRL", "reset": "On guard pass" }],
+    "live": "Free roll. Objective: pull to open guard → overhead sweep → mount.",
+    "duality": { "perspective": "Opponent", "tasks": ["Stay heavy. Do not let them load your weight onto their feet.", "Strip collar grip early.", "When swept: bridge immediately, do not let mount settle."] }
+  },
+  "B4": {
+    "road_id": "B4",
+    "name": "Side Control Americana-to-Armbar Chain",
+    "sessions": 2,
+    "identity": { "position": "Side Control (top)", "objective": "Attack americana. When they defend, transition to armbar.", "success": "Americana or armbar finish.", "failure": "Both defended — still in side control (safe)." },
+    "constraint": { "task": "Maintain side control chest pressure for 3 minutes. No attacks.", "discovery": "Heavy side control creates the panic that opens the arms." },
+    "isolation": { "remove": ["armbar transition"], "task": "Attack americana only. Isolate the near arm. Figure-four. Paint brush.", "discovery": "The americana is a lever system. Wrist control + elbow control = submission." },
+    "tool_add": [
+      { "tool": "Near arm isolation", "effect": "Push their wrist to the mat. Control the elbow." },
+      { "tool": "Figure-four grip", "effect": "Your wrist on their wrist. Other hand grabs your own wrist. Lever locked." },
+      { "tool": "Armbar transition", "effect": "When they straighten the arm to defend americana: step over head, hips tight, extend." }
+    ],
+    "resistance": { "level_1": "Partner allows arm isolation.", "level_2": "Partner defends weakly.", "level_3": "Partner defends americana specifically — creates armbar opening.", "level_4": "Full defense of both attacks." },
+    "specific_sparring": [{ "start": "SCTR.CTRL", "win": "Finish americana or armbar", "reset": "On guard recovery" }],
+    "live": "Free roll. Objective: side control → americana → armbar chain.",
+    "duality": { "perspective": "Opponent", "tasks": ["Keep elbows tight. Do not let arm get isolated.", "If americana is locked: do NOT straighten arm. Turn into them instead.", "Frame and escape before they settle."] }
+  },
+  "B5": {
+    "road_id": "B5",
+    "name": "Closed Guard Kimura Sweep to Top Kimura",
+    "sessions": 2,
+    "identity": { "position": "Closed Guard (bottom)", "objective": "Kimura grip from guard. If they resist: sweep. Finish kimura from top.", "success": "Kimura finish from top or sweep to mount.", "failure": "Kimura grip lost — still in closed guard (safe)." },
+    "constraint": { "task": "From closed guard, control one of their arms with both hands. 2 minutes.", "discovery": "Two-on-one control is the foundation. The grip IS the position." },
+    "isolation": { "remove": ["sweep"], "task": "Lock the kimura grip (figure-four on wrist). Hold for 30 seconds. Do not sweep or submit.", "discovery": "The kimura grip is a control position, not just a submission." },
+    "tool_add": [
+      { "tool": "Kimura grip", "effect": "Figure-four on their wrist. Elbow tight. Their arm is now your lever." },
+      { "tool": "Sweep mechanic", "effect": "Open guard, hip out, use kimura grip to rotate them over. Arrive on top." },
+      { "tool": "Top kimura finish", "effect": "From top: keep grip, step over head, crank wrist behind their back." }
+    ],
+    "resistance": { "level_1": "Partner allows grip and sweep.", "level_2": "Partner resists sweep lightly.", "level_3": "Partner fights the grip, bases out.", "level_4": "Full resistance." },
+    "specific_sparring": [{ "start": "CGRD.CTRL", "win": "Kimura sweep → top finish", "reset": "On grip break" }],
+    "live": "Free roll. Objective: find closed guard → kimura grip → sweep → finish.",
+    "duality": { "perspective": "Opponent", "tasks": ["Grip their own wrist/belt to prevent kimura rotation.", "Keep elbow glued to body. Do not let arm get extended.", "Base wide when they open guard for sweep."] }
+  },
+  "B6": {
+    "road_id": "B6",
+    "name": "Turtle Breakdown to Back Control",
+    "sessions": 2,
+    "identity": { "position": "Turtle (top/behind)", "objective": "Break down turtle position, establish seatbelt, insert hooks, control the back.", "success": "Turtle broken down. Back control with hooks.", "failure": "Turtle maintained — still behind them (recoverable). They sit to guard — you're in their guard (safe)." },
+    "constraint": { "task": "Your partner is in turtle. Get to their back. 2 minutes. No technique instruction.", "discovery": "They are protecting their neck and limbs. You need to break their structure before you can take the back." },
+    "isolation": { "remove": ["hooks"], "task": "Establish seatbelt on turtle without hooks. Keep chest-to-back.", "discovery": "Seatbelt is the anchor. Without it, you slide off." },
+    "tool_add": [
+      { "tool": "Seatbelt from behind", "effect": "Over-arm across chest. Under-arm from armpit. Chest glued to their back." },
+      { "tool": "Hip pull / chop block", "effect": "Pull their hips to one side. They collapse off their base." },
+      { "tool": "Hook insertion", "effect": "Bottom hook first (they're sitting on it). Top hook second. Heels inward." }
+    ],
+    "resistance": { "level_1": "Partner stays in turtle. Allows breakdown.", "level_2": "Partner turtles actively but does not counter.", "level_3": "Partner fights seatbelt, re-turtles, attempts sit-out.", "level_4": "Full escape attempts." },
+    "specific_sparring": [{ "start": "TRTL (behind)", "win": "Establish BCTR.CTRL", "reset": "On guard recovery or stand-up" }],
+    "live": "Free roll. Objective: when opponent turtles, break down → back control.",
+    "duality": { "perspective": "Opponent (turtle)", "tasks": ["Protect neck. Elbows tight.", "Deny the seatbelt — fight the over-arm immediately.", "Sit out to guard before they insert hooks.", "If hooks are in: fight seatbelt, clear bottom hook, turn to face."] }
+  },
+  "B7": {
+    "road_id": "B7",
+    "name": "De La Riva Sweep to Leg Drag Pass",
+    "sessions": 3,
+    "identity": { "position": "Open Guard (De La Riva)", "objective": "Establish DLR hook, off-balance, sweep, pass with leg drag.", "success": "DLR sweep to top. Leg drag pass to side control.", "failure": "Sweep fails — still in DLR (safe). Hook stripped — re-establish." },
+    "constraint": { "task": "Hook one leg with your outside foot from open guard. Keep them off balance. 2 minutes.", "discovery": "The DLR hook controls their base on one side. Combined with grip = sweep." },
+    "isolation": { "remove": ["grips"], "task": "Maintain DLR hook only. Control their balance with just the hook.", "discovery": "The hook alone creates an off-balance threat. Grips determine the direction." },
+    "tool_add": [
+      { "tool": "DLR hook", "effect": "Outside foot wraps inside their lead leg. Shin against their thigh." },
+      { "tool": "Collar + ankle grip", "effect": "Collar grip pulls down. Ankle grip lifts their far leg. They have nowhere to step." },
+      { "tool": "Leg drag pass", "effect": "From top: grab both legs, push them to one side, drive chest across." }
+    ],
+    "resistance": { "level_1": "Partner allows hook and sweep.", "level_2": "Partner moves but does not strip hook.", "level_3": "Partner strips hook, backs out, re-engages.", "level_4": "Full passing attempts." },
+    "specific_sparring": [{ "start": "OGRD.DLR.CTRL", "win": "Sweep → pass to SCTR.CTRL", "reset": "On guard pass or hook strip" }],
+    "live": "Free roll. Objective: find DLR → sweep → leg drag → side control.",
+    "duality": { "perspective": "Opponent", "tasks": ["Strip the DLR hook immediately — push knee to mat.", "Do not let them grab the far ankle.", "When swept: recover guard before they initiate the pass."] }
+  },
+  "B8": {
+    "road_id": "B8",
+    "name": "Mount Escape Elbow-Knee to Half Guard Sweep",
+    "sessions": 2,
+    "identity": { "position": "Mount (bottom)", "objective": "Escape mount via elbow-knee, arrive in half guard, sweep from bottom half.", "success": "Mount escaped. Half guard sweep to top.", "failure": "Escape fails — still under mount (recoverable). Half guard sweep fails — still in half guard (safe)." },
+    "constraint": { "task": "Survive mount 2 minutes. Find any way to not be flat on your back.", "discovery": "Getting to your side and making frames is survival. Flat = dead." },
+    "isolation": { "remove": ["upper body"], "task": "Escape mount using only hip movement and knee insertion. No frames.", "discovery": "The knee insertion is the escape. Frames create the space for it." },
+    "tool_add": [
+      { "tool": "Elbow-knee frame", "effect": "Elbow to inside of knee. Creates a wedge that blocks re-mount." },
+      { "tool": "Half guard recovery", "effect": "Trap one leg with yours. You are now in half guard bottom." },
+      { "tool": "Half guard sweep", "effect": "Underhook, get to your side, drive into them. Come to top." }
+    ],
+    "resistance": { "level_1": "Top partner allows escape.", "level_2": "Top partner maintains actively but does not re-mount.", "level_3": "Top partner re-mounts, adjusts, blocks escapes.", "level_4": "Full attacks from mount." },
+    "specific_sparring": [{ "start": "MNT.CTRL (bottom)", "win": "Escape → half guard → sweep to top", "reset": "On submission" }],
+    "live": "Free roll. When mounted: escape → half guard → sweep.",
+    "duality": { "perspective": "Opponent (mount top)", "tasks": ["When they frame: swim the arm, deny the space.", "When knee comes in: sprawl hip to crush the insertion.", "In top half guard: crossface, deny the underhook, re-pass."] }
+  },
+  "N1": {
+    "road_id": "N1",
+    "name": "Butterfly Guard Decision Tree",
+    "sessions": 4,
+    "identity": { "position": "Open Guard (butterfly)", "objective": "Read opponent's reaction. Branch: hook sweep / arm drag / guillotine based on their defense.", "success": "Correct read → correct branch → sweep or submission.", "failure": "Wrong read — return to butterfly (safe). Decision tree resets." },
+    "constraint": { "task": "From butterfly, partner chooses one of three reactions. You must recognize which one. No attacks. Just read.", "discovery": "Opponent reading is a skill. The attack choice comes FROM the reaction, not before it." },
+    "isolation": { "remove": ["submissions"], "task": "Read and sweep only. No finishes. Focus on reading + correct sweep selection.", "discovery": "The decision tree starts with reading, not attacking." },
+    "tool_add": [
+      { "tool": "If they posture up", "effect": "Underhook + hook sweep. They are tall = easy to topple." },
+      { "tool": "If they over-commit forward", "effect": "Arm drag → back take. Their weight is past center." },
+      { "tool": "If they reach for your head", "effect": "Guillotine. Chin strap, hip out, squeeze." }
+    ],
+    "resistance": { "level_1": "Partner gives clear, exaggerated reactions.", "level_2": "Partner gives realistic reactions.", "level_3": "Partner varies reactions. Mixes timing.", "level_4": "Full resistance. Scrambles." },
+    "specific_sparring": [{ "start": "OGRD.CTRL (butterfly)", "win": "Execute correct branch based on reaction", "reset": "On guard pass or wrong read" }],
+    "live": "Free roll. Objective: find butterfly → read → execute correct branch.",
+    "duality": { "perspective": "Opponent", "tasks": ["Vary your reactions. Do not be predictable.", "When you posture: base wide immediately.", "When you lean forward: pull head back, deny the drag."] }
+  },
+  "N2": {
+    "road_id": "N2",
+    "name": "Mount Attack System",
+    "sessions": 4,
+    "identity": { "position": "Mount (top)", "objective": "Decision tree: cross choke → if neck defended → americana → if arm defended → armbar.", "success": "Finish via whichever branch opens.", "failure": "All defended — still in mount (safe). Decision tree cycles." },
+    "constraint": { "task": "Maintain mount. Partner defends three different ways across rounds. Identify what they're defending.", "discovery": "They cannot defend everything. When they protect the neck, arms open. When they protect arms, neck opens." },
+    "isolation": { "remove": ["armbar"], "task": "Cycle only between choke and americana. Read which is available.", "discovery": "The two attacks create a dilemma. Add the third later." },
+    "tool_add": [
+      { "tool": "If they protect neck", "effect": "Arms are pushing up. Isolate near arm → americana." },
+      { "tool": "If they protect arms", "effect": "Neck is exposed. Deep collar grip → cross choke." },
+      { "tool": "If they bridge to escape", "effect": "Post, ride, when they settle → armbar the posting arm." }
+    ],
+    "resistance": { "level_1": "Partner defends one thing only.", "level_2": "Partner alternates defenses.", "level_3": "Partner defends dynamically + escapes.", "level_4": "Full competitive mount escape + defense." },
+    "specific_sparring": [{ "start": "MNT.CTRL", "win": "Finish via any branch", "reset": "On escape" }],
+    "live": "Free roll. Find mount → cycle the attack system.",
+    "duality": { "perspective": "Opponent", "tasks": ["Defend systematically: neck first, then arms, then escape.", "Never defend only one thing — you will lose the other.", "Escape attempts should be timed between attack transitions."] }
+  },
+  "N3": {
+    "road_id": "N3",
+    "name": "Back Attack System",
+    "sessions": 4,
+    "identity": { "position": "Back Control", "objective": "Decision tree: RNC → if chin defended → armbar → if arm defended → collar choke (gi).", "success": "Finish via the open branch.", "failure": "All defended — maintain back control (safe). Re-cycle." },
+    "constraint": { "task": "Hold back control for 3 minutes. Partner escapes actively. Maintain position only.", "discovery": "Back retention is the prerequisite. Without retention, no attack system works." },
+    "isolation": { "remove": ["armbar", "collar choke"], "task": "Hunt RNC only. When chin is defended, just re-adjust. Do not give up position.", "discovery": "The hand fight IS the back attack. Most of the work is hand fighting, not choking." },
+    "tool_add": [
+      { "tool": "If chin is tucked", "effect": "Switch to armbar — they pull arms down to defend neck, arm is exposed." },
+      { "tool": "If arms stay tight", "effect": "Hand fight → slide choking arm under chin → RNC." },
+      { "tool": "If they turn to face", "effect": "Let them — you land in mount. Still dominant." }
+    ],
+    "resistance": { "level_1": "Partner defends chin passively.", "level_2": "Partner hand fights realistically.", "level_3": "Partner escapes actively + defends dynamically.", "level_4": "Competition-level back defense." },
+    "specific_sparring": [{ "start": "BCTR.CTRL", "win": "Finish via any branch", "reset": "On back escape" }],
+    "live": "Free roll. Take back → cycle the attack system.",
+    "duality": { "perspective": "Opponent", "tasks": ["Two hands on the choking arm at all times.", "Clear bottom hook first — this is your escape route.", "Turn into them, not away. Turning away = worse back control."] }
+  },
+  "N4": {
+    "road_id": "N4",
+    "name": "Half Guard Passing Network",
+    "sessions": 4,
+    "identity": { "position": "Half Guard (top)", "objective": "Decision tree: knee slice → if they re-guard → crossface smash pass → if underhook → backstep.", "success": "Pass to side control via correct branch.", "failure": "Pass fails — still in half guard (recoverable). They re-guard — restart." },
+    "constraint": { "task": "From top half guard, free your leg. 2 minutes. Any method.", "discovery": "Every pass attempt creates a reaction. The reaction tells you which pass is next." },
+    "isolation": { "remove": ["backstep"], "task": "Cycle only between knee slice and smash pass. Read which is available.", "discovery": "Two passes create a binary decision. Add the third later." },
+    "tool_add": [
+      { "tool": "If they stay flat", "effect": "Knee slice. Shin across thigh. Hip drops. Clean pass." },
+      { "tool": "If they get to their side", "effect": "Crossface heavy. Smash pass — drive them flat, walk around." },
+      { "tool": "If they win the underhook", "effect": "Backstep. Spin to the other side. They lose the underhook." }
+    ],
+    "resistance": { "level_1": "Partner holds half guard loosely.", "level_2": "Partner holds actively, one defense pattern.", "level_3": "Partner switches defenses.", "level_4": "Full half guard game from bottom." },
+    "specific_sparring": [{ "start": "HGRD.CTRL (top)", "win": "Pass to SCTR.CTRL via any branch", "reset": "On full guard recovery" }],
+    "live": "Free roll. Find top half guard → read → correct pass.",
+    "duality": { "perspective": "Opponent (bottom half)", "tasks": ["Get to your side immediately. Do not stay flat.", "Win the underhook. Head position follows the underhook.", "If they knee slice: block with knee shield. If they smash: re-pummel underhook."] }
+  },
+  "N5": {
+    "road_id": "N5",
+    "name": "Open Guard Retention System",
+    "sessions": 3,
+    "identity": { "position": "Open Guard (bottom)", "objective": "Against passing pressure: retain guard → re-guard → sweep or submit when they overcommit.", "success": "Guard retained. Counter-sweep or submission when passer overcommits.", "failure": "Guard passed — recover from side control (S6 territory)." },
+    "constraint": { "task": "Your partner passes for 3 minutes. Your only job: do not let them achieve side control.", "discovery": "Guard retention is not one technique — it's continuous adjustment. Frames, knees, hips." },
+    "isolation": { "remove": ["sweeps", "submissions"], "task": "Retain guard only. No attacking. Just survive and re-guard for 3 minutes.", "discovery": "Retention without attacking is the foundation. Counter-attacks come after retention is automatic." },
+    "tool_add": [
+      { "tool": "Frame on bicep + collar", "effect": "Creates distance. Denies chest-to-chest contact." },
+      { "tool": "Knee-hip connection", "effect": "Knees track their hips. If their hips move, your knees follow." },
+      { "tool": "Re-pummel", "effect": "When they clear one leg: immediately re-insert the other. Never let both legs be cleared." }
+    ],
+    "resistance": { "level_1": "Partner passes slowly and predictably.", "level_2": "Partner passes at realistic speed, one direction.", "level_3": "Partner chain-passes, switches sides.", "level_4": "Full competition passing." },
+    "specific_sparring": [{ "start": "OGRD.CTRL", "win": "Retain guard for 3 minutes OR counter-sweep", "reset": "On clean pass to side control" }],
+    "live": "Free roll. Objective: when in open guard, retain. Sweep or submit only when the opening is clear.",
+    "duality": { "perspective": "Opponent (passer)", "tasks": ["Chain passes — do not attack the same side twice.", "Clear frames before advancing.", "When they re-pummel: pin the re-inserted leg before it re-establishes."] }
+  },
+  "N6": {
+    "road_id": "N6",
+    "name": "De La Riva / RDLR Guard System",
+    "sessions": 3,
+    "identity": { "position": "Open Guard (DLR / RDLR)", "objective": "Flow between DLR and RDLR based on opponent's passing direction. Sweep or back take from either.", "success": "Sweep to top or back take.", "failure": "Guard passed — recover (recoverable). Hook stripped — re-establish (safe)." },
+    "constraint": { "task": "Maintain one hook (DLR or RDLR) for 2 minutes while partner tries to pass.", "discovery": "DLR and RDLR are two sides of the same position. They pass one, you switch to the other." },
+    "isolation": { "remove": ["back takes"], "task": "Sweep only. No back takes. Focus on off-balance + hook selection.", "discovery": "The sweep threat opens the back take. Without sweep threat, they ignore your hooks." },
+    "tool_add": [
+      { "tool": "DLR → RDLR transition", "effect": "When they step to pass DLR: switch hook to RDLR on the other leg." },
+      { "tool": "RDLR sweep", "effect": "Invert slightly, lift their base leg, they sit down." },
+      { "tool": "DLR back take", "effect": "Collar grip + DLR hook + inversion → spin under → take the back." }
+    ],
+    "resistance": { "level_1": "Partner stays still in your guard.", "level_2": "Partner passes one direction only.", "level_3": "Partner changes directions, strips hooks.", "level_4": "Full competition passing vs DLR/RDLR." },
+    "specific_sparring": [{ "start": "OGRD.DLR/RDLR.CTRL", "win": "Sweep or back take", "reset": "On guard pass" }],
+    "live": "Free roll. Objective: find DLR/RDLR → flow between them → sweep or back take.",
+    "duality": { "perspective": "Opponent", "tasks": ["Strip hooks aggressively.", "Do not stand in one place — movement kills DLR.", "When they invert: pressure forward immediately."] }
+  },
+  "N7": {
+    "road_id": "N7",
+    "name": "Side Control Submission Network",
+    "sessions": 3,
+    "identity": { "position": "Side Control (top)", "objective": "Chain attacks: americana → kimura → arm triangle → north-south choke based on defensive reactions.", "success": "Finish via whatever the opponent leaves open.", "failure": "All defended — still in side control (safe). Chain resets." },
+    "constraint": { "task": "Maintain side control for 3 minutes against active escapes. No attacks.", "discovery": "Side control maintenance under pressure is the prerequisite for all attacks." },
+    "isolation": { "remove": ["arm triangle", "north-south"], "task": "Cycle americana → kimura only. Read which arm is available.", "discovery": "The two attacks use the same grip family. One flows to the other." },
+    "tool_add": [
+      { "tool": "If near arm is flat", "effect": "Americana. Figure-four. Paint brush." },
+      { "tool": "If they hide near arm", "effect": "Kimura on far arm. Same grip, different angle." },
+      { "tool": "If they push your head", "effect": "Arm triangle. Trap their arm next to their neck. Walk to finish side." },
+      { "tool": "If they go fully defensive", "effect": "Transition north-south. North-south choke." }
+    ],
+    "resistance": { "level_1": "Partner defends one attack only.", "level_2": "Partner defends two attacks.", "level_3": "Partner defends dynamically + attempts escape.", "level_4": "Full competitive defense + escape." },
+    "specific_sparring": [{ "start": "SCTR.CTRL", "win": "Finish via any branch", "reset": "On guard recovery or escape" }],
+    "live": "Free roll. Find side control → cycle the attack network.",
+    "duality": { "perspective": "Opponent", "tasks": ["Keep elbows tight to body.", "Do not push on their head — it opens the arm triangle.", "Frame and escape early. Once they start cycling, defense gets harder."] }
+  }
+}
