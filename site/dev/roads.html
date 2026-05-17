@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roads — /dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dev.css">
+</head>
+<body>
+  <nav class="dev-nav">
+    <div class="dev-nav-logo">/dev</div>
+    <div class="dev-nav-links">
+      <a href="index.html">Fieldboard</a>
+      <a href="roads.html" class="active">Roads</a>
+      <a href="curriculum.html">Curriculum</a>
+    </div>
+  </nav>
+
+  <main class="dev-page">
+    <div class="dev-header">
+      <h1>Road Viewer</h1>
+      <p>23 curriculum roads — click a road to highlight its path on the fieldboard.</p>
+    </div>
+
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-filter="all">All (23)</button>
+      <button class="filter-btn" data-filter="spine">Spine (8)</button>
+      <button class="filter-btn" data-filter="branch">Branch (8)</button>
+      <button class="filter-btn" data-filter="network">Network (7)</button>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">Fieldboard</span>
+            <span id="highlight-label" style="font-size:0.7rem;color:var(--accent);font-family:var(--mono)"></span>
+          </div>
+          <div class="panel-body" style="overflow-x:auto">
+            <table class="fieldboard" id="fb-table">
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th class="col-ctrl">CTRL</th>
+                  <th class="col-trz">TRZ</th>
+                  <th class="col-swp">SWP</th>
+                  <th class="col-sub">SUB</th>
+                </tr>
+              </thead>
+              <tbody id="fb-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel" id="road-detail-panel" style="display:none">
+          <div class="panel-header">
+            <span class="panel-title" id="detail-title">—</span>
+          </div>
+          <div class="panel-body" id="detail-body"></div>
+        </div>
+      </div>
+
+      <div>
+        <ul class="road-list" id="road-list"></ul>
+      </div>
+    </div>
+  </main>
+
+  <div class="tooltip" id="tooltip">
+    <div class="tooltip-title" id="tooltip-title"></div>
+    <div class="tooltip-body" id="tooltip-body"></div>
+  </div>
+
+  <script>
+    const ACTIONS = ['CTRL', 'TRZ', 'SWP', 'SUB'];
+    let fieldboardData, roadsData;
+    let selectedRoad = null;
+    let activeFilter = 'all';
+
+    async function init() {
+      const [fbRes, rdRes] = await Promise.all([
+        fetch('data/fieldboard.json'),
+        fetch('data/roads.json')
+      ]);
+      fieldboardData = await fbRes.json();
+      roadsData = await rdRes.json();
+      renderFieldboard();
+      renderRoadList();
+      setupFilters();
+    }
+
+    function parseFieldboardCoords(road) {
+      const coords = [];
+      for (const raw of road.fieldboard) {
+        for (const part of raw.split('/')) {
+          coords.push(part.trim());
+        }
+      }
+      return coords;
+    }
+
+    function renderFieldboard() {
+      const tbody = document.getElementById('fb-body');
+      tbody.innerHTML = '';
+
+      for (const pos of fieldboardData.positions) {
+        const hasSubs = pos.subtopologies && pos.subtopologies.length > 0;
+        const tr = document.createElement('tr');
+        tr.dataset.posId = pos.id;
+
+        const nameCell = document.createElement('td');
+        const nameDiv = document.createElement('div');
+        nameDiv.className = `fb-pos-name ${pos.tier}`;
+        if (hasSubs) {
+          const chevron = document.createElement('span');
+          chevron.className = 'chevron';
+          chevron.textContent = '▶';
+          nameDiv.appendChild(chevron);
+          nameDiv.addEventListener('click', () => toggleSubs(pos.id));
+        }
+        nameDiv.appendChild(document.createTextNode(pos.name));
+        nameCell.appendChild(nameDiv);
+        tr.appendChild(nameCell);
+
+        for (const act of ACTIONS) {
+          const td = document.createElement('td');
+          td.className = 'fb-cell';
+          td.dataset.coord = `${pos.id}.${act}`;
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+
+        if (hasSubs) {
+          for (const sub of pos.subtopologies) {
+            const subRow = document.createElement('tr');
+            subRow.className = 'fb-sub-row';
+            subRow.dataset.parentPos = pos.id;
+            subRow.style.display = 'none';
+
+            const subName = document.createElement('td');
+            subName.textContent = sub.name;
+            subRow.appendChild(subName);
+
+            for (const act of ACTIONS) {
+              const td = document.createElement('td');
+              td.className = 'fb-cell';
+              td.dataset.coord = `${pos.id}.${sub.id.split('.')[1]}.${act}`;
+              subRow.appendChild(td);
+            }
+            tbody.appendChild(subRow);
+          }
+        }
+      }
+    }
+
+    function toggleSubs(posId) {
+      const rows = document.querySelectorAll(`tr[data-parent-pos="${posId}"]`);
+      const chevron = document.querySelector(`tr[data-pos-id="${posId}"] .chevron`);
+      const visible = rows[0] && rows[0].style.display !== 'none';
+      rows.forEach(r => r.style.display = visible ? 'none' : '');
+      if (chevron) chevron.classList.toggle('open', !visible);
+    }
+
+    function renderRoadList() {
+      const list = document.getElementById('road-list');
+      list.innerHTML = '';
+
+      const filtered = activeFilter === 'all' ? roadsData : roadsData.filter(r => r.tier === activeFilter);
+
+      for (const road of filtered) {
+        const li = document.createElement('li');
+        li.className = 'road-item';
+        li.dataset.roadId = road.id;
+
+        li.innerHTML = `
+          <div class="road-item-header">
+            <span class="road-tier ${road.tier}">${road.tier}</span>
+            <span class="road-id">${road.id}</span>
+            <span class="road-name">${road.name}</span>
+            <span class="road-sources">${road.sources.length}src</span>
+          </div>`;
+
+        li.addEventListener('click', () => selectRoad(road));
+        list.appendChild(li);
+      }
+    }
+
+    function selectRoad(road) {
+      document.querySelectorAll('.road-item').forEach(li => li.classList.remove('selected'));
+      document.querySelectorAll('.fb-cell').forEach(c => {
+        c.classList.remove('highlighted', 'populated', 'act-ctrl', 'act-trz', 'act-swp', 'act-sub');
+        const seq = c.querySelector('.seq-num');
+        if (seq) seq.remove();
+      });
+
+      if (selectedRoad === road.id) {
+        selectedRoad = null;
+        document.getElementById('highlight-label').textContent = '';
+        document.getElementById('road-detail-panel').style.display = 'none';
+        return;
+      }
+
+      selectedRoad = road.id;
+      document.querySelector(`.road-item[data-road-id="${road.id}"]`).classList.add('selected');
+      document.getElementById('highlight-label').textContent = `${road.id}: ${road.name}`;
+
+      const coords = parseFieldboardCoords(road);
+      let step = 1;
+      for (const coord of coords) {
+        const cell = document.querySelector(`.fb-cell[data-coord="${coord}"]`);
+        if (cell) {
+          const act = coord.split('.').pop().toLowerCase();
+          cell.classList.add('highlighted', 'populated', `act-${act}`);
+          const num = document.createElement('span');
+          num.className = 'seq-num';
+          num.textContent = step;
+          cell.appendChild(num);
+
+          const parentPos = cell.closest('tr').dataset.parentPos;
+          if (parentPos) {
+            const subRows = document.querySelectorAll(`tr[data-parent-pos="${parentPos}"]`);
+            const chevron = document.querySelector(`tr[data-pos-id="${parentPos}"] .chevron`);
+            subRows.forEach(r => r.style.display = '');
+            if (chevron) chevron.classList.add('open');
+          }
+        }
+        step++;
+      }
+
+      renderRoadDetail(road);
+    }
+
+    function renderRoadDetail(road) {
+      const panel = document.getElementById('road-detail-panel');
+      const title = document.getElementById('detail-title');
+      const body = document.getElementById('detail-body');
+
+      title.textContent = `${road.id} — ${road.name}`;
+
+      let html = '<div class="road-sequence" style="margin-bottom:1rem">';
+      for (let i = 0; i < road.sequence.length; i++) {
+        const s = road.sequence[i];
+        const actClass = `act-${(s.action || '').toLowerCase()}`;
+        if (i > 0) html += '<span class="road-step-arrow">→</span>';
+        html += `<span class="road-step">
+          <span class="road-step-pos ${actClass}">${s.position}</span>
+        </span>`;
+      }
+      html += '</div>';
+
+      html += '<dl class="road-meta">';
+      html += `<dt>Tier</dt><dd><span class="road-tier ${road.tier}">${road.tier}</span></dd>`;
+      html += `<dt>Sources</dt><dd>${road.sources.join(', ')}</dd>`;
+      html += `<dt>Failure</dt><dd><span class="failure-badge ${road.failure.classification}">${road.failure.classification}</span></dd>`;
+      html += `<dt>Duality</dt><dd>${road.duality}</dd>`;
+      html += `<dt>Mechanics</dt><dd>${road.mechanics.join(', ')}</dd>`;
+
+      if (road.checkpoints) {
+        const allCp = [];
+        for (const [cat, items] of Object.entries(road.checkpoints)) {
+          for (const item of items) allCp.push(`<span class="checkpoint-card-cat ${cat}">${cat}</span> ${item}`);
+        }
+        if (allCp.length) {
+          html += `<dt>Checkpoints</dt><dd>${allCp.join('<br>')}</dd>`;
+        }
+      }
+
+      if (road.branching) {
+        html += '<dt>Branching</dt><dd>';
+        for (const [trigger, outcome] of Object.entries(road.branching)) {
+          html += `<div style="margin-bottom:0.25rem"><strong style="color:var(--text-dim)">${trigger.replace(/_/g, ' ')}:</strong> ${outcome}</div>`;
+        }
+        html += '</dd>';
+      }
+
+      html += '</dl>';
+      body.innerHTML = html;
+      panel.style.display = '';
+    }
+
+    function setupFilters() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeFilter = btn.dataset.filter;
+          selectedRoad = null;
+          document.getElementById('highlight-label').textContent = '';
+          document.getElementById('road-detail-panel').style.display = 'none';
+          document.querySelectorAll('.fb-cell').forEach(c => {
+            c.classList.remove('highlighted', 'populated', 'act-ctrl', 'act-trz', 'act-swp', 'act-sub');
+            const seq = c.querySelector('.seq-num');
+            if (seq) seq.remove();
+          });
+          renderRoadList();
+        });
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>

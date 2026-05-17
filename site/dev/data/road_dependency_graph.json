@@ -1,0 +1,419 @@
+{
+  "description": "Pedagogical dependency graph \u2014 road A must precede road B",
+  "topological_order": [
+    "S1",
+    "S5",
+    "B3",
+    "S2",
+    "S4",
+    "S6",
+    "S7",
+    "S8",
+    "B6",
+    "B7",
+    "S3",
+    "B5",
+    "N2",
+    "N3",
+    "N6",
+    "B1",
+    "B2",
+    "B4",
+    "B8",
+    "N1",
+    "N4",
+    "N7",
+    "N5"
+  ],
+  "nodes": [
+    {
+      "road_id": "S1",
+      "prerequisites": [],
+      "teaching_phase": "beginner",
+      "topological_order": 0
+    },
+    {
+      "road_id": "S5",
+      "prerequisites": [],
+      "teaching_phase": "beginner",
+      "topological_order": 1
+    },
+    {
+      "road_id": "B3",
+      "prerequisites": [
+        "S1"
+      ],
+      "teaching_phase": "intermediate",
+      "topological_order": 2
+    },
+    {
+      "road_id": "S2",
+      "prerequisites": [
+        "S1"
+      ],
+      "teaching_phase": "beginner",
+      "topological_order": 3
+    },
+    {
+      "road_id": "S4",
+      "prerequisites": [
+        "S1"
+      ],
+      "teaching_phase": "beginner",
+      "topological_order": 4
+    },
+    {
+      "road_id": "S6",
+      "prerequisites": [
+        "S1"
+      ],
+      "teaching_phase": "beginner",
+      "topological_order": 5
+    },
+    {
+      "road_id": "S7",
+      "prerequisites": [
+        "S1"
+      ],
+      "teaching_phase": "beginner",
+      "topological_order": 6
+    },
+    {
+      "road_id": "S8",
+      "prerequisites": [
+        "S1"
+      ],
+      "teaching_phase": "beginner",
+      "topological_order": 7
+    },
+    {
+      "road_id": "B6",
+      "prerequisites": [
+        "S2"
+      ],
+      "teaching_phase": "intermediate",
+      "topological_order": 8
+    },
+    {
+      "road_id": "B7",
+      "prerequisites": [
+        "S5",
+        "S6"
+      ],
+      "teaching_phase": "intermediate",
+      "topological_order": 9
+    },
+    {
+      "road_id": "S3",
+      "prerequisites": [
+        "S1",
+        "S6"
+      ],
+      "teaching_phase": "beginner",
+      "topological_order": 10
+    },
+    {
+      "road_id": "B5",
+      "prerequisites": [
+        "S1",
+        "S7"
+      ],
+      "teaching_phase": "intermediate",
+      "topological_order": 11
+    },
+    {
+      "road_id": "N2",
+      "prerequisites": [
+        "S1",
+        "S8"
+      ],
+      "teaching_phase": "advanced",
+      "topological_order": 12
+    },
+    {
+      "road_id": "N3",
+      "prerequisites": [
+        "S2",
+        "B6"
+      ],
+      "teaching_phase": "advanced",
+      "topological_order": 13
+    },
+    {
+      "road_id": "N6",
+      "prerequisites": [
+        "S5",
+        "B7"
+      ],
+      "teaching_phase": "advanced",
+      "topological_order": 14
+    },
+    {
+      "road_id": "B1",
+      "prerequisites": [
+        "S3"
+      ],
+      "teaching_phase": "intermediate",
+      "topological_order": 15
+    },
+    {
+      "road_id": "B2",
+      "prerequisites": [
+        "S3",
+        "S2"
+      ],
+      "teaching_phase": "intermediate",
+      "topological_order": 16
+    },
+    {
+      "road_id": "B4",
+      "prerequisites": [
+        "S3",
+        "S6"
+      ],
+      "teaching_phase": "intermediate",
+      "topological_order": 17
+    },
+    {
+      "road_id": "B8",
+      "prerequisites": [
+        "S1",
+        "S3"
+      ],
+      "teaching_phase": "intermediate",
+      "topological_order": 18
+    },
+    {
+      "road_id": "N1",
+      "prerequisites": [
+        "S1",
+        "S7",
+        "B5"
+      ],
+      "teaching_phase": "advanced",
+      "topological_order": 19
+    },
+    {
+      "road_id": "N4",
+      "prerequisites": [
+        "S3",
+        "B1"
+      ],
+      "teaching_phase": "advanced",
+      "topological_order": 20
+    },
+    {
+      "road_id": "N7",
+      "prerequisites": [
+        "S3",
+        "S6",
+        "B2",
+        "N3"
+      ],
+      "teaching_phase": "advanced",
+      "topological_order": 21
+    },
+    {
+      "road_id": "N5",
+      "prerequisites": [
+        "S1",
+        "S5",
+        "N1"
+      ],
+      "teaching_phase": "advanced",
+      "topological_order": 22
+    }
+  ],
+  "edges": [
+    {
+      "from": "S1",
+      "to": "S7",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "S8",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "S2",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "S4",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "S3",
+      "type": "must_precede"
+    },
+    {
+      "from": "S6",
+      "to": "S3",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "S6",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "B3",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "B5",
+      "type": "must_precede"
+    },
+    {
+      "from": "S7",
+      "to": "B5",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "B8",
+      "type": "must_precede"
+    },
+    {
+      "from": "S3",
+      "to": "B8",
+      "type": "must_precede"
+    },
+    {
+      "from": "S3",
+      "to": "B1",
+      "type": "must_precede"
+    },
+    {
+      "from": "S5",
+      "to": "B7",
+      "type": "must_precede"
+    },
+    {
+      "from": "S6",
+      "to": "B7",
+      "type": "must_precede"
+    },
+    {
+      "from": "S3",
+      "to": "B4",
+      "type": "must_precede"
+    },
+    {
+      "from": "S6",
+      "to": "B4",
+      "type": "must_precede"
+    },
+    {
+      "from": "S3",
+      "to": "B2",
+      "type": "must_precede"
+    },
+    {
+      "from": "S2",
+      "to": "B2",
+      "type": "must_precede"
+    },
+    {
+      "from": "S2",
+      "to": "B6",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "N1",
+      "type": "must_precede"
+    },
+    {
+      "from": "S7",
+      "to": "N1",
+      "type": "must_precede"
+    },
+    {
+      "from": "B5",
+      "to": "N1",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "N2",
+      "type": "must_precede"
+    },
+    {
+      "from": "S8",
+      "to": "N2",
+      "type": "must_precede"
+    },
+    {
+      "from": "S2",
+      "to": "N3",
+      "type": "must_precede"
+    },
+    {
+      "from": "B6",
+      "to": "N3",
+      "type": "must_precede"
+    },
+    {
+      "from": "S3",
+      "to": "N4",
+      "type": "must_precede"
+    },
+    {
+      "from": "B1",
+      "to": "N4",
+      "type": "must_precede"
+    },
+    {
+      "from": "S1",
+      "to": "N5",
+      "type": "must_precede"
+    },
+    {
+      "from": "S5",
+      "to": "N5",
+      "type": "must_precede"
+    },
+    {
+      "from": "N1",
+      "to": "N5",
+      "type": "must_precede"
+    },
+    {
+      "from": "S5",
+      "to": "N6",
+      "type": "must_precede"
+    },
+    {
+      "from": "B7",
+      "to": "N6",
+      "type": "must_precede"
+    },
+    {
+      "from": "S3",
+      "to": "N7",
+      "type": "must_precede"
+    },
+    {
+      "from": "S6",
+      "to": "N7",
+      "type": "must_precede"
+    },
+    {
+      "from": "B2",
+      "to": "N7",
+      "type": "must_precede"
+    },
+    {
+      "from": "N3",
+      "to": "N7",
+      "type": "must_precede"
+    }
+  ]
+}

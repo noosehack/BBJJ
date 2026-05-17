@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum — /dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dev.css">
+</head>
+<body>
+  <nav class="dev-nav">
+    <div class="dev-nav-logo">/dev</div>
+    <div class="dev-nav-links">
+      <a href="index.html">Fieldboard</a>
+      <a href="roads.html">Roads</a>
+      <a href="curriculum.html" class="active">Curriculum</a>
+    </div>
+  </nav>
+
+  <main class="dev-page">
+    <div class="dev-header">
+      <h1>Curriculum Timeline</h1>
+      <p>3-year learning plan — 8 spine roads (Y1), 8 branch roads (Y2), 7 network roads (Y3).</p>
+    </div>
+
+    <div id="timeline"></div>
+
+    <div class="panel" style="margin-top:1.5rem">
+      <div class="panel-header">
+        <span class="panel-title">Checkpoint Library</span>
+        <span id="cp-count" style="font-size:0.7rem;color:var(--text-muted)"></span>
+      </div>
+      <div class="panel-body">
+        <div class="filters" id="cp-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="control">Control</button>
+          <button class="filter-btn" data-filter="stabilization">Stabilization</button>
+          <button class="filter-btn" data-filter="transition">Transition</button>
+          <button class="filter-btn" data-filter="submission">Submission</button>
+        </div>
+        <div class="checkpoint-grid" id="checkpoint-grid"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const YEAR_CONFIG = [
+      { key: 'beginner',      label: 'Year 1 — Beginner (Spine Roads)',         css: 'beginner',     tier: 'spine' },
+      { key: 'intermediate',  label: 'Year 2 — Intermediate (Branch Roads)',    css: 'intermediate', tier: 'branch' },
+      { key: 'advanced',      label: 'Year 3 — Advanced (Network Roads)',       css: 'advanced',     tier: 'network' }
+    ];
+
+    let yearPlan, checkpointLib;
+    let selectedTimelineRoad = null;
+
+    async function init() {
+      const [ypRes, cpRes] = await Promise.all([
+        fetch('data/year_plan.json'),
+        fetch('data/checkpoint_library.json')
+      ]);
+      yearPlan = await ypRes.json();
+      checkpointLib = await cpRes.json();
+      renderTimeline();
+      renderCheckpoints('all');
+      setupCpFilters();
+    }
+
+    function renderTimeline() {
+      const container = document.getElementById('timeline');
+      container.innerHTML = '';
+
+      for (const yr of YEAR_CONFIG) {
+        const roads = yearPlan[yr.key];
+        if (!roads || roads.length === 0) continue;
+
+        const maxWeek = Math.max(...roads.map(r => r.week_end));
+        const totalWeeks = Math.max(maxWeek, 48);
+
+        const section = document.createElement('div');
+        section.className = 'timeline-year';
+
+        const header = document.createElement('h2');
+        header.className = `timeline-year-header ${yr.css}`;
+        header.textContent = yr.label;
+        section.appendChild(header);
+
+        const monthsRow = document.createElement('div');
+        monthsRow.className = 'timeline-months';
+        monthsRow.innerHTML = '<span></span>';
+        for (const m of MONTHS) {
+          monthsRow.innerHTML += `<span>${m}</span>`;
+        }
+        section.appendChild(monthsRow);
+
+        const track = document.createElement('div');
+        track.className = 'timeline-track';
+
+        for (const road of roads) {
+          const row = document.createElement('div');
+          row.className = 'timeline-bar-row';
+          row.style.gridTemplateColumns = `120px repeat(${totalWeeks}, 1fr)`;
+
+          const label = document.createElement('div');
+          label.className = 'timeline-bar-label';
+          label.textContent = road.id;
+          label.title = road.name;
+          row.appendChild(label);
+
+          const bar = document.createElement('div');
+          bar.className = `timeline-bar ${yr.tier}`;
+          bar.style.gridColumn = `${road.week_start + 1} / ${road.week_end + 2}`;
+          bar.textContent = road.name.length > 30 ? road.name.substring(0, 28) + '…' : road.name;
+          bar.title = road.name;
+          bar.addEventListener('click', () => toggleTimelineDetail(road, section, row));
+          row.appendChild(bar);
+
+          track.appendChild(row);
+        }
+        section.appendChild(track);
+        container.appendChild(section);
+      }
+    }
+
+    function toggleTimelineDetail(road, section, afterRow) {
+      const existing = section.querySelector('.timeline-detail.visible');
+      if (existing) {
+        const wasForSame = existing.dataset.roadId === road.id;
+        existing.remove();
+        if (wasForSame) return;
+      }
+
+      const detail = document.createElement('div');
+      detail.className = 'timeline-detail visible';
+      detail.dataset.roadId = road.id;
+
+      const prereqs = road.prerequisite_roads.length > 0
+        ? road.prerequisite_roads.join(', ')
+        : 'None';
+
+      detail.innerHTML = `
+        <h4>${road.id}: ${road.name}</h4>
+        <div class="timeline-detail-grid">
+          <div>
+            <dt>Weeks</dt>
+            <dd>${road.week_start}–${road.week_end} (${road.week_end - road.week_start + 1} weeks)</dd>
+            <dt>Prerequisites</dt>
+            <dd>${prereqs}</dd>
+            <dt>Failure Topology</dt>
+            <dd><span class="failure-badge ${road.failure_topology}">${road.failure_topology}</span></dd>
+          </div>
+          <div>
+            <dt>Fieldboard Cells</dt>
+            <dd style="font-family:var(--mono);font-size:0.7rem">${road.fieldboard.join(' → ')}</dd>
+            <dt>Checkpoints</dt>
+            <dd>${road.control_checkpoints.join('; ')}</dd>
+            <dt>Mechanics</dt>
+            <dd>${road.reusable_mechanics.join(', ')}</dd>
+          </div>
+        </div>
+        <div style="margin-top:0.5rem;font-size:0.7rem;color:var(--text-dim)">
+          <strong>Attack:</strong> ${road.duality_links.attack} &nbsp;|&nbsp;
+          <strong>Defense:</strong> ${road.duality_links.defense}
+        </div>`;
+
+      afterRow.parentNode.insertBefore(detail, afterRow.nextSibling);
+    }
+
+    function renderCheckpoints(filter) {
+      const grid = document.getElementById('checkpoint-grid');
+      grid.innerHTML = '';
+
+      const entries = Object.entries(checkpointLib);
+      const filtered = filter === 'all' ? entries : entries.filter(([, cp]) => cp.category === filter);
+
+      document.getElementById('cp-count').textContent = `${filtered.length} checkpoints`;
+
+      for (const [key, cp] of filtered) {
+        const card = document.createElement('div');
+        card.className = 'checkpoint-card';
+        card.innerHTML = `
+          <div class="checkpoint-card-header">
+            <span class="checkpoint-card-name">${cp.name}</span>
+            <span class="checkpoint-card-cat ${cp.category}">${cp.category}</span>
+          </div>
+          <div class="checkpoint-card-def">${cp.definition}</div>
+          <div class="checkpoint-card-roads">Roads: ${cp.roads.map(r => `<span>${r}</span>`).join(', ')}</div>`;
+        grid.appendChild(card);
+      }
+    }
+
+    function setupCpFilters() {
+      document.querySelectorAll('#cp-filters .filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#cp-filters .filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderCheckpoints(btn.dataset.filter);
+        });
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>

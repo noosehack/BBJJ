@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fieldboard — /dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dev.css">
+</head>
+<body>
+  <nav class="dev-nav">
+    <div class="dev-nav-logo">/dev</div>
+    <div class="dev-nav-links">
+      <a href="index.html" class="active">Fieldboard</a>
+      <a href="roads.html">Roads</a>
+      <a href="curriculum.html">Curriculum</a>
+    </div>
+  </nav>
+
+  <main class="dev-page">
+    <div class="dev-header">
+      <h1>Fieldboard Viewer</h1>
+      <p>7 fundamental positions × 4 action families. Click cells to see which roads touch them.</p>
+    </div>
+
+    <div class="split">
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Position × Action Grid</span>
+          <span id="cell-count" style="font-size:0.7rem;color:var(--text-muted)"></span>
+        </div>
+        <div class="panel-body" style="overflow-x:auto">
+          <table class="fieldboard" id="fieldboard-table">
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th class="col-ctrl">CTRL</th>
+                <th class="col-trz">TRZ</th>
+                <th class="col-swp">SWP</th>
+                <th class="col-sub">SUB</th>
+              </tr>
+            </thead>
+            <tbody id="fieldboard-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel" id="cell-detail-panel" style="display:none">
+          <div class="panel-header">
+            <span class="panel-title" id="cell-detail-title">—</span>
+          </div>
+          <div class="panel-body" id="cell-detail-body"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header"><span class="panel-title">Legend</span></div>
+          <div class="panel-body" style="font-size:0.75rem;color:var(--text-dim)">
+            <div style="margin-bottom:0.5rem">
+              <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ctrl);margin-right:4px;vertical-align:middle"></span> CTRL — Control
+              <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--trz);margin:0 4px 0 12px;vertical-align:middle"></span> TRZ — Transition
+            </div>
+            <div style="margin-bottom:0.5rem">
+              <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--swp);margin-right:4px;vertical-align:middle"></span> SWP — Sweep
+              <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--sub);margin:0 4px 0 12px;vertical-align:middle"></span> SUB — Submission
+            </div>
+            <div style="margin-top:0.75rem;border-top:1px solid var(--border);padding-top:0.5rem">
+              <div><span style="color:var(--ctrl)">■</span> Defense tier (guard positions)</div>
+              <div><span style="color:var(--sub)">■</span> Offense tier (dominant positions)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="tooltip" id="tooltip">
+    <div class="tooltip-title" id="tooltip-title"></div>
+    <div class="tooltip-body" id="tooltip-body"></div>
+  </div>
+
+  <script>
+    const ACTIONS = ['CTRL', 'TRZ', 'SWP', 'SUB'];
+
+    let fieldboardData = null;
+    let roadsData = null;
+    let cellIndex = {};   // "OGRD.CTRL" -> [road, ...]
+    let selectedCell = null;
+
+    async function init() {
+      const [fbRes, rdRes] = await Promise.all([
+        fetch('data/fieldboard.json'),
+        fetch('data/roads.json')
+      ]);
+      fieldboardData = await fbRes.json();
+      roadsData = await rdRes.json();
+      buildCellIndex();
+      renderFieldboard();
+      updateCellCount();
+    }
+
+    function parseFieldboardCoords(road) {
+      const coords = [];
+      for (const raw of road.fieldboard) {
+        for (const part of raw.split('/')) {
+          coords.push(part.trim());
+        }
+      }
+      return coords;
+    }
+
+    function buildCellIndex() {
+      cellIndex = {};
+      for (const road of roadsData) {
+        for (const coord of parseFieldboardCoords(road)) {
+          if (!cellIndex[coord]) cellIndex[coord] = [];
+          cellIndex[coord].push(road);
+        }
+      }
+    }
+
+    function renderFieldboard() {
+      const tbody = document.getElementById('fieldboard-body');
+      tbody.innerHTML = '';
+
+      for (const pos of fieldboardData.positions) {
+        const hasSubs = pos.subtopologies && pos.subtopologies.length > 0;
+        const mainRow = document.createElement('tr');
+        mainRow.dataset.posId = pos.id;
+
+        const nameCell = document.createElement('td');
+        const nameDiv = document.createElement('div');
+        nameDiv.className = `fb-pos-name ${pos.tier}`;
+        if (hasSubs) {
+          const chevron = document.createElement('span');
+          chevron.className = 'chevron';
+          chevron.textContent = '▶';
+          nameDiv.appendChild(chevron);
+          nameDiv.addEventListener('click', () => toggleSubs(pos.id));
+        }
+        const label = document.createTextNode(pos.name);
+        nameDiv.appendChild(label);
+        nameCell.appendChild(nameDiv);
+        mainRow.appendChild(nameCell);
+
+        for (const act of ACTIONS) {
+          const coord = `${pos.id}.${act}`;
+          const td = document.createElement('td');
+          td.className = 'fb-cell';
+          td.dataset.coord = coord;
+          if (cellIndex[coord]) {
+            td.classList.add('populated', `act-${act.toLowerCase()}`);
+          }
+          attachCellEvents(td, coord, `${pos.name} — ${act}`);
+          mainRow.appendChild(td);
+        }
+        tbody.appendChild(mainRow);
+
+        if (hasSubs) {
+          for (const sub of pos.subtopologies) {
+            const subRow = document.createElement('tr');
+            subRow.className = 'fb-sub-row';
+            subRow.dataset.parentPos = pos.id;
+            subRow.style.display = 'none';
+
+            const subNameCell = document.createElement('td');
+            subNameCell.textContent = sub.name;
+            subRow.appendChild(subNameCell);
+
+            for (const act of ACTIONS) {
+              const coord = `${pos.id}.${sub.id.split('.')[1]}.${act}`;
+              const coordAlt = `${sub.id}.${act}`;
+              const td = document.createElement('td');
+              td.className = 'fb-cell';
+              td.dataset.coord = coord;
+              const roads = cellIndex[coord] || cellIndex[coordAlt];
+              if (roads) {
+                td.classList.add('populated', `act-${act.toLowerCase()}`);
+                if (!cellIndex[coord]) cellIndex[coord] = roads;
+              }
+              attachCellEvents(td, coord, `${sub.name} — ${act}`);
+              subRow.appendChild(td);
+            }
+            tbody.appendChild(subRow);
+          }
+        }
+      }
+    }
+
+    function attachCellEvents(td, coord, label) {
+      td.addEventListener('mouseenter', (e) => showTooltip(e, coord, label));
+      td.addEventListener('mousemove', moveTooltip);
+      td.addEventListener('mouseleave', hideTooltip);
+      td.addEventListener('click', () => selectCell(coord, label));
+    }
+
+    function toggleSubs(posId) {
+      const rows = document.querySelectorAll(`tr[data-parent-pos="${posId}"]`);
+      const chevron = document.querySelector(`tr[data-pos-id="${posId}"] .chevron`);
+      const visible = rows[0] && rows[0].style.display !== 'none';
+      rows.forEach(r => r.style.display = visible ? 'none' : '');
+      if (chevron) chevron.classList.toggle('open', !visible);
+    }
+
+    function showTooltip(e, coord, label) {
+      const tip = document.getElementById('tooltip');
+      const roads = cellIndex[coord];
+      document.getElementById('tooltip-title').textContent = label;
+      if (roads) {
+        document.getElementById('tooltip-body').textContent =
+          `${roads.length} road${roads.length > 1 ? 's' : ''}: ${roads.map(r => r.id).join(', ')}`;
+      } else {
+        document.getElementById('tooltip-body').textContent = 'No roads';
+      }
+      tip.classList.add('visible');
+      moveTooltip(e);
+    }
+
+    function moveTooltip(e) {
+      const tip = document.getElementById('tooltip');
+      const x = Math.min(e.clientX + 12, window.innerWidth - 240);
+      const y = Math.min(e.clientY + 12, window.innerHeight - 60);
+      tip.style.left = x + 'px';
+      tip.style.top = y + 'px';
+    }
+
+    function hideTooltip() {
+      document.getElementById('tooltip').classList.remove('visible');
+    }
+
+    function selectCell(coord, label) {
+      document.querySelectorAll('.fb-cell.highlighted').forEach(c => c.classList.remove('highlighted'));
+
+      if (selectedCell === coord) {
+        selectedCell = null;
+        document.getElementById('cell-detail-panel').style.display = 'none';
+        return;
+      }
+      selectedCell = coord;
+
+      document.querySelectorAll(`.fb-cell[data-coord="${coord}"]`).forEach(c => c.classList.add('highlighted'));
+
+      const panel = document.getElementById('cell-detail-panel');
+      const title = document.getElementById('cell-detail-title');
+      const body = document.getElementById('cell-detail-body');
+      const roads = cellIndex[coord];
+
+      title.textContent = label;
+
+      if (!roads || roads.length === 0) {
+        body.innerHTML = '<p style="color:var(--text-muted);font-size:0.8rem">No roads touch this cell.</p>';
+      } else {
+        let html = '<ul class="road-list">';
+        for (const road of roads) {
+          html += `<li class="road-item" onclick="this.classList.toggle('selected')">
+            <div class="road-item-header">
+              <span class="road-tier ${road.tier}">${road.tier}</span>
+              <span class="road-id">${road.id}</span>
+              <span class="road-name">${road.name}</span>
+            </div>
+            <div class="road-detail">
+              <div class="road-sequence">`;
+          for (let i = 0; i < road.sequence.length; i++) {
+            const step = road.sequence[i];
+            const actClass = `act-${(step.action || '').toLowerCase()}`;
+            if (i > 0) html += '<span class="road-step-arrow">→</span>';
+            html += `<span class="road-step"><span class="road-step-pos ${actClass}">${step.position}</span></span>`;
+          }
+          html += `</div>
+              <dl class="road-meta">
+                <dt>Sources</dt><dd>${road.sources.join(', ')}</dd>
+                <dt>Failure</dt><dd><span class="failure-badge ${road.failure.classification}">${road.failure.classification}</span></dd>
+                <dt>Duality</dt><dd>${road.duality}</dd>
+              </dl>
+            </div>
+          </li>`;
+        }
+        html += '</ul>';
+        body.innerHTML = html;
+      }
+      panel.style.display = '';
+    }
+
+    function updateCellCount() {
+      const populated = Object.keys(cellIndex).length;
+      const total = fieldboardData.positions.reduce((sum, p) => {
+        const mainCells = ACTIONS.length;
+        const subCells = (p.subtopologies ? p.subtopologies.length : 0) * ACTIONS.length;
+        return sum + mainCells + subCells;
+      }, 0);
+      document.getElementById('cell-count').textContent = `${populated} populated / ${total} cells`;
+    }
+
+    init();
+  </script>
+</body>
+</html>

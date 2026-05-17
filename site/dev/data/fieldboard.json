@@ -1,0 +1,103 @@
+{
+  "positions": [
+    {
+      "id": "OGRD",
+      "name": "Open Guard",
+      "tier": "defense",
+      "order": 1,
+      "description": "Both legs free, seated or supine",
+      "subtopologies": [
+        {"id": "OGRD.ColSlv", "name": "Collar-Sleeve"},
+        {"id": "OGRD.DLR", "name": "De La Riva"},
+        {"id": "OGRD.RDLR", "name": "Reverse DLR"},
+        {"id": "OGRD.Butterfly", "name": "Butterfly"},
+        {"id": "OGRD.SLX", "name": "Single Leg X"},
+        {"id": "OGRD.XGRD", "name": "X Guard"},
+        {"id": "OGRD.Spider", "name": "Spider"},
+        {"id": "OGRD.Lasso", "name": "Lasso"},
+        {"id": "OGRD.Lapel", "name": "Lapel"},
+        {"id": "OGRD.Standing", "name": "Standing"}
+      ]
+    },
+    {
+      "id": "CGRD",
+      "name": "Closed Guard",
+      "tier": "defense",
+      "order": 2,
+      "description": "Both legs enclose hips",
+      "subtopologies": [
+        {"id": "CGRD.Rubber", "name": "Rubber Guard"},
+        {"id": "CGRD.High", "name": "High Guard"}
+      ]
+    },
+    {
+      "id": "HGRD",
+      "name": "Half Guard",
+      "tier": "defense",
+      "order": 3,
+      "description": "One leg trapped/penetrated",
+      "subtopologies": [
+        {"id": "HGRD.KneeShield", "name": "Knee Shield"},
+        {"id": "HGRD.Deep", "name": "Deep Half"},
+        {"id": "HGRD.Quarter", "name": "Quarter Guard"},
+        {"id": "HGRD.Lockdown", "name": "Lockdown"}
+      ]
+    },
+    {
+      "id": "TRTL",
+      "name": "Turtle",
+      "tier": "defense",
+      "order": 4,
+      "description": "Guard failed, defensive shell",
+      "subtopologies": []
+    },
+    {
+      "id": "SCTR",
+      "name": "Side Control",
+      "tier": "offense",
+      "order": 5,
+      "description": "Torso control from side",
+      "subtopologies": [
+        {"id": "SCTR.KOB", "name": "Knee on Belly"},
+        {"id": "SCTR.NS", "name": "North-South"},
+        {"id": "SCTR.Kesa", "name": "Kesa Gatame"}
+      ]
+    },
+    {
+      "id": "MNT",
+      "name": "Mount",
+      "tier": "offense",
+      "order": 6,
+      "description": "Straddle from above",
+      "subtopologies": [
+        {"id": "MNT.High", "name": "High Mount"},
+        {"id": "MNT.Low", "name": "Low Mount"},
+        {"id": "MNT.SMnt", "name": "S-Mount"},
+        {"id": "MNT.Tech", "name": "Technical Mount"}
+      ]
+    },
+    {
+      "id": "BCTR",
+      "name": "Back Control",
+      "tier": "offense",
+      "order": 7,
+      "description": "Chest-to-back behind",
+      "subtopologies": [
+        {"id": "BCTR.Hooks", "name": "Hooks In"},
+        {"id": "BCTR.BT", "name": "Body Triangle"},
+        {"id": "BCTR.Truck", "name": "Truck"}
+      ]
+    }
+  ],
+  "actions": ["CTRL", "TRZ", "SWP", "SUB"],
+  "action_labels": {
+    "CTRL": "Control",
+    "TRZ": "Transition",
+    "SWP": "Sweep",
+    "SUB": "Submission"
+  },
+  "hierarchy": {
+    "defense": ["OGRD", "CGRD", "HGRD", "TRTL"],
+    "offense": ["SCTR", "MNT", "BCTR"]
+  }
+}
