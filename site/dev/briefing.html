@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>/dev/briefing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tac.css">
+  <style>
+    .brief { max-width: 720px; padding: 16px 12px; }
+    .brief-section { margin-bottom: 24px; }
+    .brief-num {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+    }
+    .brief-h {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .brief-p {
+      font-size: 11px;
+      color: var(--text2);
+      font-family: var(--sans);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .brief-p strong { color: var(--text); font-family: var(--mono); font-size: 10px; }
+    .brief-rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+
+    .mini-fb {
+      border-collapse: collapse;
+      font-size: 10px;
+      margin: 8px 0;
+    }
+    .mini-fb th {
+      padding: 3px 8px;
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text3);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .mini-fb th:first-child { text-align: left; }
+    .mini-fb td {
+      padding: 0;
+      border: 1px solid var(--border);
+      width: 52px;
+      height: 22px;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+    }
+    .mini-fb td:first-child {
+      border-left: none;
+      padding: 2px 8px;
+      width: auto;
+      text-align: left;
+      font-weight: 600;
+    }
+    .mini-fb .pos-def { color: var(--ctrl); }
+    .mini-fb .pos-off { color: var(--sub); }
+    .mini-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+    .mini-fb .hi {
+      background: rgba(91,155,213,0.10);
+      box-shadow: inset 0 0 0 1px var(--accent);
+    }
+    .mini-fb .hi .mini-sn {
+      font-size: 7px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .road-ex {
+      border: 1px solid var(--border);
+      background: var(--bg1);
+      padding: 8px 10px;
+      margin: 8px 0;
+      font-size: 10px;
+    }
+    .road-ex-title {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .road-ex-seq {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .road-ex-step {
+      padding: 2px 5px;
+      border-radius: 2px;
+      font-weight: 500;
+      font-size: 10px;
+    }
+    .road-ex-step.s-ctrl { background: rgba(91,155,213,0.15); color: var(--ctrl); }
+    .road-ex-step.s-swp { background: rgba(80,160,80,0.15); color: var(--swp); }
+    .road-ex-step.s-sub { background: rgba(208,64,64,0.15); color: var(--sub); }
+    .road-ex-arr { color: var(--text3); font-size: 9px; }
+    .road-ex-vec {
+      font-size: 9px;
+      color: var(--text3);
+      font-family: var(--mono);
+      padding-top: 4px;
+      border-top: 1px solid var(--border);
+    }
+    .road-ex-vec span { color: var(--accent2); }
+
+    .road-props {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+      font-size: 10px;
+      margin: 8px 0;
+    }
+    .road-props dt {
+      padding: 3px 0;
+      color: var(--text3);
+      border-bottom: 1px solid var(--border);
+    }
+    .road-props dd {
+      padding: 3px 0;
+      color: var(--text2);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--sans);
+    }
+
+    .nav-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10px;
+    }
+    .nav-table td {
+      padding: 5px 8px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .nav-table td:first-child {
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+      width: 100px;
+    }
+    .nav-table td:last-child {
+      color: var(--text2);
+      font-family: var(--sans);
+    }
+  </style>
+</head>
+<body>
+  <div class="tbar">
+    <span class="tbar-id">/dev/briefing</span>
+    <span class="tbar-sep">|</span>
+    <a href="lab.html">lab</a>
+    <a href="compare.html">compare</a>
+    <a href="spines.html">spines</a>
+    <a href="checkpoints.html">checkpoints</a>
+    <a href="paths.html">paths</a>
+    <span class="tbar-sep">|</span>
+    <a href="index.html">fieldboard</a>
+    <a href="roads.html">roads</a>
+    <a href="curriculum.html">curriculum</a>
+  </div>
+
+  <div class="brief">
+
+    <!-- 1 -->
+    <div class="brief-section">
+      <div class="brief-num">01 — what is this</div>
+      <div class="brief-h">This is a map of BJJ.</div>
+      <p class="brief-p">
+        BJJ positions are places on a map. Techniques are routes between them.
+        A curriculum is a set of routes you learn to walk, in order.
+      </p>
+      <p class="brief-p">
+        This project models that map explicitly. Positions are nodes. Techniques
+        connect them. Every route has a start, a path, a destination, and a plan
+        for what happens when things go wrong.
+      </p>
+      <p class="brief-p">
+        We call the map the <strong>fieldboard</strong>. We call the routes <strong>roads</strong>.
+      </p>
+    </div>
+
+    <hr class="brief-rule">
+
+    <!-- 2 -->
+    <div class="brief-section">
+      <div class="brief-num">02 — the fieldboard</div>
+      <div class="brief-h">7 positions. 4 actions. One grid.</div>
+      <p class="brief-p">
+        Every cell in the grid is a position + an action type. The grid is sparse
+        — not every cell has a road through it. That sparseness is the structure.
+      </p>
+
+      <table class="mini-fb">
+        <thead>
+          <tr>
+            <th>position</th>
+            <th style="color:var(--ctrl)">CTRL</th>
+            <th style="color:var(--trz)">TRZ</th>
+            <th style="color:var(--swp)">SWP</th>
+            <th style="color:var(--sub)">SUB</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pos-def">Closed Guard</td>
+            <td class="hi"><span class="mini-sn">1</span></td>
+            <td><span class="mini-dot" style="background:var(--trz)"></span></td>
+            <td></td>
+            <td><span class="mini-dot" style="background:var(--sub)"></span></td>
+          </tr>
+          <tr>
+            <td class="pos-def">Open Guard</td>
+            <td><span class="mini-dot" style="background:var(--ctrl)"></span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="pos-def">Half Guard</td>
+            <td><span class="mini-dot" style="background:var(--ctrl)"></span></td>
+            <td><span class="mini-dot" style="background:var(--trz)"></span></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="pos-def">Turtle</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="pos-off">Side Control</td>
+            <td><span class="mini-dot" style="background:var(--ctrl)"></span></td>
+            <td><span class="mini-dot" style="background:var(--trz)"></span></td>
+            <td></td>
+            <td><span class="mini-dot" style="background:var(--sub)"></span></td>
+          </tr>
+          <tr>
+            <td class="pos-off">Mount</td>
+            <td class="hi"><span class="mini-sn">3</span></td>
+            <td></td>
+            <td class="hi"><span class="mini-sn">2</span></td>
+            <td class="hi"><span class="mini-sn">4</span></td>
+          </tr>
+          <tr>
+            <td class="pos-off">Back Control</td>
+            <td><span class="mini-dot" style="background:var(--ctrl)"></span></td>
+            <td></td>
+            <td></td>
+            <td><span class="mini-dot" style="background:var(--sub)"></span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="brief-p" style="font-size:10px;color:var(--text3)">
+        Dots mark populated cells. Numbered blue cells show a single road passing through.
+        Some positions expand into sub-topologies (e.g. Open Guard contains De La Riva, Collar-Sleeve, Lasso).
+      </p>
+
+      <div class="road-props" style="margin-top:8px">
+        <dt>CTRL</dt><dd>Control — hold the position, deny opponent's movement</dd>
+        <dt>TRZ</dt><dd>Transition — move to a different position</dd>
+        <dt>SWP</dt><dd>Sweep — reverse who is on top</dd>
+        <dt>SUB</dt><dd>Submission — finish the fight</dd>
+      </div>
+
+      <p class="brief-p" style="margin-top:6px">
+        <span style="color:var(--ctrl)">Blue</span> positions are defensive (you are on bottom).
+        <span style="color:var(--sub)">Red</span> positions are offensive (you are on top or behind).
+      </p>
+    </div>
+
+    <hr class="brief-rule">
+
+    <!-- 3 -->
+    <div class="brief-section">
+      <div class="brief-num">03 — roads</div>
+      <div class="brief-h">A road is a path through the fieldboard.</div>
+      <p class="brief-p">
+        Each road is a numbered sequence of cells. It starts at a position,
+        passes through actions, and ends at a destination. Roads are not single
+        techniques — they are multi-step routes.
+      </p>
+
+      <div class="road-ex">
+        <div class="road-ex-title">
+          <span class="rtier spine" style="font-size:8px;padding:1px 4px">S</span>
+          S1 — Closed Guard Hip Bump Sweep to Mount Armbar
+        </div>
+        <div class="road-ex-seq">
+          <span class="road-ex-step s-ctrl">1. Closed Guard CTRL</span>
+          <span class="road-ex-arr">&rarr;</span>
+          <span class="road-ex-step s-swp">2. Mount SWP</span>
+          <span class="road-ex-arr">&rarr;</span>
+          <span class="road-ex-step s-ctrl">3. Mount CTRL</span>
+          <span class="road-ex-arr">&rarr;</span>
+          <span class="road-ex-step s-sub">4. Mount SUB</span>
+        </div>
+        <div class="road-ex-vec">
+          <span>CGRD.CTRL</span> &rarr; <span>MNT.SWP</span> &rarr; <span>MNT.CTRL</span> &rarr; <span>MNT.SUB</span>
+        </div>
+      </div>
+
+      <p class="brief-p">Every road carries four properties:</p>
+
+      <div class="road-props">
+        <dt>checkpoints</dt><dd>Reusable concepts the road teaches — posture break, mount stabilization, arm isolation. These transfer to other roads.</dd>
+        <dt>failure</dt><dd>What happens when a step fails. <span style="color:var(--safe);font-family:var(--mono);font-size:10px">safe</span> = return to a known position. <span style="color:var(--recoverable);font-family:var(--mono);font-size:10px">recoverable</span> = fall to a weaker but familiar position. <span style="color:var(--risky);font-family:var(--mono);font-size:10px">risky</span> = end up somewhere dangerous.</dd>
+        <dt>duality</dt><dd>Every road teaches both players. The person doing the technique learns attack. The person receiving it learns defense. One road, two lessons.</dd>
+        <dt>tier</dt><dd><span style="color:var(--spine);font-family:var(--mono);font-size:10px">spine</span> = beginner, linear, safe. <span style="color:var(--branch);font-family:var(--mono);font-size:10px">branch</span> = intermediate, new chains. <span style="color:var(--network);font-family:var(--mono);font-size:10px">network</span> = advanced, decision trees.</dd>
+      </div>
+    </div>
+
+    <hr class="brief-rule">
+
+    <!-- 4 -->
+    <div class="brief-section">
+      <div class="brief-num">04 — curriculum philosophy</div>
+      <div class="brief-h">We teach roads, not disconnected techniques.</div>
+      <p class="brief-p">
+        A technique in isolation has no context. A road gives it a before, an after,
+        and a fallback. Students learn where they are, where they're going, and
+        what to do when they get lost.
+      </p>
+
+      <div class="road-ex" style="font-size:10px;color:var(--text2);font-family:var(--sans);line-height:1.7">
+        Control before transition.<br>
+        Transition before submission.<br>
+        Safe failure before risky failure.<br>
+        Familiar positions before unfamiliar ones.
+      </div>
+
+      <p class="brief-p">
+        Beginner roads are straight lines — no decision points, no branching.
+        If a sweep fails, the student is still in closed guard. If mount is lost,
+        they fall to half guard, which they already know. Every failure leads
+        somewhere familiar.
+      </p>
+      <p class="brief-p">
+        Branching and decisions come in Year 2 and 3, after the student has
+        enough positional vocabulary to make choices.
+      </p>
+      <p class="brief-p">
+        Checkpoints are the reusable building blocks. "Posture break" appears
+        in 8 roads. "Underhook" appears in 5. A student drills posture break
+        once and it pays off across the entire curriculum. The system
+        compounds.
+      </p>
+    </div>
+
+    <hr class="brief-rule">
+
+    <!-- 5 -->
+    <div class="brief-section">
+      <div class="brief-num">05 — how to explore</div>
+      <div class="brief-h">Start anywhere. Follow connections.</div>
+
+      <table class="nav-table">
+        <tr>
+          <td><a href="index.html">fieldboard</a></td>
+          <td>The positional map. Click cells to see which roads pass through them.</td>
+        </tr>
+        <tr>
+          <td><a href="roads.html">roads</a></td>
+          <td>All 24 roads. Click one to trace its path on the fieldboard.</td>
+        </tr>
+        <tr>
+          <td><a href="curriculum.html">curriculum</a></td>
+          <td>3-year timeline. When each road is taught. Checkpoint library.</td>
+        </tr>
+        <tr>
+          <td><a href="checkpoints.html">checkpoints</a></td>
+          <td>19 reusable concepts. Which roads share them. When they recur.</td>
+        </tr>
+        <tr>
+          <td><a href="compare.html">compare</a></td>
+          <td>How this curriculum compares to GB, Roger, Danaher, AOJ.</td>
+        </tr>
+        <tr>
+          <td><a href="paths.html">paths</a></td>
+          <td>Graph debugger. Trace sequences, failure paths, dependencies.</td>
+        </tr>
+        <tr>
+          <td><a href="lab.html">lab</a></td>
+          <td>Operations room. Overlay multiple roads. See density, checkpoints, timeline.</td>
+        </tr>
+      </table>
+
+      <p class="brief-p" style="margin-top:10px;color:var(--text3);font-size:10px">
+        Recommended first visit: <a href="roads.html">roads</a> &rarr; click S1 &rarr; read the sequence &rarr; then open <a href="paths.html">paths</a> and select the same road.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>
