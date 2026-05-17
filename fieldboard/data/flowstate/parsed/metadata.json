@@ -1,0 +1,11 @@
+{
+  "source": "flowstate",
+  "repo": "https://github.com/iphoenix227/Flow-State---BJJ-Attack-Decision-Map",
+  "license": "None specified",
+  "positions": 16,
+  "edges": 175,
+  "actions_loaded": 149,
+  "submissions": 62,
+  "sweeps": 29,
+  "errors": 0
+}

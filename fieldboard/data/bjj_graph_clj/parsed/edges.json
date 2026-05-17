@@ -1,0 +1,3504 @@
+[
+  {
+    "id": "clj_e0",
+    "name": "Mount -> Low Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p0",
+    "from_name": "Mount",
+    "to_id": "clj_p1",
+    "to_name": "Low Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e1",
+    "name": "Mount -> High Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p0",
+    "from_name": "Mount",
+    "to_id": "clj_p2",
+    "to_name": "High Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e2",
+    "name": "Low Mount -> High Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p1",
+    "from_name": "Low Mount",
+    "to_id": "clj_p2",
+    "to_name": "High Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e3",
+    "name": "Low Mount -> Mount + bottom person turns to side",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p1",
+    "from_name": "Low Mount",
+    "to_id": "clj_p3",
+    "to_name": "Mount + bottom person turns to side",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e4",
+    "name": "Low Mount -> Mount + hooks",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p1",
+    "from_name": "Low Mount",
+    "to_id": "clj_p4",
+    "to_name": "Mount + hooks",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e5",
+    "name": "Headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p1",
+    "from_name": "Low Mount",
+    "to_id": "clj_p5",
+    "to_name": "Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e6",
+    "name": "Bottom person headlocks",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p1",
+    "from_name": "Low Mount",
+    "to_id": "clj_p6",
+    "to_name": "Modified Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e7",
+    "name": "Bench press",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p1",
+    "from_name": "Low Mount",
+    "to_id": "clj_p7",
+    "to_name": "Mount + bench press",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e8",
+    "name": "Elbow Escape",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p1",
+    "from_name": "Low Mount",
+    "to_id": "clj_p8",
+    "to_name": "Quarter Guard",
+    "edge_type": "escape",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e9",
+    "name": "Hook Removal",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p4",
+    "from_name": "Mount + hooks",
+    "to_id": "clj_p1",
+    "to_name": "Low Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e10",
+    "name": "Mount + headlock -> Trap and Roll",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p5",
+    "from_name": "Mount + headlock",
+    "to_id": "clj_p9",
+    "to_name": "Trap and Roll",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e11",
+    "name": "Mount + headlock -> Mount + headlock + wrist isolation",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p5",
+    "from_name": "Mount + headlock",
+    "to_id": "clj_p10",
+    "to_name": "Mount + headlock + wrist isolation",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e12",
+    "name": "Mount + headlock + wrist isolation -> Americana Armlock + headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p10",
+    "from_name": "Mount + headlock + wrist isolation",
+    "to_id": "clj_p11",
+    "to_name": "Americana Armlock + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e13",
+    "name": "Mount + bench press -> Straight Armlock (Seated)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p7",
+    "from_name": "Mount + bench press",
+    "to_id": "clj_p12",
+    "to_name": "Straight Armlock (Seated)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e14",
+    "name": "High Swim",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p7",
+    "from_name": "Mount + bench press",
+    "to_id": "clj_p1",
+    "to_name": "Low Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e15",
+    "name": "Unloop",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p11",
+    "from_name": "Americana Armlock + headlock",
+    "to_id": "clj_p13",
+    "to_name": "Americana Armlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e16",
+    "name": "High Mount -> Low Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p2",
+    "from_name": "High Mount",
+    "to_id": "clj_p1",
+    "to_name": "Low Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e17",
+    "name": "High Mount -> Mount + 2-on-1 arm pin",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p2",
+    "from_name": "High Mount",
+    "to_id": "clj_p14",
+    "to_name": "Mount + 2-on-1 arm pin",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e18",
+    "name": "High Mount -> Mount + bottom person turns to side",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p2",
+    "from_name": "High Mount",
+    "to_id": "clj_p3",
+    "to_name": "Mount + bottom person turns to side",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e19",
+    "name": "High Mount -> Twisting Arm Control",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p2",
+    "from_name": "High Mount",
+    "to_id": "clj_p15",
+    "to_name": "Twisting Arm Control",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e20",
+    "name": "Hand on chest",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p2",
+    "from_name": "High Mount",
+    "to_id": "clj_p9",
+    "to_name": "Trap and Roll",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e21",
+    "name": "Punch block",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p2",
+    "from_name": "High Mount",
+    "to_id": "clj_p16",
+    "to_name": "Mount + back wrap",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e22",
+    "name": "Twisting Arm Control -> Straight Armlock (Seated)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p15",
+    "from_name": "Twisting Arm Control",
+    "to_id": "clj_p12",
+    "to_name": "Straight Armlock (Seated)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e23",
+    "name": "They face down",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p15",
+    "from_name": "Twisting Arm Control",
+    "to_id": "clj_p17",
+    "to_name": "Back Mount Setup",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e24",
+    "name": "Mount + 2-on-1 arm pin -> Americana Armlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p14",
+    "from_name": "Mount + 2-on-1 arm pin",
+    "to_id": "clj_p13",
+    "to_name": "Americana Armlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e25",
+    "name": "Wrap arm",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p16",
+    "from_name": "Mount + back wrap",
+    "to_id": "clj_p9",
+    "to_name": "Trap and Roll",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e26",
+    "name": "Trap and Roll -> Open Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p9",
+    "from_name": "Trap and Roll",
+    "to_id": "clj_p18",
+    "to_name": "Open Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e27",
+    "name": "Mount + bottom person turns to side -> Modified Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p3",
+    "from_name": "Mount + bottom person turns to side",
+    "to_id": "clj_p19",
+    "to_name": "Modified Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e28",
+    "name": "Release",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p6",
+    "from_name": "Modified Mount + headlock",
+    "to_id": "clj_p19",
+    "to_name": "Modified Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e29",
+    "name": "Modified Mount -> Low Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p19",
+    "from_name": "Modified Mount",
+    "to_id": "clj_p1",
+    "to_name": "Low Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e30",
+    "name": "Modified Mount -> Straight Armlock (Seated)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p19",
+    "from_name": "Modified Mount",
+    "to_id": "clj_p12",
+    "to_name": "Straight Armlock (Seated)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e31",
+    "name": "They face down",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p19",
+    "from_name": "Modified Mount",
+    "to_id": "clj_p17",
+    "to_name": "Back Mount Setup",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e32",
+    "name": "Back Mount Setup -> Back Mount (Strong Side)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p17",
+    "from_name": "Back Mount Setup",
+    "to_id": "clj_p20",
+    "to_name": "Back Mount (Strong Side)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e33",
+    "name": "Back Mount Setup -> Back Mount (Weak Side)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p17",
+    "from_name": "Back Mount Setup",
+    "to_id": "clj_p21",
+    "to_name": "Back Mount (Weak Side)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e34",
+    "name": "Back Mount (Strong Side) -> Rear Naked Choke",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p20",
+    "from_name": "Back Mount (Strong Side)",
+    "to_id": "clj_p22",
+    "to_name": "Rear Naked Choke",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e35",
+    "name": "Lose hook",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p20",
+    "from_name": "Back Mount (Strong Side)",
+    "to_id": "clj_p23",
+    "to_name": "Back Mount (Strong Side) + lost hook",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e36",
+    "name": "Remount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p23",
+    "from_name": "Back Mount (Strong Side) + lost hook",
+    "to_id": "clj_p0",
+    "to_name": "Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e37",
+    "name": "Back Mount (Weak Side) -> Rear Naked Choke",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p21",
+    "from_name": "Back Mount (Weak Side)",
+    "to_id": "clj_p22",
+    "to_name": "Rear Naked Choke",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e38",
+    "name": "Lose hook",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p21",
+    "from_name": "Back Mount (Weak Side)",
+    "to_id": "clj_p24",
+    "to_name": "Back Mount (Weak Side) + lost hook",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e39",
+    "name": "Remount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p24",
+    "from_name": "Back Mount (Weak Side) + lost hook",
+    "to_id": "clj_p0",
+    "to_name": "Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e40",
+    "name": "Standard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p8",
+    "from_name": "Quarter Guard",
+    "to_id": "clj_p25",
+    "to_name": "Half Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e41",
+    "name": "Fish Hook",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p8",
+    "from_name": "Quarter Guard",
+    "to_id": "clj_p25",
+    "to_name": "Half Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e42",
+    "name": "Heel Drag",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p8",
+    "from_name": "Quarter Guard",
+    "to_id": "clj_p25",
+    "to_name": "Half Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e43",
+    "name": "Half Guard -> Three-Quarter Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p25",
+    "from_name": "Half Guard",
+    "to_id": "clj_p26",
+    "to_name": "Three-Quarter Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e44",
+    "name": "Three-Quarter Guard -> Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p26",
+    "from_name": "Three-Quarter Guard",
+    "to_id": "clj_p27",
+    "to_name": "Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e45",
+    "name": "Open Guard -> Open Guard + double underhooks",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p18",
+    "from_name": "Open Guard",
+    "to_id": "clj_p28",
+    "to_name": "Open Guard + double underhooks",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e46",
+    "name": "Cross feet",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p18",
+    "from_name": "Open Guard",
+    "to_id": "clj_p27",
+    "to_name": "Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e47",
+    "name": "Open Guard Pass",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p18",
+    "from_name": "Open Guard",
+    "to_id": "clj_p0",
+    "to_name": "Mount",
+    "edge_type": "pass",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e48",
+    "name": "Double Underhook Pass",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p28",
+    "from_name": "Open Guard + double underhooks",
+    "to_id": "clj_p29",
+    "to_name": "Modified Side Mount",
+    "edge_type": "pass",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e49",
+    "name": "Guard -> Punch Block Stage 1.5",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p30",
+    "to_name": "Punch Block Stage 1.5",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e50",
+    "name": "Guard -> Punch Block Stage 3",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p31",
+    "to_name": "Punch Block Stage 3",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e51",
+    "name": "Guard -> Punch Block Stage 4",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p32",
+    "to_name": "Punch Block Stage 4",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e52",
+    "name": "Throw strikes",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p18",
+    "to_name": "Open Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e53",
+    "name": "Hand on chest (low)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p33",
+    "to_name": "Straight Armlock (Guard)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e54",
+    "name": "Hand on chest (high)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p33",
+    "to_name": "Straight Armlock (Guard)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e55",
+    "name": "Upper body crush",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p34",
+    "to_name": "Giant Killer",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e56",
+    "name": "Upper body crush + leg posted",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p35",
+    "to_name": "Elevator Sweep",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e57",
+    "name": "Headlock + leg posted",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p35",
+    "to_name": "Elevator Sweep",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e58",
+    "name": "Stand up + feet close",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p36",
+    "to_name": "Double Ankle Sweep",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e59",
+    "name": "Hands posted on ground",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p37",
+    "to_name": "Kimura Armlock (Guard)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e60",
+    "name": "Arm over head",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p37",
+    "to_name": "Kimura Armlock (Guard)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e61",
+    "name": "Forearm on chest",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p38",
+    "to_name": "Take the Back (Guard)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e62",
+    "name": "Punch Block Stage 1.5 -> Triangle Setup",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p30",
+    "from_name": "Punch Block Stage 1.5",
+    "to_id": "clj_p39",
+    "to_name": "Triangle Setup",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e63",
+    "name": "Punch Block Stage 1.5 -> Punch Block Stage 2",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p30",
+    "from_name": "Punch Block Stage 1.5",
+    "to_id": "clj_p40",
+    "to_name": "Punch Block Stage 2",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e64",
+    "name": "Punch Block Stage 2 -> Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p40",
+    "from_name": "Punch Block Stage 2",
+    "to_id": "clj_p27",
+    "to_name": "Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e65",
+    "name": "Punch Block Stage 2 -> Punch Block Stage 3",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p40",
+    "from_name": "Punch Block Stage 2",
+    "to_id": "clj_p31",
+    "to_name": "Punch Block Stage 3",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e66",
+    "name": "Punch Block Stage 3 -> Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p31",
+    "from_name": "Punch Block Stage 3",
+    "to_id": "clj_p27",
+    "to_name": "Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e67",
+    "name": "Punch Block Stage 3 -> Punch Block Stage 4",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p31",
+    "from_name": "Punch Block Stage 3",
+    "to_id": "clj_p32",
+    "to_name": "Punch Block Stage 4",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e68",
+    "name": "Punch Block Stage 3 -> Punch Block Stage 5",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p31",
+    "from_name": "Punch Block Stage 3",
+    "to_id": "clj_p41",
+    "to_name": "Punch Block Stage 5",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e69",
+    "name": "Punch Block Stage 4 -> Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p32",
+    "from_name": "Punch Block Stage 4",
+    "to_id": "clj_p27",
+    "to_name": "Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e70",
+    "name": "Punch Block Stage 4 -> Punch Block Stage 5",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p32",
+    "from_name": "Punch Block Stage 4",
+    "to_id": "clj_p41",
+    "to_name": "Punch Block Stage 5",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e71",
+    "name": "Punch Block Stage 4 -> Toss legs aside",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p32",
+    "from_name": "Punch Block Stage 4",
+    "to_id": "clj_p42",
+    "to_name": "Toss legs aside",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e72",
+    "name": "Bladed stance",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p32",
+    "from_name": "Punch Block Stage 4",
+    "to_id": "clj_p43",
+    "to_name": "Hook Sweep",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e73",
+    "name": "Punch Block Stage 5 -> Punch Block Stage 4",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p41",
+    "from_name": "Punch Block Stage 5",
+    "to_id": "clj_p32",
+    "to_name": "Punch Block Stage 4",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e74",
+    "name": "Punch Block Stage 5 -> Toss legs aside",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p41",
+    "from_name": "Punch Block Stage 5",
+    "to_id": "clj_p42",
+    "to_name": "Toss legs aside",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e75",
+    "name": "Toss legs aside -> Opponent on Ground",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p42",
+    "from_name": "Toss legs aside",
+    "to_id": "clj_p44",
+    "to_name": "Opponent on Ground",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e76",
+    "name": "Rollover",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p42",
+    "from_name": "Toss legs aside",
+    "to_id": "clj_p32",
+    "to_name": "Punch Block Stage 4",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e77",
+    "name": "Pull arm back",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p33",
+    "from_name": "Straight Armlock (Guard)",
+    "to_id": "clj_p39",
+    "to_name": "Triangle Setup",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e78",
+    "name": "Fall sideways",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p33",
+    "from_name": "Straight Armlock (Guard)",
+    "to_id": "clj_p12",
+    "to_name": "Straight Armlock (Seated)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e79",
+    "name": "Giant Killer -> Triangle Setup",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p34",
+    "from_name": "Giant Killer",
+    "to_id": "clj_p39",
+    "to_name": "Triangle Setup",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e80",
+    "name": "Giant Killer -> Triangle Choke",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p34",
+    "from_name": "Giant Killer",
+    "to_id": "clj_p45",
+    "to_name": "Triangle Choke",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e81",
+    "name": "Triangle Setup -> Triangle Choke",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p39",
+    "from_name": "Triangle Setup",
+    "to_id": "clj_p45",
+    "to_name": "Triangle Choke",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e82",
+    "name": "Take the Back (Guard) -> Back Mount Setup",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p38",
+    "from_name": "Take the Back (Guard)",
+    "to_id": "clj_p17",
+    "to_name": "Back Mount Setup",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e83",
+    "name": "Elevator Sweep -> Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p35",
+    "from_name": "Elevator Sweep",
+    "to_id": "clj_p0",
+    "to_name": "Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e84",
+    "name": "Knee Thrust",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p36",
+    "from_name": "Double Ankle Sweep",
+    "to_id": "clj_p1",
+    "to_name": "Low Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e85",
+    "name": "Kick",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p36",
+    "from_name": "Double Ankle Sweep",
+    "to_id": "clj_p44",
+    "to_name": "Opponent on Ground",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e86",
+    "name": "Hook Sweep -> Opponent on Ground",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p43",
+    "from_name": "Hook Sweep",
+    "to_id": "clj_p44",
+    "to_name": "Opponent on Ground",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e87",
+    "name": "Side Mount -> Cross-Chest",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p47",
+    "from_name": "Side Mount",
+    "to_id": "clj_p48",
+    "to_name": "Cross-Chest",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e88",
+    "name": "Side Mount -> Modified Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p47",
+    "from_name": "Side Mount",
+    "to_id": "clj_p29",
+    "to_name": "Modified Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e89",
+    "name": "Side Mount -> Knee Drive (Side Mount)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p47",
+    "from_name": "Side Mount",
+    "to_id": "clj_p49",
+    "to_name": "Knee Drive (Side Mount)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e90",
+    "name": "Shrimp Escape (Shrimp and Shoot)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p47",
+    "from_name": "Side Mount",
+    "to_id": "clj_p26",
+    "to_name": "Three-Quarter Guard",
+    "edge_type": "escape",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e91",
+    "name": "Shrimp Escape (Rider)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p47",
+    "from_name": "Side Mount",
+    "to_id": "clj_p26",
+    "to_name": "Three-Quarter Guard",
+    "edge_type": "escape",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e92",
+    "name": "Knee Drive (Side Mount) -> Mount + headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p49",
+    "from_name": "Knee Drive (Side Mount)",
+    "to_id": "clj_p5",
+    "to_name": "Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e93",
+    "name": "Elbow Escape",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p49",
+    "from_name": "Knee Drive (Side Mount)",
+    "to_id": "clj_p25",
+    "to_name": "Half Guard",
+    "edge_type": "escape",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e94",
+    "name": "Forearm choke",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p50",
+    "from_name": "Side Mount + guillotine",
+    "to_id": "clj_p47",
+    "to_name": "Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e95",
+    "name": "Cross-Chest -> Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p48",
+    "from_name": "Cross-Chest",
+    "to_id": "clj_p47",
+    "to_name": "Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e96",
+    "name": "Modified Side Mount -> Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p29",
+    "from_name": "Modified Side Mount",
+    "to_id": "clj_p47",
+    "to_name": "Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e97",
+    "name": "Modified Side Mount -> Reverse Cross-Chest",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p29",
+    "from_name": "Modified Side Mount",
+    "to_id": "clj_p51",
+    "to_name": "Reverse Cross-Chest",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e98",
+    "name": "Reverse Cross-Chest -> Modified Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p51",
+    "from_name": "Reverse Cross-Chest",
+    "to_id": "clj_p29",
+    "to_name": "Modified Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e99",
+    "name": "Reverse Cross-Chest -> High Step (Reverse Cross-Chest)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p51",
+    "from_name": "Reverse Cross-Chest",
+    "to_id": "clj_p52",
+    "to_name": "High Step (Reverse Cross-Chest)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e100",
+    "name": "High Step (Reverse Cross-Chest) -> Low Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p52",
+    "from_name": "High Step (Reverse Cross-Chest)",
+    "to_id": "clj_p1",
+    "to_name": "Low Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e101",
+    "name": "Elbow Escape",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p52",
+    "from_name": "High Step (Reverse Cross-Chest)",
+    "to_id": "clj_p25",
+    "to_name": "Half Guard",
+    "edge_type": "escape",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e102",
+    "name": "Frame Escape",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p53",
+    "from_name": "Seated Headlock",
+    "to_id": "clj_p54",
+    "to_name": "Headlock Escape 1",
+    "edge_type": "escape",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e103",
+    "name": "Can't insert frame",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p53",
+    "from_name": "Seated Headlock",
+    "to_id": "clj_p55",
+    "to_name": "Headlock Escape 2",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e104",
+    "name": "Headlock Escape 1 -> Scissor Choke",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p54",
+    "from_name": "Headlock Escape 1",
+    "to_id": "clj_p56",
+    "to_name": "Scissor Choke",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e105",
+    "name": "Super Lock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p54",
+    "from_name": "Headlock Escape 1",
+    "to_id": "clj_p6",
+    "to_name": "Modified Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e106",
+    "name": "Scissor Choke -> Scissor Follow-Up",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p56",
+    "from_name": "Scissor Choke",
+    "to_id": "clj_p57",
+    "to_name": "Scissor Follow-Up",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e107",
+    "name": "Scissor Follow-Up -> Modified Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p57",
+    "from_name": "Scissor Follow-Up",
+    "to_id": "clj_p29",
+    "to_name": "Modified Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e108",
+    "name": "Standard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p55",
+    "from_name": "Headlock Escape 2",
+    "to_id": "clj_p6",
+    "to_name": "Modified Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e109",
+    "name": "Super Base",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p55",
+    "from_name": "Headlock Escape 2",
+    "to_id": "clj_p6",
+    "to_name": "Modified Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e110",
+    "name": "Punch Block",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p55",
+    "from_name": "Headlock Escape 2",
+    "to_id": "clj_p6",
+    "to_name": "Modified Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e111",
+    "name": "Opponent on Ground -> Seated Headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p44",
+    "from_name": "Opponent on Ground",
+    "to_id": "clj_p53",
+    "to_name": "Seated Headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e112",
+    "name": "Opponent on Ground -> Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p44",
+    "from_name": "Opponent on Ground",
+    "to_id": "clj_p47",
+    "to_name": "Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e113",
+    "name": "Shrimp Escape (Block and Shoot)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p44",
+    "from_name": "Opponent on Ground",
+    "to_id": "clj_p26",
+    "to_name": "Three-Quarter Guard",
+    "edge_type": "escape",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e114",
+    "name": "Standing -> Double Leg Takedown",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p59",
+    "to_name": "Double Leg Takedown",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e115",
+    "name": "Standing -> Standing Headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p60",
+    "to_name": "Standing Headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e116",
+    "name": "Aggressive Opponent",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p61",
+    "to_name": "Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e117",
+    "name": "Conservative Opponent",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p61",
+    "to_name": "Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e118",
+    "name": "Tackle attempt",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p62",
+    "to_name": "Guillotine Choke (Standing)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e119",
+    "name": "Haymaker Punch Defense",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p63",
+    "to_name": "Rear Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e120",
+    "name": "Hand on chest",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p64",
+    "to_name": "Standing Armlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e121",
+    "name": "Clinch -> Rear Clinch",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p61",
+    "from_name": "Clinch",
+    "to_id": "clj_p63",
+    "to_name": "Rear Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e122",
+    "name": "Clinch -> Standing Headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p61",
+    "from_name": "Clinch",
+    "to_id": "clj_p60",
+    "to_name": "Standing Headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e123",
+    "name": "Bladed stance",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p61",
+    "from_name": "Clinch",
+    "to_id": "clj_p65",
+    "to_name": "Leg Hook Takedown",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e124",
+    "name": "Push down on shoulders",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p61",
+    "from_name": "Clinch",
+    "to_id": "clj_p66",
+    "to_name": "Body Fold Takedown",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e125",
+    "name": "Lean back to punch",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p61",
+    "from_name": "Clinch",
+    "to_id": "clj_p66",
+    "to_name": "Body Fold Takedown",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e126",
+    "name": "Head too far to the side",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p61",
+    "from_name": "Clinch",
+    "to_id": "clj_p62",
+    "to_name": "Guillotine Choke (Standing)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e127",
+    "name": "Hips far",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p61",
+    "from_name": "Clinch",
+    "to_id": "clj_p67",
+    "to_name": "Pull Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e128",
+    "name": "Leg Hook Takedown -> Opponent on Ground",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p65",
+    "from_name": "Leg Hook Takedown",
+    "to_id": "clj_p44",
+    "to_name": "Opponent on Ground",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e129",
+    "name": "Leg Hook Takedown -> Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p65",
+    "from_name": "Leg Hook Takedown",
+    "to_id": "clj_p0",
+    "to_name": "Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e130",
+    "name": "Body Fold Takedown -> Opponent on Ground",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p66",
+    "from_name": "Body Fold Takedown",
+    "to_id": "clj_p44",
+    "to_name": "Opponent on Ground",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e131",
+    "name": "Body Fold Takedown -> Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p66",
+    "from_name": "Body Fold Takedown",
+    "to_id": "clj_p0",
+    "to_name": "Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e132",
+    "name": "Double Leg Takedown -> Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p59",
+    "from_name": "Double Leg Takedown",
+    "to_id": "clj_p47",
+    "to_name": "Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e133",
+    "name": "Standing Headlock -> Seated Headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p60",
+    "from_name": "Standing Headlock",
+    "to_id": "clj_p53",
+    "to_name": "Seated Headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e134",
+    "name": "Standing Headlock Defense",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p60",
+    "from_name": "Standing Headlock",
+    "to_id": "clj_p6",
+    "to_name": "Modified Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e135",
+    "name": "Look up, circle around",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p62",
+    "from_name": "Guillotine Choke (Standing)",
+    "to_id": "clj_p63",
+    "to_name": "Rear Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e136",
+    "name": "Guillotine Choke Defense",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p62",
+    "from_name": "Guillotine Choke (Standing)",
+    "to_id": "clj_p50",
+    "to_name": "Side Mount + guillotine",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e137",
+    "name": "Pull Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p62",
+    "from_name": "Guillotine Choke (Standing)",
+    "to_id": "clj_p46",
+    "to_name": "Guillotine Choke (Guard)",
+    "edge_type": "submission",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e138",
+    "name": "Rear Clinch -> Clinch",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p63",
+    "from_name": "Rear Clinch",
+    "to_id": "clj_p61",
+    "to_name": "Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e139",
+    "name": "Rear Takedown",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p63",
+    "from_name": "Rear Clinch",
+    "to_id": "clj_p19",
+    "to_name": "Modified Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e140",
+    "name": "Pull Guard -> Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p67",
+    "from_name": "Pull Guard",
+    "to_id": "clj_p27",
+    "to_name": "Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e141",
+    "name": "Mount -> S-Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p0",
+    "from_name": "Mount",
+    "to_id": "clj_p68",
+    "to_name": "S-Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e142",
+    "name": "Spread hands",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p1",
+    "from_name": "Low Mount",
+    "to_id": "clj_p9",
+    "to_name": "Trap and Roll",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e143",
+    "name": "Bottom person guillotines",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p1",
+    "from_name": "Low Mount",
+    "to_id": "clj_p69",
+    "to_name": "Mount + guillotine",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e144",
+    "name": "Mount + 2-on-1 arm pin -> Attempted Americana + heavy elbow",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p14",
+    "from_name": "Mount + 2-on-1 arm pin",
+    "to_id": "clj_p70",
+    "to_name": "Attempted Americana + heavy elbow",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e145",
+    "name": "Side entry",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p70",
+    "from_name": "Attempted Americana + heavy elbow",
+    "to_id": "clj_p13",
+    "to_name": "Americana Armlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e146",
+    "name": "Mount + bottom person turns to side -> Half Nelson",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p3",
+    "from_name": "Mount + bottom person turns to side",
+    "to_id": "clj_p71",
+    "to_name": "Half Nelson",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e147",
+    "name": "Dismount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p69",
+    "from_name": "Mount + guillotine",
+    "to_id": "clj_p50",
+    "to_name": "Side Mount + guillotine",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e148",
+    "name": "TAC Transfer",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p15",
+    "from_name": "Twisting Arm Control",
+    "to_id": "clj_p21",
+    "to_name": "Back Mount (Weak Side)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e149",
+    "name": "Rider Transition",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p19",
+    "from_name": "Modified Mount",
+    "to_id": "clj_p72",
+    "to_name": "Back Mount (Face Down)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e150",
+    "name": "S-Mount -> Straight Armlock (Seated)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p68",
+    "from_name": "S-Mount",
+    "to_id": "clj_p12",
+    "to_name": "Straight Armlock (Seated)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e151",
+    "name": "Crossover",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p20",
+    "from_name": "Back Mount (Strong Side)",
+    "to_id": "clj_p21",
+    "to_name": "Back Mount (Weak Side)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e152",
+    "name": "Frame Escape",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p20",
+    "from_name": "Back Mount (Strong Side)",
+    "to_id": "clj_p18",
+    "to_name": "Open Guard",
+    "edge_type": "escape",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e153",
+    "name": "Back Mount (Weak Side) -> Back Mount (Triple Threat)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p21",
+    "from_name": "Back Mount (Weak Side)",
+    "to_id": "clj_p73",
+    "to_name": "Back Mount (Triple Threat)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e154",
+    "name": "Crossover",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p21",
+    "from_name": "Back Mount (Weak Side)",
+    "to_id": "clj_p20",
+    "to_name": "Back Mount (Strong Side)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e155",
+    "name": "Back Mount (Triple Threat) -> Straight Armlock (Seated)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p73",
+    "from_name": "Back Mount (Triple Threat)",
+    "to_id": "clj_p12",
+    "to_name": "Straight Armlock (Seated)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e156",
+    "name": "Lift head",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p72",
+    "from_name": "Back Mount (Face Down)",
+    "to_id": "clj_p74",
+    "to_name": "Back Mount (Face Down) - One-armed choke",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e157",
+    "name": "Half Guard -> Half Guard + headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p25",
+    "from_name": "Half Guard",
+    "to_id": "clj_p75",
+    "to_name": "Half Guard + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e158",
+    "name": "Tripod Pass",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p25",
+    "from_name": "Half Guard",
+    "to_id": "clj_p47",
+    "to_name": "Side Mount",
+    "edge_type": "pass",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e159",
+    "name": "Surprise Roll",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p75",
+    "from_name": "Half Guard + headlock",
+    "to_id": "clj_p25",
+    "to_name": "Half Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e160",
+    "name": "Open Guard -> Knee Split",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p18",
+    "from_name": "Open Guard",
+    "to_id": "clj_p76",
+    "to_name": "Knee Split",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e161",
+    "name": "Guard Get-Up",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p44",
+    "to_name": "Opponent on Ground",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e162",
+    "name": "Headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p38",
+    "to_name": "Take the Back (Guard)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e163",
+    "name": "Log Splitter Pass",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p27",
+    "from_name": "Guard",
+    "to_id": "clj_p18",
+    "to_name": "Open Guard",
+    "edge_type": "pass",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e164",
+    "name": "Punch Block Stage 1.5 -> Kimura Armlock (Guard)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p30",
+    "from_name": "Punch Block Stage 1.5",
+    "to_id": "clj_p37",
+    "to_name": "Kimura Armlock (Guard)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e165",
+    "name": "Triangle Choke -> Triangle Choke + slam prevention",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p45",
+    "from_name": "Triangle Choke",
+    "to_id": "clj_p78",
+    "to_name": "Triangle Choke + slam prevention",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e166",
+    "name": "Counter",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p36",
+    "from_name": "Double Ankle Sweep",
+    "to_id": "clj_p76",
+    "to_name": "Knee Split",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e167",
+    "name": "Knee Split Pass (Back Side)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p76",
+    "from_name": "Knee Split",
+    "to_id": "clj_p48",
+    "to_name": "Cross-Chest",
+    "edge_type": "pass",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e168",
+    "name": "High-Low Guard -> Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p79",
+    "from_name": "High-Low Guard",
+    "to_id": "clj_p27",
+    "to_name": "Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e169",
+    "name": "High-Low Guard -> Triangle Setup",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p79",
+    "from_name": "High-Low Guard",
+    "to_id": "clj_p39",
+    "to_name": "Triangle Setup",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e170",
+    "name": "Side Mount -> Knee on Belly",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p47",
+    "from_name": "Side Mount",
+    "to_id": "clj_p80",
+    "to_name": "Knee on Belly",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e171",
+    "name": "Side Mount -> Seated Headlock",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p47",
+    "from_name": "Side Mount",
+    "to_id": "clj_p53",
+    "to_name": "Seated Headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e172",
+    "name": "Headlock attempt, back take",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p47",
+    "from_name": "Side Mount",
+    "to_id": "clj_p21",
+    "to_name": "Back Mount (Weak Side)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e173",
+    "name": "Half Guard Recovery",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p47",
+    "from_name": "Side Mount",
+    "to_id": "clj_p25",
+    "to_name": "Half Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e174",
+    "name": "Seated Headlock -> Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p53",
+    "from_name": "Seated Headlock",
+    "to_id": "clj_p47",
+    "to_name": "Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e175",
+    "name": "Surprise Roll",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p55",
+    "from_name": "Headlock Escape 2",
+    "to_id": "clj_p6",
+    "to_name": "Modified Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e176",
+    "name": "Knee on Belly -> Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p80",
+    "from_name": "Knee on Belly",
+    "to_id": "clj_p47",
+    "to_name": "Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e177",
+    "name": "Knee on Belly -> Opponent on Ground",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p80",
+    "from_name": "Knee on Belly",
+    "to_id": "clj_p44",
+    "to_name": "Opponent on Ground",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e178",
+    "name": "Opponent on Ground -> Knee on Belly",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p44",
+    "from_name": "Opponent on Ground",
+    "to_id": "clj_p80",
+    "to_name": "Knee on Belly",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e179",
+    "name": "Side Mount attempt",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p44",
+    "from_name": "Opponent on Ground",
+    "to_id": "clj_p79",
+    "to_name": "High-Low Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e180",
+    "name": "Standing -> Over-Under Clinch",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p81",
+    "to_name": "Over-Under Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e181",
+    "name": "Pis\u00e3o Front Kick",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p61",
+    "to_name": "Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e182",
+    "name": "Tackle attempt, arm available",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p82",
+    "to_name": "Arm-In Guillotine (Standing)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e183",
+    "name": "Arm Drag",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p58",
+    "from_name": "Standing",
+    "to_id": "clj_p63",
+    "to_name": "Rear Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e184",
+    "name": "Standing Headlock Defense (Smart Base)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p60",
+    "from_name": "Standing Headlock",
+    "to_id": "clj_p6",
+    "to_name": "Modified Mount + headlock",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e185",
+    "name": "Pull Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p82",
+    "from_name": "Arm-In Guillotine (Standing)",
+    "to_id": "clj_p77",
+    "to_name": "Arm-In Guillotine (Guard)",
+    "edge_type": "submission",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e186",
+    "name": "Over-Under Clinch -> Pummel",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p81",
+    "from_name": "Over-Under Clinch",
+    "to_id": "clj_p83",
+    "to_name": "Pummel",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e187",
+    "name": "Leg inside",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p81",
+    "from_name": "Over-Under Clinch",
+    "to_id": "clj_p84",
+    "to_name": "Inside Trip",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e188",
+    "name": "Pummel -> Clinch",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p83",
+    "from_name": "Pummel",
+    "to_id": "clj_p61",
+    "to_name": "Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e189",
+    "name": "Pummel -> Over-Under Clinch",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p83",
+    "from_name": "Pummel",
+    "to_id": "clj_p81",
+    "to_name": "Over-Under Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e190",
+    "name": "Clinch -> Outside Trip",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p61",
+    "from_name": "Clinch",
+    "to_id": "clj_p85",
+    "to_name": "Outside Trip",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e191",
+    "name": "Leg inside",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p61",
+    "from_name": "Clinch",
+    "to_id": "clj_p84",
+    "to_name": "Inside Trip",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e192",
+    "name": "Outside Trip -> Side Mount",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p85",
+    "from_name": "Outside Trip",
+    "to_id": "clj_p47",
+    "to_name": "Side Mount",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e193",
+    "name": "Inside Trip -> Open Guard",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p84",
+    "from_name": "Inside Trip",
+    "to_id": "clj_p18",
+    "to_name": "Open Guard",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e194",
+    "name": "They don't fall",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p59",
+    "from_name": "Double Leg Takedown",
+    "to_id": "clj_p61",
+    "to_name": "Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e195",
+    "name": "Standing Behind Opponent -> Rear Clinch",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p86",
+    "from_name": "Standing Behind Opponent",
+    "to_id": "clj_p63",
+    "to_name": "Rear Clinch",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e196",
+    "name": "Standing Behind Opponent -> Rear Naked Choke (Standing)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p86",
+    "from_name": "Standing Behind Opponent",
+    "to_id": "clj_p87",
+    "to_name": "Rear Naked Choke (Standing)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e197",
+    "name": "They turn around",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p86",
+    "from_name": "Standing Behind Opponent",
+    "to_id": "clj_p58",
+    "to_name": "Standing",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e198",
+    "name": "Knee Buckle",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p86",
+    "from_name": "Standing Behind Opponent",
+    "to_id": "clj_p88",
+    "to_name": "Pullback",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e199",
+    "name": "Pullback -> Knee on Belly",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p88",
+    "from_name": "Pullback",
+    "to_id": "clj_p80",
+    "to_name": "Knee on Belly",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e200",
+    "name": "Pullback -> Sitting Behind Opponent",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p88",
+    "from_name": "Pullback",
+    "to_id": "clj_p89",
+    "to_name": "Sitting Behind Opponent",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e201",
+    "name": "Pullback -> Rear Naked Choke (Standing)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p88",
+    "from_name": "Pullback",
+    "to_id": "clj_p87",
+    "to_name": "Rear Naked Choke (Standing)",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e202",
+    "name": "Sitting Behind Opponent -> Back Mount Setup",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p89",
+    "from_name": "Sitting Behind Opponent",
+    "to_id": "clj_p17",
+    "to_name": "Back Mount Setup",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e203",
+    "name": "Sitting Behind Opponent -> Rear Naked Choke",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p89",
+    "from_name": "Sitting Behind Opponent",
+    "to_id": "clj_p22",
+    "to_name": "Rear Naked Choke",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e204",
+    "name": "Guillotine Choke Defense (Outside Trip)",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p62",
+    "from_name": "Guillotine Choke (Standing)",
+    "to_id": "clj_p50",
+    "to_name": "Side Mount + guillotine",
+    "edge_type": "transition",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_e205",
+    "name": "Super Hooks",
+    "source": "bjj_graph_clj",
+    "from_id": "clj_p9",
+    "from_name": "Trap and Roll",
+    "to_id": "clj_p1",
+    "to_name": "Low Mount",
+    "edge_type": "transition",
+    "tags": [
+      "blue-belt-stripe-1"
+    ],
+    "properties": {
+      "labeled": true
+    },
+    "raw": {}
+  }
+]

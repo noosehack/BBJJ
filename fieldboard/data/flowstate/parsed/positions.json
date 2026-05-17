@@ -1,0 +1,258 @@
+[
+  {
+    "id": "ST-ROOT",
+    "name": "Standing / Neutral",
+    "source": "flowstate",
+    "tags": [
+      "standing"
+    ],
+    "properties": {
+      "position_family": "standing"
+    },
+    "raw": {
+      "position_id": "ST-ROOT",
+      "position_name": "Standing / Neutral",
+      "position_family": "standing"
+    }
+  },
+  {
+    "id": "CG-ROOT",
+    "name": "Closed guard",
+    "source": "flowstate",
+    "tags": [
+      "guard_bottom"
+    ],
+    "properties": {
+      "position_family": "guard_bottom"
+    },
+    "raw": {
+      "position_id": "CG-ROOT",
+      "position_name": "Closed guard",
+      "position_family": "guard_bottom"
+    }
+  },
+  {
+    "id": "OG-ROOT",
+    "name": "Open guard",
+    "source": "flowstate",
+    "tags": [
+      "guard_bottom"
+    ],
+    "properties": {
+      "position_family": "guard_bottom"
+    },
+    "raw": {
+      "position_id": "OG-ROOT",
+      "position_name": "Open guard",
+      "position_family": "guard_bottom"
+    }
+  },
+  {
+    "id": "HGB-ROOT",
+    "name": "Half guard bottom",
+    "source": "flowstate",
+    "tags": [
+      "guard_bottom"
+    ],
+    "properties": {
+      "position_family": "guard_bottom"
+    },
+    "raw": {
+      "position_id": "HGB-ROOT",
+      "position_name": "Half guard bottom",
+      "position_family": "guard_bottom"
+    }
+  },
+  {
+    "id": "HGT-ROOT",
+    "name": "Top half guard",
+    "source": "flowstate",
+    "tags": [
+      "passing_top"
+    ],
+    "properties": {
+      "position_family": "passing_top"
+    },
+    "raw": {
+      "position_id": "HGT-ROOT",
+      "position_name": "Top half guard",
+      "position_family": "passing_top"
+    }
+  },
+  {
+    "id": "SC-ROOT",
+    "name": "Side control top",
+    "source": "flowstate",
+    "tags": [
+      "pin_top"
+    ],
+    "properties": {
+      "position_family": "pin_top"
+    },
+    "raw": {
+      "position_id": "SC-ROOT",
+      "position_name": "Side control top",
+      "position_family": "pin_top"
+    }
+  },
+  {
+    "id": "MT-ROOT",
+    "name": "Mount top",
+    "source": "flowstate",
+    "tags": [
+      "pin_top"
+    ],
+    "properties": {
+      "position_family": "pin_top"
+    },
+    "raw": {
+      "position_id": "MT-ROOT",
+      "position_name": "Mount top",
+      "position_family": "pin_top"
+    }
+  },
+  {
+    "id": "BK-ROOT",
+    "name": "Back control",
+    "source": "flowstate",
+    "tags": [
+      "back_control"
+    ],
+    "properties": {
+      "position_family": "back_control"
+    },
+    "raw": {
+      "position_id": "BK-ROOT",
+      "position_name": "Back control",
+      "position_family": "back_control"
+    }
+  },
+  {
+    "id": "FH-ROOT",
+    "name": "Front headlock",
+    "source": "flowstate",
+    "tags": [
+      "front_headlock"
+    ],
+    "properties": {
+      "position_family": "front_headlock"
+    },
+    "raw": {
+      "position_id": "FH-ROOT",
+      "position_name": "Front headlock",
+      "position_family": "front_headlock"
+    }
+  },
+  {
+    "id": "TUR-ROOT",
+    "name": "Turtle top",
+    "source": "flowstate",
+    "tags": [
+      "turtle"
+    ],
+    "properties": {
+      "position_family": "turtle"
+    },
+    "raw": {
+      "position_id": "TUR-ROOT",
+      "position_name": "Turtle top",
+      "position_family": "turtle"
+    }
+  },
+  {
+    "id": "LE-ROOT",
+    "name": "Leg entanglement",
+    "source": "flowstate",
+    "tags": [
+      "leg_entanglement"
+    ],
+    "properties": {
+      "position_family": "leg_entanglement"
+    },
+    "raw": {
+      "position_id": "LE-ROOT",
+      "position_name": "Leg entanglement",
+      "position_family": "leg_entanglement"
+    }
+  },
+  {
+    "id": "LE-ASHI",
+    "name": "Ashi garami",
+    "source": "flowstate",
+    "tags": [
+      "leg_entanglement"
+    ],
+    "properties": {
+      "position_family": "leg_entanglement"
+    },
+    "raw": {
+      "position_id": "LE-ASHI",
+      "position_name": "Ashi garami",
+      "position_family": "leg_entanglement"
+    }
+  },
+  {
+    "id": "LE-5050",
+    "name": "50/50",
+    "source": "flowstate",
+    "tags": [
+      "leg_entanglement"
+    ],
+    "properties": {
+      "position_family": "leg_entanglement"
+    },
+    "raw": {
+      "position_id": "LE-5050",
+      "position_name": "50/50",
+      "position_family": "leg_entanglement"
+    }
+  },
+  {
+    "id": "LE-SANKAKU",
+    "name": "Inside sankaku (Honey hole)",
+    "source": "flowstate",
+    "tags": [
+      "leg_entanglement"
+    ],
+    "properties": {
+      "position_family": "leg_entanglement"
+    },
+    "raw": {
+      "position_id": "LE-SANKAKU",
+      "position_name": "Inside sankaku (Honey hole)",
+      "position_family": "leg_entanglement"
+    }
+  },
+  {
+    "id": "OG-XGUARD",
+    "name": "X-guard",
+    "source": "flowstate",
+    "tags": [
+      "guard_bottom"
+    ],
+    "properties": {
+      "position_family": "guard_bottom"
+    },
+    "raw": {
+      "position_id": "OG-XGUARD",
+      "position_name": "X-guard",
+      "position_family": "guard_bottom"
+    }
+  },
+  {
+    "id": "OG-BUTTERFLY",
+    "name": "Butterfly guard",
+    "source": "flowstate",
+    "tags": [
+      "guard_bottom"
+    ],
+    "properties": {
+      "position_family": "guard_bottom"
+    },
+    "raw": {
+      "position_id": "OG-BUTTERFLY",
+      "position_name": "Butterfly guard",
+      "position_family": "guard_bottom"
+    }
+  }
+]

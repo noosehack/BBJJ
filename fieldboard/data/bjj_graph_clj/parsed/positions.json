@@ -1,0 +1,1091 @@
+[
+  {
+    "id": "clj_p0",
+    "name": "Mount",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives",
+      "is_submission": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p1",
+    "name": "Low Mount",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p2",
+    "name": "High Mount",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p3",
+    "name": "Mount + bottom person turns to side",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p4",
+    "name": "Mount + hooks",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p5",
+    "name": "Mount + headlock",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p6",
+    "name": "Modified Mount + headlock",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p7",
+    "name": "Mount + bench press",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p8",
+    "name": "Quarter Guard",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p9",
+    "name": "Trap and Roll",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p10",
+    "name": "Mount + headlock + wrist isolation",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p11",
+    "name": "Americana Armlock + headlock",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p12",
+    "name": "Straight Armlock (Seated)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p13",
+    "name": "Americana Armlock",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p14",
+    "name": "Mount + 2-on-1 arm pin",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p15",
+    "name": "Twisting Arm Control",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p16",
+    "name": "Mount + back wrap",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p17",
+    "name": "Back Mount Setup",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p18",
+    "name": "Open Guard",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p19",
+    "name": "Modified Mount",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p20",
+    "name": "Back Mount (Strong Side)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p21",
+    "name": "Back Mount (Weak Side)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p22",
+    "name": "Rear Naked Choke",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p23",
+    "name": "Back Mount (Strong Side) + lost hook",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p24",
+    "name": "Back Mount (Weak Side) + lost hook",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p25",
+    "name": "Half Guard",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p26",
+    "name": "Three-Quarter Guard",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p27",
+    "name": "Guard",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p28",
+    "name": "Open Guard + double underhooks",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p29",
+    "name": "Modified Side Mount",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p30",
+    "name": "Punch Block Stage 1.5",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p31",
+    "name": "Punch Block Stage 3",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p32",
+    "name": "Punch Block Stage 4",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p33",
+    "name": "Straight Armlock (Guard)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p34",
+    "name": "Giant Killer",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p35",
+    "name": "Elevator Sweep",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p36",
+    "name": "Double Ankle Sweep",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p37",
+    "name": "Kimura Armlock (Guard)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p38",
+    "name": "Take the Back (Guard)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p39",
+    "name": "Triangle Setup",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p40",
+    "name": "Punch Block Stage 2",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p41",
+    "name": "Punch Block Stage 5",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p42",
+    "name": "Toss legs aside",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p43",
+    "name": "Hook Sweep",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p44",
+    "name": "Opponent on Ground",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p45",
+    "name": "Triangle Choke",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p46",
+    "name": "Guillotine Choke (Guard)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives",
+      "is_submission": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p47",
+    "name": "Side Mount",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives",
+      "is_submission": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p48",
+    "name": "Cross-Chest",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p49",
+    "name": "Knee Drive (Side Mount)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p50",
+    "name": "Side Mount + guillotine",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives",
+      "is_submission": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p51",
+    "name": "Reverse Cross-Chest",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p52",
+    "name": "High Step (Reverse Cross-Chest)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p53",
+    "name": "Seated Headlock",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives",
+      "is_submission": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p54",
+    "name": "Headlock Escape 1",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p55",
+    "name": "Headlock Escape 2",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p56",
+    "name": "Scissor Choke",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p57",
+    "name": "Scissor Follow-Up",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p58",
+    "name": "Standing",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives",
+      "is_submission": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p59",
+    "name": "Double Leg Takedown",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p60",
+    "name": "Standing Headlock",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p61",
+    "name": "Clinch",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p62",
+    "name": "Guillotine Choke (Standing)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p63",
+    "name": "Rear Clinch",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p64",
+    "name": "Standing Armlock",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p65",
+    "name": "Leg Hook Takedown",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p66",
+    "name": "Body Fold Takedown",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p67",
+    "name": "Pull Guard",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives"
+    ],
+    "properties": {
+      "graph": "combatives"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p68",
+    "name": "S-Mount",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p69",
+    "name": "Mount + guillotine",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p70",
+    "name": "Attempted Americana + heavy elbow",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p71",
+    "name": "Half Nelson",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p72",
+    "name": "Back Mount (Face Down)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p73",
+    "name": "Back Mount (Triple Threat)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p74",
+    "name": "Back Mount (Face Down) - One-armed choke",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p75",
+    "name": "Half Guard + headlock",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p76",
+    "name": "Knee Split",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p77",
+    "name": "Arm-In Guillotine (Guard)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices",
+      "is_submission": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p78",
+    "name": "Triangle Choke + slam prevention",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p79",
+    "name": "High-Low Guard",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices",
+      "is_submission": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p80",
+    "name": "Knee on Belly",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p81",
+    "name": "Over-Under Clinch",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p82",
+    "name": "Arm-In Guillotine (Standing)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p83",
+    "name": "Pummel",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p84",
+    "name": "Inside Trip",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p85",
+    "name": "Outside Trip",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p86",
+    "name": "Standing Behind Opponent",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices",
+      "is_submission": false
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p87",
+    "name": "Rear Naked Choke (Standing)",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p88",
+    "name": "Pullback",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  },
+  {
+    "id": "clj_p89",
+    "name": "Sitting Behind Opponent",
+    "source": "bjj_graph_clj",
+    "tags": [
+      "combatives-v2-bonus-slices"
+    ],
+    "properties": {
+      "graph": "combatives-v2-bonus-slices"
+    },
+    "raw": {}
+  }
+]

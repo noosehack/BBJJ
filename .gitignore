@@ -16,3 +16,5 @@ models_pose/
 models_geometry/
 benchmark_perception/results/
 demo_output/
+fieldboard/data/*/raw/
+fieldboard/data/candidate_roads.json

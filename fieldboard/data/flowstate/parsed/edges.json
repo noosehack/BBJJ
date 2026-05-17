@@ -1,0 +1,6302 @@
+[
+  {
+    "id": "fs_e0",
+    "name": "Single leg takedown",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "HGT-ROOT",
+    "to_name": "Top half guard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Switch to double or pull guard"
+    },
+    "raw": {
+      "node_id": "ST-001",
+      "from_node_id": "ST-A-single-leg-takedown",
+      "next_node_id": "HGT-ROOT",
+      "edge_label": "Partner balance compromised / leg captured -> Run the pipe",
+      "action": {
+        "parent_action_id": "ST-A-single-leg-takedown",
+        "start_position": "Standing / Neutral",
+        "your_action": "Single leg takedown",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "single_leg_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "single_leg_chain"
+    }
+  },
+  {
+    "id": "fs_e1",
+    "name": "Single leg takedown",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown chain",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Pull guard or sit to single"
+    },
+    "raw": {
+      "node_id": "ST-002",
+      "from_node_id": "ST-A-single-leg-takedown",
+      "next_node_id": null,
+      "edge_label": "Partner sprawls -> Switch to double or cut corner",
+      "action": {
+        "parent_action_id": "ST-A-single-leg-takedown",
+        "start_position": "Standing / Neutral",
+        "your_action": "Single leg takedown",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "single_leg_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "single_leg_chain"
+    }
+  },
+  {
+    "id": "fs_e2",
+    "name": "Single leg takedown",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "HGT-ROOT",
+    "to_name": "Top half guard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Limp arm to back or high crotch"
+    },
+    "raw": {
+      "node_id": "ST-003",
+      "from_node_id": "ST-A-single-leg-takedown",
+      "next_node_id": "HGT-ROOT",
+      "edge_label": "Partner applies strong whizzer -> Shelf leg and run the pipe",
+      "action": {
+        "parent_action_id": "ST-A-single-leg-takedown",
+        "start_position": "Standing / Neutral",
+        "your_action": "Single leg takedown",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "single_leg_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "single_leg_chain"
+    }
+  },
+  {
+    "id": "fs_e3",
+    "name": "Single leg takedown",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to run the pipe"
+    },
+    "raw": {
+      "node_id": "ST-004",
+      "from_node_id": "ST-A-single-leg-takedown",
+      "next_node_id": null,
+      "edge_label": "Partner hops on one foot -> Trip the far leg",
+      "action": {
+        "parent_action_id": "ST-A-single-leg-takedown",
+        "start_position": "Standing / Neutral",
+        "your_action": "Single leg takedown",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "single_leg_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "single_leg_chain"
+    }
+  },
+  {
+    "id": "fs_e4",
+    "name": "Double leg takedown",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "ST-ROOT",
+    "to_name": "Standing / Neutral",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown chain",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Pull guard or reset"
+    },
+    "raw": {
+      "node_id": "ST-005",
+      "from_node_id": "ST-A-double-leg-takedown",
+      "next_node_id": "ST-ROOT",
+      "edge_label": "Partner sprawls -> Come up to single leg",
+      "action": {
+        "parent_action_id": "ST-A-double-leg-takedown",
+        "start_position": "Standing / Neutral",
+        "your_action": "Double leg takedown",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "double_leg_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "double_leg_chain"
+    }
+  },
+  {
+    "id": "fs_e5",
+    "name": "Double leg takedown",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "HGT-ROOT",
+    "to_name": "Top half guard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Chain to single"
+    },
+    "raw": {
+      "node_id": "ST-006",
+      "from_node_id": "ST-A-double-leg-takedown",
+      "next_node_id": "HGT-ROOT",
+      "edge_label": "Partner stays upright -> Drive through to finish",
+      "action": {
+        "parent_action_id": "ST-A-double-leg-takedown",
+        "start_position": "Standing / Neutral",
+        "your_action": "Double leg takedown",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "double_leg_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "double_leg_chain"
+    }
+  },
+  {
+    "id": "fs_e6",
+    "name": "Snapdown",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "FH-ROOT",
+    "to_name": "Front headlock",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Release and re-tie"
+    },
+    "raw": {
+      "node_id": "ST-007",
+      "from_node_id": "ST-A-snapdown",
+      "next_node_id": "FH-ROOT",
+      "edge_label": "Partner posts hands on mat -> Front headlock",
+      "action": {
+        "parent_action_id": "ST-A-snapdown",
+        "start_position": "Standing / Neutral",
+        "your_action": "Snapdown",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "snapdown_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "snapdown_chain"
+    }
+  },
+  {
+    "id": "fs_e7",
+    "name": "Snapdown",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown chain",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Re-tie and reset"
+    },
+    "raw": {
+      "node_id": "ST-008",
+      "from_node_id": "ST-A-snapdown",
+      "next_node_id": null,
+      "edge_label": "Partner resists by standing tall -> Attack single leg",
+      "action": {
+        "parent_action_id": "ST-A-snapdown",
+        "start_position": "Standing / Neutral",
+        "your_action": "Snapdown",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "snapdown_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "snapdown_chain"
+    }
+  },
+  {
+    "id": "fs_e8",
+    "name": "Arm drag",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown chain",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Re-tie or pull guard"
+    },
+    "raw": {
+      "node_id": "ST-009",
+      "from_node_id": "ST-A-arm-drag",
+      "next_node_id": null,
+      "edge_label": "Partner steps forward -> Attack single leg",
+      "action": {
+        "parent_action_id": "ST-A-arm-drag",
+        "start_position": "Standing / Neutral",
+        "your_action": "Arm drag",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "arm_drag_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "arm_drag_chain"
+    }
+  },
+  {
+    "id": "fs_e9",
+    "name": "Arm drag",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Return to single leg"
+    },
+    "raw": {
+      "node_id": "ST-010",
+      "from_node_id": "ST-A-arm-drag",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner over-rotates -> Back take standing",
+      "action": {
+        "parent_action_id": "ST-A-arm-drag",
+        "start_position": "Standing / Neutral",
+        "your_action": "Arm drag",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "arm_drag_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "arm_drag_chain"
+    }
+  },
+  {
+    "id": "fs_e10",
+    "name": "Ankle pick",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Chain to single"
+    },
+    "raw": {
+      "node_id": "ST-011",
+      "from_node_id": "ST-A-ankle-pick",
+      "next_node_id": null,
+      "edge_label": "Partner weight on target foot -> Pick ankle and drive",
+      "action": {
+        "parent_action_id": "ST-A-ankle-pick",
+        "start_position": "Standing / Neutral",
+        "your_action": "Ankle pick",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "ankle_pick_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "ankle_pick_chain"
+    }
+  },
+  {
+    "id": "fs_e11",
+    "name": "Guard pull",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "CG-ROOT",
+    "to_name": "Closed guard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Guard entry",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Recover with open guard"
+    },
+    "raw": {
+      "node_id": "ST-012",
+      "from_node_id": "ST-A-guard-pull",
+      "next_node_id": "CG-ROOT",
+      "edge_label": "Partner follows to knees -> Establish closed guard",
+      "action": {
+        "parent_action_id": "ST-A-guard-pull",
+        "start_position": "Standing / Neutral",
+        "your_action": "Guard pull",
+        "position_family": "standing",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "guard_pull_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "guard_pull_chain"
+    }
+  },
+  {
+    "id": "fs_e12",
+    "name": "Guard pull",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "OG-ROOT",
+    "to_name": "Open guard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Guard entry",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Tech stand-up to reset"
+    },
+    "raw": {
+      "node_id": "ST-013",
+      "from_node_id": "ST-A-guard-pull",
+      "next_node_id": "OG-ROOT",
+      "edge_label": "Partner stays standing -> Establish open guard grips",
+      "action": {
+        "parent_action_id": "ST-A-guard-pull",
+        "start_position": "Standing / Neutral",
+        "your_action": "Guard pull",
+        "position_family": "standing",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "guard_pull_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "guard_pull_chain"
+    }
+  },
+  {
+    "id": "fs_e13",
+    "name": "Hip bump sweep",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "CG-ROOT",
+    "to_name": "Closed guard",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Flow back to hip bump"
+    },
+    "raw": {
+      "node_id": "CG-001",
+      "from_node_id": "CG-A-hip-bump-sweep",
+      "next_node_id": "CG-ROOT",
+      "edge_label": "Partner posts hand -> Kimura",
+      "action": {
+        "parent_action_id": "CG-A-hip-bump-sweep",
+        "start_position": "Closed guard",
+        "your_action": "Hip bump sweep",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "hip_bump_guillotine_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "hip_bump_guillotine_chain"
+    }
+  },
+  {
+    "id": "fs_e14",
+    "name": "Hip bump sweep",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "CG-ROOT",
+    "to_name": "Closed guard",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Release to hip bump"
+    },
+    "raw": {
+      "node_id": "CG-002",
+      "from_node_id": "CG-A-hip-bump-sweep",
+      "next_node_id": "CG-ROOT",
+      "edge_label": "Partner drives forward -> Guillotine",
+      "action": {
+        "parent_action_id": "CG-A-hip-bump-sweep",
+        "start_position": "Closed guard",
+        "your_action": "Hip bump sweep",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "hip_bump_guillotine_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "hip_bump_guillotine_chain"
+    }
+  },
+  {
+    "id": "fs_e15",
+    "name": "Hip bump sweep",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Kimura or guillotine"
+    },
+    "raw": {
+      "node_id": "CG-003",
+      "from_node_id": "CG-A-hip-bump-sweep",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner does not post -> Complete hip bump sweep",
+      "action": {
+        "parent_action_id": "CG-A-hip-bump-sweep",
+        "start_position": "Closed guard",
+        "your_action": "Hip bump sweep",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "hip_bump_guillotine_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "hip_bump_guillotine_chain"
+    }
+  },
+  {
+    "id": "fs_e16",
+    "name": "Kimura grip",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Roll for kimura"
+    },
+    "raw": {
+      "node_id": "CG-004",
+      "from_node_id": "CG-A-kimura-grip",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner hides hand -> Hip bump sweep",
+      "action": {
+        "parent_action_id": "CG-A-kimura-grip",
+        "start_position": "Closed guard",
+        "your_action": "Kimura grip",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "armbar_triangle_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "armbar_triangle_chain"
+    }
+  },
+  {
+    "id": "fs_e17",
+    "name": "Kimura grip",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to triangle"
+    },
+    "raw": {
+      "node_id": "CG-005",
+      "from_node_id": "CG-A-kimura-grip",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner straightens arm -> Armbar",
+      "action": {
+        "parent_action_id": "CG-A-kimura-grip",
+        "start_position": "Closed guard",
+        "your_action": "Kimura grip",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "armbar_triangle_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "armbar_triangle_chain"
+    }
+  },
+  {
+    "id": "fs_e18",
+    "name": "Cross-collar choke",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "CG-ROOT",
+    "to_name": "Closed guard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Use legs to break posture"
+    },
+    "raw": {
+      "node_id": "CG-006",
+      "from_node_id": "CG-A-cross-collar-choke",
+      "next_node_id": "CG-ROOT",
+      "edge_label": "Partner postures back -> Sit up / break posture",
+      "action": {
+        "parent_action_id": "CG-A-cross-collar-choke",
+        "start_position": "Closed guard",
+        "your_action": "Cross-collar choke",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "collar_choke_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "collar_choke_chain"
+    }
+  },
+  {
+    "id": "fs_e19",
+    "name": "Cross-collar choke",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Triangle or omoplata"
+    },
+    "raw": {
+      "node_id": "CG-007",
+      "from_node_id": "CG-A-cross-collar-choke",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner drives forward -> Angle to armbar",
+      "action": {
+        "parent_action_id": "CG-A-cross-collar-choke",
+        "start_position": "Closed guard",
+        "your_action": "Cross-collar choke",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "collar_choke_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "collar_choke_chain"
+    }
+  },
+  {
+    "id": "fs_e20",
+    "name": "Armbar from guard",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TERM-SUB-THREAT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Flow to omoplata"
+    },
+    "raw": {
+      "node_id": "CG-008",
+      "from_node_id": "CG-A-armbar-from-guard",
+      "next_node_id": "TERM-SUB-THREAT",
+      "edge_label": "Partner pulls arm out -> Triangle",
+      "action": {
+        "parent_action_id": "CG-A-armbar-from-guard",
+        "start_position": "Closed guard",
+        "your_action": "Armbar from guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "armbar_triangle_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "armbar_triangle_chain"
+    }
+  },
+  {
+    "id": "fs_e21",
+    "name": "Triangle",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TERM-SUB-THREAT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Omoplata or flower"
+    },
+    "raw": {
+      "node_id": "CG-009",
+      "from_node_id": "CG-A-triangle",
+      "next_node_id": "TERM-SUB-THREAT",
+      "edge_label": "Partner stacks -> Switch to armbar or omoplata",
+      "action": {
+        "parent_action_id": "CG-A-triangle",
+        "start_position": "Closed guard",
+        "your_action": "Triangle",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "armbar_triangle_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "armbar_triangle_chain"
+    }
+  },
+  {
+    "id": "fs_e22",
+    "name": "Triangle",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Recover closed guard"
+    },
+    "raw": {
+      "node_id": "CG-010",
+      "from_node_id": "CG-A-triangle",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner postures before lock -> Flower sweep",
+      "action": {
+        "parent_action_id": "CG-A-triangle",
+        "start_position": "Closed guard",
+        "your_action": "Triangle",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "armbar_triangle_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "armbar_triangle_chain"
+    }
+  },
+  {
+    "id": "fs_e23",
+    "name": "Scissor sweep",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Push or flower sweep"
+    },
+    "raw": {
+      "node_id": "CG-011",
+      "from_node_id": "CG-A-scissor-sweep",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner bases wide -> Push/knee push sweep",
+      "action": {
+        "parent_action_id": "CG-A-scissor-sweep",
+        "start_position": "Closed guard",
+        "your_action": "Scissor sweep",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "scissor_push_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "White",
+      "chain_family": "scissor_push_chain"
+    }
+  },
+  {
+    "id": "fs_e24",
+    "name": "Arm drag",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Recover guard"
+    },
+    "raw": {
+      "node_id": "CG-012",
+      "from_node_id": "CG-A-arm-drag",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner posts far hand -> Climb to back",
+      "action": {
+        "parent_action_id": "CG-A-arm-drag",
+        "start_position": "Closed guard",
+        "your_action": "Arm drag",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "back_take_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "back_take_chain"
+    }
+  },
+  {
+    "id": "fs_e25",
+    "name": "Overhook",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "CG-ROOT",
+    "to_name": "Closed guard",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 3,
+      "counter_if_fails": "Release to hip bump"
+    },
+    "raw": {
+      "node_id": "CG-013",
+      "from_node_id": "CG-A-overhook",
+      "next_node_id": "CG-ROOT",
+      "edge_label": "Partner postures hard -> Hip bump or omoplata",
+      "action": {
+        "parent_action_id": "CG-A-overhook",
+        "start_position": "Closed guard",
+        "your_action": "Overhook",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Low",
+        "chain_family": "overhook_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "overhook_chain"
+    }
+  },
+  {
+    "id": "fs_e26",
+    "name": "Collar-sleeve control",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TERM-SUB-THREAT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Transition to omoplata"
+    },
+    "raw": {
+      "node_id": "OG-001",
+      "from_node_id": "OG-A-collar-sleeve-control",
+      "next_node_id": "TERM-SUB-THREAT",
+      "edge_label": "Partner drives forward -> Triangle",
+      "action": {
+        "parent_action_id": "OG-A-collar-sleeve-control",
+        "start_position": "Open guard",
+        "your_action": "Collar-sleeve control",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "collar_sleeve_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "collar_sleeve_chain"
+    }
+  },
+  {
+    "id": "fs_e27",
+    "name": "Collar-sleeve control",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "OG-ROOT",
+    "to_name": "Open guard",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Sickle sweep"
+    },
+    "raw": {
+      "node_id": "OG-002",
+      "from_node_id": "OG-A-collar-sleeve-control",
+      "next_node_id": "OG-ROOT",
+      "edge_label": "Partner pulls backward -> Tripod sweep",
+      "action": {
+        "parent_action_id": "OG-A-collar-sleeve-control",
+        "start_position": "Open guard",
+        "your_action": "Collar-sleeve control",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "collar_sleeve_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "collar_sleeve_chain"
+    }
+  },
+  {
+    "id": "fs_e28",
+    "name": "Tripod sweep",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Tech stand-up"
+    },
+    "raw": {
+      "node_id": "OG-003",
+      "from_node_id": "OG-A-tripod-sweep",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner steps foot back -> Sickle sweep",
+      "action": {
+        "parent_action_id": "OG-A-tripod-sweep",
+        "start_position": "Open guard",
+        "your_action": "Tripod sweep",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "tripod_sickle_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "tripod_sickle_chain"
+    }
+  },
+  {
+    "id": "fs_e29",
+    "name": "De la Riva guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Wrestle up"
+    },
+    "raw": {
+      "node_id": "OG-004",
+      "from_node_id": "OG-A-de-la-riva-guard",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner pressures knee inward -> Off-balance tripod/sickle",
+      "action": {
+        "parent_action_id": "OG-A-de-la-riva-guard",
+        "start_position": "Open guard",
+        "your_action": "De la Riva guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "dlr_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "dlr_chain"
+    }
+  },
+  {
+    "id": "fs_e30",
+    "name": "De la Riva guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "ST-SINGLE-LEG",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown chain",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Return to open guard"
+    },
+    "raw": {
+      "node_id": "OG-005",
+      "from_node_id": "OG-A-de-la-riva-guard",
+      "next_node_id": "ST-SINGLE-LEG",
+      "edge_label": "Partner turns knee outward -> Wrestle-up",
+      "action": {
+        "parent_action_id": "OG-A-de-la-riva-guard",
+        "start_position": "Open guard",
+        "your_action": "De la Riva guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "dlr_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "dlr_chain"
+    }
+  },
+  {
+    "id": "fs_e31",
+    "name": "Single-leg X entry",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Come up to single"
+    },
+    "raw": {
+      "node_id": "OG-006",
+      "from_node_id": "OG-A-single-leg-x-entry",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner stands tall -> Elevate and sweep",
+      "action": {
+        "parent_action_id": "OG-A-single-leg-x-entry",
+        "start_position": "Open guard",
+        "your_action": "Single-leg X entry",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "slx_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "slx_chain"
+    }
+  },
+  {
+    "id": "fs_e32",
+    "name": "Single-leg X entry",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown chain",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Recover DLR"
+    },
+    "raw": {
+      "node_id": "OG-007",
+      "from_node_id": "OG-A-single-leg-x-entry",
+      "next_node_id": null,
+      "edge_label": "Partner strips foot from hip -> Come up on single leg",
+      "action": {
+        "parent_action_id": "OG-A-single-leg-x-entry",
+        "start_position": "Open guard",
+        "your_action": "Single-leg X entry",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "slx_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "slx_chain"
+    }
+  },
+  {
+    "id": "fs_e33",
+    "name": "Omoplata entry",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Recover guard"
+    },
+    "raw": {
+      "node_id": "OG-008",
+      "from_node_id": "OG-A-omoplata-entry",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner rolls forward -> Follow to top",
+      "action": {
+        "parent_action_id": "OG-A-omoplata-entry",
+        "start_position": "Open guard",
+        "your_action": "Omoplata entry",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "omoplata_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "omoplata_chain"
+    }
+  },
+  {
+    "id": "fs_e34",
+    "name": "Technical stand-up",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "ST-ROOT",
+    "to_name": "Standing / Neutral",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Reset",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Re-pull guard"
+    },
+    "raw": {
+      "node_id": "OG-009",
+      "from_node_id": "OG-A-technical-stand-up",
+      "next_node_id": "ST-ROOT",
+      "edge_label": "Partner backs away -> Stand to neutral",
+      "action": {
+        "parent_action_id": "OG-A-technical-stand-up",
+        "start_position": "Open guard",
+        "your_action": "Technical stand-up",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "reset_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "reset_chain"
+    }
+  },
+  {
+    "id": "fs_e35",
+    "name": "Knee shield open guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Guard retention",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Recompose or stand"
+    },
+    "raw": {
+      "node_id": "OG-010",
+      "from_node_id": "OG-A-knee-shield-open-guard",
+      "next_node_id": null,
+      "edge_label": "Partner pressures forward -> Frame and recover",
+      "action": {
+        "parent_action_id": "OG-A-knee-shield-open-guard",
+        "start_position": "Open guard",
+        "your_action": "Knee shield open guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "retention_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "retention_chain"
+    }
+  },
+  {
+    "id": "fs_e36",
+    "name": "Lasso guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 3,
+      "counter_if_fails": "Transition to DLR"
+    },
+    "raw": {
+      "node_id": "OG-011",
+      "from_node_id": "OG-A-lasso-guard",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner tries to pass -> Off-balance to sweep",
+      "action": {
+        "parent_action_id": "OG-A-lasso-guard",
+        "start_position": "Open guard",
+        "your_action": "Lasso guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "Low",
+        "chain_family": "lasso_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "lasso_chain"
+    }
+  },
+  {
+    "id": "fs_e37",
+    "name": "Knee shield to underhook",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": null,
+    "to_name": "HGB-DOGFIGHT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/back chain",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Recover knee shield"
+    },
+    "raw": {
+      "node_id": "HGB-001",
+      "from_node_id": "HGB-A-knee-shield-to-underhook",
+      "next_node_id": "HGB-DOGFIGHT",
+      "edge_label": "Partner gives underhook -> Come to dogfight",
+      "action": {
+        "parent_action_id": "HGB-A-knee-shield-to-underhook",
+        "start_position": "Half guard bottom",
+        "your_action": "Knee shield to underhook",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "half_guard_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "half_guard_chain"
+    }
+  },
+  {
+    "id": "fs_e38",
+    "name": "Knee shield to underhook",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": "HGB-ROOT",
+    "to_name": "Half guard bottom",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Recovery",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Recover full guard"
+    },
+    "raw": {
+      "node_id": "HGB-002",
+      "from_node_id": "HGB-A-knee-shield-to-underhook",
+      "next_node_id": "HGB-ROOT",
+      "edge_label": "Partner crossfaces hard -> Recover frames",
+      "action": {
+        "parent_action_id": "HGB-A-knee-shield-to-underhook",
+        "start_position": "Half guard bottom",
+        "your_action": "Knee shield to underhook",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "half_guard_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "half_guard_chain"
+    }
+  },
+  {
+    "id": "fs_e39",
+    "name": "Dogfight",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": "HGT-ROOT",
+    "to_name": "Top half guard",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Roll under to back"
+    },
+    "raw": {
+      "node_id": "HGB-003",
+      "from_node_id": "HGB-A-dogfight",
+      "next_node_id": "HGT-ROOT",
+      "edge_label": "Partner whizzers -> Old school sweep",
+      "action": {
+        "parent_action_id": "HGB-A-dogfight",
+        "start_position": "Half guard bottom",
+        "your_action": "Dogfight",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "half_guard_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "half_guard_chain"
+    }
+  },
+  {
+    "id": "fs_e40",
+    "name": "Dogfight",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take / sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Come up to single"
+    },
+    "raw": {
+      "node_id": "HGB-004",
+      "from_node_id": "HGB-A-dogfight",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner posts far hand -> Back take or roll under",
+      "action": {
+        "parent_action_id": "HGB-A-dogfight",
+        "start_position": "Half guard bottom",
+        "your_action": "Dogfight",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "half_guard_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "half_guard_chain"
+    }
+  },
+  {
+    "id": "fs_e41",
+    "name": "Half butterfly hook",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": "HGT-ROOT",
+    "to_name": "Top half guard",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Recover knee shield"
+    },
+    "raw": {
+      "node_id": "HGB-005",
+      "from_node_id": "HGB-A-half-butterfly-hook",
+      "next_node_id": "HGT-ROOT",
+      "edge_label": "Partner pressures forward -> Elevator sweep",
+      "action": {
+        "parent_action_id": "HGB-A-half-butterfly-hook",
+        "start_position": "Half guard bottom",
+        "your_action": "Half butterfly hook",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "half_guard_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "half_guard_chain"
+    }
+  },
+  {
+    "id": "fs_e42",
+    "name": "Deep half entry",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": null,
+    "to_name": "ST-SINGLE-LEG",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 3,
+      "counter_if_fails": "Recover half guard"
+    },
+    "raw": {
+      "node_id": "HGB-006",
+      "from_node_id": "HGB-A-deep-half-entry",
+      "next_node_id": "ST-SINGLE-LEG",
+      "edge_label": "Partner bases wide -> Out back door",
+      "action": {
+        "parent_action_id": "HGB-A-deep-half-entry",
+        "start_position": "Half guard bottom",
+        "your_action": "Deep half entry",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Low",
+        "chain_family": "deep_half_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "deep_half_chain"
+    }
+  },
+  {
+    "id": "fs_e43",
+    "name": "Underhook half guard",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": "OG-ROOT",
+    "to_name": "Open guard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Recovery",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Tech stand-up"
+    },
+    "raw": {
+      "node_id": "HGB-007",
+      "from_node_id": "HGB-A-underhook-half-guard",
+      "next_node_id": "OG-ROOT",
+      "edge_label": "Partner backs hips away -> Recover full guard",
+      "action": {
+        "parent_action_id": "HGB-A-underhook-half-guard",
+        "start_position": "Half guard bottom",
+        "your_action": "Underhook half guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "retention_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "retention_chain"
+    }
+  },
+  {
+    "id": "fs_e44",
+    "name": "Crossface and underhook",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Backstep"
+    },
+    "raw": {
+      "node_id": "HGT-001",
+      "from_node_id": "HGT-A-crossface-and-underhook",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner stays flat -> Free knee and pass",
+      "action": {
+        "parent_action_id": "HGT-A-crossface-and-underhook",
+        "start_position": "Top half guard",
+        "your_action": "Crossface and underhook",
+        "position_family": "passing_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "half_pass_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "half_pass_chain"
+    }
+  },
+  {
+    "id": "fs_e45",
+    "name": "Crossface and underhook",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Reset crossface"
+    },
+    "raw": {
+      "node_id": "HGT-002",
+      "from_node_id": "HGT-A-crossface-and-underhook",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner turns to side -> Backstep pass",
+      "action": {
+        "parent_action_id": "HGT-A-crossface-and-underhook",
+        "start_position": "Top half guard",
+        "your_action": "Crossface and underhook",
+        "position_family": "passing_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "half_pass_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "half_pass_chain"
+    }
+  },
+  {
+    "id": "fs_e46",
+    "name": "Knee cut pass",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Switch to leg weave"
+    },
+    "raw": {
+      "node_id": "HGT-003",
+      "from_node_id": "HGT-A-knee-cut-pass",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner frames -> Clear frame and crossface",
+      "action": {
+        "parent_action_id": "HGT-A-knee-cut-pass",
+        "start_position": "Top half guard",
+        "your_action": "Knee cut pass",
+        "position_family": "passing_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "knee_cut_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "knee_cut_chain"
+    }
+  },
+  {
+    "id": "fs_e47",
+    "name": "Knee cut pass",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "HGT-ROOT",
+    "to_name": "Top half guard",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control/pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Backstep"
+    },
+    "raw": {
+      "node_id": "HGT-004",
+      "from_node_id": "HGT-A-knee-cut-pass",
+      "next_node_id": "HGT-ROOT",
+      "edge_label": "Partner underhooks -> Whizzer and flatten",
+      "action": {
+        "parent_action_id": "HGT-A-knee-cut-pass",
+        "start_position": "Top half guard",
+        "your_action": "Knee cut pass",
+        "position_family": "passing_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "knee_cut_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "knee_cut_chain"
+    }
+  },
+  {
+    "id": "fs_e48",
+    "name": "Leg weave pass",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to backstep"
+    },
+    "raw": {
+      "node_id": "HGT-005",
+      "from_node_id": "HGT-A-leg-weave-pass",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner keeps knee shield -> Staple and circle",
+      "action": {
+        "parent_action_id": "HGT-A-leg-weave-pass",
+        "start_position": "Top half guard",
+        "your_action": "Leg weave pass",
+        "position_family": "passing_top",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "leg_weave_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "leg_weave_chain"
+    }
+  },
+  {
+    "id": "fs_e49",
+    "name": "Mount transition",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Positional advance",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Settle side control"
+    },
+    "raw": {
+      "node_id": "HGT-006",
+      "from_node_id": "HGT-A-mount-transition",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner exposes far knee -> Slide knee to mount",
+      "action": {
+        "parent_action_id": "HGT-A-mount-transition",
+        "start_position": "Top half guard",
+        "your_action": "Mount transition",
+        "position_family": "passing_top",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "mount_advance_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "mount_advance_chain"
+    }
+  },
+  {
+    "id": "fs_e50",
+    "name": "Americana",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to straight armbar"
+    },
+    "raw": {
+      "node_id": "SC-001",
+      "from_node_id": "SC-A-americana",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner bends arm -> Finish Americana",
+      "action": {
+        "parent_action_id": "SC-A-americana",
+        "start_position": "Side control top",
+        "your_action": "Americana",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "americana_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "americana_chain"
+    }
+  },
+  {
+    "id": "fs_e51",
+    "name": "Americana",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": null,
+    "to_name": "TERM-SUB-THREAT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to kimura"
+    },
+    "raw": {
+      "node_id": "SC-002",
+      "from_node_id": "SC-A-americana",
+      "next_node_id": "TERM-SUB-THREAT",
+      "edge_label": "Partner straightens arm -> Straight armbar",
+      "action": {
+        "parent_action_id": "SC-A-americana",
+        "start_position": "Side control top",
+        "your_action": "Americana",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "americana_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "americana_chain"
+    }
+  },
+  {
+    "id": "fs_e52",
+    "name": "Kimura grip",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission/back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Return to side control"
+    },
+    "raw": {
+      "node_id": "SC-003",
+      "from_node_id": "SC-A-kimura-grip",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner hides hand -> Step over head / trap",
+      "action": {
+        "parent_action_id": "SC-A-kimura-grip",
+        "start_position": "Side control top",
+        "your_action": "Kimura grip",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "kimura_trap_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "kimura_trap_chain"
+    }
+  },
+  {
+    "id": "fs_e53",
+    "name": "Knee-on-belly transition",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Back to side control"
+    },
+    "raw": {
+      "node_id": "SC-004",
+      "from_node_id": "SC-A-knee-on-belly-transition",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner pushes knee -> Spin to armbar",
+      "action": {
+        "parent_action_id": "SC-A-knee-on-belly-transition",
+        "start_position": "Side control top",
+        "your_action": "Knee-on-belly transition",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "knee_on_belly_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "knee_on_belly_chain"
+    }
+  },
+  {
+    "id": "fs_e54",
+    "name": "Mount transition",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Positional advance",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Settle side control"
+    },
+    "raw": {
+      "node_id": "SC-005",
+      "from_node_id": "SC-A-mount-transition",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner frames -> Clear frame; knee slide",
+      "action": {
+        "parent_action_id": "SC-A-mount-transition",
+        "start_position": "Side control top",
+        "your_action": "Mount transition",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "mount_advance_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "mount_advance_chain"
+    }
+  },
+  {
+    "id": "fs_e55",
+    "name": "North-south transition",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Settle north-south"
+    },
+    "raw": {
+      "node_id": "SC-006",
+      "from_node_id": "SC-A-north-south-transition",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner turns away -> Take back",
+      "action": {
+        "parent_action_id": "SC-A-north-south-transition",
+        "start_position": "Side control top",
+        "your_action": "North-south transition",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "back_take_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "back_take_chain"
+    }
+  },
+  {
+    "id": "fs_e56",
+    "name": "Paper cutter choke",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to Americana"
+    },
+    "raw": {
+      "node_id": "SC-007",
+      "from_node_id": "SC-A-paper-cutter-choke",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner leaves collar exposed -> Finish choke",
+      "action": {
+        "parent_action_id": "SC-A-paper-cutter-choke",
+        "start_position": "Side control top",
+        "your_action": "Paper cutter choke",
+        "position_family": "pin_top",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "collar_choke_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "collar_choke_chain"
+    }
+  },
+  {
+    "id": "fs_e57",
+    "name": "Americana",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Positional advance",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Settle low mount"
+    },
+    "raw": {
+      "node_id": "MT-001",
+      "from_node_id": "MT-A-americana",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner keeps elbows low -> Climb to high mount",
+      "action": {
+        "parent_action_id": "MT-A-americana",
+        "start_position": "Mount top",
+        "your_action": "Americana",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "americana_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "americana_chain"
+    }
+  },
+  {
+    "id": "fs_e58",
+    "name": "Americana",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to gift wrap"
+    },
+    "raw": {
+      "node_id": "MT-002",
+      "from_node_id": "MT-A-americana",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner straightens arm -> Armbar",
+      "action": {
+        "parent_action_id": "MT-A-americana",
+        "start_position": "Mount top",
+        "your_action": "Americana",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "americana_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "americana_chain"
+    }
+  },
+  {
+    "id": "fs_e59",
+    "name": "Cross-collar choke",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission/back",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "S-mount armbar"
+    },
+    "raw": {
+      "node_id": "MT-003",
+      "from_node_id": "MT-A-cross-collar-choke",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner defends neck -> Armbar / gift wrap",
+      "action": {
+        "parent_action_id": "MT-A-cross-collar-choke",
+        "start_position": "Mount top",
+        "your_action": "Cross-collar choke",
+        "position_family": "pin_top",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "collar_choke_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "collar_choke_chain"
+    }
+  },
+  {
+    "id": "fs_e60",
+    "name": "Gift wrap",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Return to high mount"
+    },
+    "raw": {
+      "node_id": "MT-004",
+      "from_node_id": "MT-A-gift-wrap",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner turns away -> Take back",
+      "action": {
+        "parent_action_id": "MT-A-gift-wrap",
+        "start_position": "Mount top",
+        "your_action": "Gift wrap",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "back_take_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "back_take_chain"
+    }
+  },
+  {
+    "id": "fs_e61",
+    "name": "S-mount",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Return to high mount"
+    },
+    "raw": {
+      "node_id": "MT-005",
+      "from_node_id": "MT-A-s-mount",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner elbow exposed -> Armbar",
+      "action": {
+        "parent_action_id": "MT-A-s-mount",
+        "start_position": "Mount top",
+        "your_action": "S-mount",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "americana_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "americana_chain"
+    }
+  },
+  {
+    "id": "fs_e62",
+    "name": "Low mount pressure",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Reset grips"
+    },
+    "raw": {
+      "node_id": "MT-006",
+      "from_node_id": "MT-A-low-mount-pressure",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner bridges hard -> Post and grapevine",
+      "action": {
+        "parent_action_id": "MT-A-low-mount-pressure",
+        "start_position": "Mount top",
+        "your_action": "Low mount pressure",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "mount_retention_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "mount_retention_chain"
+    }
+  },
+  {
+    "id": "fs_e63",
+    "name": "Rear naked choke",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Switch to bow-and-arrow"
+    },
+    "raw": {
+      "node_id": "BK-001",
+      "from_node_id": "BK-A-rear-naked-choke",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner fights top hand -> Trap arm; re-attack",
+      "action": {
+        "parent_action_id": "BK-A-rear-naked-choke",
+        "start_position": "Back control",
+        "your_action": "Rear naked choke",
+        "position_family": "back_control",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "back_to_mount_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "back_to_mount_chain"
+    }
+  },
+  {
+    "id": "fs_e64",
+    "name": "Rear naked choke",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Positional advance",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Settle in mount"
+    },
+    "raw": {
+      "node_id": "BK-002",
+      "from_node_id": "BK-A-rear-naked-choke",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner escapes hips to floor -> Mount transition",
+      "action": {
+        "parent_action_id": "BK-A-rear-naked-choke",
+        "start_position": "Back control",
+        "your_action": "Rear naked choke",
+        "position_family": "back_control",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "back_to_mount_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "back_to_mount_chain"
+    }
+  },
+  {
+    "id": "fs_e65",
+    "name": "Bow-and-arrow choke",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Switch to RNC"
+    },
+    "raw": {
+      "node_id": "BK-003",
+      "from_node_id": "BK-A-bow-and-arrow-choke",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner exposes collar -> Finish bow-and-arrow",
+      "action": {
+        "parent_action_id": "BK-A-bow-and-arrow-choke",
+        "start_position": "Back control",
+        "your_action": "Bow-and-arrow choke",
+        "position_family": "back_control",
+        "gi_no_gi": "Gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "rnc_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Blue",
+      "chain_family": "rnc_chain"
+    }
+  },
+  {
+    "id": "fs_e66",
+    "name": "Back control retention",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Positional advance",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Settle in mount"
+    },
+    "raw": {
+      "node_id": "BK-004",
+      "from_node_id": "BK-A-back-control-retention",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Partner turns toward choke arm -> Follow to mount",
+      "action": {
+        "parent_action_id": "BK-A-back-control-retention",
+        "start_position": "Back control",
+        "your_action": "Back control retention",
+        "position_family": "back_control",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "back_to_mount_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "back_to_mount_chain"
+    }
+  },
+  {
+    "id": "fs_e67",
+    "name": "Armbar from back",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Return to back"
+    },
+    "raw": {
+      "node_id": "BK-005",
+      "from_node_id": "BK-A-armbar-from-back",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner over-defends choke -> Swing leg over head",
+      "action": {
+        "parent_action_id": "BK-A-armbar-from-back",
+        "start_position": "Back control",
+        "your_action": "Armbar from back",
+        "position_family": "back_control",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "back_arm_attack_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "back_arm_attack_chain"
+    }
+  },
+  {
+    "id": "fs_e68",
+    "name": "Guillotine",
+    "source": "flowstate",
+    "from_id": "FH-ROOT",
+    "from_name": "Front headlock",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Go behind"
+    },
+    "raw": {
+      "node_id": "FH-001",
+      "from_node_id": "FH-A-guillotine",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner leaves neck exposed -> Finish guillotine",
+      "action": {
+        "parent_action_id": "FH-A-guillotine",
+        "start_position": "Front headlock",
+        "your_action": "Guillotine",
+        "position_family": "front_headlock",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "front_headlock_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "front_headlock_chain"
+    }
+  },
+  {
+    "id": "fs_e69",
+    "name": "Guillotine",
+    "source": "flowstate",
+    "from_id": "FH-ROOT",
+    "from_name": "Front headlock",
+    "to_id": null,
+    "to_name": "FH-TURTLE",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take/control",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Re-tie front headlock"
+    },
+    "raw": {
+      "node_id": "FH-002",
+      "from_node_id": "FH-A-guillotine",
+      "next_node_id": "FH-TURTLE",
+      "edge_label": "Partner defends hands -> Snap down and go behind",
+      "action": {
+        "parent_action_id": "FH-A-guillotine",
+        "start_position": "Front headlock",
+        "your_action": "Guillotine",
+        "position_family": "front_headlock",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "front_headlock_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "front_headlock_chain"
+    }
+  },
+  {
+    "id": "fs_e70",
+    "name": "Anaconda choke",
+    "source": "flowstate",
+    "from_id": "FH-ROOT",
+    "from_name": "Front headlock",
+    "to_id": null,
+    "to_name": "TERM-SUB-THREAT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Spin behind"
+    },
+    "raw": {
+      "node_id": "FH-003",
+      "from_node_id": "FH-A-anaconda-choke",
+      "next_node_id": "TERM-SUB-THREAT",
+      "edge_label": "Partner posts arm across -> Roll to anaconda",
+      "action": {
+        "parent_action_id": "FH-A-anaconda-choke",
+        "start_position": "Front headlock",
+        "your_action": "Anaconda choke",
+        "position_family": "front_headlock",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "front_headlock_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "front_headlock_chain"
+    }
+  },
+  {
+    "id": "fs_e71",
+    "name": "Darce choke",
+    "source": "flowstate",
+    "from_id": "FH-ROOT",
+    "from_name": "Front headlock",
+    "to_id": null,
+    "to_name": "TERM-SUB-THREAT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Back take"
+    },
+    "raw": {
+      "node_id": "FH-004",
+      "from_node_id": "FH-A-darce-choke",
+      "next_node_id": "TERM-SUB-THREAT",
+      "edge_label": "Partner reaches underhook -> Thread Darce",
+      "action": {
+        "parent_action_id": "FH-A-darce-choke",
+        "start_position": "Front headlock",
+        "your_action": "Darce choke",
+        "position_family": "front_headlock",
+        "gi_no_gi": "Both",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "front_headlock_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Blue",
+      "chain_family": "front_headlock_chain"
+    }
+  },
+  {
+    "id": "fs_e72",
+    "name": "Spin behind",
+    "source": "flowstate",
+    "from_id": "FH-ROOT",
+    "from_name": "Front headlock",
+    "to_id": null,
+    "to_name": "FH-TURTLE",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take/control",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Reset FH"
+    },
+    "raw": {
+      "node_id": "FH-005",
+      "from_node_id": "FH-A-spin-behind",
+      "next_node_id": "FH-TURTLE",
+      "edge_label": "Partner shells up -> Back or turtle attack",
+      "action": {
+        "parent_action_id": "FH-A-spin-behind",
+        "start_position": "Front headlock",
+        "your_action": "Spin behind",
+        "position_family": "front_headlock",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "back_take_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "back_take_chain"
+    }
+  },
+  {
+    "id": "fs_e73",
+    "name": "Front headlock pressure",
+    "source": "flowstate",
+    "from_id": "FH-ROOT",
+    "from_name": "Front headlock",
+    "to_id": "OG-ROOT",
+    "to_name": "Open guard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Open the guard"
+    },
+    "raw": {
+      "node_id": "FH-006",
+      "from_node_id": "FH-A-front-headlock-pressure",
+      "next_node_id": "OG-ROOT",
+      "edge_label": "Partner pulls guard -> Settle top guard",
+      "action": {
+        "parent_action_id": "FH-A-front-headlock-pressure",
+        "start_position": "Front headlock",
+        "your_action": "Front headlock pressure",
+        "position_family": "front_headlock",
+        "gi_no_gi": "Both",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "front_headlock_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "White",
+      "chain_family": "front_headlock_chain"
+    }
+  },
+  {
+    "id": "fs_e74",
+    "name": "DLR to berimbolo entry",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Transition to kiss of the dragon"
+    },
+    "raw": {
+      "node_id": "PG-BER-001",
+      "from_node_id": "PG-A-dlr-to-berimbolo-entry",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner posts to defend off-balance -> Invert and roll under",
+      "action": {
+        "parent_action_id": "PG-A-dlr-to-berimbolo-entry",
+        "start_position": "Open guard",
+        "your_action": "DLR to berimbolo entry",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "berimbolo_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "berimbolo_chain"
+    }
+  },
+  {
+    "id": "fs_e75",
+    "name": "Berimbolo",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Come up to single"
+    },
+    "raw": {
+      "node_id": "PG-BER-002",
+      "from_node_id": "PG-A-berimbolo",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner walks around exit side -> Re-invert and crab ride",
+      "action": {
+        "parent_action_id": "PG-A-berimbolo",
+        "start_position": "Open guard",
+        "your_action": "Berimbolo",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "berimbolo_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "berimbolo_chain"
+    }
+  },
+  {
+    "id": "fs_e76",
+    "name": "Berimbolo",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/back take",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Recover DLR"
+    },
+    "raw": {
+      "node_id": "PG-BER-003",
+      "from_node_id": "PG-A-berimbolo",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner sits on you -> Reverse to kiss of the dragon",
+      "action": {
+        "parent_action_id": "PG-A-berimbolo",
+        "start_position": "Open guard",
+        "your_action": "Berimbolo",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "berimbolo_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "berimbolo_chain"
+    }
+  },
+  {
+    "id": "fs_e77",
+    "name": "Worm guard setup",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Guard entry",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Recover DLR or collar-sleeve"
+    },
+    "raw": {
+      "node_id": "PG-WORM-001",
+      "from_node_id": "PG-A-worm-guard-setup",
+      "next_node_id": null,
+      "edge_label": "Partner stands in open guard -> Feed lapel under far leg and grip",
+      "action": {
+        "parent_action_id": "PG-A-worm-guard-setup",
+        "start_position": "Open guard",
+        "your_action": "Worm guard setup",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "worm_guard_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "worm_guard_chain"
+    }
+  },
+  {
+    "id": "fs_e78",
+    "name": "Worm guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "OG-ROOT",
+    "to_name": "Open guard",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Transition to reverse DLR"
+    },
+    "raw": {
+      "node_id": "PG-WORM-002",
+      "from_node_id": "PG-A-worm-guard",
+      "next_node_id": "OG-ROOT",
+      "edge_label": "Partner tries to step back -> Balloon sweep",
+      "action": {
+        "parent_action_id": "PG-A-worm-guard",
+        "start_position": "Open guard",
+        "your_action": "Worm guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Low",
+        "chain_family": "lapel_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "lapel_chain"
+    }
+  },
+  {
+    "id": "fs_e79",
+    "name": "Worm guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/leg attack",
+      "is_terminal": "No",
+      "priority_rank": 3,
+      "counter_if_fails": "Recover DLR"
+    },
+    "raw": {
+      "node_id": "PG-WORM-003",
+      "from_node_id": "PG-A-worm-guard",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner backsteps -> Transition to squid/lapel leg lock",
+      "action": {
+        "parent_action_id": "PG-A-worm-guard",
+        "start_position": "Open guard",
+        "your_action": "Worm guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Low",
+        "chain_family": "lapel_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "lapel_chain"
+    }
+  },
+  {
+    "id": "fs_e80",
+    "name": "Spider guard control",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TERM-SUB-THREAT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Lasso sweep"
+    },
+    "raw": {
+      "node_id": "PG-SPI-001",
+      "from_node_id": "PG-A-spider-guard-control",
+      "next_node_id": "TERM-SUB-THREAT",
+      "edge_label": "Partner postures up -> Triangle from spider",
+      "action": {
+        "parent_action_id": "PG-A-spider-guard-control",
+        "start_position": "Open guard",
+        "your_action": "Spider guard control",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "spider_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "spider_chain"
+    }
+  },
+  {
+    "id": "fs_e81",
+    "name": "Spider guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Transition to DLR"
+    },
+    "raw": {
+      "node_id": "PG-SPI-002",
+      "from_node_id": "PG-A-spider-guard",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner steps past foot -> Lasso sweep",
+      "action": {
+        "parent_action_id": "PG-A-spider-guard",
+        "start_position": "Open guard",
+        "your_action": "Spider guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "omoplata_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "omoplata_chain"
+    }
+  },
+  {
+    "id": "fs_e82",
+    "name": "Spider guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission/sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Triangle"
+    },
+    "raw": {
+      "node_id": "PG-SPI-003",
+      "from_node_id": "PG-A-spider-guard",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner puts pressure down -> Omoplata",
+      "action": {
+        "parent_action_id": "PG-A-spider-guard",
+        "start_position": "Open guard",
+        "your_action": "Spider guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "omoplata_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "omoplata_chain"
+    }
+  },
+  {
+    "id": "fs_e83",
+    "name": "Deep half to come-up",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": null,
+    "to_name": "ST-SINGLE-LEG",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown/sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Waiter sweep"
+    },
+    "raw": {
+      "node_id": "PG-HGB-001",
+      "from_node_id": "PG-A-deep-half-to-come-up",
+      "next_node_id": "ST-SINGLE-LEG",
+      "edge_label": "Partner bases wide -> Come up to single leg",
+      "action": {
+        "parent_action_id": "PG-A-deep-half-to-come-up",
+        "start_position": "Half guard bottom",
+        "your_action": "Deep half to come-up",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "deep_half_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "deep_half_chain"
+    }
+  },
+  {
+    "id": "fs_e84",
+    "name": "Deep half",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Back take"
+    },
+    "raw": {
+      "node_id": "PG-HGB-002",
+      "from_node_id": "PG-A-deep-half",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner sits down -> Waiter sweep",
+      "action": {
+        "parent_action_id": "PG-A-deep-half",
+        "start_position": "Half guard bottom",
+        "your_action": "Deep half",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "deep_half_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "deep_half_chain"
+    }
+  },
+  {
+    "id": "fs_e85",
+    "name": "Z-guard to reverse DLR",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Guard entry/sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Come up to single"
+    },
+    "raw": {
+      "node_id": "PG-HGB-003",
+      "from_node_id": "PG-A-z-guard-to-reverse-dlr",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner pressures forward -> Enter RDLR; off-balance",
+      "action": {
+        "parent_action_id": "PG-A-z-guard-to-reverse-dlr",
+        "start_position": "Half guard bottom",
+        "your_action": "Z-guard to reverse DLR",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "rdlr_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "rdlr_chain"
+    }
+  },
+  {
+    "id": "fs_e86",
+    "name": "Smash pass",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Backstep"
+    },
+    "raw": {
+      "node_id": "PG-PAS-001",
+      "from_node_id": "PG-A-smash-pass",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner keeps knee shield -> Smash knee across; long step",
+      "action": {
+        "parent_action_id": "PG-A-smash-pass",
+        "start_position": "Top half guard",
+        "your_action": "Smash pass",
+        "position_family": "passing_top",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "smash_pass_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "smash_pass_chain"
+    }
+  },
+  {
+    "id": "fs_e87",
+    "name": "Headquarters (HQ)",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Torreando"
+    },
+    "raw": {
+      "node_id": "PG-PAS-002",
+      "from_node_id": "PG-A-headquarters-hq",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner plays DLR/open guard -> Step to HQ; pass to knee cut",
+      "action": {
+        "parent_action_id": "PG-A-headquarters-hq",
+        "start_position": "Open guard",
+        "your_action": "Headquarters (HQ)",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "hq_pass_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "hq_pass_chain"
+    }
+  },
+  {
+    "id": "fs_e88",
+    "name": "Leg drag pass",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "PIN-TOP-ROOT",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Reset grips"
+    },
+    "raw": {
+      "node_id": "PG-PAS-003",
+      "from_node_id": "PG-A-leg-drag-pass",
+      "next_node_id": "PIN-TOP-ROOT",
+      "edge_label": "Partner has DLR or open guard -> Drag near leg across to opposite side",
+      "action": {
+        "parent_action_id": "PG-A-leg-drag-pass",
+        "start_position": "Open guard",
+        "your_action": "Leg drag pass",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "leg_drag_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "leg_drag_chain"
+    }
+  },
+  {
+    "id": "fs_e89",
+    "name": "Over-under pass",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to torreando"
+    },
+    "raw": {
+      "node_id": "PG-PAS-004",
+      "from_node_id": "PG-A-over-under-pass",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner lays on back with hips up -> Stack legs + underhook",
+      "action": {
+        "parent_action_id": "PG-A-over-under-pass",
+        "start_position": "Open guard",
+        "your_action": "Over-under pass",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "over_under_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "over_under_chain"
+    }
+  },
+  {
+    "id": "fs_e90",
+    "name": "Kimura trap system",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission/back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Settle in side control"
+    },
+    "raw": {
+      "node_id": "PG-SUB-001",
+      "from_node_id": "PG-A-kimura-trap-system",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner defends kimura by hiding hand -> Trap with leg across; roll",
+      "action": {
+        "parent_action_id": "PG-A-kimura-trap-system",
+        "start_position": "Side control top",
+        "your_action": "Kimura trap system",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "kimura_trap_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "kimura_trap_chain"
+    }
+  },
+  {
+    "id": "fs_e91",
+    "name": "S-mount to armbar",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Back to high mount"
+    },
+    "raw": {
+      "node_id": "PG-SUB-002",
+      "from_node_id": "PG-A-s-mount-to-armbar",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner keeps elbow tight -> Pry elbow with knee; armbar",
+      "action": {
+        "parent_action_id": "PG-A-s-mount-to-armbar",
+        "start_position": "Mount top",
+        "your_action": "S-mount to armbar",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "americana_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "americana_chain"
+    }
+  },
+  {
+    "id": "fs_e92",
+    "name": "Bow-and-arrow chain",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Back control"
+    },
+    "raw": {
+      "node_id": "PG-SUB-003",
+      "from_node_id": "PG-A-bow-and-arrow-chain",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner defends collar -> Switch to armbar from back",
+      "action": {
+        "parent_action_id": "PG-A-bow-and-arrow-chain",
+        "start_position": "Back control",
+        "your_action": "Bow-and-arrow chain",
+        "position_family": "back_control",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "rnc_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "rnc_chain"
+    }
+  },
+  {
+    "id": "fs_e93",
+    "name": "Omoplata setup",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission/sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Flow to triangle"
+    },
+    "raw": {
+      "node_id": "PG-SUB-004",
+      "from_node_id": "PG-A-omoplata-setup",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner postures tall -> Shoot hip and swing leg over",
+      "action": {
+        "parent_action_id": "PG-A-omoplata-setup",
+        "start_position": "Closed guard",
+        "your_action": "Omoplata setup",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "omoplata_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "omoplata_chain"
+    }
+  },
+  {
+    "id": "fs_e94",
+    "name": "Omoplata",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/submission",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Settle top"
+    },
+    "raw": {
+      "node_id": "PG-SUB-005",
+      "from_node_id": "PG-A-omoplata",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner rolls forward -> Follow and recontrol",
+      "action": {
+        "parent_action_id": "PG-A-omoplata",
+        "start_position": "Closed guard",
+        "your_action": "Omoplata",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "omoplata_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "omoplata_chain"
+    }
+  },
+  {
+    "id": "fs_e95",
+    "name": "Loop choke",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Hip bump"
+    },
+    "raw": {
+      "node_id": "PG-SUB-006",
+      "from_node_id": "PG-A-loop-choke",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner postures with head down -> Loop lapel over head",
+      "action": {
+        "parent_action_id": "PG-A-loop-choke",
+        "start_position": "Closed guard",
+        "your_action": "Loop choke",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "choke_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "choke_chain"
+    }
+  },
+  {
+    "id": "fs_e96",
+    "name": "Foot sweep (ko-uchi/ouchi)",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Chain to single"
+    },
+    "raw": {
+      "node_id": "PG-TD-001",
+      "from_node_id": "PG-A-foot-sweep-ko-uchi-ouchi",
+      "next_node_id": null,
+      "edge_label": "Partner weight on lead foot -> Reap foot inward/outward",
+      "action": {
+        "parent_action_id": "PG-A-foot-sweep-ko-uchi-ouchi",
+        "start_position": "Standing / Neutral",
+        "your_action": "Foot sweep (ko-uchi/ouchi)",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "foot_sweep_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "foot_sweep_chain"
+    }
+  },
+  {
+    "id": "fs_e97",
+    "name": "Uchi mata",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 3,
+      "counter_if_fails": "Ankle pick"
+    },
+    "raw": {
+      "node_id": "PG-TD-002",
+      "from_node_id": "PG-A-uchi-mata",
+      "next_node_id": null,
+      "edge_label": "Partner upright; hips square -> Load inside leg; rotate",
+      "action": {
+        "parent_action_id": "PG-A-uchi-mata",
+        "start_position": "Standing / Neutral",
+        "your_action": "Uchi mata",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "Low",
+        "chain_family": "judo_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "judo_chain"
+    }
+  },
+  {
+    "id": "fs_e98",
+    "name": "SLX entry to sweep",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Come up to single"
+    },
+    "raw": {
+      "node_id": "PG-SLX-001",
+      "from_node_id": "PG-A-slx-entry-to-sweep",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner stands tall -> Extend and sweep",
+      "action": {
+        "parent_action_id": "PG-A-slx-entry-to-sweep",
+        "start_position": "Open guard",
+        "your_action": "SLX entry to sweep",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "slx_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "slx_chain"
+    }
+  },
+  {
+    "id": "fs_e99",
+    "name": "SLX to back",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Come up to single"
+    },
+    "raw": {
+      "node_id": "PG-SLX-002",
+      "from_node_id": "PG-A-slx-to-back",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner turns away to defend -> Transition to back / crab ride",
+      "action": {
+        "parent_action_id": "PG-A-slx-to-back",
+        "start_position": "Open guard",
+        "your_action": "SLX to back",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "slx_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "slx_chain"
+    }
+  },
+  {
+    "id": "fs_e100",
+    "name": "Back control with body triangle",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Mount transition"
+    },
+    "raw": {
+      "node_id": "PG-BK-001",
+      "from_node_id": "PG-A-back-control-with-body-trian",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner hip-escapes -> Maintain with body triangle",
+      "action": {
+        "parent_action_id": "PG-A-back-control-with-body-trian",
+        "start_position": "Back control",
+        "your_action": "Back control with body triangle",
+        "position_family": "back_control",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "back_retention_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "back_retention_chain"
+    }
+  },
+  {
+    "id": "fs_e101",
+    "name": "Clock choke setup",
+    "source": "flowstate",
+    "from_id": "TUR-ROOT",
+    "from_name": "Turtle top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Back take"
+    },
+    "raw": {
+      "node_id": "PG-TUR-001",
+      "from_node_id": "PG-A-clock-choke-setup",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner turtles up -> Near collar + walk legs around",
+      "action": {
+        "parent_action_id": "PG-A-clock-choke-setup",
+        "start_position": "Turtle top",
+        "your_action": "Clock choke setup",
+        "position_family": "turtle",
+        "gi_no_gi": "Gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "clock_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Purple",
+      "chain_family": "clock_chain"
+    }
+  },
+  {
+    "id": "fs_e102",
+    "name": "Back take from turtle",
+    "source": "flowstate",
+    "from_id": "TUR-ROOT",
+    "from_name": "Turtle top",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Crucifix"
+    },
+    "raw": {
+      "node_id": "PG-TUR-002",
+      "from_node_id": "PG-A-back-take-from-turtle",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner shells up tight -> Harness + insert far hook",
+      "action": {
+        "parent_action_id": "PG-A-back-take-from-turtle",
+        "start_position": "Turtle top",
+        "your_action": "Back take from turtle",
+        "position_family": "turtle",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "back_take_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "back_take_chain"
+    }
+  },
+  {
+    "id": "fs_e103",
+    "name": "Crucifix entry",
+    "source": "flowstate",
+    "from_id": "TUR-ROOT",
+    "from_name": "Turtle top",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission/back take",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Choke or back take"
+    },
+    "raw": {
+      "node_id": "PG-TUR-003",
+      "from_node_id": "PG-A-crucifix-entry",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner reaches back arm -> Trap arm with legs",
+      "action": {
+        "parent_action_id": "PG-A-crucifix-entry",
+        "start_position": "Turtle top",
+        "your_action": "Crucifix entry",
+        "position_family": "turtle",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "crucifix_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "crucifix_chain"
+    }
+  },
+  {
+    "id": "fs_e104",
+    "name": "High crotch",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to single"
+    },
+    "raw": {
+      "node_id": "PG-WRE-001",
+      "from_node_id": "PG-A-high-crotch",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner over-square -> Lift and finish",
+      "action": {
+        "parent_action_id": "PG-A-high-crotch",
+        "start_position": "Standing / Neutral",
+        "your_action": "High crotch",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "wrestling_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Purple",
+      "chain_family": "wrestling_chain"
+    }
+  },
+  {
+    "id": "fs_e105",
+    "name": "Reverse berimbolo",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Matrix DLR"
+    },
+    "raw": {
+      "node_id": "BG-BER-001",
+      "from_node_id": "BG-A-reverse-berimbolo",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner attempts to smash DLR -> Invert to opposite side",
+      "action": {
+        "parent_action_id": "BG-A-reverse-berimbolo",
+        "start_position": "Open guard",
+        "your_action": "Reverse berimbolo",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Brown",
+        "priority": "High",
+        "chain_family": "berimbolo_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Brown",
+      "chain_family": "berimbolo_chain"
+    }
+  },
+  {
+    "id": "fs_e106",
+    "name": "Crab ride",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Kiss of the dragon"
+    },
+    "raw": {
+      "node_id": "BG-BER-002",
+      "from_node_id": "BG-A-crab-ride",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner mid-berimbolo defense -> Transition to crab ride back",
+      "action": {
+        "parent_action_id": "BG-A-crab-ride",
+        "start_position": "Open guard",
+        "your_action": "Crab ride",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Brown",
+        "priority": "High",
+        "chain_family": "berimbolo_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Brown",
+      "chain_family": "berimbolo_chain"
+    }
+  },
+  {
+    "id": "fs_e107",
+    "name": "Lapel wedge from DLR",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/back take",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Recover DLR"
+    },
+    "raw": {
+      "node_id": "BG-LAP-001",
+      "from_node_id": "BG-A-lapel-wedge-from-dlr",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner pressures to pass -> Feed own lapel through leg",
+      "action": {
+        "parent_action_id": "BG-A-lapel-wedge-from-dlr",
+        "start_position": "Open guard",
+        "your_action": "Lapel wedge from DLR",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Brown",
+        "priority": "Medium",
+        "chain_family": "lapel_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Brown",
+      "chain_family": "lapel_chain"
+    }
+  },
+  {
+    "id": "fs_e108",
+    "name": "Squid guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/submission",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Return to DLR"
+    },
+    "raw": {
+      "node_id": "BG-LAP-002",
+      "from_node_id": "BG-A-squid-guard",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner tries torreando -> Wrap lapel around leg and off-balance",
+      "action": {
+        "parent_action_id": "BG-A-squid-guard",
+        "start_position": "Open guard",
+        "your_action": "Squid guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Brown",
+        "priority": "Medium",
+        "chain_family": "squid_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Brown",
+      "chain_family": "squid_chain"
+    }
+  },
+  {
+    "id": "fs_e109",
+    "name": "Counter to leg drag",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Recover DLR"
+    },
+    "raw": {
+      "node_id": "BG-COU-001",
+      "from_node_id": "BG-A-counter-to-leg-drag",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner executes leg drag -> Reinsert hook + come up",
+      "action": {
+        "parent_action_id": "BG-A-counter-to-leg-drag",
+        "start_position": "Open guard",
+        "your_action": "Counter to leg drag",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Brown",
+        "priority": "High",
+        "chain_family": "counter_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Brown",
+      "chain_family": "counter_chain"
+    }
+  },
+  {
+    "id": "fs_e110",
+    "name": "Counter to over-under",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/submission",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Elevator"
+    },
+    "raw": {
+      "node_id": "BG-COU-002",
+      "from_node_id": "BG-A-counter-to-over-under",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Partner locks over-under -> Kimura grip the under-arm",
+      "action": {
+        "parent_action_id": "BG-A-counter-to-over-under",
+        "start_position": "Open guard",
+        "your_action": "Counter to over-under",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Gi",
+        "skill_level": "Brown",
+        "priority": "Medium",
+        "chain_family": "kimura_trap_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Brown",
+      "chain_family": "kimura_trap_chain"
+    }
+  },
+  {
+    "id": "fs_e111",
+    "name": "Harness to strangle chain",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Mount transition"
+    },
+    "raw": {
+      "node_id": "BG-BK-001",
+      "from_node_id": "BG-A-harness-to-strangle-chain",
+      "next_node_id": null,
+      "edge_label": "Partner two-hands defends -> Switch side / attack second side",
+      "action": {
+        "parent_action_id": "BG-A-harness-to-strangle-chain",
+        "start_position": "Back control",
+        "your_action": "Harness to strangle chain",
+        "position_family": "back_control",
+        "gi_no_gi": "Both",
+        "skill_level": "Brown",
+        "priority": "High",
+        "chain_family": "rnc_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Brown",
+      "chain_family": "rnc_chain"
+    }
+  },
+  {
+    "id": "fs_e112",
+    "name": "Cartwheel pass",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass/back take",
+      "is_terminal": "No",
+      "priority_rank": 3,
+      "counter_if_fails": "Knee cut"
+    },
+    "raw": {
+      "node_id": "BG-PAS-001",
+      "from_node_id": "BG-A-cartwheel-pass",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner invert-defends -> Cartwheel over legs",
+      "action": {
+        "parent_action_id": "BG-A-cartwheel-pass",
+        "start_position": "Top half guard",
+        "your_action": "Cartwheel pass",
+        "position_family": "passing_top",
+        "gi_no_gi": "Gi",
+        "skill_level": "Brown",
+        "priority": "Low",
+        "chain_family": "cartwheel_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Brown",
+      "chain_family": "cartwheel_chain"
+    }
+  },
+  {
+    "id": "fs_e113",
+    "name": "Folding pass",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to torreando"
+    },
+    "raw": {
+      "node_id": "BG-PAS-002",
+      "from_node_id": "BG-A-folding-pass",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner on back; legs elevated -> Fold far leg over near",
+      "action": {
+        "parent_action_id": "BG-A-folding-pass",
+        "start_position": "Open guard",
+        "your_action": "Folding pass",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Brown",
+        "priority": "Medium",
+        "chain_family": "folding_pass_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Brown",
+      "chain_family": "folding_pass_chain"
+    }
+  },
+  {
+    "id": "fs_e114",
+    "name": "Gogoplata from north-south",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 3,
+      "counter_if_fails": "Return to mount"
+    },
+    "raw": {
+      "node_id": "BG-SUB-001",
+      "from_node_id": "BG-A-gogoplata-from-north-south",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner grips your sleeve -> Leg to choke from mounted position",
+      "action": {
+        "parent_action_id": "BG-A-gogoplata-from-north-south",
+        "start_position": "Side control top",
+        "your_action": "Gogoplata from north-south",
+        "position_family": "pin_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Brown",
+        "priority": "Low",
+        "chain_family": "exotic_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Brown",
+      "chain_family": "exotic_chain"
+    }
+  },
+  {
+    "id": "fs_e115",
+    "name": "Bicep slicer from guard",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 3,
+      "counter_if_fails": "Switch to omoplata"
+    },
+    "raw": {
+      "node_id": "BG-SUB-002",
+      "from_node_id": "BG-A-bicep-slicer-from-guard",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner stiff-arms -> Trap arm with leg; compress",
+      "action": {
+        "parent_action_id": "BG-A-bicep-slicer-from-guard",
+        "start_position": "Closed guard",
+        "your_action": "Bicep slicer from guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Brown",
+        "priority": "Low",
+        "chain_family": "compression_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Brown",
+      "chain_family": "compression_chain"
+    }
+  },
+  {
+    "id": "fs_e116",
+    "name": "Ezekiel from mount",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Cross choke"
+    },
+    "raw": {
+      "node_id": "BG-SUB-003",
+      "from_node_id": "BG-A-ezekiel-from-mount",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner frames -> Sleeve-assisted choke",
+      "action": {
+        "parent_action_id": "BG-A-ezekiel-from-mount",
+        "start_position": "Mount top",
+        "your_action": "Ezekiel from mount",
+        "position_family": "pin_top",
+        "gi_no_gi": "Gi",
+        "skill_level": "Brown",
+        "priority": "Medium",
+        "chain_family": "ezekiel_chain"
+      },
+      "gi_no_gi": "Gi",
+      "skill_level": "Brown",
+      "chain_family": "ezekiel_chain"
+    }
+  },
+  {
+    "id": "fs_e117",
+    "name": "Pendulum submission chain",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Closed guard"
+    },
+    "raw": {
+      "node_id": "BG-BLK-002",
+      "from_node_id": "BG-A-pendulum-submission-chain",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Partner switches between defenses -> Pendulum armbar to triangle to omoplata",
+      "action": {
+        "parent_action_id": "BG-A-pendulum-submission-chain",
+        "start_position": "Closed guard",
+        "your_action": "Pendulum submission chain",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "Both",
+        "skill_level": "Black",
+        "priority": "High",
+        "chain_family": "armbar_triangle_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Black",
+      "chain_family": "armbar_triangle_chain"
+    }
+  },
+  {
+    "id": "fs_e118",
+    "name": "Back control maze",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Mount"
+    },
+    "raw": {
+      "node_id": "BG-BLK-003",
+      "from_node_id": "BG-A-back-control-maze",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Partner escape-resists -> Maintain via continuous threats",
+      "action": {
+        "parent_action_id": "BG-A-back-control-maze",
+        "start_position": "Back control",
+        "your_action": "Back control maze",
+        "position_family": "back_control",
+        "gi_no_gi": "Both",
+        "skill_level": "Black",
+        "priority": "High",
+        "chain_family": "back_control_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Black",
+      "chain_family": "back_control_chain"
+    }
+  },
+  {
+    "id": "fs_e119",
+    "name": "Pass decision system",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Reset HQ"
+    },
+    "raw": {
+      "node_id": "BG-BLK-004",
+      "from_node_id": "BG-A-pass-decision-system",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Partner knee shield + whizzer -> Read hips; choose knee cut vs backstep",
+      "action": {
+        "parent_action_id": "BG-A-pass-decision-system",
+        "start_position": "Top half guard",
+        "your_action": "Pass decision system",
+        "position_family": "passing_top",
+        "gi_no_gi": "Both",
+        "skill_level": "Black",
+        "priority": "High",
+        "chain_family": "decision_making"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Black",
+      "chain_family": "decision_making"
+    }
+  },
+  {
+    "id": "fs_e120",
+    "name": "Grip fighting priority system",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Reset stance"
+    },
+    "raw": {
+      "node_id": "BG-BLK-005",
+      "from_node_id": "BG-A-grip-fighting-priority-syste",
+      "next_node_id": null,
+      "edge_label": "Partner establishes grip -> Strip and impose own grip",
+      "action": {
+        "parent_action_id": "BG-A-grip-fighting-priority-syste",
+        "start_position": "Standing / Neutral",
+        "your_action": "Grip fighting priority system",
+        "position_family": "standing",
+        "gi_no_gi": "Both",
+        "skill_level": "Black",
+        "priority": "High",
+        "chain_family": "grip_chain"
+      },
+      "gi_no_gi": "Both",
+      "skill_level": "Black",
+      "chain_family": "grip_chain"
+    }
+  },
+  {
+    "id": "fs_e121",
+    "name": "Russian 2-on-1",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control/takedown",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Collar tie reset"
+    },
+    "raw": {
+      "node_id": "NG-ST-001",
+      "from_node_id": "NG-A-russian-2-on-1",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Opponent passive in tie-up -> Drag to back or set up single",
+      "action": {
+        "parent_action_id": "NG-A-russian-2-on-1",
+        "start_position": "Standing / Neutral",
+        "your_action": "Russian 2-on-1",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "two_on_one_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "White",
+      "chain_family": "two_on_one_chain"
+    }
+  },
+  {
+    "id": "fs_e122",
+    "name": "Collar tie + inside bicep tie",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "FH-ROOT",
+    "to_name": "Front headlock",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Single leg"
+    },
+    "raw": {
+      "node_id": "NG-ST-002",
+      "from_node_id": "NG-A-collar-tie-inside-bicep-tie",
+      "next_node_id": "FH-ROOT",
+      "edge_label": "Opponent pressures forward -> Snapdown to front headlock",
+      "action": {
+        "parent_action_id": "NG-A-collar-tie-inside-bicep-tie",
+        "start_position": "Standing / Neutral",
+        "your_action": "Collar tie + inside bicep tie",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "snapdown_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "White",
+      "chain_family": "snapdown_chain"
+    }
+  },
+  {
+    "id": "fs_e123",
+    "name": "Body lock",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Back take"
+    },
+    "raw": {
+      "node_id": "NG-ST-003",
+      "from_node_id": "NG-A-body-lock",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Opponent short-hips away -> Trip rear leg",
+      "action": {
+        "parent_action_id": "NG-A-body-lock",
+        "start_position": "Standing / Neutral",
+        "your_action": "Body lock",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "body_lock_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "body_lock_chain"
+    }
+  },
+  {
+    "id": "fs_e124",
+    "name": "Ankle pick no-gi",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Chain to single"
+    },
+    "raw": {
+      "node_id": "NG-ST-004",
+      "from_node_id": "NG-A-ankle-pick-no-gi",
+      "next_node_id": null,
+      "edge_label": "Opponent loads lead foot -> Pick ankle + collar pull",
+      "action": {
+        "parent_action_id": "NG-A-ankle-pick-no-gi",
+        "start_position": "Standing / Neutral",
+        "your_action": "Ankle pick no-gi",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "ankle_pick_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "ankle_pick_chain"
+    }
+  },
+  {
+    "id": "fs_e125",
+    "name": "Duck under",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Single leg"
+    },
+    "raw": {
+      "node_id": "NG-ST-005",
+      "from_node_id": "NG-A-duck-under",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Opponent extends arm -> Slip under arm to back",
+      "action": {
+        "parent_action_id": "NG-A-duck-under",
+        "start_position": "Standing / Neutral",
+        "your_action": "Duck under",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "duck_under_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "duck_under_chain"
+    }
+  },
+  {
+    "id": "fs_e126",
+    "name": "Double leg",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Single leg"
+    },
+    "raw": {
+      "node_id": "NG-ST-006",
+      "from_node_id": "NG-A-double-leg",
+      "next_node_id": null,
+      "edge_label": "Opponent stays upright -> Drive through",
+      "action": {
+        "parent_action_id": "NG-A-double-leg",
+        "start_position": "Standing / Neutral",
+        "your_action": "Double leg",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "double_leg_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "White",
+      "chain_family": "double_leg_chain"
+    }
+  },
+  {
+    "id": "fs_e127",
+    "name": "High crotch",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Takedown",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch to single"
+    },
+    "raw": {
+      "node_id": "NG-ST-007",
+      "from_node_id": "NG-A-high-crotch",
+      "next_node_id": null,
+      "edge_label": "Opponent square stance -> Drop into high crotch",
+      "action": {
+        "parent_action_id": "NG-A-high-crotch",
+        "start_position": "Standing / Neutral",
+        "your_action": "High crotch",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "wrestling_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "wrestling_chain"
+    }
+  },
+  {
+    "id": "fs_e128",
+    "name": "Snapdown + spin",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Front headlock"
+    },
+    "raw": {
+      "node_id": "NG-ST-008",
+      "from_node_id": "NG-A-snapdown-spin",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Opponent posts hands -> Snap and spin to back",
+      "action": {
+        "parent_action_id": "NG-A-snapdown-spin",
+        "start_position": "Standing / Neutral",
+        "your_action": "Snapdown + spin",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "snapdown_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "snapdown_chain"
+    }
+  },
+  {
+    "id": "fs_e129",
+    "name": "Arm drag",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take/takedown",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Re-tie"
+    },
+    "raw": {
+      "node_id": "NG-ST-009",
+      "from_node_id": "NG-A-arm-drag",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Opponent reaches -> Drag to back or single",
+      "action": {
+        "parent_action_id": "NG-A-arm-drag",
+        "start_position": "Standing / Neutral",
+        "your_action": "Arm drag",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "White",
+        "priority": "Medium",
+        "chain_family": "arm_drag_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "White",
+      "chain_family": "arm_drag_chain"
+    }
+  },
+  {
+    "id": "fs_e130",
+    "name": "Front headlock to go-behind",
+    "source": "flowstate",
+    "from_id": "ST-ROOT",
+    "from_name": "Standing / Neutral",
+    "to_id": null,
+    "to_name": "FH-TURTLE",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Re-tie"
+    },
+    "raw": {
+      "node_id": "NG-ST-010",
+      "from_node_id": "NG-A-front-headlock-to-go-behind",
+      "next_node_id": "FH-TURTLE",
+      "edge_label": "Opponent heavy on head -> Circle to back",
+      "action": {
+        "parent_action_id": "NG-A-front-headlock-to-go-behind",
+        "start_position": "Standing / Neutral",
+        "your_action": "Front headlock to go-behind",
+        "position_family": "standing",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "front_headlock_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "front_headlock_chain"
+    }
+  },
+  {
+    "id": "fs_e131",
+    "name": "Overhook system (no-gi)",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "CG-ROOT",
+    "to_name": "Closed guard",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission/sweep threat",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Release to hip bump"
+    },
+    "raw": {
+      "node_id": "NG-CG-001",
+      "from_node_id": "NG-A-overhook-system-no-gi",
+      "next_node_id": "CG-ROOT",
+      "edge_label": "Opponent postures -> Hip bump / kimura / guillotine chain",
+      "action": {
+        "parent_action_id": "NG-A-overhook-system-no-gi",
+        "start_position": "Closed guard",
+        "your_action": "Overhook system (no-gi)",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "Medium",
+        "chain_family": "overhook_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "overhook_chain"
+    }
+  },
+  {
+    "id": "fs_e132",
+    "name": "Kimura grip",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": "MT-ROOT",
+    "to_name": "Mount top",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission/sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Sweep"
+    },
+    "raw": {
+      "node_id": "NG-CG-002",
+      "from_node_id": "NG-A-kimura-grip",
+      "next_node_id": "MT-ROOT",
+      "edge_label": "Opponent hides hand -> Hip bump / guillotine",
+      "action": {
+        "parent_action_id": "NG-A-kimura-grip",
+        "start_position": "Closed guard",
+        "your_action": "Kimura grip",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "kimura_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "White",
+      "chain_family": "kimura_chain"
+    }
+  },
+  {
+    "id": "fs_e133",
+    "name": "Guillotine (10-finger)",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Release to hip bump"
+    },
+    "raw": {
+      "node_id": "NG-CG-003",
+      "from_node_id": "NG-A-guillotine-10-finger",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent drops head -> Finish 10-finger",
+      "action": {
+        "parent_action_id": "NG-A-guillotine-10-finger",
+        "start_position": "Closed guard",
+        "your_action": "Guillotine (10-finger)",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "guillotine_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "guillotine_chain"
+    }
+  },
+  {
+    "id": "fs_e134",
+    "name": "High-elbow guillotine",
+    "source": "flowstate",
+    "from_id": "CG-ROOT",
+    "from_name": "Closed guard",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Hip bump"
+    },
+    "raw": {
+      "node_id": "NG-CG-004",
+      "from_node_id": "NG-A-high-elbow-guillotine",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent drives in -> Finish with high elbow",
+      "action": {
+        "parent_action_id": "NG-A-high-elbow-guillotine",
+        "start_position": "Closed guard",
+        "your_action": "High-elbow guillotine",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "guillotine_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "guillotine_chain"
+    }
+  },
+  {
+    "id": "fs_e135",
+    "name": "Butterfly guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Come up to single"
+    },
+    "raw": {
+      "node_id": "NG-OG-001",
+      "from_node_id": "NG-A-butterfly-guard",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Opponent stands -> Hook sweep",
+      "action": {
+        "parent_action_id": "NG-A-butterfly-guard",
+        "start_position": "Open guard",
+        "your_action": "Butterfly guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "butterfly_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "butterfly_chain"
+    }
+  },
+  {
+    "id": "fs_e136",
+    "name": "Butterfly to X-guard",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "OG-XGUARD",
+    "to_name": "X-guard",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep setup",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Come up to single"
+    },
+    "raw": {
+      "node_id": "NG-OG-002",
+      "from_node_id": "NG-A-butterfly-to-x-guard",
+      "next_node_id": "OG-XGUARD",
+      "edge_label": "Opponent bases wide -> Switch to X-guard",
+      "action": {
+        "parent_action_id": "NG-A-butterfly-to-x-guard",
+        "start_position": "Open guard",
+        "your_action": "Butterfly to X-guard",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "xguard_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "xguard_chain"
+    }
+  },
+  {
+    "id": "fs_e137",
+    "name": "X-guard sweep",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/takedown",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Single leg"
+    },
+    "raw": {
+      "node_id": "NG-OG-003",
+      "from_node_id": "NG-A-x-guard-sweep",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Opponent in X -> Sweep forward or come up",
+      "action": {
+        "parent_action_id": "NG-A-x-guard-sweep",
+        "start_position": "Open guard",
+        "your_action": "X-guard sweep",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "xguard_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "xguard_chain"
+    }
+  },
+  {
+    "id": "fs_e138",
+    "name": "Z-guard (no-gi)",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "LE-ROOT",
+    "to_name": "Leg entanglement",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Leg entry",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Recover guard"
+    },
+    "raw": {
+      "node_id": "NG-OG-004",
+      "from_node_id": "NG-A-z-guard-no-gi",
+      "next_node_id": "LE-ROOT",
+      "edge_label": "Opponent forward pressure -> Reverse SLX / 50-50 entry",
+      "action": {
+        "parent_action_id": "NG-A-z-guard-no-gi",
+        "start_position": "Open guard",
+        "your_action": "Z-guard (no-gi)",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "zguard_leg_entangle"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "zguard_leg_entangle"
+    }
+  },
+  {
+    "id": "fs_e139",
+    "name": "Reverse De la Riva (RDLR)",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "LE-ROOT",
+    "to_name": "Leg entanglement",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/leg entry",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "SLX entry"
+    },
+    "raw": {
+      "node_id": "NG-OG-005",
+      "from_node_id": "NG-A-reverse-de-la-riva-rdlr",
+      "next_node_id": "LE-ROOT",
+      "edge_label": "Opponent standing -> Off-balance or leg entry",
+      "action": {
+        "parent_action_id": "NG-A-reverse-de-la-riva-rdlr",
+        "start_position": "Open guard",
+        "your_action": "Reverse De la Riva (RDLR)",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "rdlr_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "rdlr_chain"
+    }
+  },
+  {
+    "id": "fs_e140",
+    "name": "Underhook + hip to come up",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": "HGB-ROOT",
+    "to_name": "Half guard bottom",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Recovery",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Roll under"
+    },
+    "raw": {
+      "node_id": "NG-HGB-001",
+      "from_node_id": "NG-A-underhook-hip-to-come-up",
+      "next_node_id": "HGB-ROOT",
+      "edge_label": "Opponent crossfaces -> Recover knee shield",
+      "action": {
+        "parent_action_id": "NG-A-underhook-hip-to-come-up",
+        "start_position": "Half guard bottom",
+        "your_action": "Underhook + hip to come up",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "White",
+        "priority": "High",
+        "chain_family": "half_guard_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "White",
+      "chain_family": "half_guard_chain"
+    }
+  },
+  {
+    "id": "fs_e141",
+    "name": "Lockdown (eddie bravo style)",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": null,
+    "to_name": "HGB-DOGFIGHT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Sweep/submission",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Sweep"
+    },
+    "raw": {
+      "node_id": "NG-HGB-002",
+      "from_node_id": "NG-A-lockdown-eddie-bravo-style",
+      "next_node_id": "HGB-DOGFIGHT",
+      "edge_label": "Opponent tries to pass -> Whip up and underhook",
+      "action": {
+        "parent_action_id": "NG-A-lockdown-eddie-bravo-style",
+        "start_position": "Half guard bottom",
+        "your_action": "Lockdown (eddie bravo style)",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "lockdown_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "lockdown_chain"
+    }
+  },
+  {
+    "id": "fs_e142",
+    "name": "Knee shield to kimura",
+    "source": "flowstate",
+    "from_id": "HGB-ROOT",
+    "from_name": "Half guard bottom",
+    "to_id": null,
+    "to_name": "TOP-CONTROL-ROOT",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission/sweep",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Recover knee shield"
+    },
+    "raw": {
+      "node_id": "NG-HGB-003",
+      "from_node_id": "NG-A-knee-shield-to-kimura",
+      "next_node_id": "TOP-CONTROL-ROOT",
+      "edge_label": "Opponent underhooks -> Kimura trap far arm",
+      "action": {
+        "parent_action_id": "NG-A-knee-shield-to-kimura",
+        "start_position": "Half guard bottom",
+        "your_action": "Knee shield to kimura",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "kimura_trap_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "kimura_trap_chain"
+    }
+  },
+  {
+    "id": "fs_e143",
+    "name": "Smash pass no-gi",
+    "source": "flowstate",
+    "from_id": "HGT-ROOT",
+    "from_name": "Top half guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Backstep"
+    },
+    "raw": {
+      "node_id": "NG-PAS-001",
+      "from_node_id": "NG-A-smash-pass-no-gi",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Bottom keeps knee shield -> Drive underhook + long step",
+      "action": {
+        "parent_action_id": "NG-A-smash-pass-no-gi",
+        "start_position": "Top half guard",
+        "your_action": "Smash pass no-gi",
+        "position_family": "passing_top",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "smash_pass_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "smash_pass_chain"
+    }
+  },
+  {
+    "id": "fs_e144",
+    "name": "Headquarters pass (no-gi)",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Torreando"
+    },
+    "raw": {
+      "node_id": "NG-PAS-002",
+      "from_node_id": "NG-A-headquarters-pass-no-gi",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Bottom plays open -> Step to HQ; knee slide",
+      "action": {
+        "parent_action_id": "NG-A-headquarters-pass-no-gi",
+        "start_position": "Open guard",
+        "your_action": "Headquarters pass (no-gi)",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "hq_pass_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "hq_pass_chain"
+    }
+  },
+  {
+    "id": "fs_e145",
+    "name": "Toreando no-gi",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Reset"
+    },
+    "raw": {
+      "node_id": "NG-PAS-003",
+      "from_node_id": "NG-A-toreando-no-gi",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Bottom legs up -> Pin pants/ankles and sprint around",
+      "action": {
+        "parent_action_id": "NG-A-toreando-no-gi",
+        "start_position": "Open guard",
+        "your_action": "Toreando no-gi",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "toreando_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "toreando_chain"
+    }
+  },
+  {
+    "id": "fs_e146",
+    "name": "Body lock pass",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Reset"
+    },
+    "raw": {
+      "node_id": "NG-PAS-004",
+      "from_node_id": "NG-A-body-lock-pass",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Opponent keeps open guard -> Body lock and step over legs",
+      "action": {
+        "parent_action_id": "NG-A-body-lock-pass",
+        "start_position": "Open guard",
+        "your_action": "Body lock pass",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "Medium",
+        "chain_family": "body_lock_pass_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "body_lock_pass_chain"
+    }
+  },
+  {
+    "id": "fs_e147",
+    "name": "North-south choke",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Back take"
+    },
+    "raw": {
+      "node_id": "NG-SC-001",
+      "from_node_id": "NG-A-north-south-choke",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Bottom turns away -> Squeeze bicep into neck",
+      "action": {
+        "parent_action_id": "NG-A-north-south-choke",
+        "start_position": "Side control top",
+        "your_action": "North-south choke",
+        "position_family": "pin_top",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "ns_choke_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "ns_choke_chain"
+    }
+  },
+  {
+    "id": "fs_e148",
+    "name": "Arm triangle (head-and-arm)",
+    "source": "flowstate",
+    "from_id": "SC-ROOT",
+    "from_name": "Side control top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Mount"
+    },
+    "raw": {
+      "node_id": "NG-SC-002",
+      "from_node_id": "NG-A-arm-triangle-head-and-arm",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Bottom frames near shoulder -> Pass shoulder through; finish",
+      "action": {
+        "parent_action_id": "NG-A-arm-triangle-head-and-arm",
+        "start_position": "Side control top",
+        "your_action": "Arm triangle (head-and-arm)",
+        "position_family": "pin_top",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "arm_triangle_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "arm_triangle_chain"
+    }
+  },
+  {
+    "id": "fs_e149",
+    "name": "Arm triangle from mount",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Back to mount"
+    },
+    "raw": {
+      "node_id": "NG-MT-001",
+      "from_node_id": "NG-A-arm-triangle-from-mount",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Bottom bridges -> Dismount to finish",
+      "action": {
+        "parent_action_id": "NG-A-arm-triangle-from-mount",
+        "start_position": "Mount top",
+        "your_action": "Arm triangle from mount",
+        "position_family": "pin_top",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "arm_triangle_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "arm_triangle_chain"
+    }
+  },
+  {
+    "id": "fs_e150",
+    "name": "Ezekiel no-gi",
+    "source": "flowstate",
+    "from_id": "MT-ROOT",
+    "from_name": "Mount top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 3,
+      "counter_if_fails": "Other submissions"
+    },
+    "raw": {
+      "node_id": "NG-MT-002",
+      "from_node_id": "NG-A-ezekiel-no-gi",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Bottom bridges -> Sleeve-free ezekiel",
+      "action": {
+        "parent_action_id": "NG-A-ezekiel-no-gi",
+        "start_position": "Mount top",
+        "your_action": "Ezekiel no-gi",
+        "position_family": "pin_top",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "Low",
+        "chain_family": "ezekiel_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "ezekiel_chain"
+    }
+  },
+  {
+    "id": "fs_e151",
+    "name": "RNC no-gi",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission threat",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Body triangle"
+    },
+    "raw": {
+      "node_id": "NG-BK-001",
+      "from_node_id": "NG-A-rnc-no-gi",
+      "next_node_id": null,
+      "edge_label": "Opponent two-hands defense -> Trap wrist with leg; re-attack",
+      "action": {
+        "parent_action_id": "NG-A-rnc-no-gi",
+        "start_position": "Back control",
+        "your_action": "RNC no-gi",
+        "position_family": "back_control",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "rnc_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "rnc_chain"
+    }
+  },
+  {
+    "id": "fs_e152",
+    "name": "Body triangle",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Mount"
+    },
+    "raw": {
+      "node_id": "NG-BK-002",
+      "from_node_id": "NG-A-body-triangle",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Opponent hip escapes -> Lock body triangle",
+      "action": {
+        "parent_action_id": "NG-A-body-triangle",
+        "start_position": "Back control",
+        "your_action": "Body triangle",
+        "position_family": "back_control",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "back_retention_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "back_retention_chain"
+    }
+  },
+  {
+    "id": "fs_e153",
+    "name": "Crucifix from back",
+    "source": "flowstate",
+    "from_id": "BK-ROOT",
+    "from_name": "Back control",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Return to back"
+    },
+    "raw": {
+      "node_id": "NG-BK-003",
+      "from_node_id": "NG-A-crucifix-from-back",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent posts arm -> Trap arm; use legs",
+      "action": {
+        "parent_action_id": "NG-A-crucifix-from-back",
+        "start_position": "Back control",
+        "your_action": "Crucifix from back",
+        "position_family": "back_control",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "Medium",
+        "chain_family": "crucifix_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "crucifix_chain"
+    }
+  },
+  {
+    "id": "fs_e154",
+    "name": "High-elbow guillotine (standing/grounded)",
+    "source": "flowstate",
+    "from_id": "FH-ROOT",
+    "from_name": "Front headlock",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Go behind"
+    },
+    "raw": {
+      "node_id": "NG-FH-001",
+      "from_node_id": "NG-A-high-elbow-guillotine-standi",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent leaves neck -> Finish",
+      "action": {
+        "parent_action_id": "NG-A-high-elbow-guillotine-standi",
+        "start_position": "Front headlock",
+        "your_action": "High-elbow guillotine (standing/grounded)",
+        "position_family": "front_headlock",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "guillotine_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "guillotine_chain"
+    }
+  },
+  {
+    "id": "fs_e155",
+    "name": "Peruvian necktie",
+    "source": "flowstate",
+    "from_id": "FH-ROOT",
+    "from_name": "Front headlock",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 3,
+      "counter_if_fails": "Darce"
+    },
+    "raw": {
+      "node_id": "NG-FH-002",
+      "from_node_id": "NG-A-peruvian-necktie",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent posts arm -> Invert + crank",
+      "action": {
+        "parent_action_id": "NG-A-peruvian-necktie",
+        "start_position": "Front headlock",
+        "your_action": "Peruvian necktie",
+        "position_family": "front_headlock",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "Low",
+        "chain_family": "necktie_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "necktie_chain"
+    }
+  },
+  {
+    "id": "fs_e156",
+    "name": "Japanese necktie",
+    "source": "flowstate",
+    "from_id": "FH-ROOT",
+    "from_name": "Front headlock",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Spin behind"
+    },
+    "raw": {
+      "node_id": "NG-FH-003",
+      "from_node_id": "NG-A-japanese-necktie",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent shells up -> Hip over head; crank",
+      "action": {
+        "parent_action_id": "NG-A-japanese-necktie",
+        "start_position": "Front headlock",
+        "your_action": "Japanese necktie",
+        "position_family": "front_headlock",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "Medium",
+        "chain_family": "necktie_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "necktie_chain"
+    }
+  },
+  {
+    "id": "fs_e157",
+    "name": "Straight ashi entry",
+    "source": "flowstate",
+    "from_id": "OG-ROOT",
+    "from_name": "Open guard",
+    "to_id": "LE-ASHI",
+    "to_name": "Ashi garami",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Leg entry",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "SLX"
+    },
+    "raw": {
+      "node_id": "NG-LL-001",
+      "from_node_id": "NG-A-straight-ashi-entry",
+      "next_node_id": "LE-ASHI",
+      "edge_label": "Opponent standing -> Enter ashi garami",
+      "action": {
+        "parent_action_id": "NG-A-straight-ashi-entry",
+        "start_position": "Open guard",
+        "your_action": "Straight ashi entry",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "ashi_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "ashi_chain"
+    }
+  },
+  {
+    "id": "fs_e158",
+    "name": "Straight ankle lock",
+    "source": "flowstate",
+    "from_id": "LE-ASHI",
+    "from_name": "Ashi garami",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Switch to 50/50"
+    },
+    "raw": {
+      "node_id": "NG-LL-002",
+      "from_node_id": "NG-A-straight-ankle-lock",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent rotates out -> Finish straight ankle",
+      "action": {
+        "parent_action_id": "NG-A-straight-ankle-lock",
+        "start_position": "Ashi garami",
+        "your_action": "Straight ankle lock",
+        "position_family": "leg_entanglement",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Blue",
+        "priority": "High",
+        "chain_family": "ankle_lock_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Blue",
+      "chain_family": "ankle_lock_chain"
+    }
+  },
+  {
+    "id": "fs_e159",
+    "name": "Transition to 50/50",
+    "source": "flowstate",
+    "from_id": "LE-ASHI",
+    "from_name": "Ashi garami",
+    "to_id": "LE-5050",
+    "to_name": "50/50",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Leg entanglement",
+      "is_terminal": "No",
+      "priority_rank": 2,
+      "counter_if_fails": "Switch back to ashi"
+    },
+    "raw": {
+      "node_id": "NG-LL-003",
+      "from_node_id": "NG-A-transition-to-50-50",
+      "next_node_id": "LE-5050",
+      "edge_label": "Opponent rotates free -> Thread leg to 50/50",
+      "action": {
+        "parent_action_id": "NG-A-transition-to-50-50",
+        "start_position": "Ashi garami",
+        "your_action": "Transition to 50/50",
+        "position_family": "leg_entanglement",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "leg_lock_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "leg_lock_chain"
+    }
+  },
+  {
+    "id": "fs_e160",
+    "name": "Heel hook (inside)",
+    "source": "flowstate",
+    "from_id": "LE-5050",
+    "from_name": "50/50",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Switch entanglement"
+    },
+    "raw": {
+      "node_id": "NG-LL-004",
+      "from_node_id": "NG-A-heel-hook-inside",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent rotates toward heel -> Finish inside heel hook",
+      "action": {
+        "parent_action_id": "NG-A-heel-hook-inside",
+        "start_position": "50/50",
+        "your_action": "Heel hook (inside)",
+        "position_family": "leg_entanglement",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "High",
+        "chain_family": "heel_hook_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "heel_hook_chain"
+    }
+  },
+  {
+    "id": "fs_e161",
+    "name": "Transition to inside sankaku (honey hole)",
+    "source": "flowstate",
+    "from_id": "LE-5050",
+    "from_name": "50/50",
+    "to_id": "LE-SANKAKU",
+    "to_name": "Inside sankaku (Honey hole)",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Leg entanglement",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Back to 50/50"
+    },
+    "raw": {
+      "node_id": "NG-LL-005",
+      "from_node_id": "NG-A-transition-to-inside-sankaku",
+      "next_node_id": "LE-SANKAKU",
+      "edge_label": "Opponent frames -> Bring inside leg to honey hole",
+      "action": {
+        "parent_action_id": "NG-A-transition-to-inside-sankaku",
+        "start_position": "50/50",
+        "your_action": "Transition to inside sankaku (honey hole)",
+        "position_family": "leg_entanglement",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "High",
+        "chain_family": "honey_hole_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "honey_hole_chain"
+    }
+  },
+  {
+    "id": "fs_e162",
+    "name": "Inside heel hook",
+    "source": "flowstate",
+    "from_id": null,
+    "from_name": "Inside sankaku",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Calf slicer"
+    },
+    "raw": {
+      "node_id": "NG-LL-006",
+      "from_node_id": "NG-A-inside-heel-hook",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent starts to boot up -> Finish inside heel hook",
+      "action": {
+        "parent_action_id": "NG-A-inside-heel-hook",
+        "start_position": "Inside sankaku",
+        "your_action": "Inside heel hook",
+        "position_family": "leg_entanglement",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "High",
+        "chain_family": "heel_hook_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "heel_hook_chain"
+    }
+  },
+  {
+    "id": "fs_e163",
+    "name": "Toe hold",
+    "source": "flowstate",
+    "from_id": "LE-ASHI",
+    "from_name": "Ashi garami",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Ankle lock"
+    },
+    "raw": {
+      "node_id": "NG-LL-007",
+      "from_node_id": "NG-A-toe-hold",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent boots up -> Capture foot; finish toe hold",
+      "action": {
+        "parent_action_id": "NG-A-toe-hold",
+        "start_position": "Ashi garami",
+        "your_action": "Toe hold",
+        "position_family": "leg_entanglement",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "toe_hold_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "toe_hold_chain"
+    }
+  },
+  {
+    "id": "fs_e164",
+    "name": "Kneebar",
+    "source": "flowstate",
+    "from_id": "LE-ROOT",
+    "from_name": "Leg entanglement",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Back to ashi"
+    },
+    "raw": {
+      "node_id": "NG-LL-008",
+      "from_node_id": "NG-A-kneebar",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent tries to stand -> Extend hips across knee",
+      "action": {
+        "parent_action_id": "NG-A-kneebar",
+        "start_position": "Leg entanglement",
+        "your_action": "Kneebar",
+        "position_family": "leg_entanglement",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "Medium",
+        "chain_family": "kneebar_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "kneebar_chain"
+    }
+  },
+  {
+    "id": "fs_e165",
+    "name": "Calf slicer",
+    "source": "flowstate",
+    "from_id": "LE-ROOT",
+    "from_name": "Leg entanglement",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 3,
+      "counter_if_fails": "Toe hold"
+    },
+    "raw": {
+      "node_id": "NG-LL-009",
+      "from_node_id": "NG-A-calf-slicer",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent stacks -> Trap leg with own shin",
+      "action": {
+        "parent_action_id": "NG-A-calf-slicer",
+        "start_position": "Leg entanglement",
+        "your_action": "Calf slicer",
+        "position_family": "leg_entanglement",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "Low",
+        "chain_family": "calf_slicer_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "calf_slicer_chain"
+    }
+  },
+  {
+    "id": "fs_e166",
+    "name": "Outside heel hook",
+    "source": "flowstate",
+    "from_id": "LE-5050",
+    "from_name": "50/50",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 2,
+      "counter_if_fails": "Ankle lock"
+    },
+    "raw": {
+      "node_id": "NG-LL-010",
+      "from_node_id": "NG-A-outside-heel-hook",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent turns out of inside -> Threaten outside heel (ruleset)",
+      "action": {
+        "parent_action_id": "NG-A-outside-heel-hook",
+        "start_position": "50/50",
+        "your_action": "Outside heel hook",
+        "position_family": "leg_entanglement",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Black",
+        "priority": "Medium",
+        "chain_family": "heel_hook_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Black",
+      "chain_family": "heel_hook_chain"
+    }
+  },
+  {
+    "id": "fs_e167",
+    "name": "Chain attack: kimura-to-back",
+    "source": "flowstate",
+    "from_id": null,
+    "from_name": "Any",
+    "to_id": "BK-ROOT",
+    "to_name": "Back control",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Back take",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Return to kimura trap"
+    },
+    "raw": {
+      "node_id": "NG-ADV-001",
+      "from_node_id": "NG-A-chain-attack-kimura-to-back",
+      "next_node_id": "BK-ROOT",
+      "edge_label": "Opponent bails kimura -> Release and take back",
+      "action": {
+        "parent_action_id": "NG-A-chain-attack-kimura-to-back",
+        "start_position": "Any",
+        "your_action": "Chain attack: kimura-to-back",
+        "position_family": "any",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "kimura_to_back_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "kimura_to_back_chain"
+    }
+  },
+  {
+    "id": "fs_e168",
+    "name": "Butterfly to leg entanglement",
+    "source": "flowstate",
+    "from_id": "OG-BUTTERFLY",
+    "from_name": "Butterfly guard",
+    "to_id": "LE-ROOT",
+    "to_name": "Leg entanglement",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Leg entry",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Sweep"
+    },
+    "raw": {
+      "node_id": "NG-ADV-002",
+      "from_node_id": "NG-A-butterfly-to-leg-entanglemen",
+      "next_node_id": "LE-ROOT",
+      "edge_label": "Opponent postures -> Load hook; SLX or ashi entry",
+      "action": {
+        "parent_action_id": "NG-A-butterfly-to-leg-entanglemen",
+        "start_position": "Butterfly guard",
+        "your_action": "Butterfly to leg entanglement",
+        "position_family": "guard_bottom",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "butterfly_to_leg_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "butterfly_to_leg_chain"
+    }
+  },
+  {
+    "id": "fs_e169",
+    "name": "Pass decision (modern)",
+    "source": "flowstate",
+    "from_id": null,
+    "from_name": "Any",
+    "to_id": null,
+    "to_name": "PIN-TOP-ROOT",
+    "edge_type": "pass",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Reset stance"
+    },
+    "raw": {
+      "node_id": "NG-ADV-003",
+      "from_node_id": "NG-A-pass-decision-modern",
+      "next_node_id": "PIN-TOP-ROOT",
+      "edge_label": "Opponent plays open guard -> Choose HQ / leg drag / body lock",
+      "action": {
+        "parent_action_id": "NG-A-pass-decision-modern",
+        "start_position": "Any",
+        "your_action": "Pass decision (modern)",
+        "position_family": "any",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "High",
+        "chain_family": "pass_decision_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "pass_decision_chain"
+    }
+  },
+  {
+    "id": "fs_e170",
+    "name": "Mata le\u00e3o (back)",
+    "source": "flowstate",
+    "from_id": "TUR-ROOT",
+    "from_name": "Turtle top",
+    "to_id": null,
+    "to_name": "TERM-SUB",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Submission",
+      "is_terminal": "Yes",
+      "priority_rank": 1,
+      "counter_if_fails": "Body triangle"
+    },
+    "raw": {
+      "node_id": "NG-ADV-004",
+      "from_node_id": "NG-A-mata-le-o-back",
+      "next_node_id": "TERM-SUB",
+      "edge_label": "Opponent turtles -> Insert hooks + RNC",
+      "action": {
+        "parent_action_id": "NG-A-mata-le-o-back",
+        "start_position": "Turtle top",
+        "your_action": "Mata le\u00e3o (back)",
+        "position_family": "turtle",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "rnc_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "rnc_chain"
+    }
+  },
+  {
+    "id": "fs_e171",
+    "name": "Guillotine escape chain (counter)",
+    "source": "flowstate",
+    "from_id": null,
+    "from_name": "Any",
+    "to_id": "SC-ROOT",
+    "to_name": "Side control top",
+    "edge_type": "escape",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Escape/pass",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Wait out"
+    },
+    "raw": {
+      "node_id": "NG-ADV-005",
+      "from_node_id": "NG-A-guillotine-escape-chain-coun",
+      "next_node_id": "SC-ROOT",
+      "edge_label": "Opponent has guillotine -> Pass head; counter",
+      "action": {
+        "parent_action_id": "NG-A-guillotine-escape-chain-coun",
+        "start_position": "Any",
+        "your_action": "Guillotine escape chain (counter)",
+        "position_family": "any",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Brown",
+        "priority": "High",
+        "chain_family": "guillotine_defense"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Brown",
+      "chain_family": "guillotine_defense"
+    }
+  },
+  {
+    "id": "fs_e172",
+    "name": "Scramble head inside",
+    "source": "flowstate",
+    "from_id": null,
+    "from_name": "Any",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Reset"
+    },
+    "raw": {
+      "node_id": "NG-ADV-006",
+      "from_node_id": "NG-A-scramble-head-inside",
+      "next_node_id": null,
+      "edge_label": "Partner scrambles -> Win inside head position",
+      "action": {
+        "parent_action_id": "NG-A-scramble-head-inside",
+        "start_position": "Any",
+        "your_action": "Scramble head inside",
+        "position_family": "any",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Purple",
+        "priority": "High",
+        "chain_family": "scramble_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Purple",
+      "chain_family": "scramble_chain"
+    }
+  },
+  {
+    "id": "fs_e173",
+    "name": "Leg lock minefield",
+    "source": "flowstate",
+    "from_id": null,
+    "from_name": "Any",
+    "to_id": "LE-ROOT",
+    "to_name": "Leg entanglement",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Leg entry",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Escape to guard"
+    },
+    "raw": {
+      "node_id": "NG-BLK-001",
+      "from_node_id": "NG-A-leg-lock-minefield",
+      "next_node_id": "LE-ROOT",
+      "edge_label": "Opponent enters leg entanglement -> Counter-entangle to your leg lock",
+      "action": {
+        "parent_action_id": "NG-A-leg-lock-minefield",
+        "start_position": "Any",
+        "your_action": "Leg lock minefield",
+        "position_family": "any",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Black",
+        "priority": "High",
+        "chain_family": "leg_minefield_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Black",
+      "chain_family": "leg_minefield_chain"
+    }
+  },
+  {
+    "id": "fs_e174",
+    "name": "Neutral transitions",
+    "source": "flowstate",
+    "from_id": null,
+    "from_name": "Any",
+    "to_id": null,
+    "to_name": null,
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "outcome_type": "Control",
+      "is_terminal": "No",
+      "priority_rank": 1,
+      "counter_if_fails": "Reset"
+    },
+    "raw": {
+      "node_id": "NG-BLK-002",
+      "from_node_id": "NG-A-neutral-transitions",
+      "next_node_id": null,
+      "edge_label": "Equal position -> Maintain positional tempo",
+      "action": {
+        "parent_action_id": "NG-A-neutral-transitions",
+        "start_position": "Any",
+        "your_action": "Neutral transitions",
+        "position_family": "any",
+        "gi_no_gi": "No-gi",
+        "skill_level": "Black",
+        "priority": "High",
+        "chain_family": "tempo_chain"
+      },
+      "gi_no_gi": "No-gi",
+      "skill_level": "Black",
+      "chain_family": "tempo_chain"
+    }
+  }
+]

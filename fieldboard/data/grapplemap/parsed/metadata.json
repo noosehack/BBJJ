@@ -1,0 +1,97 @@
+{
+  "source": "grapplemap",
+  "repo": "https://github.com/Eelis/GrappleMap",
+  "license": "Public Domain",
+  "raw_file": "GrappleMap.txt",
+  "raw_lines": 39098,
+  "entries_parsed": 1990,
+  "positions": 596,
+  "edges": 1490,
+  "submissions": 103,
+  "sweeps": 53,
+  "errors": 43,
+  "error_details": [
+    {
+      "line": 1447,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 2335,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 2683,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 3325,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 4093,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 5483,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 6215,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 6551,
+      "error": "block 1 has no frames"
+    },
+    {
+      "line": 6812,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 8613,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 8735,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 8823,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 8910,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 11416,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 12257,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 13296,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 14404,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 15618,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 15723,
+      "error": "block 0 has no frames"
+    },
+    {
+      "line": 15767,
+      "error": "block 0 has no frames"
+    }
+  ],
+  "unmatched_from": 754,
+  "unmatched_to": 1144
+}

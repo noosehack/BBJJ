@@ -1,0 +1,98 @@
+[
+  {
+    "id": "fsm_p0",
+    "name": "PASSING",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p1",
+    "name": "GUARD",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p2",
+    "name": "HalfGuard",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p3",
+    "name": "SideControl",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p4",
+    "name": "FullGuard",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p5",
+    "name": "Butterfly",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p6",
+    "name": "Mount",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p7",
+    "name": "BackControl",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p8",
+    "name": "Submission",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p9",
+    "name": "RubberGuard",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p10",
+    "name": "NewJersey",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  },
+  {
+    "id": "fsm_p11",
+    "name": "KneeOnBelly",
+    "source": "fsm",
+    "tags": [],
+    "properties": {},
+    "raw": {}
+  }
+]

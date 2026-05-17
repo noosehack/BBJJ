@@ -1,0 +1,282 @@
+[
+  {
+    "id": "cav_e0",
+    "name": "Arm lock",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p10",
+    "to_name": "submit",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:arm_lock",
+      "move_class": "submission",
+      "points": ""
+    },
+    "raw": {
+      "name_pt": "Chave de bra\u00e7o",
+      "name_en": "Arm lock"
+    }
+  },
+  {
+    "id": "cav_e1",
+    "name": "americana",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p10",
+    "to_name": "submit",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:americana",
+      "move_class": "submission",
+      "points": ""
+    },
+    "raw": {
+      "name_pt": "americana",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e2",
+    "name": "tesourinha",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p7",
+    "to_name": "mont",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:sweep_tesourinha",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "tesourinha",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e3",
+    "name": "tesourinha_empurando_joelho",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p7",
+    "to_name": "mont",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:sweep_tesourinha_empurando_joelho",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "tesourinha_empurando_joelho",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e4",
+    "name": "raspagem na meia guarda com lapela",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p3",
+    "to_name": "100kg",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:mg_sweep_simple_with_lapela",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "raspagem na meia guarda com lapela",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e5",
+    "name": "raspagem na meia guarda pegando o p\u00e9",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p3",
+    "to_name": "100kg",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:mg_sweep_feet",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "raspagem na meia guarda pegando o p\u00e9",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e6",
+    "name": "raspagem um na meia guarda com lapela",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p3",
+    "to_name": "100kg",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:mg_sweep_simple",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "raspagem um na meia guarda com lapela",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e7",
+    "name": "raspagem um na meia guarda com lapela com defesa da perna",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p3",
+    "to_name": "100kg",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:mg_sweep_simple_with_leg_defence",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "raspagem um na meia guarda com lapela com defesa da perna",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e8",
+    "name": "raspagem um na meia guarda em guarda profunda",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p3",
+    "to_name": "100kg",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:mg_sweep_deep",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "raspagem um na meia guarda em guarda profunda",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e9",
+    "name": "raspagem 1, 2, 3 na meia guarda",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p3",
+    "to_name": "100kg",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:mg_sweep_one_two_three",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "raspagem 1, 2, 3 na meia guarda",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e10",
+    "name": "ida para as costas a partir da meia guarda",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p6",
+    "to_name": "back",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:mg_back_take",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "ida para as costas a partir da meia guarda",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e11",
+    "name": "passagem da meia guarda",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p6",
+    "to_name": "back",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:mg_back_take_with_defence",
+      "move_class": "sweep",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "passagem da meia guarda",
+      "name_en": ""
+    }
+  },
+  {
+    "id": "cav_e12",
+    "name": "O-goshe",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p3",
+    "to_name": "100kg",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:ogoshe",
+      "move_class": "takedown",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "O-goshe",
+      "name_en": "O-goshe"
+    }
+  },
+  {
+    "id": "cav_e13",
+    "name": "O-goshe",
+    "source": "cavani",
+    "from_id": null,
+    "from_name": "",
+    "to_id": "cav_p2",
+    "to_name": "half guard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "rdf_id": "_:ogoshe",
+      "move_class": "takedown",
+      "points": "2"
+    },
+    "raw": {
+      "name_pt": "O-goshe",
+      "name_en": "O-goshe"
+    }
+  }
+]

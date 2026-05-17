@@ -1,0 +1,14 @@
+{
+  "source": "bjjgraph",
+  "repo": "https://github.com/diogoseca/bjjgraph",
+  "license": "PolyForm Noncommercial 1.0.0",
+  "positions": 85,
+  "edges": 3528,
+  "submissions": 220,
+  "sweeps": 336,
+  "escapes": 501,
+  "passes": 312,
+  "transitions": 2159,
+  "errors": 0,
+  "error_details": []
+}

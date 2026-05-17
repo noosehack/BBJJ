@@ -1,0 +1,9 @@
+{
+  "source": "fsm",
+  "repo": "https://github.com/ianwessen/jiu-jitsu-state-machine",
+  "license": "MIT",
+  "positions": 12,
+  "edges": 25,
+  "submissions": 8,
+  "errors": 0
+}

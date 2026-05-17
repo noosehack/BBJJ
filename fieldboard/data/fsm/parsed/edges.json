@@ -1,0 +1,378 @@
+[
+  {
+    "id": "fsm_e0",
+    "name": "PASSING -> GUARD",
+    "source": "fsm",
+    "from_id": "fsm_p0",
+    "from_name": "PASSING",
+    "to_id": "fsm_p1",
+    "to_name": "GUARD",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "<=>"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e1",
+    "name": "GUARD -> PASSING",
+    "source": "fsm",
+    "from_id": "fsm_p1",
+    "from_name": "GUARD",
+    "to_id": "fsm_p0",
+    "to_name": "PASSING",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "<=>",
+      "reverse": true
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e2",
+    "name": "PASSING -> HalfGuard",
+    "source": "fsm",
+    "from_id": "fsm_p0",
+    "from_name": "PASSING",
+    "to_id": "fsm_p2",
+    "to_name": "HalfGuard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e3",
+    "name": "PASSING -> SideControl",
+    "source": "fsm",
+    "from_id": "fsm_p0",
+    "from_name": "PASSING",
+    "to_id": "fsm_p3",
+    "to_name": "SideControl",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e4",
+    "name": "GUARD -> FullGuard",
+    "source": "fsm",
+    "from_id": "fsm_p1",
+    "from_name": "GUARD",
+    "to_id": "fsm_p4",
+    "to_name": "FullGuard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e5",
+    "name": "GUARD -> Butterfly",
+    "source": "fsm",
+    "from_id": "fsm_p1",
+    "from_name": "GUARD",
+    "to_id": "fsm_p5",
+    "to_name": "Butterfly",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e6",
+    "name": "HipBump",
+    "source": "fsm",
+    "from_id": "fsm_p4",
+    "from_name": "FullGuard",
+    "to_id": "fsm_p6",
+    "to_name": "Mount",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e7",
+    "name": "ArmDrag",
+    "source": "fsm",
+    "from_id": "fsm_p4",
+    "from_name": "FullGuard",
+    "to_id": "fsm_p7",
+    "to_name": "BackControl",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e8",
+    "name": "Triangle",
+    "source": "fsm",
+    "from_id": "fsm_p4",
+    "from_name": "FullGuard",
+    "to_id": "fsm_p8",
+    "to_name": "Submission",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e9",
+    "name": "FullGuard -> RubberGuard",
+    "source": "fsm",
+    "from_id": "fsm_p4",
+    "from_name": "FullGuard",
+    "to_id": "fsm_p9",
+    "to_name": "RubberGuard",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e10",
+    "name": "Butterfly -> NewJersey",
+    "source": "fsm",
+    "from_id": "fsm_p5",
+    "from_name": "Butterfly",
+    "to_id": "fsm_p10",
+    "to_name": "NewJersey",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e11",
+    "name": "Sweep",
+    "source": "fsm",
+    "from_id": "fsm_p5",
+    "from_name": "Butterfly",
+    "to_id": "fsm_p6",
+    "to_name": "Mount",
+    "edge_type": "sweep",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e12",
+    "name": "GoGoPlata",
+    "source": "fsm",
+    "from_id": "fsm_p10",
+    "from_name": "NewJersey",
+    "to_id": "fsm_p8",
+    "to_name": "Submission",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e13",
+    "name": "Omoplata",
+    "source": "fsm",
+    "from_id": "fsm_p9",
+    "from_name": "RubberGuard",
+    "to_id": "fsm_p8",
+    "to_name": "Submission",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e14",
+    "name": "RubberGuard -> BackControl",
+    "source": "fsm",
+    "from_id": "fsm_p9",
+    "from_name": "RubberGuard",
+    "to_id": "fsm_p7",
+    "to_name": "BackControl",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e15",
+    "name": "KimuraGrip",
+    "source": "fsm",
+    "from_id": "fsm_p6",
+    "from_name": "Mount",
+    "to_id": "fsm_p7",
+    "to_name": "BackControl",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e16",
+    "name": "Mount -> KneeOnBelly",
+    "source": "fsm",
+    "from_id": "fsm_p6",
+    "from_name": "Mount",
+    "to_id": "fsm_p11",
+    "to_name": "KneeOnBelly",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e17",
+    "name": "ArmTriangle",
+    "source": "fsm",
+    "from_id": "fsm_p6",
+    "from_name": "Mount",
+    "to_id": "fsm_p8",
+    "to_name": "Submission",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e18",
+    "name": "SideControl -> Mount",
+    "source": "fsm",
+    "from_id": "fsm_p3",
+    "from_name": "SideControl",
+    "to_id": "fsm_p6",
+    "to_name": "Mount",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e19",
+    "name": "SideControl -> KneeOnBelly",
+    "source": "fsm",
+    "from_id": "fsm_p3",
+    "from_name": "SideControl",
+    "to_id": "fsm_p11",
+    "to_name": "KneeOnBelly",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e20",
+    "name": "NorthSouth",
+    "source": "fsm",
+    "from_id": "fsm_p3",
+    "from_name": "SideControl",
+    "to_id": "fsm_p8",
+    "to_name": "Submission",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e21",
+    "name": "KneeOnBelly -> Submission",
+    "source": "fsm",
+    "from_id": "fsm_p11",
+    "from_name": "KneeOnBelly",
+    "to_id": "fsm_p8",
+    "to_name": "Submission",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e22",
+    "name": "Darce",
+    "source": "fsm",
+    "from_id": "fsm_p2",
+    "from_name": "HalfGuard",
+    "to_id": "fsm_p8",
+    "to_name": "Submission",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e23",
+    "name": "HalfGuard -> SideControl",
+    "source": "fsm",
+    "from_id": "fsm_p2",
+    "from_name": "HalfGuard",
+    "to_id": "fsm_p3",
+    "to_name": "SideControl",
+    "edge_type": "transition",
+    "tags": [],
+    "properties": {
+      "arrow": "->"
+    },
+    "raw": {}
+  },
+  {
+    "id": "fsm_e24",
+    "name": "RNC",
+    "source": "fsm",
+    "from_id": "fsm_p7",
+    "from_name": "BackControl",
+    "to_id": "fsm_p8",
+    "to_name": "Submission",
+    "edge_type": "submission",
+    "tags": [],
+    "properties": {
+      "arrow": "=>"
+    },
+    "raw": {}
+  }
+]
