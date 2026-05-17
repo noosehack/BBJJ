@@ -25,7 +25,7 @@
         "detail": "isolate arm, hips high, extend"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "CGRD.CTRL",
       "MNT.SWP",
       "MNT.CTRL",
@@ -96,7 +96,7 @@
         "detail": "hand fight, sink choke"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "CGRD.CTRL",
       "BCTR.SWP",
       "BCTR.CTRL",
@@ -167,7 +167,7 @@
         "detail": "isolate near arm, figure-four, paint brush"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "HGRD.CTRL",
       "SCTR.TRZ",
       "SCTR.CTRL",
@@ -233,7 +233,7 @@
         "detail": "stabilize base"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "OGRD.Butterfly.CTRL",
       "MNT.SWP",
       "MNT.CTRL"
@@ -292,7 +292,7 @@
         "detail": "stabilize base"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "OGRD.CTRL",
       "MNT.SWP",
       "MNT.CTRL"
@@ -354,7 +354,7 @@
         "detail": "grapevines, posture"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "SCTR.CTRL",
       "SCTR.KOB.TRZ",
       "MNT.TRZ",
@@ -415,7 +415,7 @@
         "detail": "lock triangle, angle, squeeze"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "CGRD.CTRL",
       "CGRD.TRZ",
       "CGRD.SUB"
@@ -473,7 +473,7 @@
         "detail": "feed first grip deep, second grip, squeeze"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "MNT.CTRL",
       "MNT.SUB"
     ],
@@ -527,7 +527,7 @@
         "detail": "pull to closed guard, lock feet"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "OGRD.ColSlv.CTRL",
       "CGRD.TRZ"
     ],
@@ -578,7 +578,7 @@
         "detail": "John Wayne sweep / underhook sweep"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "HGRD.CTRL",
       "MNT.SWP"
     ],
@@ -638,7 +638,7 @@
         "detail": "seatbelt → RNC"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "HGRD.CTRL",
       "SCTR.TRZ",
       "BCTR.TRZ",
@@ -696,7 +696,7 @@
         "detail": "flower sweep — collar pull, leg kick-over"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "CGRD.CTRL",
       "MNT.SWP"
     ],
@@ -748,7 +748,7 @@
         "detail": "hop to mount side, squeeze"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "SCTR.CTRL",
       "SCTR.TRZ",
       "SCTR.SUB"
@@ -806,7 +806,7 @@
         "detail": "hip out → sweep with kimura grip"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "CGRD.CTRL",
       "CGRD.TRZ",
       "MNT.SWP"
@@ -861,7 +861,7 @@
         "detail": "hand fight → RNC"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "TRTL.CTRL",
       "BCTR.TRZ",
       "BCTR.SUB"
@@ -921,7 +921,7 @@
         "detail": "settle crossface + underhook"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "OGRD.CTRL",
       "SCTR.TRZ",
       "SCTR.CTRL"
@@ -984,7 +984,7 @@
         "detail": "isolate arm, figure-four"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "CGRD.CTRL",
       "SCTR.SWP",
       "SCTR.CTRL",
@@ -1046,7 +1046,7 @@
         "detail": "sweep leads to mount; grip leads to submission"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "CGRD.CTRL",
       "CGRD.TRZ",
       "MNT.SWP / CGRD.SUB"
@@ -1106,7 +1106,7 @@
         "detail": "if arms protect neck: armbar. If elbows flare: choke"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "MNT.CTRL",
       "MNT.SUB"
     ],
@@ -1164,7 +1164,7 @@
         "detail": "hand fight → attack"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "BCTR.CTRL",
       "BCTR.SUB"
     ],
@@ -1223,7 +1223,7 @@
         "detail": "multiple pass options"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "HGRD.CTRL",
       "SCTR.TRZ / MNT.TRZ / BCTR.TRZ"
     ],
@@ -1287,7 +1287,7 @@
         "detail": "attack tree from S1/S7/N1"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "OGRD.Standing.CTRL",
       "CGRD.TRZ",
       "CGRD.SWP / CGRD.SUB"
@@ -1350,7 +1350,7 @@
         "detail": "takedown → land on top"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "OGRD.CTRL",
       "OGRD.Standing.TRZ",
       "SCTR.TRZ / MNT.TRZ"
@@ -1416,7 +1416,7 @@
         "detail": "finish"
       }
     ],
-    "fieldboard": [
+    "matboard": [
       "HGRD.CTRL",
       "SCTR.TRZ",
       "MNT.TRZ",

@@ -84,7 +84,7 @@
     <a href="paths.html">paths</a>
     <a href="mode.html">mode</a>
     <span class="tbar-sep">|</span>
-    <a href="index.html">fieldboard</a>
+    <a href="index.html">matboard</a>
     <a href="roads.html">roads</a>
     <a href="curriculum.html">curriculum</a>
   </div>
@@ -98,10 +98,10 @@
   </div>
 
   <div class="ops-grid">
-    <!-- TOP LEFT: fieldboard -->
+    <!-- TOP LEFT: matboard -->
     <div class="ops-tl scroll-y" style="padding:8px">
       <div class="box">
-        <div class="box-head">Fieldboard <span id="fb-label" style="color:var(--accent);font-weight:400"></span></div>
+        <div class="box-head">Matboard <span id="fb-label" style="color:var(--accent);font-weight:400"></span></div>
         <div class="box-body" style="overflow-x:auto">
           <table class="fb" id="grid"></table>
         </div>
@@ -167,16 +167,16 @@
       { id: 'spine', label: 'spine', filter: r => r.tier === 'spine' },
       { id: 'branch', label: 'branch', filter: r => r.tier === 'branch' },
       { id: 'network', label: 'network', filter: r => r.tier === 'network' },
-      { id: 'mount', label: 'mount-focused', filter: r => r.fieldboard.some(c => c.startsWith('MNT.')) },
-      { id: 'guard', label: 'guard', filter: r => r.fieldboard.some(c => c.startsWith('CGRD.') || c.startsWith('OGRD.') || c.startsWith('HGRD.')) },
-      { id: 'back', label: 'back-control', filter: r => r.fieldboard.some(c => c.startsWith('BCTR.')) },
+      { id: 'mount', label: 'mount-focused', filter: r => r.matboard.some(c => c.startsWith('MNT.')) },
+      { id: 'guard', label: 'guard', filter: r => r.matboard.some(c => c.startsWith('CGRD.') || c.startsWith('OGRD.') || c.startsWith('HGRD.')) },
+      { id: 'back', label: 'back-control', filter: r => r.matboard.some(c => c.startsWith('BCTR.')) },
       { id: 'safe', label: 'safe-fail', filter: r => r.failure.classification === 'safe' },
       { id: 'clear', label: 'clear all', filter: null },
     ];
 
     async function init() {
       [fb, roads, depGraph, checkpoints, yearPlan] = await Promise.all([
-        fetch('data/fieldboard.json').then(r=>r.json()),
+        fetch('data/matboard.json').then(r=>r.json()),
         fetch('data/roads.json').then(r=>r.json()),
         fetch('data/road_dependency_graph.json').then(r=>r.json()),
         fetch('data/checkpoint_library.json').then(r=>r.json()),
@@ -191,13 +191,13 @@
 
     function buildIndex() {
       cellIdx = {};
-      for (const r of roads) for (const raw of r.fieldboard) for (const c of raw.split('/')) {
+      for (const r of roads) for (const raw of r.matboard) for (const c of raw.split('/')) {
         const k = c.trim();
         (cellIdx[k] = cellIdx[k] || []).push(r);
       }
     }
 
-    // --- Fieldboard ---
+    // --- Matboard ---
     function renderGrid() {
       let h = '<thead><tr><th>pos</th>';
       ACTIONS.forEach(a => h += `<th class="c-${a.toLowerCase()}">${a}</th>`);
@@ -300,7 +300,7 @@
     // --- Sync Everything ---
     function syncAll() {
       const sel = [...selected].map(id => roads.find(r => r.id === id)).filter(Boolean);
-      syncFieldboard(sel);
+      syncMatboard(sel);
       syncVectors(sel);
       syncCheckpoints(sel);
       syncDeps(sel);
@@ -310,7 +310,7 @@
       updatePresetBtns();
     }
 
-    function syncFieldboard(sel) {
+    function syncMatboard(sel) {
       // Clear
       document.querySelectorAll('.cell').forEach(c => {
         c.classList.remove('hi','density-1','density-2','density-3','density-4');
@@ -333,7 +333,7 @@
       for (let ri = 0; ri < sel.length; ri++) {
         const road = sel[ri];
         let step = 1;
-        for (const raw of road.fieldboard) {
+        for (const raw of road.matboard) {
           for (const c of raw.split('/')) {
             const coord = c.trim();
             if (!density[coord]) density[coord] = [];
@@ -536,7 +536,7 @@
       let maxD = 0;
       const density = {};
       for (const road of sel) {
-        for (const raw of road.fieldboard) {
+        for (const raw of road.matboard) {
           for (const c of raw.split('/')) {
             const k = c.trim();
             cells.add(k);

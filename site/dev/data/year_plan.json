@@ -40,7 +40,7 @@
         "attack": "sweep + armbar from guard",
         "defense": "posture in guard, mount escape, armbar defense"
       },
-      "fieldboard": [
+      "matboard": [
         "CGRD.CTRL",
         "MNT.SWP",
         "MNT.CTRL",
@@ -90,7 +90,7 @@
         "attack": "collar-sleeve guard pull",
         "defense": "guard pull defense, staying standing, posture"
       },
-      "fieldboard": [
+      "matboard": [
         "OGRD.ColSlv.CTRL",
         "CGRD.TRZ"
       ],
@@ -135,7 +135,7 @@
         "attack": "scissor sweep",
         "defense": "open guard passing, base maintenance"
       },
-      "fieldboard": [
+      "matboard": [
         "OGRD.CTRL",
         "MNT.SWP",
         "MNT.CTRL"
@@ -189,7 +189,7 @@
         "attack": "arm drag to back, RNC",
         "defense": "posture in guard, back escape, RNC defense"
       },
-      "fieldboard": [
+      "matboard": [
         "CGRD.CTRL",
         "BCTR.SWP",
         "BCTR.CTRL",
@@ -241,7 +241,7 @@
         "attack": "butterfly sweep",
         "defense": "butterfly passing, mount escape"
       },
-      "fieldboard": [
+      "matboard": [
         "OGRD.Butterfly.CTRL",
         "MNT.SWP",
         "MNT.CTRL"
@@ -292,7 +292,7 @@
         "attack": "positional advance SC→KOB→MNT",
         "defense": "side escape, KOB escape, mount escape"
       },
-      "fieldboard": [
+      "matboard": [
         "SCTR.CTRL",
         "SCTR.KOB.TRZ",
         "MNT.TRZ",
@@ -345,7 +345,7 @@
         "attack": "triangle from guard",
         "defense": "posture, triangle defense, stack pass"
       },
-      "fieldboard": [
+      "matboard": [
         "CGRD.CTRL",
         "CGRD.TRZ",
         "CGRD.SUB"
@@ -395,7 +395,7 @@
         "attack": "cross collar choke from mount",
         "defense": "mount escape, choke defense"
       },
-      "fieldboard": [
+      "matboard": [
         "MNT.CTRL",
         "MNT.SUB"
       ],
@@ -450,7 +450,7 @@
         "attack": "half guard pass, americana",
         "defense": "half guard retention, side escape, americana defense"
       },
-      "fieldboard": [
+      "matboard": [
         "HGRD.CTRL",
         "SCTR.TRZ",
         "SCTR.CTRL",
@@ -500,7 +500,7 @@
         "attack": "flower sweep",
         "defense": "base and posture in guard"
       },
-      "fieldboard": [
+      "matboard": [
         "CGRD.CTRL",
         "MNT.SWP"
       ],
@@ -549,7 +549,7 @@
         "attack": "turtle back take",
         "defense": "turtle defense (granby, sit-out, standup)"
       },
-      "fieldboard": [
+      "matboard": [
         "TRTL.CTRL",
         "BCTR.TRZ",
         "BCTR.SUB"
@@ -599,7 +599,7 @@
         "attack": "open guard pass",
         "defense": "guard retention, re-guarding"
       },
-      "fieldboard": [
+      "matboard": [
         "OGRD.CTRL",
         "SCTR.TRZ",
         "SCTR.CTRL"
@@ -649,7 +649,7 @@
         "attack": "kimura sweep",
         "defense": "hand-on-mat defense, posture"
       },
-      "fieldboard": [
+      "matboard": [
         "CGRD.CTRL",
         "CGRD.TRZ",
         "MNT.SWP"
@@ -695,7 +695,7 @@
         "attack": "underhook sweep from HG",
         "defense": "whizzer counter, HG top control"
       },
-      "fieldboard": [
+      "matboard": [
         "HGRD.CTRL",
         "MNT.SWP"
       ],
@@ -749,7 +749,7 @@
         "attack": "pass→side→back chain",
         "defense": "HG retention, side escape, back escape"
       },
-      "fieldboard": [
+      "matboard": [
         "HGRD.CTRL",
         "SCTR.TRZ",
         "BCTR.TRZ",
@@ -802,7 +802,7 @@
         "attack": "arm triangle from side",
         "defense": "frame defense, arm extraction"
       },
-      "fieldboard": [
+      "matboard": [
         "SCTR.CTRL",
         "SCTR.TRZ",
         "SCTR.SUB"
@@ -854,7 +854,7 @@
         "attack": "sweep to side control, americana",
         "defense": "guard posture, side escape"
       },
-      "fieldboard": [
+      "matboard": [
         "CGRD.CTRL",
         "SCTR.SWP",
         "SCTR.CTRL",
@@ -907,7 +907,7 @@
         "attack": "mount attack cycle",
         "defense": "mount escape becomes urgent"
       },
-      "fieldboard": [
+      "matboard": [
         "MNT.CTRL",
         "MNT.SUB"
       ],
@@ -960,7 +960,7 @@
         "attack": "back control attack system",
         "defense": "back escape system"
       },
-      "fieldboard": [
+      "matboard": [
         "BCTR.CTRL",
         "BCTR.SUB"
       ],
@@ -1008,7 +1008,7 @@
         "attack": "standup to takedown",
         "defense": "takedown defense, guard pulling"
       },
-      "fieldboard": [
+      "matboard": [
         "OGRD.CTRL",
         "OGRD.Standing.TRZ",
         "SCTR.TRZ / MNT.TRZ"
@@ -1061,7 +1061,7 @@
         "attack": "guard attack decision tree",
         "defense": "all guard defenses simultaneously"
       },
-      "fieldboard": [
+      "matboard": [
         "CGRD.CTRL",
         "CGRD.TRZ",
         "MNT.SWP / CGRD.SUB"
@@ -1114,7 +1114,7 @@
         "attack": "half guard passing network",
         "defense": "half guard bottom game"
       },
-      "fieldboard": [
+      "matboard": [
         "HGRD.CTRL",
         "SCTR.TRZ / MNT.TRZ / BCTR.TRZ"
       ],
@@ -1167,7 +1167,7 @@
         "attack": "full positional ladder",
         "defense": "full escape ladder"
       },
-      "fieldboard": [
+      "matboard": [
         "HGRD.CTRL",
         "SCTR.TRZ",
         "MNT.TRZ",
@@ -1222,7 +1222,7 @@
         "attack": "guard pull to attack",
         "defense": "guard pull defense, pass on the way down"
       },
-      "fieldboard": [
+      "matboard": [
         "OGRD.Standing.CTRL",
         "CGRD.TRZ",
         "CGRD.SWP / CGRD.SUB"

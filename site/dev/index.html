@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fieldboard — /dev</title>
+  <title>Matboard — /dev</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dev.css">
@@ -12,7 +12,7 @@
   <nav class="dev-nav">
     <div class="dev-nav-logo">/dev</div>
     <div class="dev-nav-links">
-      <a href="index.html" class="active">Fieldboard</a>
+      <a href="index.html" class="active">Matboard</a>
       <a href="roads.html">Roads</a>
       <a href="curriculum.html">Curriculum</a>
       <span style="color:var(--text-muted);margin:0 2px">|</span>
@@ -28,7 +28,7 @@
 
   <main class="dev-page">
     <div class="dev-header">
-      <h1>Fieldboard Viewer</h1>
+      <h1>Matboard Viewer</h1>
       <p>7 fundamental positions × 4 action families. Click cells to see which roads touch them.</p>
     </div>
 
@@ -39,7 +39,7 @@
           <span id="cell-count" style="font-size:0.7rem;color:var(--text-muted)"></span>
         </div>
         <div class="panel-body" style="overflow-x:auto">
-          <table class="fieldboard" id="fieldboard-table">
+          <table class="matboard" id="matboard-table">
             <thead>
               <tr>
                 <th>Position</th>
@@ -49,7 +49,7 @@
                 <th class="col-sub">SUB</th>
               </tr>
             </thead>
-            <tbody id="fieldboard-body"></tbody>
+            <tbody id="matboard-body"></tbody>
           </table>
         </div>
       </div>
@@ -91,26 +91,26 @@
   <script>
     const ACTIONS = ['CTRL', 'TRZ', 'SWP', 'SUB'];
 
-    let fieldboardData = null;
+    let matboardData = null;
     let roadsData = null;
     let cellIndex = {};   // "OGRD.CTRL" -> [road, ...]
     let selectedCell = null;
 
     async function init() {
       const [fbRes, rdRes] = await Promise.all([
-        fetch('data/fieldboard.json'),
+        fetch('data/matboard.json'),
         fetch('data/roads.json')
       ]);
-      fieldboardData = await fbRes.json();
+      matboardData = await fbRes.json();
       roadsData = await rdRes.json();
       buildCellIndex();
-      renderFieldboard();
+      renderMatboard();
       updateCellCount();
     }
 
-    function parseFieldboardCoords(road) {
+    function parseMatboardCoords(road) {
       const coords = [];
-      for (const raw of road.fieldboard) {
+      for (const raw of road.matboard) {
         for (const part of raw.split('/')) {
           coords.push(part.trim());
         }
@@ -121,18 +121,18 @@
     function buildCellIndex() {
       cellIndex = {};
       for (const road of roadsData) {
-        for (const coord of parseFieldboardCoords(road)) {
+        for (const coord of parseMatboardCoords(road)) {
           if (!cellIndex[coord]) cellIndex[coord] = [];
           cellIndex[coord].push(road);
         }
       }
     }
 
-    function renderFieldboard() {
-      const tbody = document.getElementById('fieldboard-body');
+    function renderMatboard() {
+      const tbody = document.getElementById('matboard-body');
       tbody.innerHTML = '';
 
-      for (const pos of fieldboardData.positions) {
+      for (const pos of matboardData.positions) {
         const hasSubs = pos.subtopologies && pos.subtopologies.length > 0;
         const mainRow = document.createElement('tr');
         mainRow.dataset.posId = pos.id;
@@ -292,7 +292,7 @@
 
     function updateCellCount() {
       const populated = Object.keys(cellIndex).length;
-      const total = fieldboardData.positions.reduce((sum, p) => {
+      const total = matboardData.positions.reduce((sum, p) => {
         const mainCells = ACTIONS.length;
         const subCells = (p.subtopologies ? p.subtopologies.length : 0) * ACTIONS.length;
         return sum + mainCells + subCells;

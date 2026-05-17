@@ -12,7 +12,7 @@
   <nav class="dev-nav">
     <div class="dev-nav-logo">/dev</div>
     <div class="dev-nav-links">
-      <a href="index.html">Fieldboard</a>
+      <a href="index.html">Matboard</a>
       <a href="roads.html">Roads</a>
       <a href="curriculum.html" class="active">Curriculum</a>
       <span style="color:var(--text-muted);margin:0 2px">|</span>
@@ -159,8 +159,8 @@
             <dd><span class="failure-badge ${road.failure_topology}">${road.failure_topology}</span></dd>
           </div>
           <div>
-            <dt>Fieldboard Cells</dt>
-            <dd style="font-family:var(--mono);font-size:0.7rem">${road.fieldboard.join(' → ')}</dd>
+            <dt>Matboard Cells</dt>
+            <dd style="font-family:var(--mono);font-size:0.7rem">${road.matboard.join(' → ')}</dd>
             <dt>Checkpoints</dt>
             <dd>${road.control_checkpoints.join('; ')}</dd>
             <dt>Mechanics</dt>

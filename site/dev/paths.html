@@ -20,7 +20,7 @@
     <a href="paths.html" class="here">paths</a>
     <a href="mode.html">mode</a>
     <span class="tbar-sep">|</span>
-    <a href="index.html">fieldboard</a>
+    <a href="index.html">matboard</a>
     <a href="roads.html">roads</a>
     <a href="curriculum.html">curriculum</a>
   </div>
@@ -44,9 +44,9 @@
       </div>
 
       <div class="scroll-y" style="padding:8px">
-        <!-- Fieldboard -->
+        <!-- Matboard -->
         <div class="box" style="margin-bottom:8px">
-          <div class="box-head">Fieldboard <span id="fb-label" style="color:var(--accent);font-weight:400"></span></div>
+          <div class="box-head">Matboard <span id="fb-label" style="color:var(--accent);font-weight:400"></span></div>
           <div class="box-body" style="overflow-x:auto">
             <table class="fb" id="grid"></table>
           </div>
@@ -85,7 +85,7 @@
 
     async function init() {
       [fb, roads, depGraph] = await Promise.all([
-        fetch('data/fieldboard.json').then(r=>r.json()),
+        fetch('data/matboard.json').then(r=>r.json()),
         fetch('data/roads.json').then(r=>r.json()),
         fetch('data/road_dependency_graph.json').then(r=>r.json())
       ]);
@@ -96,7 +96,7 @@
 
     function buildIndex() {
       cellIdx = {};
-      for (const r of roads) for (const raw of r.fieldboard) for (const c of raw.split('/')) {
+      for (const r of roads) for (const raw of r.matboard) for (const c of raw.split('/')) {
         const k = c.trim();
         (cellIdx[k] = cellIdx[k] || []).push(r);
       }
@@ -168,7 +168,7 @@
 
       // Highlight cells
       let step = 1;
-      for (const raw of road.fieldboard) {
+      for (const raw of road.matboard) {
         for (const c of raw.split('/')) {
           const coord = c.trim();
           const cell = document.querySelector(`.cell[data-c="${coord}"]`);
@@ -209,7 +209,7 @@
 
       // Coordinate vector
       h += '<div class="coord-vec" style="margin-top:6px">';
-      h += road.fieldboard.map(c => `<span>${c}</span>`).join(' → ');
+      h += road.matboard.map(c => `<span>${c}</span>`).join(' → ');
       h += '</div>';
 
       el.innerHTML = h;

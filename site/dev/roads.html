@@ -12,7 +12,7 @@
   <nav class="dev-nav">
     <div class="dev-nav-logo">/dev</div>
     <div class="dev-nav-links">
-      <a href="index.html">Fieldboard</a>
+      <a href="index.html">Matboard</a>
       <a href="roads.html" class="active">Roads</a>
       <a href="curriculum.html">Curriculum</a>
       <span style="color:var(--text-muted);margin:0 2px">|</span>
@@ -29,7 +29,7 @@
   <main class="dev-page">
     <div class="dev-header">
       <h1>Road Viewer</h1>
-      <p>24 curriculum roads — click a road to highlight its path on the fieldboard.</p>
+      <p>24 curriculum roads — click a road to highlight its path on the matboard.</p>
     </div>
 
     <div class="filters" id="filters">
@@ -43,11 +43,11 @@
       <div>
         <div class="panel">
           <div class="panel-header">
-            <span class="panel-title">Fieldboard</span>
+            <span class="panel-title">Matboard</span>
             <span id="highlight-label" style="font-size:0.7rem;color:var(--accent);font-family:var(--mono)"></span>
           </div>
           <div class="panel-body" style="overflow-x:auto">
-            <table class="fieldboard" id="fb-table">
+            <table class="matboard" id="fb-table">
               <thead>
                 <tr>
                   <th>Position</th>
@@ -83,25 +83,25 @@
 
   <script>
     const ACTIONS = ['CTRL', 'TRZ', 'SWP', 'SUB'];
-    let fieldboardData, roadsData;
+    let matboardData, roadsData;
     let selectedRoad = null;
     let activeFilter = 'all';
 
     async function init() {
       const [fbRes, rdRes] = await Promise.all([
-        fetch('data/fieldboard.json'),
+        fetch('data/matboard.json'),
         fetch('data/roads.json')
       ]);
-      fieldboardData = await fbRes.json();
+      matboardData = await fbRes.json();
       roadsData = await rdRes.json();
-      renderFieldboard();
+      renderMatboard();
       renderRoadList();
       setupFilters();
     }
 
-    function parseFieldboardCoords(road) {
+    function parseMatboardCoords(road) {
       const coords = [];
-      for (const raw of road.fieldboard) {
+      for (const raw of road.matboard) {
         for (const part of raw.split('/')) {
           coords.push(part.trim());
         }
@@ -109,11 +109,11 @@
       return coords;
     }
 
-    function renderFieldboard() {
+    function renderMatboard() {
       const tbody = document.getElementById('fb-body');
       tbody.innerHTML = '';
 
-      for (const pos of fieldboardData.positions) {
+      for (const pos of matboardData.positions) {
         const hasSubs = pos.subtopologies && pos.subtopologies.length > 0;
         const tr = document.createElement('tr');
         tr.dataset.posId = pos.id;
@@ -214,7 +214,7 @@
       document.querySelector(`.road-item[data-road-id="${road.id}"]`).classList.add('selected');
       document.getElementById('highlight-label').textContent = `${road.id}: ${road.name}`;
 
-      const coords = parseFieldboardCoords(road);
+      const coords = parseMatboardCoords(road);
       let step = 1;
       for (const coord of coords) {
         const cell = document.querySelector(`.fb-cell[data-coord="${coord}"]`);

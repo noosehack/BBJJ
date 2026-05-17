@@ -20,7 +20,7 @@
     <a href="paths.html">paths</a>
     <a href="mode.html">mode</a>
     <span class="tbar-sep">|</span>
-    <a href="index.html">fieldboard</a>
+    <a href="index.html">matboard</a>
     <a href="roads.html">roads</a>
     <a href="curriculum.html">curriculum</a>
   </div>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="box" style="margin-bottom:12px">
-      <div class="box-head">Fieldboard Structural Metrics <span style="font-weight:400;font-size:8px;color:var(--text3)">(computed from data)</span></div>
+      <div class="box-head">Matboard Structural Metrics <span style="font-weight:400;font-size:8px;color:var(--text3)">(computed from data)</span></div>
       <div class="box-body" id="struct-metrics"></div>
     </div>
 
@@ -83,8 +83,8 @@
         emphasis: "De La Riva. Berimbolo. Guard retention. Dynamic movement. Early competition readiness.",
         source: "Art of Jiu Jitsu curriculum"
       },
-      fieldboard: {
-        name: "Fieldboard",
+      matboard: {
+        name: "Matboard",
         short: "FBoard",
         philosophy: "Position-graph traversal. All 7 positions in Year 1. Reusable checkpoint mechanics. Failure topology analysis. Dual-perspective teaching (attack and defense simultaneously).",
         emphasis: "Graph coverage. Checkpoint reuse. Safe failure. Duality. Structural completeness before depth.",
@@ -108,7 +108,7 @@
       roger:      [1, 5, 1, 2, 5, 5, 1, 5],
       danaher:    [4, 3, 4, 5, 3, 3, 3, 3],
       aoj:        [4, 2, 4, 3, 2, 2, 5, 2],
-      fieldboard: [3, 4, 2, 3, 5, 5, 2, 4]
+      matboard: [3, 4, 2, 3, 5, 5, 2, 4]
     };
 
     let roads, checkpointsData, yearPlan, depGraph;
@@ -141,7 +141,7 @@
         for (const sk of sysKeys) {
           const v = RATINGS[sk][i];
           const w = v * 20;
-          const color = sk === 'fieldboard' ? 'var(--accent)' : 'var(--text3)';
+          const color = sk === 'matboard' ? 'var(--accent)' : 'var(--text3)';
           h += `<td><span class="cmp-bar" style="width:${w}px;background:${color}"></span> <span style="font-size:9px;color:var(--text3)">${v}</span></td>`;
         }
         h += '</tr>';
@@ -184,12 +184,12 @@
 
       // Unique cells touched
       const allCells = new Set();
-      for (const r of roads) for (const raw of r.fieldboard) for (const c of raw.split('/')) allCells.add(c.trim());
+      for (const r of roads) for (const raw of r.matboard) for (const c of raw.split('/')) allCells.add(c.trim());
 
       // Position coverage per year
       const positionsY1 = new Set();
       const spineRoads = roads.filter(r => r.tier === 'spine');
-      for (const r of spineRoads) for (const raw of r.fieldboard) for (const c of raw.split('/')) {
+      for (const r of spineRoads) for (const raw of r.matboard) for (const c of raw.split('/')) {
         positionsY1.add(c.trim().split('.')[0]);
       }
 
@@ -229,7 +229,7 @@
       // Render as compact metric rows
       const metrics = [
         ['roads', `${totalRoads}`, `${spineCount} spine · ${branchCount} branch · ${networkCount} network`],
-        ['cells touched', `${allCells.size}`, 'unique fieldboard coordinates across all roads'],
+        ['cells touched', `${allCells.size}`, 'unique matboard coordinates across all roads'],
         ['Y1 positions', `${positionsY1.size} / 7`, [...positionsY1].sort().join(', ')],
         ['avg seq length', `${avgSeqLen}`, `range: ${Math.min(...seqLens)}–${Math.max(...seqLens)} steps`],
         ['action split', '', `CTRL ${actionCounts.CTRL} (${(actionCounts.CTRL/totalActions*100).toFixed(0)}%) · TRZ ${actionCounts.TRZ} (${(actionCounts.TRZ/totalActions*100).toFixed(0)}%) · SWP ${actionCounts.SWP} (${(actionCounts.SWP/totalActions*100).toFixed(0)}%) · SUB ${actionCounts.SUB} (${(actionCounts.SUB/totalActions*100).toFixed(0)}%)`],

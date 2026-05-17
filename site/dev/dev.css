@@ -144,15 +144,15 @@ a:hover { text-decoration: underline; }
 
 .panel-body { padding: 1rem; }
 
-/* ── Fieldboard Grid ─────────────────────────── */
+/* ── Matboard Grid ─────────────────────────── */
 
-.fieldboard {
+.matboard {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.8rem;
 }
 
-.fieldboard th {
+.matboard th {
   padding: 0.5rem 0.75rem;
   font-weight: 600;
   font-size: 0.7rem;
@@ -163,26 +163,26 @@ a:hover { text-decoration: underline; }
   text-align: center;
 }
 
-.fieldboard th:first-child { text-align: left; }
+.matboard th:first-child { text-align: left; }
 
-.fieldboard th.col-ctrl { color: var(--ctrl); }
-.fieldboard th.col-trz { color: var(--trz); }
-.fieldboard th.col-swp { color: var(--swp); }
-.fieldboard th.col-sub { color: var(--sub); }
+.matboard th.col-ctrl { color: var(--ctrl); }
+.matboard th.col-trz { color: var(--trz); }
+.matboard th.col-swp { color: var(--swp); }
+.matboard th.col-sub { color: var(--sub); }
 
-.fieldboard td {
+.matboard td {
   padding: 0;
   border: 1px solid var(--border);
   vertical-align: middle;
 }
 
-.fieldboard td:first-child {
+.matboard td:first-child {
   border-left: none;
   padding: 0.4rem 0.75rem;
   white-space: nowrap;
 }
 
-.fieldboard tr:last-child td { border-bottom: none; }
+.matboard tr:last-child td { border-bottom: none; }
 
 .fb-pos-name {
   font-weight: 600;

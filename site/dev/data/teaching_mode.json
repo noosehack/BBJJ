@@ -8,7 +8,7 @@
       "duration_minutes": 5,
       "description": "Student understands what defines the position, what the objective is, and what counts as success or failure.",
       "instructor_focus": "Name the position. Show the shape. Define success and failure. No technique yet.",
-      "student_objective": "Recognize the position. Know where you are on the fieldboard."
+      "student_objective": "Recognize the position. Know where you are on the matboard."
     },
     {
       "id": "constraint",
@@ -56,7 +56,7 @@
       "order": 6,
       "action_layer": "SWP",
       "duration_minutes": 10,
-      "description": "Start from a specific fieldboard cell or road checkpoint. Win condition is defined. Reset on completion or failure.",
+      "description": "Start from a specific matboard cell or road checkpoint. Win condition is defined. Reset on completion or failure.",
       "instructor_focus": "Define the start position, the win condition, and the reset rule. Keep rounds short.",
       "student_objective": "Execute under realistic conditions with a clear objective."
     },
