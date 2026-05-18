@@ -1,7 +1,8 @@
-;;; playtest_games.blisp — 16 scripted games for semantic playtest v2
+;;; playtest_games.blisp — 20 scripted games for semantic playtest v3
+;;; v3: adds escape MOR games (G17-G20), updates G12
 
 (print "╔══════════════════════════════════════════════════════════════╗")
-(print "║           MATBOARD V0 — SEMANTIC PLAYTEST v2               ║")
+(print "║           MATBOARD V1 — SEMANTIC PLAYTEST v3               ║")
 (print "╚══════════════════════════════════════════════════════════════╝")
 
 ;; ═══════════════════════════════════════════════════════════════════════
@@ -71,7 +72,6 @@
   ALL-PASS))
 
 ;; G09: takedown → americana x2 → mount advance → mnt_sub x3.
-;; Tests sub_threat reset on SCTR→MNT position change.
 (define g09 (play-game "G09 SCTR sub-reset-on-advance"
   init-state init-gmem
   (MOVES "takedown" "sctr_americana" "sctr_americana" "sctr_mount"
@@ -86,7 +86,7 @@
   ALL-PASS))
 
 ;; ═══════════════════════════════════════════════════════════════════════
-;; GROUP 4: MNT — pressure / absorbing state / B tries everything
+;; GROUP 4: MNT — pressure / escape / B fights back
 ;; ═══════════════════════════════════════════════════════════════════════
 
 ;; G11: Reach MNT, pressure hold x10. Points win.
@@ -97,16 +97,17 @@
          "mnt_pressure" "mnt_pressure" "mnt_pressure")
   ALL-PASS))
 
-;; G12: Reach MNT, B tries every fiber MOR. Absorbing-state probe.
-(define g12 (play-game "G12 MNT absorbing-B-tries-all"
+;; G12: Reach MNT, B tries escapes. Absorbing-state F2 retest.
+;; B: bridge, elbow_knee, bridge, elbow_knee... A alternates sub/pressure.
+(define g12 (play-game "G12 MNT B-escapes-vs-A-control"
   init-state init-gmem
-  (MOVES "pull_guard" "hip_bump" "PASS" "PASS" "PASS" "PASS"
-         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
-  (MOVES "PASS" "PASS" "takedown" "pull_guard" "hip_bump" "triangle"
-         "ogrd_sweep" "hgrd_sweep" "trtl_standup" "sctr_mount" "bctr_rnc" "mnt_sub")))
+  (MOVES "pull_guard" "hip_bump" "mnt_sub" "mnt_pressure" "mnt_sub" "mnt_pressure"
+         "mnt_sub" "mnt_pressure" "mnt_sub" "mnt_pressure" "mnt_sub" "mnt_pressure")
+  (MOVES "PASS" "PASS" "mnt_bridge" "mnt_elbow_knee" "mnt_bridge" "mnt_elbow_knee"
+         "mnt_bridge" "mnt_elbow_knee" "mnt_bridge" "mnt_elbow_knee" "mnt_bridge" "mnt_elbow_knee")))
 
 ;; ═══════════════════════════════════════════════════════════════════════
-;; GROUP 5: BCTR — synthetic start, maintain / rnc
+;; GROUP 5: BCTR — synthetic start, maintain / rnc / escape
 ;; ═══════════════════════════════════════════════════════════════════════
 
 ;; Synthetic BCTR: both legs on torso, facing=ALIGNED
@@ -149,6 +150,46 @@
   (MOVES "trtl_sit" "ogrd_sweep" "sctr_mount" "mnt_sub" "mnt_sub"
          "mnt_sub" "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
   ALL-PASS))
+
+;; ═══════════════════════════════════════════════════════════════════════
+;; GROUP 7: ESCAPE MOR GAMES
+;; ═══════════════════════════════════════════════════════════════════════
+
+;; G17: MNT bridge escape. A reaches mount, B bridges to CGRD, A re-sweeps.
+;; Shows mount is no longer absorbing — B can fight back.
+(define g17 (play-game "G17 MNT bridge-escape-cycle"
+  init-state init-gmem
+  (MOVES "pull_guard" "hip_bump" "mnt_sub" "hip_bump" "mnt_sub" "mnt_sub"
+         "mnt_sub" "PASS" "PASS" "PASS" "PASS" "PASS")
+  (MOVES "PASS" "PASS" "mnt_bridge" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")))
+
+;; G18: SCTR shrimp escape. A takes down, B shrimps to HGRD, then recovers.
+(define g18 (play-game "G18 SCTR shrimp-escape"
+  init-state init-gmem
+  (MOVES "takedown" "sctr_americana" "PASS" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  (MOVES "PASS" "sctr_shrimp" "PASS" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")))
+
+;; G19: BCTR turn-in escape. B escapes back control to TRTL, stands up, then A takes down.
+(define g19 (play-game "G19 BCTR turn-in-escape"
+  st-bctr init-gmem
+  (MOVES "bctr_rnc" "PASS" "takedown" "sctr_americana" "sctr_americana" "sctr_americana"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  (MOVES "bctr_turn_in" "trtl_standup" "PASS" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")))
+
+;; G20: Failed escape chain. A controls with pressure, B's elbow-knee fails repeatedly.
+;; Demonstrates that escapes fail against active control.
+(define g20 (play-game "G20 MNT failed-escape-chain"
+  init-state init-gmem
+  (MOVES "pull_guard" "hip_bump" "mnt_pressure" "mnt_pressure" "mnt_pressure"
+         "mnt_pressure" "mnt_pressure" "mnt_pressure" "mnt_pressure"
+         "mnt_pressure" "mnt_pressure" "mnt_pressure")
+  (MOVES "PASS" "PASS" "mnt_elbow_knee" "mnt_elbow_knee" "mnt_elbow_knee"
+         "mnt_elbow_knee" "mnt_elbow_knee" "mnt_elbow_knee" "mnt_elbow_knee"
+         "mnt_elbow_knee" "mnt_elbow_knee" "mnt_elbow_knee")))
 
 (print "")
 (print "╔══════════════════════════════════════════════════════════════╗")

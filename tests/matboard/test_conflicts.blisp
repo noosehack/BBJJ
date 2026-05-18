@@ -1,0 +1,69 @@
+;;; test_conflicts.blisp — simultaneous transition conflict resolution
+
+(define pass-count 0)
+(define fail-count 0)
+(define assert-eq (lambda (label actual expected)
+  (if (same actual expected)
+    (progn (define pass-count (+ pass-count 1))
+           (print (str-cat "  PASS: " label)))
+    (progn (define fail-count (+ fail-count 1))
+           (print (str-cat "  FAIL: " label " got=" actual " want=" expected))))))
+
+(print "=== CONFLICT RESOLUTION ===")
+
+;; ── helpers ─────────────────────────────────────────────────────────
+(assert-eq "takedown is state-changing" (mor-changes-state MOR-TAKEDOWN) true)
+(assert-eq "pull_guard is state-changing" (mor-changes-state MOR-PULL-GUARD) true)
+(assert-eq "mnt_sub is not state-changing" (mor-changes-state MOR-MNT-SUB) false)
+(assert-eq "mnt_pressure is not state-changing" (mor-changes-state MOR-MNT-PRESSURE) false)
+(assert-eq "mnt_bridge is state-changing" (mor-changes-state MOR-MNT-BRIDGE) true)
+(assert-eq "mnt_elbow_knee is state-changing" (mor-changes-state MOR-MNT-ELBOW-KNEE) true)
+(assert-eq "sctr_americana is not state-changing" (mor-changes-state MOR-SCTR-AMERICANA) false)
+
+;; ── G03 fix: takedown vs pull_guard ─────────────────────────────────
+;; pull_guard burst=3 cost=1 pri=3+init; takedown burst=2 cost=2 pri=1+init
+;; Both state-changing → conflict. pull_guard wins (higher burst).
+(define r1 (resolve init-state init-gmem "takedown" "pull_guard"))
+(assert-eq "td vs pg: NOT MNT" (if (same (GET r1 :pos) "MNT") false true) true)
+(assert-eq "td vs pg: is CGRD" (GET r1 :pos) "CGRD")
+
+;; val should be 2 (CGRD), not 4.5 (Frankenstein)
+(define fpt1 (make-turn-fpt init-state init-gmem "takedown" "pull_guard"))
+(assert-eq "td vs pg: val=2" (GET fpt1 :val_a_after) 2.0)
+
+;; ── reverse order: pull_guard(A) vs takedown(B) ────────────────────
+;; pull_guard as A: burst=3 pri=3+1=4. takedown as B: burst=2 pri=1+0=1.
+;; pull_guard wins → CGRD.
+(define r2 (resolve init-state init-gmem "pull_guard" "takedown"))
+(assert-eq "pg(A) vs td(B): CGRD" (GET r2 :pos) "CGRD")
+
+;; ── equal priority: tie goes to A ──────────────────────────────────
+;; Two state-changing MORs with same burst/cost.
+;; takedown(A) vs takedown(B) — both burst=2, cost=2, A has init.
+;; A_pri = 1+1 = 2, B_pri = 1+0 = 1. A wins.
+(define r3 (resolve init-state init-gmem "takedown" "takedown"))
+(assert-eq "td vs td: A wins → SCTR" (GET r3 :pos) "SCTR")
+
+;; ── no conflict: MAINTAIN vs state-changing ─────────────────────────
+;; mnt_sub (MAINTAIN) vs mnt_bridge (SET_ORI). Not a conflict.
+(define st-mnt (state-set-ori
+  (state-add-con (state-add-con init-state CON-ME-LE+-OP-TO) CON-ME-LE--OP-TO)
+  "level" "ME_OVER"))
+
+(define r4 (resolve st-mnt init-gmem "mnt_sub" "mnt_bridge"))
+(assert-eq "sub vs bridge: no conflict, bridge works" (GET r4 :pos) "CGRD")
+
+;; ── no conflict: MAINTAIN vs DEL (escape) ───────────────────────────
+;; mnt_pressure (MAINTAIN) vs mnt_elbow_knee (DEL). Not a conflict.
+;; Per-op contest handles this — pressure blocks escape.
+(define r5 (resolve st-mnt init-gmem "mnt_pressure" "mnt_elbow_knee"))
+(assert-eq "pressure vs ek: no conflict, per-op contest" (GET r5 :pos) "MNT")
+
+;; ── conflict: both escapes from same position ───────────────────────
+;; mnt_bridge(A) vs mnt_elbow_knee(B). Both state-changing → conflict.
+;; bridge burst=2, cost=3 → pri = 2-3+1+1 = 1. ek burst=3, cost=2 → pri = 3-2+1+0 = 2.
+;; B wins → only elbow_knee applies → OGRD (if DEL uncontested, which it is since A is nil).
+(define r6 (resolve st-mnt init-gmem "mnt_bridge" "mnt_elbow_knee"))
+(assert-eq "bridge vs ek: ek wins → OGRD" (GET r6 :pos) "OGRD")
+
+(print (str-cat "=== CONFLICTS: " pass-count " passed, " fail-count " failed ==="))

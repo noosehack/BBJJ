@@ -1,0 +1,110 @@
+;;; test_escapes.blisp — B-fiber escape MOR tests
+;;; 4 escape MORs: mnt_bridge, mnt_elbow_knee, sctr_shrimp, bctr_turn_in
+
+(define pass-count 0)
+(define fail-count 0)
+(define assert-eq (lambda (label actual expected)
+  (if (same actual expected)
+    (progn (define pass-count (+ pass-count 1))
+           (print (str-cat "  PASS: " label)))
+    (progn (define fail-count (+ fail-count 1))
+           (print (str-cat "  FAIL: " label " got=" actual " want=" expected))))))
+
+(print "=== ESCAPE MOR TESTS ===")
+
+;; ── Setup states ────────────────────────────────────────────────────
+;; MNT: 2 legs on torso, OPPOSED, ME_OVER
+(define st-mnt (state-set-ori
+  (state-add-con (state-add-con init-state CON-ME-LE+-OP-TO) CON-ME-LE--OP-TO)
+  "level" "ME_OVER"))
+
+;; SCTR: arm on torso, ME_OVER
+(define st-sctr (state-set-ori
+  (state-add-con init-state CON-ME-AR+-OP-TO)
+  "level" "ME_OVER"))
+
+;; BCTR: 2 legs on torso, ALIGNED
+(define st-bctr (state-set-ori
+  (state-add-con (state-add-con init-state CON-ME-LE+-OP-TO) CON-ME-LE--OP-TO)
+  "facing" "ALIGNED"))
+
+(assert-eq "setup: MNT" (classify st-mnt) "MNT")
+(assert-eq "setup: SCTR" (classify st-sctr) "SCTR")
+(assert-eq "setup: BCTR" (classify st-bctr) "BCTR")
+
+;; ── 1. Mounted player has legal options ─────────────────────────────
+
+;; B plays mnt_bridge vs A PASS → MNT → CGRD
+(define r1 (resolve st-mnt init-gmem "PASS" "mnt_bridge"))
+(assert-eq "mnt_bridge: MNT→CGRD" (GET r1 :pos) "CGRD")
+
+;; B plays mnt_elbow_knee vs A PASS → MNT → OGRD (uncontested DEL)
+(define r2 (resolve st-mnt init-gmem "PASS" "mnt_elbow_knee"))
+(assert-eq "mnt_elbow_knee vs PASS: MNT→OGRD" (GET r2 :pos) "OGRD")
+
+;; ── 2. Side-control bottom has legal options ────────────────────────
+
+;; B plays sctr_shrimp vs A PASS → SCTR → HGRD
+(define r3 (resolve st-sctr init-gmem "PASS" "sctr_shrimp"))
+(assert-eq "sctr_shrimp vs PASS: SCTR→HGRD" (GET r3 :pos) "HGRD")
+
+;; ── 3. Back-control bottom has legal options ────────────────────────
+
+;; B plays bctr_turn_in vs A PASS → BCTR → TRTL
+(define r4 (resolve st-bctr init-gmem "PASS" "bctr_turn_in"))
+(assert-eq "bctr_turn_in vs PASS: BCTR→TRTL" (GET r4 :pos) "TRTL")
+
+;; ── 4. Escape failure preserves bad position ────────────────────────
+
+;; mnt_elbow_knee vs mnt_pressure: DEL contested, A's burst=3+init beats B's burst=3
+;; A has initiative (default), so A_pri = 3-1+1+1 = 4, B_pri = 3-2+1+0 = 2
+(define r5 (resolve st-mnt init-gmem "mnt_pressure" "mnt_elbow_knee"))
+(assert-eq "mnt_ek vs pressure: stays MNT" (GET r5 :pos) "MNT")
+(assert-eq "mnt_ek vs pressure: legs survive" (state-has-con (GET r5 :state) CON-ME-LE+-OP-TO) true)
+
+;; sctr_shrimp vs sctr_americana: DEL contested
+;; americana burst=1, cost=2 → A_pri = 1-2+1+1 = 1; shrimp burst=3, cost=2 → B_pri = 3-2+1+0 = 2
+;; B_pri(2) > A_pri(1) → escape succeeds even vs americana!
+(define r6 (resolve st-sctr init-gmem "sctr_americana" "sctr_shrimp"))
+(assert-eq "sctr_shrimp vs americana: escapes to HGRD" (GET r6 :pos) "HGRD")
+
+;; bctr_turn_in vs bctr_control: DEL contested
+;; control burst=3, cost=1 → A_pri = 3-1+1+1 = 4; turn_in burst=4, cost=2 → B_pri = 4-2+1+0 = 3
+;; B_pri(3) < A_pri(4) → escape fails
+(define r7 (resolve st-bctr init-gmem "bctr_control" "bctr_turn_in"))
+(assert-eq "bctr_ti vs control: stays BCTR" (GET r7 :pos) "BCTR")
+(assert-eq "bctr_ti vs control: legs survive" (state-has-con (GET r7 :state) CON-ME-LE+-OP-TO) true)
+
+;; ── 5. Successful escape changes RAD and VAL plausibly ──────────────
+
+;; Bridge: MNT(val≈3.5) → CGRD(val≈2)
+(define val-mnt (val st-mnt "MNT"))
+(define val-cgrd (val (GET r1 :state) "CGRD"))
+(assert-eq "bridge: val drops" (if (> val-mnt val-cgrd) true false) true)
+
+;; Shrimp vs PASS: SCTR(val≈2.5) → HGRD(val≈0.5)
+(define val-sctr (val st-sctr "SCTR"))
+(define val-hgrd (val (GET r3 :state) "HGRD"))
+(assert-eq "shrimp: val drops" (if (> val-sctr val-hgrd) true false) true)
+
+;; Turn-in vs PASS: BCTR(val≈4.5) → TRTL(val≈-1)
+(define val-bctr (val st-bctr "BCTR"))
+(define val-trtl (val (GET r4 :state) "TRTL"))
+(assert-eq "turn-in: val drops" (if (> val-bctr val-trtl) true false) true)
+
+;; ── 6. Escape vs submission: B can escape when A goes for sub ───────
+
+;; mnt_elbow_knee vs mnt_sub: sub burst=1, cost=2 → A_pri=1-2+1+1=1; ek B_pri=2
+(define r8 (resolve st-mnt init-gmem "mnt_sub" "mnt_elbow_knee"))
+(assert-eq "mnt_ek vs sub: escapes" (GET r8 :pos) "OGRD")
+
+;; bctr_turn_in vs bctr_rnc: rnc burst=1, cost=2 → A_pri=1-2+1+1=1; ti B_pri=3
+(define r9 (resolve st-bctr init-gmem "bctr_rnc" "bctr_turn_in"))
+(assert-eq "bctr_ti vs rnc: escapes to TRTL" (GET r9 :pos) "TRTL")
+
+;; ── 7. Bridge is non-contestable (works even vs pressure) ───────────
+
+(define r10 (resolve st-mnt init-gmem "mnt_pressure" "mnt_bridge"))
+(assert-eq "bridge vs pressure: still escapes" (GET r10 :pos) "CGRD")
+
+(print (str-cat "=== ESCAPES: " pass-count " passed, " fail-count " failed ==="))

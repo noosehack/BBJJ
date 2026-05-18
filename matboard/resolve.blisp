@@ -47,6 +47,20 @@
      (+ (if (< (v-pos pos) 0) 1 0)
         (* -1 (+ (GET mor :cost) -1))))))
 
+;; ── state-changing detection ─────────────────────────────────────────
+(define op-changes-state (lambda (op)
+  (if (same op nil) false
+  (if (same (GET op :type) "MAINTAIN") false
+  true))))
+
+(define mor-changes-state (lambda (mor)
+  (if (same mor nil) false
+  (if (op-changes-state (GET mor :op0)) true
+  (if (op-changes-state (GET mor :op1)) true
+  (if (op-changes-state (GET mor :op2)) true
+  (if (op-changes-state (GET mor :op3)) true
+  false)))))))
+
 ;; ── contest: is a DEL contested? ─────────────────────────────────────
 ;; A DEL by player A on CON X is contested if player B's MOR has MAINTAIN(X)
 (define del-contested (lambda (del-op opponent-mor)
@@ -96,6 +110,11 @@
     ;; priority
     (define pri-a (if (same mor-a nil) 0 (calc-priority mor-a gmem pos "A")))
     (define pri-b (if (same mor-b nil) 0 (calc-priority mor-b gmem pos "B")))
+
+    ;; conflict: if both MORs change state, higher priority wins, loser becomes PASS
+    (define both-change (if (mor-changes-state mor-a) (mor-changes-state mor-b) false))
+    (define mor-a (if both-change (if (> pri-b pri-a) nil mor-a) mor-a))
+    (define mor-b (if both-change (if (> pri-b pri-a) mor-b nil) mor-b))
 
     ;; apply A's ops, then B's ops
     (define st1 (if (same mor-a nil) st
