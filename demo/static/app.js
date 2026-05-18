@@ -107,6 +107,7 @@ function renderResults(data) {
   const sourceMap = {
     'learned_geometry': 'Geometry Classifier (203 features)',
     'geo_ordered_cr_cw': 'Geometry + Ordered CR Classifier (635 features)',
+    'invariant_geo_cr': 'Invariant Classifier (424 features, no body-frame projections)',
   };
   const source = sourceMap[data.classifier_source] || data.classifier_source;
   document.getElementById('verdictSource').textContent = source;

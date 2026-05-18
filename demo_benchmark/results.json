@@ -1,0 +1,1050 @@
+[
+  {
+    "image_id": "1505676",
+    "true_label": "BCTR",
+    "predicted": "HGRD",
+    "confidence": 0.9962,
+    "correct": false,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1404539",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 0.9995,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1408734",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1404631",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 0.9999,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1404126",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 0.9987,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1405083",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1502540",
+    "true_label": "BCTR",
+    "predicted": "CGRD",
+    "confidence": 0.8244,
+    "correct": false,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0205218",
+    "true_label": "CGRD",
+    "predicted": "CGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0105429",
+    "true_label": "CGRD",
+    "predicted": "CGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0007383",
+    "true_label": "CGRD",
+    "predicted": "CGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0106877",
+    "true_label": "CGRD",
+    "predicted": "CGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0205720",
+    "true_label": "CGRD",
+    "predicted": "CGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0500581",
+    "true_label": "HGRD",
+    "predicted": "HGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0402415",
+    "true_label": "HGRD",
+    "predicted": "HGRD",
+    "confidence": 0.998,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0400475",
+    "true_label": "HGRD",
+    "predicted": "HGRD",
+    "confidence": 0.9945,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0608274",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0604600",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0707621",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 0.9992,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0604575",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0807107",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0605122",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0003717",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0004162",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0101328",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1203028",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0203468",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0002334",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0102337",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0201810",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0101932",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0602802",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 0.9959,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0600578",
+    "true_label": "SCTR",
+    "predicted": "HGRD",
+    "confidence": 1.0,
+    "correct": false,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0800653",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0603472",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 0.9999,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0702800",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0600838",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 0.9884,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0600559",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 0.9996,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1306487",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 0.9978,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1101307",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 0.9988,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1202377",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1305395",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1306530",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1202061",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1109895",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1306656",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1107570",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0905543",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 0.9999,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0907505",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0901999",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0902157",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "0908091",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "ground_truth"
+  },
+  {
+    "image_id": "1505676",
+    "true_label": "BCTR",
+    "predicted": "HGRD",
+    "confidence": 0.9993,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1408386",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 0.9994,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1404539",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1408734",
+    "true_label": "BCTR",
+    "predicted": "DETECT_FAIL",
+    "confidence": 0.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1404631",
+    "true_label": "BCTR",
+    "predicted": "TKDN",
+    "confidence": 0.7476,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1404126",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1405083",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1500371",
+    "true_label": "BCTR",
+    "predicted": "BCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1404849",
+    "true_label": "BCTR",
+    "predicted": "DETECT_FAIL",
+    "confidence": 0.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1502540",
+    "true_label": "BCTR",
+    "predicted": "TKDN",
+    "confidence": 0.823,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0205218",
+    "true_label": "CGRD",
+    "predicted": "CGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0107946",
+    "true_label": "CGRD",
+    "predicted": "CGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0208921",
+    "true_label": "CGRD",
+    "predicted": "OGRD",
+    "confidence": 0.9757,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0105429",
+    "true_label": "CGRD",
+    "predicted": "CGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0006291",
+    "true_label": "CGRD",
+    "predicted": "HGRD",
+    "confidence": 0.9821,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0206310",
+    "true_label": "CGRD",
+    "predicted": "HGRD",
+    "confidence": 0.998,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0007383",
+    "true_label": "CGRD",
+    "predicted": "DETECT_FAIL",
+    "confidence": 0.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0106877",
+    "true_label": "CGRD",
+    "predicted": "CGRD",
+    "confidence": 0.9447,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0207479",
+    "true_label": "CGRD",
+    "predicted": "HGRD",
+    "confidence": 0.7508,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0205720",
+    "true_label": "CGRD",
+    "predicted": "OGRD",
+    "confidence": 0.9628,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0500581",
+    "true_label": "HGRD",
+    "predicted": "HGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0400298",
+    "true_label": "HGRD",
+    "predicted": "HGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0500765",
+    "true_label": "HGRD",
+    "predicted": "HGRD",
+    "confidence": 0.9468,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0303779",
+    "true_label": "HGRD",
+    "predicted": "SCTR",
+    "confidence": 0.9948,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0300702",
+    "true_label": "HGRD",
+    "predicted": "HGRD",
+    "confidence": 0.9762,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0402415",
+    "true_label": "HGRD",
+    "predicted": "DETECT_FAIL",
+    "confidence": 0.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0303871",
+    "true_label": "HGRD",
+    "predicted": "HGRD",
+    "confidence": 0.9991,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0400879",
+    "true_label": "HGRD",
+    "predicted": "HGRD",
+    "confidence": 0.999,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0400475",
+    "true_label": "HGRD",
+    "predicted": "SCTR",
+    "confidence": 0.9995,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0503282",
+    "true_label": "HGRD",
+    "predicted": "MNT",
+    "confidence": 0.9994,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0706860",
+    "true_label": "MNT",
+    "predicted": "HGRD",
+    "confidence": 1.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1203761",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 0.9981,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0607701",
+    "true_label": "MNT",
+    "predicted": "STND",
+    "confidence": 0.9845,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0608274",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 0.9998,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0707968",
+    "true_label": "MNT",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0604600",
+    "true_label": "MNT",
+    "predicted": "HGRD",
+    "confidence": 1.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0707621",
+    "true_label": "MNT",
+    "predicted": "SCTR",
+    "confidence": 1.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0604575",
+    "true_label": "MNT",
+    "predicted": "HGRD",
+    "confidence": 0.9981,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0807107",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 0.9999,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0605122",
+    "true_label": "MNT",
+    "predicted": "MNT",
+    "confidence": 0.9933,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0003717",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0203901",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0004162",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0101328",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1203028",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0203468",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0002334",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0102337",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0201810",
+    "true_label": "OGRD",
+    "predicted": "OGRD",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0101932",
+    "true_label": "OGRD",
+    "predicted": "SCTR",
+    "confidence": 1.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0602802",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 0.9987,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0803942",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0600578",
+    "true_label": "SCTR",
+    "predicted": "HGRD",
+    "confidence": 0.9907,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0800653",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0603472",
+    "true_label": "SCTR",
+    "predicted": "HGRD",
+    "confidence": 0.9999,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0702800",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0600838",
+    "true_label": "SCTR",
+    "predicted": "CGRD",
+    "confidence": 0.961,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0802569",
+    "true_label": "SCTR",
+    "predicted": "SCTR",
+    "confidence": 0.997,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1304223",
+    "true_label": "SCTR",
+    "predicted": "HGRD",
+    "confidence": 1.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0600559",
+    "true_label": "SCTR",
+    "predicted": "HGRD",
+    "confidence": 1.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1306487",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1101307",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1202377",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1305395",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1106273",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1306530",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1202061",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1109895",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1306656",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1107570",
+    "true_label": "STND",
+    "predicted": "STND",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0901073",
+    "true_label": "TRTL",
+    "predicted": "HGRD",
+    "confidence": 1.0,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0901425",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 0.9979,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "1005885",
+    "true_label": "TRTL",
+    "predicted": "OGRD",
+    "confidence": 0.9968,
+    "correct": false,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0905543",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 0.9573,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0907505",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0901999",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 0.9845,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0902157",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 1.0,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0907898",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 0.9998,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0908091",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 0.992,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  },
+  {
+    "image_id": "0906323",
+    "true_label": "TRTL",
+    "predicted": "TRTL",
+    "confidence": 0.9068,
+    "correct": true,
+    "mode": "yolo_pipeline"
+  }
+]

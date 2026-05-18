@@ -1,0 +1,86 @@
+{
+  "stock-11m": {
+    "label": "stock-11m",
+    "runtime": 36.898683309555054,
+    "n": 90,
+    "ftypes": {
+      "missed_athlete": 12,
+      "bad_kps": 36,
+      "ok": 23,
+      "merged_nms": 5,
+      "dup_ghost": 14
+    },
+    "det2_rate": 0.8111111111111111,
+    "pair_rate": 0.6555555555555556,
+    "ok_kp_rate": 0.25555555555555554,
+    "mean_pck": 0.3793619142572282,
+    "radical_acc": 0.05555555555555555,
+    "radical_acc_detected": 0.0684931506849315
+  },
+  "ft-v2 nms=0.5": {
+    "label": "ft-v2 nms=0.5",
+    "runtime": 26.89615559577942,
+    "n": 90,
+    "ftypes": {
+      "missed_athlete": 11,
+      "bad_kps": 11,
+      "ok": 38,
+      "merged_nms": 30
+    },
+    "det2_rate": 0.5444444444444444,
+    "pair_rate": 0.5444444444444444,
+    "ok_kp_rate": 0.4222222222222222,
+    "mean_pck": 0.7154861944777912,
+    "radical_acc": 0.36666666666666664,
+    "radical_acc_detected": 0.673469387755102
+  },
+  "ft-v2 nms=0.7": {
+    "label": "ft-v2 nms=0.7",
+    "runtime": 28.651024103164673,
+    "n": 90,
+    "ftypes": {
+      "missed_athlete": 11,
+      "bad_kps": 15,
+      "ok": 63,
+      "merged_nms": 1
+    },
+    "det2_rate": 0.8666666666666667,
+    "pair_rate": 0.8666666666666667,
+    "ok_kp_rate": 0.7,
+    "mean_pck": 0.7269984917043743,
+    "radical_acc": 0.6,
+    "radical_acc_detected": 0.6923076923076923
+  },
+  "ft-v2 nms=0.8": {
+    "label": "ft-v2 nms=0.8",
+    "runtime": 29.12812566757202,
+    "n": 90,
+    "ftypes": {
+      "missed_athlete": 11,
+      "bad_kps": 15,
+      "ok": 64
+    },
+    "det2_rate": 0.8777777777777778,
+    "pair_rate": 0.8777777777777778,
+    "ok_kp_rate": 0.7111111111111111,
+    "mean_pck": 0.7282204020848847,
+    "radical_acc": 0.6111111111111112,
+    "radical_acc_detected": 0.6962025316455697
+  },
+  "ft-v2 nms=0.9": {
+    "label": "ft-v2 nms=0.9",
+    "runtime": 27.665701627731323,
+    "n": 90,
+    "ftypes": {
+      "missed_athlete": 11,
+      "bad_kps": 15,
+      "ok": 64
+    },
+    "det2_rate": 0.8777777777777778,
+    "pair_rate": 0.8777777777777778,
+    "ok_kp_rate": 0.7111111111111111,
+    "mean_pck": 0.7282204020848847,
+    "radical_acc": 0.6111111111111112,
+    "radical_acc_detected": 0.6962025316455697
+  }
+}

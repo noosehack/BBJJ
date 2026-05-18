@@ -198,11 +198,37 @@ def _select_closest_pair(viable):
     return best_pair
 
 
+def _select_most_distinct_pair(viable):
+    """Pick the pair maximizing min(area_a, area_b) * (1 - IoU).
+
+    In grappling, YOLO often produces multiple overlapping detections of
+    the same entangled athlete.  'Closest pair' picks two ghosts of the
+    same person; this metric instead favors two substantial, spatially
+    distinct detections — the actual athletes."""
+    import itertools
+    best_pair = None
+    best_score = -1.0
+    for (i, a), (j, b) in itertools.combinations(viable, 2):
+        bbox_a = _kp_bbox(a)
+        bbox_b = _kp_bbox(b)
+        if bbox_a is None or bbox_b is None:
+            continue
+        overlap = _iou(bbox_a, bbox_b)
+        area_a = _bbox_area(a)
+        area_b = _bbox_area(b)
+        score = min(area_a, area_b) * (1.0 - overlap)
+        if score > best_score:
+            best_score = score
+            best_pair = (a, b)
+    return best_pair
+
+
 def select_athletes(
     detections: list[list[list[float]]],
     strategy: str = "largest_pair",
+    nms_iou: float = 0.5,
 ) -> tuple[list[list[float]], list[list[float]]]:
-    detections = _nms_keypoints(detections)
+    detections = _nms_keypoints(detections, iou_thresh=nms_iou)
     viable = [(i, d) for i, d in enumerate(detections) if _mean_conf(d) > 0.15]
 
     if len(viable) < 2:
@@ -212,14 +238,14 @@ def select_athletes(
     if len(viable) == 2:
         return viable[0][1], viable[1][1]
 
-    # >2 detections: closest pair avoids picking ghost detections
-    if strategy == "closest_pair" or len(viable) > 2:
-        if len(viable) > 2:
-            print(
-                f"Warning: {len(viable)} people detected, selecting closest pair.",
-                file=sys.stderr,
-            )
-        return _select_closest_pair(viable)
+    if len(viable) > 2:
+        print(
+            f"Warning: {len(viable)} people detected, selecting most distinct pair.",
+            file=sys.stderr,
+        )
+        pair = _select_most_distinct_pair(viable)
+        if pair:
+            return pair
 
     viable.sort(key=lambda t: -_bbox_area(t[1]))
     return viable[0][1], viable[1][1]
@@ -385,16 +411,28 @@ def visualize(result: InferenceResult, image_path: str, output_dir: str) -> str:
     def draw_pose(draw, pose, color, joint_r=5):
         kps = pose.keypoints
         for i, j in COCO_SKELETON:
-            if kps[i].confidence > 0.3 and kps[j].confidence > 0.3:
+            ci, cj = kps[i].confidence, kps[j].confidence
+            if ci > 0.3 and cj > 0.3:
                 draw.line(
                     [(kps[i].x, kps[i].y), (kps[j].x, kps[j].y)],
                     fill=color, width=3,
+                )
+            elif ci > 0.15 and cj > 0.15:
+                faint = tuple(c // 2 for c in color)
+                draw.line(
+                    [(kps[i].x, kps[i].y), (kps[j].x, kps[j].y)],
+                    fill=faint, width=2,
                 )
         for kp in kps:
             if kp.confidence > 0.3:
                 draw.ellipse(
                     [kp.x - joint_r, kp.y - joint_r, kp.x + joint_r, kp.y + joint_r],
                     fill=color,
+                )
+            elif kp.confidence > 0.15:
+                draw.ellipse(
+                    [kp.x - joint_r, kp.y - joint_r, kp.x + joint_r, kp.y + joint_r],
+                    fill=tuple(c // 2 for c in color),
                 )
 
     img = Image.open(image_path)

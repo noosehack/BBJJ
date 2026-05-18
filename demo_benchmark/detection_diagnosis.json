@@ -1,0 +1,1436 @@
+[
+  {
+    "image": "0207728",
+    "fine": "CGRD",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0205735",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.058823529411764705,
+      0.6470588235294118
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "OGRD",
+    "correct": false
+  },
+  {
+    "image": "0005739",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.7647058823529411,
+      0.4117647058823529
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "BCTR",
+    "correct": false
+  },
+  {
+    "image": "0007775",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.6470588235294118,
+      0.47058823529411764
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0208614",
+    "fine": "CGRD",
+    "n_raw": 6,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.058823529411764705,
+      0.23529411764705882
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "HGRD",
+    "correct": false
+  },
+  {
+    "image": "0005916",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.7058823529411765,
+      0.4117647058823529
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0007389",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.4117647058823529,
+      0.35294117647058826
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "OGRD",
+    "correct": false
+  },
+  {
+    "image": "0007577",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.4117647058823529,
+      0.11764705882352941
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "CGRD",
+    "correct": true
+  },
+  {
+    "image": "0006366",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.4117647058823529,
+      0.0
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "HGRD",
+    "correct": false
+  },
+  {
+    "image": "0108036",
+    "fine": "CGRD",
+    "n_raw": 3,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "merged_after_nms",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0004968",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.5294117647058824,
+      0.7058823529411765
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "STND",
+    "correct": false
+  },
+  {
+    "image": "0206785",
+    "fine": "CGRD",
+    "n_raw": 3,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.17647058823529413,
+      0.47058823529411764
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "SCTR",
+    "correct": false
+  },
+  {
+    "image": "0007128",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.47058823529411764,
+      0.17647058823529413
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "MNT",
+    "correct": false
+  },
+  {
+    "image": "0005177",
+    "fine": "CGRD",
+    "n_raw": 5,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.47058823529411764,
+      0.0
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "BCTR",
+    "correct": false
+  },
+  {
+    "image": "0107816",
+    "fine": "CGRD",
+    "n_raw": 3,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.5882352941176471,
+      0.47058823529411764
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0006008",
+    "fine": "CGRD",
+    "n_raw": 3,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.7058823529411765,
+      0.29411764705882354
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "BCTR",
+    "correct": false
+  },
+  {
+    "image": "0206963",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.6470588235294118,
+      0.5882352941176471
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "OGRD",
+    "correct": false
+  },
+  {
+    "image": "0005788",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.4117647058823529,
+      0.5294117647058824
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0205754",
+    "fine": "CGRD",
+    "n_raw": 4,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "HGRD",
+    "correct": false
+  },
+  {
+    "image": "0007779",
+    "fine": "CGRD",
+    "n_raw": 3,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.8235294117647058,
+      0.47058823529411764
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0106998",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.5882352941176471,
+      0.11764705882352941
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "OGRD",
+    "correct": false
+  },
+  {
+    "image": "0207198",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.6470588235294118,
+      0.7058823529411765
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "MNT",
+    "correct": false
+  },
+  {
+    "image": "0005019",
+    "fine": "CGRD",
+    "n_raw": 5,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.5882352941176471,
+      0.4117647058823529
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TRTL",
+    "correct": false
+  },
+  {
+    "image": "0007647",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.0,
+      0.4117647058823529
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "5050",
+    "correct": false
+  },
+  {
+    "image": "0105473",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.47058823529411764,
+      0.0
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TRTL",
+    "correct": false
+  },
+  {
+    "image": "0105465",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.11764705882352941,
+      0.23529411764705882
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "OGRD",
+    "correct": false
+  },
+  {
+    "image": "0005407",
+    "fine": "CGRD",
+    "n_raw": 3,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.4117647058823529,
+      0.29411764705882354
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "OGRD",
+    "correct": false
+  },
+  {
+    "image": "0005379",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.35294117647058826,
+      0.47058823529411764
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "HGRD",
+    "correct": false
+  },
+  {
+    "image": "0206192",
+    "fine": "CGRD",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.17647058823529413,
+      0.5294117647058824
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0104992",
+    "fine": "CGRD",
+    "n_raw": 4,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.4117647058823529,
+      0.5294117647058824
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "HGRD",
+    "correct": false
+  },
+  {
+    "image": "0606897",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.5294117647058824,
+      0.23529411764705882
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "MNT",
+    "correct": true
+  },
+  {
+    "image": "0704514",
+    "fine": "MNT",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0804432",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.23529411764705882,
+      0.0
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "SCTR",
+    "correct": false
+  },
+  {
+    "image": "0604982",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.0,
+      0.29411764705882354
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0806966",
+    "fine": "MNT",
+    "n_raw": 3,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.5294117647058824,
+      0.0
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "BCTR",
+    "correct": false
+  },
+  {
+    "image": "0807760",
+    "fine": "MNT",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0605462",
+    "fine": "MNT",
+    "n_raw": 7,
+    "n_nms": 5,
+    "n_viable": 5,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.4117647058823529,
+      0.7058823529411765
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0808300",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0605091",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0807715",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.35294117647058826,
+      0.11764705882352941
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0704805",
+    "fine": "MNT",
+    "n_raw": 3,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0705157",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.47058823529411764,
+      0.5294117647058824
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "HGRD",
+    "correct": false
+  },
+  {
+    "image": "0704941",
+    "fine": "MNT",
+    "n_raw": 3,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.35294117647058826,
+      0.11764705882352941
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0806728",
+    "fine": "MNT",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0606072",
+    "fine": "MNT",
+    "n_raw": 5,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.47058823529411764,
+      0.5294117647058824
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "HGRD",
+    "correct": false
+  },
+  {
+    "image": "0808449",
+    "fine": "MNT",
+    "n_raw": 5,
+    "n_nms": 4,
+    "n_viable": 4,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0705676",
+    "fine": "MNT",
+    "n_raw": 4,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.29411764705882354,
+      0.4117647058823529
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "BCTR",
+    "correct": false
+  },
+  {
+    "image": "0605507",
+    "fine": "MNT",
+    "n_raw": 3,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0604483",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "merged_after_nms",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0807604",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.5882352941176471,
+      0.47058823529411764
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "SCTR",
+    "correct": false
+  },
+  {
+    "image": "0608109",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.5882352941176471,
+      0.0
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0605173",
+    "fine": "MNT",
+    "n_raw": 4,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.47058823529411764,
+      0.4117647058823529
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "BCTR",
+    "correct": false
+  },
+  {
+    "image": "0605034",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0704557",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0804219",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.7647058823529411,
+      0.35294117647058826
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "MNT",
+    "correct": true
+  },
+  {
+    "image": "0807772",
+    "fine": "MNT",
+    "n_raw": 4,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.5294117647058824,
+      0.29411764705882354
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "SCTR",
+    "correct": false
+  },
+  {
+    "image": "0807210",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "merged_after_nms",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0704830",
+    "fine": "MNT",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0705362",
+    "fine": "MNT",
+    "n_raw": 3,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "BCTR",
+    "correct": false
+  },
+  {
+    "image": "0808441",
+    "fine": "MNT",
+    "n_raw": 4,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.47058823529411764,
+      0.5294117647058824
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "SCTR",
+    "correct": false
+  },
+  {
+    "image": "0802858",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.058823529411764705,
+      0.0
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TRTL",
+    "correct": false
+  },
+  {
+    "image": "0702742",
+    "fine": "SCTR",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0600558",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.29411764705882354,
+      0.7058823529411765
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0703815",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.058823529411764705,
+      0.058823529411764705
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "HGRD",
+    "correct": false
+  },
+  {
+    "image": "0602949",
+    "fine": "SCTR",
+    "n_raw": 3,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0803806",
+    "fine": "SCTR",
+    "n_raw": 3,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0800084",
+    "fine": "SCTR",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0602996",
+    "fine": "SCTR",
+    "n_raw": 3,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.5294117647058824,
+      0.11764705882352941
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "1108113",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.6470588235294118,
+      0.4117647058823529
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "BCTR",
+    "correct": false
+  },
+  {
+    "image": "0803092",
+    "fine": "SCTR",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0603476",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "merged_after_nms",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0807449",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "merged_after_nms",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0702725",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.7058823529411765,
+      0.0
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "TRTL",
+    "correct": false
+  },
+  {
+    "image": "0600982",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.7647058823529411,
+      0.29411764705882354
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "STND",
+    "correct": false
+  },
+  {
+    "image": "0703364",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.058823529411764705,
+      0.7647058823529411
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "TRTL",
+    "correct": false
+  },
+  {
+    "image": "0802870",
+    "fine": "SCTR",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0600949",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "TKDN",
+    "correct": false
+  },
+  {
+    "image": "0603137",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.5294117647058824,
+      0.4117647058823529
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "TRTL",
+    "correct": false
+  },
+  {
+    "image": "0803629",
+    "fine": "SCTR",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0701634",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "duplicate_ghost",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": "BCTR",
+    "correct": false
+  },
+  {
+    "image": "0703394",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.8823529411764706,
+      0.058823529411764705
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "TRTL",
+    "correct": false
+  },
+  {
+    "image": "0602952",
+    "fine": "SCTR",
+    "n_raw": 3,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.29411764705882354,
+      0.47058823529411764
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "STND",
+    "correct": false
+  },
+  {
+    "image": "0800147",
+    "fine": "SCTR",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0602261",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "correct_detection",
+    "pck_scores": [
+      0.5294117647058824,
+      0.35294117647058826
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "OGRD",
+    "correct": false
+  },
+  {
+    "image": "0703097",
+    "fine": "SCTR",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0802639",
+    "fine": "SCTR",
+    "n_raw": 3,
+    "n_nms": 3,
+    "n_viable": 3,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.058823529411764705,
+      0.0
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "HGRD",
+    "correct": false
+  },
+  {
+    "image": "0802744",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.058823529411764705,
+      0.47058823529411764
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "SCTR",
+    "correct": true
+  },
+  {
+    "image": "0801375",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.5294117647058824,
+      0.29411764705882354
+    ],
+    "matched_gt": [
+      1,
+      2
+    ],
+    "predicted": "SCTR",
+    "correct": true
+  },
+  {
+    "image": "0703264",
+    "fine": "SCTR",
+    "n_raw": 1,
+    "n_nms": 1,
+    "n_viable": 1,
+    "failure_type": "missed_athlete",
+    "pck_scores": [],
+    "matched_gt": null,
+    "predicted": null,
+    "correct": false
+  },
+  {
+    "image": "0702296",
+    "fine": "SCTR",
+    "n_raw": 2,
+    "n_nms": 2,
+    "n_viable": 2,
+    "failure_type": "bad_keypoints",
+    "pck_scores": [
+      0.11764705882352941,
+      0.058823529411764705
+    ],
+    "matched_gt": [
+      2,
+      1
+    ],
+    "predicted": "BCTR",
+    "correct": false
+  }
+]

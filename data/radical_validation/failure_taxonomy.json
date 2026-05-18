@@ -1,0 +1,72 @@
+{
+  "total_failures": 23579,
+  "notation_failures": 1081,
+  "perception_failures": 22498,
+  "details": {
+    "OGRD": {
+      "notation:frame:FacingOpposed()": 104,
+      "notation:frame:OnGround(Me.Ba)": 104,
+      "perception:frame:OnGround(Me.Ba)": 70
+    },
+    "CGRD": {
+      "perception:required_con:CON(Me.Fo-->Me.Fo+ h=0)": 3075,
+      "perception:required_con:CON(Me.Le-->Op.To h=+)": 1764,
+      "perception:required_con:CON(Me.Le+->Op.To h=-)": 203,
+      "notation:required_con:CON(Me.Le+->Op.To h=-)": 534,
+      "notation:required_con:CON(Me.Le-->Op.To h=+)": 536,
+      "notation:required_con:CON(Me.Fo-->Me.Fo+ h=0)": 536,
+      "notation:frame:NotOnGround(Op.Ba)": 4
+    },
+    "HGRD": {
+      "perception:required_con:CON(Me.Le->Op.Le h=-)": 453,
+      "ambiguous:required_con:CON(Me.Le->Op.Le h=-)": 174,
+      "ambiguous:frame:FacingOpposed()": 223,
+      "perception:frame:OnGround(Me.Ba)": 7,
+      "ambiguous:frame:OnGround(Me.Ba)": 57,
+      "notation:required_con:CON(Me.Le->Op.Le h=-)": 20,
+      "notation:frame:FacingOpposed()": 20,
+      "notation:frame:OnGround(Me.Ba)": 20
+    },
+    "SCTR": {
+      "perception:required_con:CON(Me.Ar+->Op.To h=-)": 753,
+      "perception:forbidden_con:CON(Me.Le->Op.Le+ h=-)": 1284,
+      "perception:forbidden_con:CON(Me.Le->Op.Le- h=-)": 1323,
+      "perception:frame:OnGround(Op.Ba)": 507,
+      "notation:required_con:CON(Me.Ar+->Op.To h=-)": 89,
+      "notation:forbidden_con:CON(Me.Le->Op.Le+ h=-)": 143,
+      "notation:forbidden_con:CON(Me.Le->Op.Le- h=-)": 135,
+      "notation:frame:OnGround(Op.Ba)": 82
+    },
+    "MNT": {
+      "perception:required_con:CON(Me.Le-->Op.To h=+)": 2810,
+      "perception:frame:FacingOpposed()": 1128,
+      "perception:required_con:CON(Me.Le+->Op.To h=-)": 499,
+      "notation:required_con:CON(Me.Le+->Op.To h=-)": 195,
+      "notation:required_con:CON(Me.Le-->Op.To h=+)": 254,
+      "notation:frame:FacingOpposed()": 249,
+      "perception:frame:OnGround(Op.Ba)": 49,
+      "notation:frame:OnGround(Op.Ba)": 69
+    },
+    "TRTL": {
+      "perception:required_con:CON(Op.To->Me.To h=0)": 8820,
+      "perception:frame:FacingAligned()": 4375
+    },
+    "BCTR": {
+      "perception:required_con:CON(Me.Le-->Op.To h=+)": 1505,
+      "perception:forbidden_con:CON(Me.Fo-->Me.Fo+ h=0)": 444,
+      "perception:required_con:CON(Me.Le+->Op.To h=-)": 341,
+      "perception:frame:NotOnGround(Op.Ba)": 1718,
+      "ambiguous:required_con:CON(Me.Le+->Op.To h=-)": 125,
+      "ambiguous:required_con:CON(Me.Le-->Op.To h=+)": 217,
+      "ambiguous:frame:NotOnGround(Op.Ba)": 233,
+      "ambiguous:frame:FacingAligned()": 153,
+      "ambiguous:forbidden_con:CON(Me.Fo-->Me.Fo+ h=0)": 121,
+      "notation:required_con:CON(Me.Le+->Op.To h=-)": 21,
+      "notation:required_con:CON(Me.Le-->Op.To h=+)": 21,
+      "notation:frame:FacingAligned()": 12,
+      "notation:frame:NotOnGround(Op.Ba)": 20,
+      "perception:frame:FacingAligned()": 429,
+      "notation:forbidden_con:CON(Me.Fo-->Me.Fo+ h=0)": 10
+    }
+  }
+}

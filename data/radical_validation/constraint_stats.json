@@ -1,0 +1,224 @@
+{
+  "MNT": [
+    {
+      "type": "required_con",
+      "desc": "CON(Me.Le+->Op.To h=-)",
+      "n": 6955,
+      "sat_rate": 0.9002,
+      "avg_score": 0.2403,
+      "variance": 0.0254
+    },
+    {
+      "type": "required_con",
+      "desc": "CON(Me.Le-->Op.To h=+)",
+      "n": 6955,
+      "sat_rate": 0.5595,
+      "avg_score": 0.0818,
+      "variance": 0.0096
+    },
+    {
+      "type": "frame",
+      "desc": "FacingOpposed()",
+      "n": 6955,
+      "sat_rate": 0.4597,
+      "avg_score": 0.3722,
+      "variance": 0.1824
+    },
+    {
+      "type": "frame",
+      "desc": "OnGround(Op.Ba)",
+      "n": 6955,
+      "sat_rate": 0.983,
+      "avg_score": 0.7339,
+      "variance": 0.0446
+    }
+  ],
+  "BCTR": [
+    {
+      "type": "required_con",
+      "desc": "CON(Me.Le+->Op.To h=-)",
+      "n": 6500,
+      "sat_rate": 0.9251,
+      "avg_score": 0.2815,
+      "variance": 0.023
+    },
+    {
+      "type": "required_con",
+      "desc": "CON(Me.Le-->Op.To h=+)",
+      "n": 6500,
+      "sat_rate": 0.7318,
+      "avg_score": 0.1307,
+      "variance": 0.0152
+    },
+    {
+      "type": "frame",
+      "desc": "FacingAligned()",
+      "n": 6500,
+      "sat_rate": 0.8066,
+      "avg_score": 0.7138,
+      "variance": 0.135
+    },
+    {
+      "type": "frame",
+      "desc": "NotOnGround(Op.Ba)",
+      "n": 6500,
+      "sat_rate": 0.6968,
+      "avg_score": 0.3408,
+      "variance": 0.0527
+    },
+    {
+      "type": "forbidden_con",
+      "desc": "CON(Me.Fo-->Me.Fo+ h=0)",
+      "n": 6500,
+      "sat_rate": 0.9115,
+      "avg_score": 0.9115,
+      "variance": 0.0806
+    }
+  ],
+  "SCTR": [
+    {
+      "type": "required_con",
+      "desc": "CON(Me.Ar+->Op.To h=-)",
+      "n": 6596,
+      "sat_rate": 0.8723,
+      "avg_score": 0.2166,
+      "variance": 0.0229
+    },
+    {
+      "type": "frame",
+      "desc": "OnGround(Op.Ba)",
+      "n": 6596,
+      "sat_rate": 0.9107,
+      "avg_score": 0.7322,
+      "variance": 0.0942
+    },
+    {
+      "type": "forbidden_con",
+      "desc": "CON(Me.Le->Op.Le+ h=-)",
+      "n": 6596,
+      "sat_rate": 0.7837,
+      "avg_score": 0.7837,
+      "variance": 0.1696
+    },
+    {
+      "type": "forbidden_con",
+      "desc": "CON(Me.Le->Op.Le- h=-)",
+      "n": 6596,
+      "sat_rate": 0.779,
+      "avg_score": 0.779,
+      "variance": 0.1722
+    }
+  ],
+  "CGRD": [
+    {
+      "type": "required_con",
+      "desc": "CON(Me.Le+->Op.To h=-)",
+      "n": 6682,
+      "sat_rate": 0.8897,
+      "avg_score": 0.2102,
+      "variance": 0.0186
+    },
+    {
+      "type": "required_con",
+      "desc": "CON(Me.Le-->Op.To h=+)",
+      "n": 6682,
+      "sat_rate": 0.6558,
+      "avg_score": 0.0965,
+      "variance": 0.0107
+    },
+    {
+      "type": "required_con",
+      "desc": "CON(Me.Fo-->Me.Fo+ h=0)",
+      "n": 6682,
+      "sat_rate": 0.4596,
+      "avg_score": 0.1521,
+      "variance": 0.0423
+    },
+    {
+      "type": "frame",
+      "desc": "NotOnGround(Op.Ba)",
+      "n": 6682,
+      "sat_rate": 0.9994,
+      "avg_score": 0.7974,
+      "variance": 0.035
+    }
+  ],
+  "OGRD": [
+    {
+      "type": "frame",
+      "desc": "FacingOpposed()",
+      "n": 12657,
+      "sat_rate": 0.4642,
+      "avg_score": 0.3796,
+      "variance": 0.1823
+    },
+    {
+      "type": "frame",
+      "desc": "OnGround(Me.Ba)",
+      "n": 12657,
+      "sat_rate": 0.9863,
+      "avg_score": 0.9717,
+      "variance": 0.0188
+    }
+  ],
+  "HGRD": [
+    {
+      "type": "required_con",
+      "desc": "CON(Me.Le->Op.Le h=-)",
+      "n": 4209,
+      "sat_rate": 0.8463,
+      "avg_score": 0.1812,
+      "variance": 0.0159
+    },
+    {
+      "type": "frame",
+      "desc": "FacingOpposed()",
+      "n": 4209,
+      "sat_rate": 0.6172,
+      "avg_score": 0.4831,
+      "variance": 0.1718
+    },
+    {
+      "type": "frame",
+      "desc": "OnGround(Me.Ba)",
+      "n": 4209,
+      "sat_rate": 0.98,
+      "avg_score": 0.9018,
+      "variance": 0.0359
+    }
+  ],
+  "TRTL": [
+    {
+      "type": "required_con",
+      "desc": "CON(Op.To->Me.To h=0)",
+      "n": 8820,
+      "sat_rate": 0.0,
+      "avg_score": 0.0,
+      "variance": 0.0
+    },
+    {
+      "type": "frame",
+      "desc": "FacingAligned()",
+      "n": 8820,
+      "sat_rate": 0.504,
+      "avg_score": 0.4378,
+      "variance": 0.2049
+    },
+    {
+      "type": "forbidden_con",
+      "desc": "CON(Op.Le+->Me.To h=-)",
+      "n": 8820,
+      "sat_rate": 1.0,
+      "avg_score": 1.0,
+      "variance": 0.0
+    },
+    {
+      "type": "forbidden_con",
+      "desc": "CON(Op.Le-->Me.To h=+)",
+      "n": 8820,
+      "sat_rate": 1.0,
+      "avg_score": 1.0,
+      "variance": 0.0
+    }
+  ]
+}

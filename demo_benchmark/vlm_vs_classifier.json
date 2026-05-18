@@ -1,0 +1,542 @@
+[
+  {
+    "image": "0500765",
+    "true": "HGRD",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.9468,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0303871",
+    "true": "HGRD",
+    "vlm": "HGRD",
+    "clf": "HGRD",
+    "clf_conf": 0.9991,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0400879",
+    "true": "HGRD",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.999,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0604575",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.9981,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0706860",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0602802",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "SCTR",
+    "clf_conf": 0.9987,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0201810",
+    "true": "OGRD",
+    "vlm": "OGRD",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0600559",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": false
+  },
+  {
+    "image": "1404849",
+    "true": "BCTR",
+    "vlm": "BCTR",
+    "clf": "DETECT_FAIL",
+    "clf_conf": 0.0,
+    "vlm_correct": true,
+    "clf_correct": false
+  },
+  {
+    "image": "1404126",
+    "true": "BCTR",
+    "vlm": "BCTR",
+    "clf": "BCTR",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0101328",
+    "true": "OGRD",
+    "vlm": "SCTR",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "1505676",
+    "true": "BCTR",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.9993,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0707621",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "SCTR",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0802569",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "SCTR",
+    "clf_conf": 0.997,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0101932",
+    "true": "OGRD",
+    "vlm": "SCTR",
+    "clf": "SCTR",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0205720",
+    "true": "CGRD",
+    "vlm": "SCTR",
+    "clf": "OGRD",
+    "clf_conf": 0.9628,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0402415",
+    "true": "HGRD",
+    "vlm": "SCTR",
+    "clf": "DETECT_FAIL",
+    "clf_conf": 0.0,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "1502540",
+    "true": "BCTR",
+    "vlm": "SCTR",
+    "clf": "TKDN",
+    "clf_conf": 0.823,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0303779",
+    "true": "HGRD",
+    "vlm": "OGRD",
+    "clf": "SCTR",
+    "clf_conf": 0.9948,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0003717",
+    "true": "OGRD",
+    "vlm": "OGRD",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0400298",
+    "true": "HGRD",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "1405083",
+    "true": "BCTR",
+    "vlm": "BCTR",
+    "clf": "BCTR",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "1304223",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": false
+  },
+  {
+    "image": "0203468",
+    "true": "OGRD",
+    "vlm": "OGRD",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0205218",
+    "true": "CGRD",
+    "vlm": "SCTR",
+    "clf": "CGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0707968",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "1404539",
+    "true": "BCTR",
+    "vlm": "BCTR",
+    "clf": "BCTR",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0203901",
+    "true": "OGRD",
+    "vlm": "SCTR",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0607701",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "STND",
+    "clf_conf": 0.9845,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0702800",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "SCTR",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0208921",
+    "true": "CGRD",
+    "vlm": "BCTR",
+    "clf": "OGRD",
+    "clf_conf": 0.9757,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0105429",
+    "true": "CGRD",
+    "vlm": "SCTR",
+    "clf": "CGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0300702",
+    "true": "HGRD",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.9762,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0608274",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "MNT",
+    "clf_conf": 0.9998,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0206310",
+    "true": "CGRD",
+    "vlm": "BCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.998,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0800653",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "SCTR",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "1408734",
+    "true": "BCTR",
+    "vlm": "BCTR",
+    "clf": "DETECT_FAIL",
+    "clf_conf": 0.0,
+    "vlm_correct": true,
+    "clf_correct": false
+  },
+  {
+    "image": "0007383",
+    "true": "CGRD",
+    "vlm": "BCTR",
+    "clf": "DETECT_FAIL",
+    "clf_conf": 0.0,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0600578",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.9907,
+    "vlm_correct": true,
+    "clf_correct": false
+  },
+  {
+    "image": "1500371",
+    "true": "BCTR",
+    "vlm": "CGRD",
+    "clf": "BCTR",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0803942",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "SCTR",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0605122",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "MNT",
+    "clf_conf": 0.9933,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0600838",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "CGRD",
+    "clf_conf": 0.961,
+    "vlm_correct": true,
+    "clf_correct": false
+  },
+  {
+    "image": "1203761",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "MNT",
+    "clf_conf": 0.9981,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0503282",
+    "true": "HGRD",
+    "vlm": "SCTR",
+    "clf": "MNT",
+    "clf_conf": 0.9994,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0500581",
+    "true": "HGRD",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0004162",
+    "true": "OGRD",
+    "vlm": "OGRD",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0006291",
+    "true": "CGRD",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.9821,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0603472",
+    "true": "SCTR",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.9999,
+    "vlm_correct": true,
+    "clf_correct": false
+  },
+  {
+    "image": "0002334",
+    "true": "OGRD",
+    "vlm": "SCTR",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "1408386",
+    "true": "BCTR",
+    "vlm": "BCTR",
+    "clf": "BCTR",
+    "clf_conf": 0.9994,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "0102337",
+    "true": "OGRD",
+    "vlm": "BCTR",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0107946",
+    "true": "CGRD",
+    "vlm": "SCTR",
+    "clf": "CGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0207479",
+    "true": "CGRD",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 0.7508,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "1203028",
+    "true": "OGRD",
+    "vlm": "OGRD",
+    "clf": "OGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": true,
+    "clf_correct": true
+  },
+  {
+    "image": "1404631",
+    "true": "BCTR",
+    "vlm": "SCTR",
+    "clf": "TKDN",
+    "clf_conf": 0.7476,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0400475",
+    "true": "HGRD",
+    "vlm": "SCTR",
+    "clf": "SCTR",
+    "clf_conf": 0.9995,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0604600",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "HGRD",
+    "clf_conf": 1.0,
+    "vlm_correct": false,
+    "clf_correct": false
+  },
+  {
+    "image": "0807107",
+    "true": "MNT",
+    "vlm": "SCTR",
+    "clf": "MNT",
+    "clf_conf": 0.9999,
+    "vlm_correct": false,
+    "clf_correct": true
+  },
+  {
+    "image": "0106877",
+    "true": "CGRD",
+    "vlm": "SCTR",
+    "clf": "CGRD",
+    "clf_conf": 0.9447,
+    "vlm_correct": false,
+    "clf_correct": true
+  }
+]

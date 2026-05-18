@@ -1,0 +1,44 @@
+{
+  "BCTR": {
+    "n_samples": 6500,
+    "all_constraints_met_rate": 0.4552307692307692,
+    "avg_weighted_score": 0.8143692307692716,
+    "avg_inferred_contacts": 13.661846153846154
+  },
+  "CGRD": {
+    "n_samples": 6682,
+    "all_constraints_met_rate": 0.35019455252918286,
+    "avg_weighted_score": 0.7511224184375935,
+    "avg_inferred_contacts": 11.079467225381622
+  },
+  "HGRD": {
+    "n_samples": 4209,
+    "all_constraints_met_rate": 0.8320266096459967,
+    "avg_weighted_score": 0.814524431773164,
+    "avg_inferred_contacts": 8.918270373010216
+  },
+  "MNT": {
+    "n_samples": 6955,
+    "all_constraints_met_rate": 0.5521207764198418,
+    "avg_weighted_score": 0.7255930984902947,
+    "avg_inferred_contacts": 12.29920920201294
+  },
+  "OGRD": {
+    "n_samples": 12657,
+    "all_constraints_met_rate": 0.9862526665086513,
+    "avg_weighted_score": 0.7252113455005136,
+    "avg_inferred_contacts": 4.630323141344711
+  },
+  "SCTR": {
+    "n_samples": 6596,
+    "all_constraints_met_rate": 0.5633717404487568,
+    "avg_weighted_score": 0.8364160097028502,
+    "avg_inferred_contacts": 9.76440266828381
+  },
+  "TRTL": {
+    "n_samples": 8820,
+    "all_constraints_met_rate": 0.0,
+    "avg_weighted_score": 0.6259920634920635,
+    "avg_inferred_contacts": 8.652947845804988
+  }
+}

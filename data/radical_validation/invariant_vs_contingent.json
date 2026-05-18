@@ -1,0 +1,259 @@
+{
+  "meta": {
+    "purpose": "Classify each radical constraint as invariant (structurally necessary), typical (usually present but not required), or contingent (depends on tactical variation, transition stage, or camera realization)",
+    "date": "2026-05-14",
+    "method": "Analysis of constraint satisfaction rates, BJJ positional mechanics, and adversarial edge cases"
+  },
+  "classifications": {
+    "MNT": {
+      "constraints": [
+        {
+          "desc": "CON(Me.Le+->Op.To h=-)",
+          "type": "required_con",
+          "classification": "invariant",
+          "satisfaction_rate": 0.900,
+          "justification": "Mount requires at least one leg straddling the opponent's torso. Without this, the position is not mount by any standard definition. The right-leg contact is the more frequently detected of the two bilateral contacts.",
+          "counterexample": "S-mount (one leg posted forward, one behind head) — leg is still ON torso axis, just repositioned. The contact exists but the axis alignment changes. No known mount variant lacks leg-on-torso contact entirely."
+        },
+        {
+          "desc": "CON(Me.Le-->Op.To h=+)",
+          "type": "required_con",
+          "classification": "typical",
+          "satisfaction_rate": 0.559,
+          "justification": "BOTH legs straddling the torso is the textbook mount definition. However, several common mount variants have only one leg tightly on the torso: technical mount (one leg posted behind), S-mount, gift-wrap mount. In these, the second leg contact is absent or repositioned. 56% satisfaction suggests this contact is present in only ~60% of what the dataset calls mount.",
+          "counterexample": "Technical mount: one knee on mat beside opponent's hip, other leg posted behind head. Only one leg contacts the torso in the standard axis sense."
+        },
+        {
+          "desc": "FacingOpposed()",
+          "type": "frame",
+          "classification": "invariant",
+          "satisfaction_rate": 0.460,
+          "justification": "The mount player always faces the mounted player. The low satisfaction rate (46%) is entirely a 2D inference problem — the shoulder-normal dot product is unreliable under projection. In 3D, facing-opposed is definitional for mount vs back control. No mount variant has fighters facing the same direction.",
+          "note": "The 46% rate does NOT mean facing-opposed is contingent. It means the measurement is bad. A blind audit would likely confirm facing-opposed at 95%+."
+        },
+        {
+          "desc": "OnGround(Op.Ba)",
+          "type": "frame",
+          "classification": "invariant",
+          "satisfaction_rate": 0.983,
+          "justification": "The mounted player is on the ground by definition. 98.3% satisfaction confirms this. The 1.7% failure is measurement noise (hip-height comparison)."
+        }
+      ],
+      "summary": "3 invariant, 1 typical. The second leg contact (Me.Le-) should arguably be demoted from required to typical, or the radical should be split into 'full mount' (both legs) and 'technical mount' (one leg)."
+    },
+
+    "BCTR": {
+      "constraints": [
+        {
+          "desc": "CON(Me.Le+->Op.To h=-)",
+          "type": "required_con",
+          "classification": "invariant",
+          "satisfaction_rate": 0.925,
+          "justification": "Back control requires hooks (legs around torso). At least one hook is definitional."
+        },
+        {
+          "desc": "CON(Me.Le-->Op.To h=+)",
+          "type": "required_con",
+          "classification": "typical",
+          "satisfaction_rate": 0.732,
+          "justification": "Both hooks is standard but not invariant. Body triangle uses one hook + leg lock. Single-hook back control is common in transitions. 73% satisfaction reflects the variety of hook configurations.",
+          "counterexample": "Body triangle back control: one leg threads behind the opponent, locking at the ankle with the other. The contact graph is different from bilateral hooks."
+        },
+        {
+          "desc": "FacingAligned()",
+          "type": "frame",
+          "classification": "invariant",
+          "satisfaction_rate": 0.807,
+          "justification": "Back control means being behind the opponent. Both face the same direction by definition. 81% satisfaction is reasonable given 2D measurement noise."
+        },
+        {
+          "desc": "NotOnGround(Op.Ba)",
+          "type": "frame",
+          "classification": "contingent",
+          "satisfaction_rate": 0.697,
+          "justification": "The controlled person is frequently flat on the mat (prone). Back control can occur with the opponent seated (back-take from guard), prone (flattened out), or on their side. The elevation state is NOT structurally necessary — it is a tactical detail that varies by entry and opponent response. 70% satisfaction confirms it is common but not invariant.",
+          "counterexample": "Back mount (opponent flat on stomach, controller on top with hooks): opponent is ON the ground, not elevated."
+        },
+        {
+          "desc": "CON(Me.Fo-->Me.Fo+ h=0) forbidden",
+          "type": "forbidden_con",
+          "classification": "invariant",
+          "satisfaction_rate": 0.912,
+          "justification": "Ankle closure (feet locked) distinguishes closed guard from back control. If the controller's ankles are locked AND facing aligned, the position would be a body triangle variant, which is structurally distinct. However, body triangle IS a form of back control, so this forbidden contact may be too strict. 91% satisfaction means 9% of back control samples have detected ankle closure — likely false positives from the proximity-based detection."
+        }
+      ],
+      "summary": "2 invariant, 1 typical, 1 contingent, 1 invariant-but-borderline. NotOnGround(Op.Ba) is contingent and should be removed. The second hook contact is typical."
+    },
+
+    "SCTR": {
+      "constraints": [
+        {
+          "desc": "CON(Me.Ar+->Op.To h=-)",
+          "type": "required_con",
+          "classification": "invariant",
+          "satisfaction_rate": 0.872,
+          "justification": "Side control is defined by upper-body pressure — at minimum one arm controlling the opponent's torso. This is the most fundamental side control contact. 87% satisfaction on raw data supports invariance.",
+          "note": "Sign-specific (Ar+, right arm) may be too strict. Side control can be performed from either side. An unsigned variant (Ar, either arm) would be more robust."
+        },
+        {
+          "desc": "OnGround(Op.Ba)",
+          "type": "frame",
+          "classification": "invariant",
+          "satisfaction_rate": 0.911,
+          "justification": "The opponent in side control is on the ground. Definitional. 91% satisfaction, 9% failure is ground-detection noise."
+        },
+        {
+          "desc": "CON(Me.Le->Op.Le+ h=-) forbidden",
+          "type": "forbidden_con",
+          "classification": "contingent",
+          "satisfaction_rate": 0.784,
+          "justification": "Intended to exclude guard positions (where legs are entangled). However, several side control variants involve leg positioning near the opponent's legs: kesa gatame (scarf hold) has legs splayed near opponent, reverse kesa has leg contact. The prohibition is based on proximity detection which cannot distinguish entanglement from adjacency. 22% violation rate on true SCTR data confirms the constraint fires on legitimate side control.",
+          "counterexample": "Kesa gatame: top player's legs are on the mat, one leg near opponent's hip/leg. Geometrically close but not entangled."
+        },
+        {
+          "desc": "CON(Me.Le->Op.Le- h=-) forbidden",
+          "type": "forbidden_con",
+          "classification": "contingent",
+          "satisfaction_rate": 0.779,
+          "justification": "Same issue as the other forbidden leg contact. Symmetric pair; both are contingent.",
+          "counterexample": "Same as above."
+        }
+      ],
+      "summary": "2 invariant, 2 contingent. The forbidden leg contacts should be removed or converted to a bilateral forbidden (both legs entangled simultaneously = guard, not just one leg nearby)."
+    },
+
+    "CGRD": {
+      "constraints": [
+        {
+          "desc": "CON(Me.Le+->Op.To h=-)",
+          "type": "required_con",
+          "classification": "invariant",
+          "satisfaction_rate": 0.890,
+          "justification": "Closed guard requires legs around the opponent's torso. At least one leg must be there. 89% on raw data supports invariance."
+        },
+        {
+          "desc": "CON(Me.Le-->Op.To h=+)",
+          "type": "required_con",
+          "classification": "invariant",
+          "satisfaction_rate": 0.656,
+          "justification": "The second leg around the torso. Unlike mount (where one leg can be posted), closed guard genuinely requires BOTH legs — the guard player is supine and both legs wrap the opponent. The 66% satisfaction is a perception issue (left-leg occlusion), not a structural one. Closed guard without both legs around the torso is open guard by definition.",
+          "note": "The lower rate vs the first leg is systematic left-side occlusion, not a notation problem."
+        },
+        {
+          "desc": "CON(Me.Fo-->Me.Fo+ h=0)",
+          "type": "required_con",
+          "classification": "invariant",
+          "satisfaction_rate": 0.460,
+          "justification": "Ankle closure is THE defining feature of closed guard vs open guard. Without locked ankles, the position is open guard. This is definitional, not contingent. The 46% satisfaction rate is purely a 2D detection failure.",
+          "note": "However, the DATASET may tag some open-guard-with-legs-around-torso positions as 'closed_guard'. If so, the low rate reflects tag imprecision (A), not notation error (D). A blind audit would resolve this."
+        },
+        {
+          "desc": "NotOnGround(Op.Ba)",
+          "type": "frame",
+          "classification": "invariant",
+          "satisfaction_rate": 0.999,
+          "justification": "The opponent in closed guard is in the guard player's legs, not flat on the ground. 99.9% satisfaction confirms this."
+        }
+      ],
+      "summary": "4 invariant. All CGRD constraints are structurally necessary. Low satisfaction rates are perception issues. However, this assessment ASSUMES the dataset tags are correct for 'closed guard' — if the dataset includes open-guard positions tagged as closed guard, the ankle closure constraint would appear to fail."
+    },
+
+    "HGRD": {
+      "constraints": [
+        {
+          "desc": "CON(Me.Le->Op.Le h=-)",
+          "type": "required_con",
+          "classification": "invariant",
+          "satisfaction_rate": 0.846,
+          "justification": "Half guard is defined by one leg entangling the opponent's leg. Without this, it is not half guard. The unsigned sign (Le, either leg) is appropriate — half guard can use either leg."
+        },
+        {
+          "desc": "FacingOpposed()",
+          "type": "frame",
+          "classification": "typical",
+          "satisfaction_rate": 0.617,
+          "justification": "Standard half guard has fighters facing each other. However, several variants do not: lockdown half guard (bottom player faces away), deep half guard (bottom player perpendicular or under the opponent), dogfight/whip-up (bottom player turning away). 62% satisfaction reflects genuine variation, not just measurement error.",
+          "counterexample": "Deep half guard: bottom player is underneath the top player, facing the ceiling or perpendicular. Chest-to-chest facing is not present."
+        },
+        {
+          "desc": "OnGround(Me.Ba)",
+          "type": "frame",
+          "classification": "invariant",
+          "satisfaction_rate": 0.980,
+          "justification": "The half guard player is on the ground by definition (they are the bottom player). 98% satisfaction confirms."
+        }
+      ],
+      "summary": "2 invariant, 1 typical. FacingOpposed is typical for half guard, not invariant. Deep half guard and lockdown are legitimate half guard variants without facing-opposed."
+    },
+
+    "TRTL": {
+      "constraints": [
+        {
+          "desc": "CON(Op.To->Me.To h=0)",
+          "type": "required_con",
+          "classification": "invariant",
+          "satisfaction_rate": 0.000,
+          "justification": "Turtle position involves one player draped over the other's back. Torso-on-torso contact is definitional. 0% satisfaction is entirely a 2D detection failure. The contact EXISTS in the position; the inference pipeline cannot measure it.",
+          "note": "HOWEVER: this assessment is unfalsifiable from the current data. We assume the contact is present because it should be. A blind audit is needed to determine if annotators confirm torso contact in TRTL-tagged images."
+        },
+        {
+          "desc": "FacingAligned()",
+          "type": "frame",
+          "classification": "invariant",
+          "satisfaction_rate": 0.504,
+          "justification": "In turtle, both fighters face the same direction (top behind bottom). This is definitional. The 50% satisfaction rate is a 2D measurement failure."
+        },
+        {
+          "desc": "CON(Op.Le+->Me.To h=-) forbidden",
+          "type": "forbidden_con",
+          "classification": "invariant",
+          "satisfaction_rate": 1.000,
+          "justification": "If the top player's legs are around the bottom player's torso, the position is back control, not turtle. This forbidden contact correctly distinguishes TRTL from BCTR."
+        },
+        {
+          "desc": "CON(Op.Le-->Me.To h=+) forbidden",
+          "type": "forbidden_con",
+          "classification": "invariant",
+          "satisfaction_rate": 1.000,
+          "justification": "Symmetric with the other forbidden contact."
+        }
+      ],
+      "summary": "All 4 invariant. However, the required contact and facing frame are UNTESTABLE from 2D data, so the invariant classification for the contact is an assumption."
+    },
+
+    "OGRD": {
+      "constraints": [
+        {
+          "desc": "FacingOpposed()",
+          "type": "frame",
+          "classification": "typical",
+          "satisfaction_rate": 0.464,
+          "justification": "Most open guard positions have fighters facing each other, but not all. Single-leg X, crab ride, and some inverted guard positions break this. Additionally, open guard transitions often pass through non-facing-opposed states. The 46% satisfaction rate is partly measurement error and partly genuine variation.",
+          "counterexample": "Crab ride: guard player faces away from opponent while controlling their legs."
+        },
+        {
+          "desc": "OnGround(Me.Ba)",
+          "type": "frame",
+          "classification": "invariant",
+          "satisfaction_rate": 0.986,
+          "justification": "The open guard player is on the ground (bottom player). Definitional. 99% satisfaction."
+        }
+      ],
+      "summary": "1 invariant, 1 typical. OGRD is problematic as a radical because it has only frame constraints and no contacts, making it a frame envelope rather than a positional specification. See ogrd_ontology_analysis.md."
+    }
+  },
+
+  "summary_table": {
+    "invariant_count": 17,
+    "typical_count": 5,
+    "contingent_count": 3,
+    "total_constraints": 25,
+    "constraints_requiring_change": [
+      "BCTR: NotOnGround(Op.Ba) — contingent, should be removed",
+      "SCTR: CON(Me.Le->Op.Le+ h=-) forbidden — contingent, should be removed or converted",
+      "SCTR: CON(Me.Le->Op.Le- h=-) forbidden — contingent, should be removed or converted",
+      "MNT: CON(Me.Le-->Op.To h=+) — typical, should be reconsidered or split",
+      "HGRD: FacingOpposed() — typical, consider demotion to soft constraint"
+    ]
+  }
+}

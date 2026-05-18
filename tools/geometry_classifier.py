@@ -58,6 +58,12 @@ def _extract_combined_features(kps_a, kps_b):
     return gcw + ocrw, gcw_n + ocrw_n
 
 
+def _extract_invariant_features(kps_a, kps_b):
+    """Extract invariant features only (no body-frame projections)."""
+    from tools.invariant_features import extract_invariant_feature_set
+    return extract_invariant_feature_set(kps_a, kps_b)
+
+
 RADICAL_EXPLANATIONS = {
     "MNT": "Mount -- top athlete astride bottom torso, vertical dominance, hips centered over opponent.",
     "BCTR": "Back Control -- chest-to-back alignment, same-direction torso axes, posterior control.",
@@ -345,7 +351,9 @@ def classify(kps_a: list, kps_b: list, pov_label: str = "") -> GeometryResult:
     bf_a = BodyFrame(kps_a)
     bf_b = BodyFrame(kps_b)
 
-    if _model_type == "geo_ordered_cr_cw":
+    if _model_type == "invariant_geo_cr":
+        feats, _ = _extract_invariant_features(kps_a, kps_b)
+    elif _model_type == "geo_ordered_cr_cw":
         feats, _ = _extract_combined_features(kps_a, kps_b)
     else:
         feats, _ = extract_all_features(kps_a, kps_b)
