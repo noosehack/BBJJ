@@ -1,0 +1,81 @@
+;;; footprints.blisp — TURN_FPT, GAME_FPT, and game loop
+;;; Depends: types.blisp, radicals.blisp, morphisms.blisp, resolve.blisp
+
+;; ── TURN_FPT ────────────────────────────────────────────────────────
+(defmacro TURN-FPT (turn st-before mor-a mor-b st-after pos-before pos-after
+                    val-a-before val-b-before val-a-after val-b-after
+                    gmem-after wins-a wins-b)
+  `(TUP :kind "TURN_FPT"
+    :turn ,turn
+    :state_before ,st-before :state_after ,st-after
+    :mor_a ,mor-a :mor_b ,mor-b
+    :pos_before ,pos-before :pos_after ,pos-after
+    :val_a_before ,val-a-before :val_b_before ,val-b-before
+    :val_a_after ,val-a-after :val_b_after ,val-b-after
+    :gmem_after ,gmem-after
+    :wins_a ,wins-a :wins_b ,wins-b))
+
+;; ── make-turn-fpt: build from resolve result ────────────────────────
+(define make-turn-fpt (lambda (st gmem mor-a-id mor-b-id)
+  (progn
+    (define pos-before (classify st))
+    (define r (resolve st gmem mor-a-id mor-b-id))
+    (define pos-after (GET r :pos))
+    (define va-before (val st pos-before))
+    (define vb-before (* -1 va-before))
+    (define va-after (val (GET r :state) pos-after))
+    (define vb-after (* -1 va-after))
+    (TURN-FPT (GET gmem :turn) st mor-a-id mor-b-id
+              (GET r :state) pos-before pos-after
+              va-before vb-before va-after vb-after
+              (GET r :gmem) (GET r :wins_a) (GET r :wins_b)))))
+
+;; ── GAME_FPT: 12 fixed turn slots ──────────────────────────────────
+(defmacro GAME-FPT (winner win-cond final-val-a final-val-b
+                    t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 t11 t12 num-turns)
+  `(TUP :kind "GAME_FPT"
+    :winner ,winner :win_condition ,win-cond
+    :final_val_a ,final-val-a :final_val_b ,final-val-b
+    :t1 ,t1 :t2 ,t2 :t3 ,t3 :t4 ,t4
+    :t5 ,t5 :t6 ,t6 :t7 ,t7 :t8 ,t8
+    :t9 ,t9 :t10 ,t10 :t11 ,t11 :t12 ,t12
+    :num_turns ,num-turns))
+
+;; ── check-submission: did sub_threat reach 3? ───────────────────────
+(define check-submission (lambda (gmem)
+  (if (>= (GET gmem :sub_threat) 3) true false)))
+
+;; ── play-turn: execute one turn and return updated (state, gmem, fpt) ─
+(define play-turn (lambda (st gmem mor-a-id mor-b-id)
+  (progn
+    (define fpt (make-turn-fpt st gmem mor-a-id mor-b-id))
+    (TUP :state (GET fpt :state_after)
+         :gmem (GET fpt :gmem_after)
+         :fpt fpt
+         :sub (check-submission (GET fpt :gmem_after))))))
+
+;; ── print-turn-fpt: pretty-print one turn ───────────────────────────
+(define print-turn-fpt (lambda (fpt)
+  (progn
+    (print (str-cat "  Turn " (GET fpt :turn) ": "
+                    (GET fpt :mor_a) " vs " (GET fpt :mor_b)
+                    " | " (GET fpt :pos_before) " → " (GET fpt :pos_after)
+                    " | val " (GET fpt :val_a_after)))
+    (print (str-cat "    sub=" (GET (GET fpt :gmem_after) :sub_threat)
+                    " mom=" (GET (GET fpt :gmem_after) :momentum)
+                    " init=" (GET (GET fpt :gmem_after) :initiative))))))
+
+;; ── determine-winner: points/draw after 12 turns ────────────────────
+(define determine-winner (lambda (val-a val-b)
+  (if (> val-a val-b) "A"
+  (if (> val-b val-a) "B"
+  "DRAW"))))
+
+;; ── print-game-result ───────────────────────────────────────────────
+(define print-game-result (lambda (gfpt)
+  (progn
+    (print (str-cat "Winner: " (GET gfpt :winner)))
+    (print (str-cat "Condition: " (GET gfpt :win_condition)))
+    (print (str-cat "Final VAL: A=" (GET gfpt :final_val_a)
+                    " B=" (GET gfpt :final_val_b)))
+    (print (str-cat "Turns played: " (GET gfpt :num_turns))))))

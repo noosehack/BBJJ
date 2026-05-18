@@ -1,0 +1,197 @@
+;;; types.blisp — Matboard V0 type constructors and state operations
+;;; Loaded via --load. defmacro for constructors, define+lambda for logic.
+
+;; ── PartRef ──────────────────────────────────────────────────────────
+(defmacro PR (role part side)
+  `(TUP :kind "PR" :role ,role :part ,part :side ,side))
+
+;; ── CON — Contact (the ONLY primitive) ───────────────────────────────
+(defmacro CON (actor target hel)
+  `(TUP :kind "CON" :actor ,actor :target ,target :hel ,hel))
+
+(define con-eq (lambda (a b)
+  (if (same (GET a :actor) (GET b :actor))
+    (if (same (GET a :target) (GET b :target))
+      (same (GET a :hel) (GET b :hel))
+      false)
+    false)))
+
+(define con-eq-safe (lambda (a b)
+  (if (same a nil) false
+  (if (same b nil) false
+    (con-eq a b)))))
+
+;; ── ORI — Orientation ────────────────────────────────────────────────
+(defmacro ORI (facing level alignment)
+  `(TUP :kind "ORI" :facing ,facing :level ,level :alignment ,alignment))
+
+;; ── GND — Ground State ───────────────────────────────────────────────
+(defmacro GND (me op)
+  `(TUP :kind "GND" :me ,me :op ,op))
+
+;; ── STATE — 8 fixed CON slots ────────────────────────────────────────
+(defmacro STATE (ori gnd)
+  `(TUP :kind "STATE" :ori ,ori :gnd ,gnd
+        :c0 nil :c1 nil :c2 nil :c3 nil
+        :c4 nil :c5 nil :c6 nil :c7 nil :nc 0))
+
+(define state-has-con (lambda (st con)
+  (if (con-eq-safe (GET st :c0) con) true
+  (if (con-eq-safe (GET st :c1) con) true
+  (if (con-eq-safe (GET st :c2) con) true
+  (if (con-eq-safe (GET st :c3) con) true
+  (if (con-eq-safe (GET st :c4) con) true
+  (if (con-eq-safe (GET st :c5) con) true
+  (if (con-eq-safe (GET st :c6) con) true
+  (if (con-eq-safe (GET st :c7) con) true
+  false))))))))))
+
+(define state-rebuild (lambda (st ori gnd c0 c1 c2 c3 c4 c5 c6 c7 nc)
+  (TUP :kind "STATE" :ori ori :gnd gnd
+    :c0 c0 :c1 c1 :c2 c2 :c3 c3
+    :c4 c4 :c5 c5 :c6 c6 :c7 c7 :nc nc)))
+
+(define state-add-con (lambda (st con)
+  (if (same (GET st :c0) nil)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      con (GET st :c1) (GET st :c2) (GET st :c3)
+      (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) 1))
+  (if (same (GET st :c1) nil)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) con (GET st :c2) (GET st :c3)
+      (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) 1))
+  (if (same (GET st :c2) nil)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) con (GET st :c3)
+      (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) 1))
+  (if (same (GET st :c3) nil)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) con
+      (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) 1))
+  (if (same (GET st :c4) nil)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+      con (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) 1))
+  (if (same (GET st :c5) nil)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+      (GET st :c4) con (GET st :c6) (GET st :c7) (+ (GET st :nc) 1))
+  (if (same (GET st :c6) nil)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+      (GET st :c4) (GET st :c5) con (GET st :c7) (+ (GET st :nc) 1))
+  (if (same (GET st :c7) nil)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+      (GET st :c4) (GET st :c5) (GET st :c6) con (+ (GET st :nc) 1))
+  st))))))))))
+
+(define state-del-con (lambda (st con)
+  (if (con-eq-safe (GET st :c0) con)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      nil (GET st :c1) (GET st :c2) (GET st :c3)
+      (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) -1))
+  (if (con-eq-safe (GET st :c1) con)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) nil (GET st :c2) (GET st :c3)
+      (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) -1))
+  (if (con-eq-safe (GET st :c2) con)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) nil (GET st :c3)
+      (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) -1))
+  (if (con-eq-safe (GET st :c3) con)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) nil
+      (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) -1))
+  (if (con-eq-safe (GET st :c4) con)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+      nil (GET st :c5) (GET st :c6) (GET st :c7) (+ (GET st :nc) -1))
+  (if (con-eq-safe (GET st :c5) con)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+      (GET st :c4) nil (GET st :c6) (GET st :c7) (+ (GET st :nc) -1))
+  (if (con-eq-safe (GET st :c6) con)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+      (GET st :c4) (GET st :c5) nil (GET st :c7) (+ (GET st :nc) -1))
+  (if (con-eq-safe (GET st :c7) con)
+    (state-rebuild st (GET st :ori) (GET st :gnd)
+      (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+      (GET st :c4) (GET st :c5) (GET st :c6) nil (+ (GET st :nc) -1))
+  st))))))))))
+
+(define state-set-ori (lambda (st field val)
+  (state-rebuild st
+    (TUP :kind "ORI"
+      :facing   (if (same field "facing") val (GET (GET st :ori) :facing))
+      :level    (if (same field "level") val (GET (GET st :ori) :level))
+      :alignment (if (same field "alignment") val (GET (GET st :ori) :alignment)))
+    (GET st :gnd)
+    (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+    (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (GET st :nc))))
+
+(define state-set-gnd (lambda (st role val)
+  (state-rebuild st (GET st :ori)
+    (TUP :kind "GND"
+      :me (if (same role "me") val (GET (GET st :gnd) :me))
+      :op (if (same role "op") val (GET (GET st :gnd) :op)))
+    (GET st :c0) (GET st :c1) (GET st :c2) (GET st :c3)
+    (GET st :c4) (GET st :c5) (GET st :c6) (GET st :c7) (GET st :nc))))
+
+(define slot-role-match (lambda (slot role)
+  (if (same slot nil) 0 (if (same (GET (GET slot :actor) :role) role) 1 0))))
+
+(define count-role-cons (lambda (st role)
+  (+ (+ (+ (slot-role-match (GET st :c0) role)
+            (slot-role-match (GET st :c1) role))
+        (+ (slot-role-match (GET st :c2) role)
+            (slot-role-match (GET st :c3) role)))
+     (+ (+ (slot-role-match (GET st :c4) role)
+            (slot-role-match (GET st :c5) role))
+        (+ (slot-role-match (GET st :c6) role)
+            (slot-role-match (GET st :c7) role))))))
+
+;; ── Ops / Predicates / MOR / GameMem constructors ────────────────────
+(defmacro OP-ADD (con)       `(TUP :kind "OP" :type "ADD" :con ,con))
+(defmacro OP-DEL (con)       `(TUP :kind "OP" :type "DEL" :con ,con))
+(defmacro OP-MAINTAIN (con)  `(TUP :kind "OP" :type "MAINTAIN" :con ,con))
+(defmacro OP-SET-ORI (f v)   `(TUP :kind "OP" :type "SET_ORI" :field ,f :value ,v))
+(defmacro OP-SET-GND (r v)   `(TUP :kind "OP" :type "SET_GND" :role ,r :value ,v))
+
+(defmacro PRED-HAS (con)     `(TUP :kind "PRED" :type "HAS_CON" :con ,con))
+(defmacro PRED-RAD (id)      `(TUP :kind "PRED" :type "IN_RAD" :id ,id))
+(defmacro PRED-ORI (f v)     `(TUP :kind "PRED" :type "ORI_EQ" :field ,f :value ,v))
+(defmacro PRED-GND (r v)     `(TUP :kind "PRED" :type "GND_EQ" :role ,r :value ,v))
+
+(define check-pred (lambda (st pos pred)
+  (if (same pred nil) true
+  (if (same (GET pred :type) "HAS_CON") (state-has-con st (GET pred :con))
+  (if (same (GET pred :type) "IN_RAD")  (same pos (GET pred :id))
+  (if (same (GET pred :type) "ORI_EQ")  (same (GET (GET st :ori) (GET pred :field)) (GET pred :value))
+  (if (same (GET pred :type) "GND_EQ")  (same (GET (GET st :gnd) (GET pred :role)) (GET pred :value))
+  false)))))))
+
+;; MOR: 2 pre slots, 4 op slots, 1 post slot
+(defmacro MOR (id name fiber pre0 pre1 op0 op1 op2 op3 post0 fail cost burst tags)
+  `(TUP :kind "MOR" :id ,id :name ,name :fiber ,fiber
+    :pre0 ,pre0 :pre1 ,pre1
+    :op0 ,op0 :op1 ,op1 :op2 ,op2 :op3 ,op3
+    :post0 ,post0
+    :fail ,fail :cost ,cost :burst ,burst :tags ,tags))
+
+(define check-mor-pre (lambda (st pos mor)
+  (if (check-pred st pos (GET mor :pre0))
+    (check-pred st pos (GET mor :pre1))
+    false)))
+
+(defmacro GAME-MEM (momentum sub-threat initiative turn)
+  `(TUP :kind "GMEM" :momentum ,momentum :sub_threat ,sub-threat
+        :initiative ,initiative :turn ,turn))
+
+(define clamp (lambda (x lo hi)
+  (if (< x lo) lo (if (> x hi) hi x))))
+
+;; initial values
+(define init-state (STATE (ORI "OPPOSED" "LEVEL" "NORMAL") (GND "STANDING" "STANDING")))
+(define init-gmem  (GAME-MEM 0 0 "A" 1))

@@ -1,0 +1,88 @@
+;;; radicals.blisp — 8 matboard positions + classifier
+;;; Depends: types.blisp
+
+;; ── Shared CON patterns ──────────────────────────────────────────────
+(define CON-ME-LE+-OP-TO (CON (PR "Me" "Le" "+") (PR "Op" "To" "0") "+"))
+(define CON-ME-LE--OP-TO (CON (PR "Me" "Le" "-") (PR "Op" "To" "0") "-"))
+(define CON-ME-LE+-OP-LE (CON (PR "Me" "Le" "+") (PR "Op" "Le" "+") "+"))
+(define CON-ME-LE--OP-LE (CON (PR "Me" "Le" "-") (PR "Op" "Le" "-") "+"))
+(define CON-ME-AR+-OP-TO (CON (PR "Me" "Ar" "+") (PR "Op" "To" "0") "+"))
+(define CON-ME-AR--OP-TO (CON (PR "Me" "Ar" "-") (PR "Op" "To" "0") "+"))
+(define CON-ME-LE-OP     (CON (PR "Me" "Le" "+") (PR "Op" "To" "0") "0"))
+
+;; ── Radical check functions ──────────────────────────────────────────
+;; Priority: BCTR > MNT > CGRD > SCTR > HGRD > OGRD > TRTL > STDN
+
+;; BCTR: Me.Le+→Op.To + Me.Le-→Op.To, facing=ALIGNED
+(define is-bctr (lambda (st)
+  (if (state-has-con st CON-ME-LE+-OP-TO)
+    (if (state-has-con st CON-ME-LE--OP-TO)
+      (same (GET (GET st :ori) :facing) "ALIGNED")
+      false)
+    false)))
+
+;; MNT: Me.Le+→Op.To + Me.Le-→Op.To, level=ME_OVER (not ALIGNED facing)
+(define is-mnt (lambda (st)
+  (if (state-has-con st CON-ME-LE+-OP-TO)
+    (if (state-has-con st CON-ME-LE--OP-TO)
+      (same (GET (GET st :ori) :level) "ME_OVER")
+      false)
+    false)))
+
+;; CGRD: Me.Le+→Op.To + Me.Le-→Op.To (legs enclose, not ME_OVER, not ALIGNED)
+(define is-cgrd (lambda (st)
+  (if (state-has-con st CON-ME-LE+-OP-TO)
+    (if (state-has-con st CON-ME-LE--OP-TO)
+      (if (same (GET (GET st :ori) :facing) "OPPOSED")
+        (if (same (GET (GET st :ori) :level) "LEVEL") true
+        (if (same (GET (GET st :ori) :level) "OP_OVER") true
+          false))
+        false)
+      false)
+    false)))
+
+;; SCTR: Me.Ar→Op.To, level=ME_OVER
+(define is-sctr (lambda (st)
+  (if (state-has-con st CON-ME-AR+-OP-TO)
+    (same (GET (GET st :ori) :level) "ME_OVER")
+  (if (state-has-con st CON-ME-AR--OP-TO)
+    (same (GET (GET st :ori) :level) "ME_OVER")
+    false))))
+
+;; HGRD: one Me.Le→Op.Le
+(define is-hgrd (lambda (st)
+  (if (state-has-con st CON-ME-LE+-OP-LE) true
+  (if (state-has-con st CON-ME-LE--OP-LE) true
+    false))))
+
+;; OGRD: any Me.Le→Op contact (but not closed guard pattern)
+(define is-ogrd (lambda (st)
+  (if (state-has-con st CON-ME-LE-OP) true
+  (if (state-has-con st CON-ME-LE+-OP-TO)
+    (if (state-has-con st CON-ME-LE--OP-TO) false true)
+    (if (state-has-con st CON-ME-LE--OP-TO) true false)))))
+
+;; TRTL: gnd.me = TURTLE
+(define is-trtl (lambda (st)
+  (same (GET (GET st :gnd) :me) "TURTLE")))
+
+;; STDN: fallback
+;; classify checks in priority order
+(define classify (lambda (st)
+  (if (is-bctr st) "BCTR"
+  (if (is-mnt  st) "MNT"
+  (if (is-cgrd st) "CGRD"
+  (if (is-sctr st) "SCTR"
+  (if (is-hgrd st) "HGRD"
+  (if (is-ogrd st) "OGRD"
+  (if (is-trtl st) "TRTL"
+  "STDN")))))))))
+
+;; V_pos lookup
+(define v-pos (lambda (pos)
+  (if (same pos "BCTR") 4
+  (if (same pos "MNT")  3
+  (if (same pos "SCTR") 2
+  (if (same pos "CGRD") 1
+  (if (same pos "TRTL") -1
+  0)))))))

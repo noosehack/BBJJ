@@ -1,0 +1,41 @@
+;;; test_momentum.blisp — Momentum tracks A vs B state changes independently
+;;; Invariant: momentum += (A changed st→st1) - (B changed st1→st2)
+
+(define PASS-COUNT 0)
+(define FAIL-COUNT 0)
+
+(define assert-eq (lambda (label actual expected)
+  (if (same actual expected)
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1)))
+    (progn (print (str-cat "  FAIL: " label " got=" actual " want=" expected))
+           (define FAIL-COUNT (+ FAIL-COUNT 1))))))
+
+(print "=== MOMENTUM UPDATE ===")
+
+;; Double PASS: no state change → momentum stays 0
+(define r0 (resolve init-state init-gmem "PASS" "PASS"))
+(assert-eq "double PASS: mom=0" (GET (GET r0 :gmem) :momentum) 0)
+
+;; A acts, B passes → momentum +1
+(define r1 (resolve init-state init-gmem "pull_guard" "PASS"))
+(assert-eq "A acts, B PASS: mom=1" (GET (GET r1 :gmem) :momentum) 1)
+
+;; MAINTAIN-only MOR: no state change → momentum unchanged
+(define st-mnt (state-set-ori
+  (state-add-con (state-add-con init-state CON-ME-LE+-OP-TO) CON-ME-LE--OP-TO)
+  "level" "ME_OVER"))
+(define gm1 (GAME-MEM 1 0 "A" 2))
+(define r2 (resolve st-mnt gm1 "mnt_sub" "PASS"))
+(assert-eq "MAINTAIN-only: mom unchanged" (GET (GET r2 :gmem) :momentum) 1)
+
+;; Momentum clamp: can't exceed 3
+(define gm-high (GAME-MEM 3 0 "A" 1))
+(define r3 (resolve init-state gm-high "pull_guard" "PASS"))
+(assert-eq "clamp at +3" (GET (GET r3 :gmem) :momentum) 3)
+
+;; Momentum clamp: can't go below -3
+(define gm-low (GAME-MEM -3 0 "A" 1))
+(define r4 (resolve init-state gm-low "PASS" "PASS"))
+(assert-eq "clamp at -3" (GET (GET r4 :gmem) :momentum) -3)
+
+(print (str-cat "=== MOMENTUM: " PASS-COUNT " passed, " FAIL-COUNT " failed ==="))

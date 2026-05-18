@@ -1,0 +1,64 @@
+;;; test_turn_fpt.blisp — TURN_FPT emission completeness
+;;; Invariant: Every turn emits a TURN_FPT with all required fields.
+
+(define PASS-COUNT 0)
+(define FAIL-COUNT 0)
+
+(define assert-eq (lambda (label actual expected)
+  (if (same actual expected)
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1)))
+    (progn (print (str-cat "  FAIL: " label " got=" actual " want=" expected))
+           (define FAIL-COUNT (+ FAIL-COUNT 1))))))
+
+(define assert-not-nil (lambda (label actual)
+  (if (same actual nil)
+    (progn (print (str-cat "  FAIL: " label " is nil"))
+           (define FAIL-COUNT (+ FAIL-COUNT 1)))
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1))))))
+
+(define assert-zero (lambda (label actual)
+  (if (same actual 0)
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1)))
+  (if (same actual 0.0)
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1)))
+    (progn (print (str-cat "  FAIL: " label " got=" actual " want=0"))
+           (define FAIL-COUNT (+ FAIL-COUNT 1)))))))
+
+(print "=== TURN_FPT EMISSION ===")
+
+;; Generate a TURN_FPT
+(define fpt (make-turn-fpt init-state init-gmem "takedown" "PASS"))
+
+;; All required fields present
+(assert-eq "kind" (GET fpt :kind) "TURN_FPT")
+(assert-eq "turn" (GET fpt :turn) 1)
+(assert-not-nil "state_before" (GET fpt :state_before))
+(assert-not-nil "state_after" (GET fpt :state_after))
+(assert-eq "mor_a" (GET fpt :mor_a) "takedown")
+(assert-eq "mor_b" (GET fpt :mor_b) "PASS")
+(assert-eq "pos_before" (GET fpt :pos_before) "STDN")
+(assert-eq "pos_after" (GET fpt :pos_after) "SCTR")
+
+;; VAL fields (val returns floats, so use assert-zero for 0)
+(assert-zero "val_a_before" (GET fpt :val_a_before))
+(assert-zero "val_b_before" (GET fpt :val_b_before))
+(assert-not-nil "val_a_after" (GET fpt :val_a_after))
+(assert-not-nil "val_b_after" (GET fpt :val_b_after))
+
+;; VAL symmetry: val_a + val_b = 0
+(assert-zero "val symmetry" (+ (GET fpt :val_a_after) (GET fpt :val_b_after)))
+
+;; gmem_after is present and has correct turn
+(assert-not-nil "gmem_after" (GET fpt :gmem_after))
+(assert-eq "gmem turn" (GET (GET fpt :gmem_after) :turn) 2)
+
+;; Contest fields
+(assert-not-nil "wins_a defined" (GET fpt :wins_a))
+(assert-not-nil "wins_b defined" (GET fpt :wins_b))
+
+;; TURN_FPT from PASS/PASS
+(define fpt-pass (make-turn-fpt init-state init-gmem "PASS" "PASS"))
+(assert-eq "PASS/PASS: no pos change" (GET fpt-pass :pos_after) "STDN")
+(assert-zero "PASS/PASS: val unchanged" (GET fpt-pass :val_a_after))
+
+(print (str-cat "=== TURN_FPT: " PASS-COUNT " passed, " FAIL-COUNT " failed ==="))

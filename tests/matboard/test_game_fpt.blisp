@@ -1,0 +1,76 @@
+;;; test_game_fpt.blisp — GAME_FPT reconstruction
+;;; Invariant: GAME_FPT contains enough to reconstruct the full game trajectory.
+
+(define PASS-COUNT 0)
+(define FAIL-COUNT 0)
+
+(define assert-eq (lambda (label actual expected)
+  (if (same actual expected)
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1)))
+    (progn (print (str-cat "  FAIL: " label " got=" actual " want=" expected))
+           (define FAIL-COUNT (+ FAIL-COUNT 1))))))
+
+(define assert-not-nil (lambda (label actual)
+  (if (same actual nil)
+    (progn (print (str-cat "  FAIL: " label " is nil"))
+           (define FAIL-COUNT (+ FAIL-COUNT 1)))
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1))))))
+
+(print "=== GAME_FPT RECONSTRUCTION ===")
+
+;; Play 3-turn game: takedown → sctr_americana × 2
+(define p1 (play-turn init-state init-gmem "takedown" "PASS"))
+(define p2 (play-turn (GET p1 :state) (GET p1 :gmem) "sctr_americana" "PASS"))
+(define p3 (play-turn (GET p2 :state) (GET p2 :gmem) "sctr_americana" "PASS"))
+
+;; Build GAME_FPT
+(define va (GET (GET p3 :fpt) :val_a_after))
+(define vb (GET (GET p3 :fpt) :val_b_after))
+(define winner (determine-winner va vb))
+(define gfpt (GAME-FPT winner "points" va vb
+  (GET p1 :fpt) (GET p2 :fpt) (GET p3 :fpt) nil nil nil
+  nil nil nil nil nil nil 3))
+
+;; Top-level fields
+(assert-eq "kind" (GET gfpt :kind) "GAME_FPT")
+(assert-eq "winner" (GET gfpt :winner) "A")
+(assert-eq "condition" (GET gfpt :win_condition) "points")
+(assert-eq "num_turns" (GET gfpt :num_turns) 3)
+
+;; Turn slots populated correctly
+(assert-not-nil "t1" (GET gfpt :t1))
+(assert-not-nil "t2" (GET gfpt :t2))
+(assert-not-nil "t3" (GET gfpt :t3))
+(assert-eq "t4 nil" (GET gfpt :t4) nil)
+
+;; Trajectory reconstruction: t1.state_after == t2.state_before
+(define t1-after (GET (GET gfpt :t1) :state_after))
+(define t2-before (GET (GET gfpt :t2) :state_before))
+(assert-eq "t1→t2 state chain" (same t1-after t2-before) true)
+
+(define t2-after (GET (GET gfpt :t2) :state_after))
+(define t3-before (GET (GET gfpt :t3) :state_before))
+(assert-eq "t2→t3 state chain" (same t2-after t3-before) true)
+
+;; Turn sequence: turns are sequential
+(assert-eq "t1 turn" (GET (GET gfpt :t1) :turn) 1)
+(assert-eq "t2 turn" (GET (GET gfpt :t2) :turn) 2)
+(assert-eq "t3 turn" (GET (GET gfpt :t3) :turn) 3)
+
+;; Position trajectory
+(assert-eq "t1 pos" (GET (GET gfpt :t1) :pos_after) "SCTR")
+(assert-eq "t2 pos" (GET (GET gfpt :t2) :pos_after) "SCTR")
+(assert-eq "t3 pos" (GET (GET gfpt :t3) :pos_after) "SCTR")
+
+;; gmem chain: t1.gmem_after feeds into t2
+(define gm1 (GET (GET gfpt :t1) :gmem_after))
+(define gm2 (GET (GET gfpt :t2) :gmem_after))
+(assert-eq "gmem t1→t2 turn" (GET gm1 :turn) 2)
+(assert-eq "gmem t2→t3 turn" (GET gm2 :turn) 3)
+
+;; sub_threat progression (sctr_americana is submission from SCTR = offense)
+(assert-eq "t1 sub=0" (GET (GET (GET gfpt :t1) :gmem_after) :sub_threat) 0)
+(assert-eq "t2 sub=1" (GET (GET (GET gfpt :t2) :gmem_after) :sub_threat) 1)
+(assert-eq "t3 sub=2" (GET (GET (GET gfpt :t3) :gmem_after) :sub_threat) 2)
+
+(print (str-cat "=== GAME_FPT: " PASS-COUNT " passed, " FAIL-COUNT " failed ==="))

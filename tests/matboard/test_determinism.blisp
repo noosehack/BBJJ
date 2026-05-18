@@ -1,0 +1,52 @@
+;;; test_determinism.blisp — Determinism audit
+;;; Invariant: Same (state, MOR proposals, gmem) → identical output every time.
+
+(define PASS-COUNT 0)
+(define FAIL-COUNT 0)
+
+(define assert-eq (lambda (label actual expected)
+  (if (same actual expected)
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1)))
+    (progn (print (str-cat "  FAIL: " label " got=" actual " want=" expected))
+           (define FAIL-COUNT (+ FAIL-COUNT 1))))))
+
+(print "=== DETERMINISM AUDIT ===")
+
+;; Run the same resolve twice with identical inputs
+(define r1 (resolve init-state init-gmem "takedown" "PASS"))
+(define r2 (resolve init-state init-gmem "takedown" "PASS"))
+(assert-eq "same state"  (same (GET r1 :state) (GET r2 :state)) true)
+(assert-eq "same pos"    (same (GET r1 :pos)   (GET r2 :pos))   true)
+(assert-eq "same gmem"   (same (GET r1 :gmem)  (GET r2 :gmem))  true)
+(assert-eq "same wins_a" (same (GET r1 :wins_a) (GET r2 :wins_a)) true)
+(assert-eq "same wins_b" (same (GET r1 :wins_b) (GET r2 :wins_b)) true)
+
+;; Run a contested scenario twice
+(define st-cgrd (state-add-con
+  (state-add-con init-state CON-ME-LE+-OP-TO) CON-ME-LE--OP-TO))
+(define r3 (resolve st-cgrd init-gmem "hip_bump" "triangle"))
+(define r4 (resolve st-cgrd init-gmem "hip_bump" "triangle"))
+(assert-eq "contest: same state"  (same (GET r3 :state) (GET r4 :state)) true)
+(assert-eq "contest: same pos"    (same (GET r3 :pos)   (GET r4 :pos))   true)
+(assert-eq "contest: same gmem"   (same (GET r3 :gmem)  (GET r4 :gmem))  true)
+
+;; Run play-turn twice
+(define p1 (play-turn init-state init-gmem "pull_guard" "PASS"))
+(define p2 (play-turn init-state init-gmem "pull_guard" "PASS"))
+(assert-eq "play-turn: same state" (same (GET p1 :state) (GET p2 :state)) true)
+(assert-eq "play-turn: same gmem"  (same (GET p1 :gmem)  (GET p2 :gmem))  true)
+(assert-eq "play-turn: same sub"   (same (GET p1 :sub)   (GET p2 :sub))   true)
+
+;; Run make-turn-fpt twice
+(define f1 (make-turn-fpt init-state init-gmem "takedown" "pull_guard"))
+(define f2 (make-turn-fpt init-state init-gmem "takedown" "pull_guard"))
+(assert-eq "fpt: same pos_after"   (same (GET f1 :pos_after)   (GET f2 :pos_after))   true)
+(assert-eq "fpt: same val_a_after" (same (GET f1 :val_a_after) (GET f2 :val_a_after)) true)
+
+;; Init state is not mutated by resolve
+(define st-before init-state)
+(define r5 (resolve init-state init-gmem "takedown" "PASS"))
+(assert-eq "init-state immutable" (same init-state st-before) true)
+(assert-eq "init-state still STDN" (classify init-state) "STDN")
+
+(print (str-cat "=== DETERMINISM: " PASS-COUNT " passed, " FAIL-COUNT " failed ==="))

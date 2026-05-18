@@ -1,0 +1,45 @@
+;;; test_illegality.blisp — Illegal MOR rejection
+;;; Invariant: MOR with failing preconditions becomes PASS (no ops applied).
+
+(define PASS-COUNT 0)
+(define FAIL-COUNT 0)
+
+(define assert-eq (lambda (label actual expected)
+  (if (same actual expected)
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1)))
+    (progn (print (str-cat "  FAIL: " label " got=" actual " want=" expected))
+           (define FAIL-COUNT (+ FAIL-COUNT 1))))))
+
+(print "=== ILLEGAL MOR REJECTION ===")
+
+;; hip_bump requires CGRD. From STDN it should be rejected → PASS.
+(define r1 (resolve init-state init-gmem "hip_bump" "PASS"))
+(assert-eq "hip_bump from STDN: no change" (GET r1 :pos) "STDN")
+(assert-eq "state unchanged" (same (GET r1 :state) init-state) true)
+
+;; mnt_sub requires MNT. From STDN it should be rejected.
+(define r2 (resolve init-state init-gmem "mnt_sub" "PASS"))
+(assert-eq "mnt_sub from STDN: no change" (GET r2 :pos) "STDN")
+
+;; sctr_mount requires SCTR. From STDN it should be rejected.
+(define r3 (resolve init-state init-gmem "sctr_mount" "PASS"))
+(assert-eq "sctr_mount from STDN: no change" (GET r3 :pos) "STDN")
+
+;; bctr_rnc requires BCTR. From STDN it should be rejected.
+(define r4 (resolve init-state init-gmem "bctr_rnc" "PASS"))
+(assert-eq "bctr_rnc from STDN: no change" (GET r4 :pos) "STDN")
+
+;; hgrd_pass requires HGRD + ORI.level=ME_OVER. From STDN, rejected.
+(define r5 (resolve init-state init-gmem "hgrd_pass" "PASS"))
+(assert-eq "hgrd_pass from STDN: no change" (GET r5 :pos) "STDN")
+
+;; trtl_standup requires TRTL. From STDN, rejected.
+(define r6 (resolve init-state init-gmem "trtl_standup" "PASS"))
+(assert-eq "trtl_standup from STDN: no change" (GET r6 :pos) "STDN")
+
+;; sub_threat must NOT increment on illegal submission MOR
+(define gm-sub (GAME-MEM 0 1 "A" 1))
+(define r7 (resolve init-state gm-sub "mnt_sub" "PASS"))
+(assert-eq "illegal sub: threat unchanged" (GET (GET r7 :gmem) :sub_threat) 1)
+
+(print (str-cat "=== ILLEGALITY: " PASS-COUNT " passed, " FAIL-COUNT " failed ==="))

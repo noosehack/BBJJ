@@ -1,0 +1,153 @@
+;;; morphisms.blisp — 16 MOR definitions (2 per position)
+;;; Depends: types.blisp, radicals.blisp
+
+;; ── STDN (Standing) ─────────────────────────────────────────────────
+
+(define MOR-TAKEDOWN (MOR "takedown" "Double Leg Takedown" "STDN"
+  (PRED-RAD "STDN") nil
+  (OP-ADD CON-ME-AR+-OP-TO)
+  (OP-SET-ORI "level" "ME_OVER")
+  (OP-SET-GND "op" "SUPINE")
+  nil
+  (PRED-RAD "SCTR") "RSK" 2 2 "transition"))
+
+(define MOR-PULL-GUARD (MOR "pull_guard" "Guard Pull" "STDN"
+  (PRED-RAD "STDN") nil
+  (OP-ADD CON-ME-LE+-OP-TO)
+  (OP-ADD CON-ME-LE--OP-TO)
+  (OP-SET-GND "me" "SUPINE")
+  nil
+  (PRED-RAD "CGRD") "SAFE" 1 3 "transition"))
+
+;; ── CGRD (Closed Guard) ──────────────────────────────────────────────
+
+(define MOR-HIP-BUMP (MOR "hip_bump" "Hip Bump Sweep" "CGRD"
+  (PRED-RAD "CGRD") nil
+  (OP-MAINTAIN CON-ME-LE+-OP-TO)
+  (OP-MAINTAIN CON-ME-LE--OP-TO)
+  (OP-SET-ORI "level" "ME_OVER")
+  nil
+  (PRED-RAD "MNT") "RSK" 2 2 "sweep"))
+
+(define MOR-TRIANGLE (MOR "triangle" "Triangle Choke" "CGRD"
+  (PRED-RAD "CGRD") nil
+  (OP-MAINTAIN CON-ME-LE+-OP-TO)
+  (OP-MAINTAIN CON-ME-LE--OP-TO)
+  nil nil
+  nil "SAFE" 2 1 "submission"))
+
+;; ── OGRD (Open Guard) ───────────────────────────────────────────────
+
+(define MOR-OGRD-SWEEP (MOR "ogrd_sweep" "Butterfly Sweep" "OGRD"
+  (PRED-RAD "OGRD") nil
+  (OP-ADD CON-ME-AR+-OP-TO)
+  (OP-SET-ORI "level" "ME_OVER")
+  (OP-DEL CON-ME-LE-OP)
+  nil
+  (PRED-RAD "SCTR") "RSK" 2 2 "sweep"))
+
+(define MOR-OGRD-RETAIN (MOR "ogrd_retain" "Guard Retention" "OGRD"
+  (PRED-RAD "OGRD") nil
+  (OP-MAINTAIN CON-ME-LE-OP)
+  nil nil nil
+  nil "SAFE" 1 3 "control"))
+
+;; ── HGRD (Half Guard) ───────────────────────────────────────────────
+
+(define MOR-HGRD-SWEEP (MOR "hgrd_sweep" "Half Guard Sweep" "HGRD"
+  (PRED-RAD "HGRD") nil
+  (OP-DEL CON-ME-LE+-OP-LE)
+  (OP-ADD CON-ME-AR+-OP-TO)
+  (OP-SET-ORI "level" "ME_OVER")
+  nil
+  (PRED-RAD "SCTR") "RSK" 2 2 "sweep"))
+
+(define MOR-HGRD-PASS (MOR "hgrd_pass" "Half Guard Pass" "HGRD"
+  (PRED-RAD "HGRD") (PRED-ORI "level" "ME_OVER")
+  (OP-DEL CON-ME-LE+-OP-LE)
+  (OP-ADD CON-ME-AR+-OP-TO)
+  nil nil
+  (PRED-RAD "SCTR") "SAFE" 1 2 "transition"))
+
+;; ── TRTL (Turtle) ───────────────────────────────────────────────────
+
+(define MOR-TRTL-STANDUP (MOR "trtl_standup" "Technical Stand-up" "TRTL"
+  (PRED-RAD "TRTL") nil
+  (OP-SET-GND "me" "STANDING")
+  nil nil nil
+  (PRED-RAD "STDN") "SAFE" 1 2 "transition"))
+
+(define MOR-TRTL-SIT (MOR "trtl_sit" "Sit to Guard" "TRTL"
+  (PRED-RAD "TRTL") nil
+  (OP-ADD CON-ME-LE-OP)
+  (OP-SET-GND "me" "SEATED")
+  nil nil
+  (PRED-RAD "OGRD") "SAFE" 1 2 "transition"))
+
+;; ── SCTR (Side Control) ─────────────────────────────────────────────
+
+(define MOR-SCTR-MOUNT (MOR "sctr_mount" "Advance to Mount" "SCTR"
+  (PRED-RAD "SCTR") nil
+  (OP-DEL CON-ME-AR+-OP-TO)
+  (OP-ADD CON-ME-LE+-OP-TO)
+  (OP-ADD CON-ME-LE--OP-TO)
+  nil
+  (PRED-RAD "MNT") "RSK" 2 1 "transition"))
+
+(define MOR-SCTR-AMERICANA (MOR "sctr_americana" "Americana" "SCTR"
+  (PRED-RAD "SCTR") nil
+  (OP-MAINTAIN CON-ME-AR+-OP-TO)
+  nil nil nil
+  nil "SAFE" 2 1 "submission"))
+
+;; ── MNT (Mount) ─────────────────────────────────────────────────────
+
+(define MOR-MNT-SUB (MOR "mnt_sub" "Mount Submission" "MNT"
+  (PRED-RAD "MNT") nil
+  (OP-MAINTAIN CON-ME-LE+-OP-TO)
+  (OP-MAINTAIN CON-ME-LE--OP-TO)
+  nil nil
+  nil "SAFE" 2 1 "submission"))
+
+(define MOR-MNT-PRESSURE (MOR "mnt_pressure" "Mount Pressure" "MNT"
+  (PRED-RAD "MNT") nil
+  (OP-MAINTAIN CON-ME-LE+-OP-TO)
+  (OP-MAINTAIN CON-ME-LE--OP-TO)
+  nil nil
+  nil "SAFE" 1 3 "control"))
+
+;; ── BCTR (Back Control) ─────────────────────────────────────────────
+
+(define MOR-BCTR-RNC (MOR "bctr_rnc" "Rear Naked Choke" "BCTR"
+  (PRED-RAD "BCTR") nil
+  (OP-MAINTAIN CON-ME-LE+-OP-TO)
+  (OP-MAINTAIN CON-ME-LE--OP-TO)
+  nil nil
+  nil "SAFE" 2 1 "submission"))
+
+(define MOR-BCTR-CONTROL (MOR "bctr_control" "Back Control" "BCTR"
+  (PRED-RAD "BCTR") nil
+  (OP-MAINTAIN CON-ME-LE+-OP-TO)
+  (OP-MAINTAIN CON-ME-LE--OP-TO)
+  nil nil
+  nil "SAFE" 1 3 "control"))
+
+;; ── MOR registry ────────────────────────────────────────────────────
+(define mor-lookup (lambda (id)
+  (if (same id "takedown")       MOR-TAKEDOWN
+  (if (same id "pull_guard")     MOR-PULL-GUARD
+  (if (same id "hip_bump")       MOR-HIP-BUMP
+  (if (same id "triangle")       MOR-TRIANGLE
+  (if (same id "ogrd_sweep")     MOR-OGRD-SWEEP
+  (if (same id "ogrd_retain")    MOR-OGRD-RETAIN
+  (if (same id "hgrd_sweep")     MOR-HGRD-SWEEP
+  (if (same id "hgrd_pass")      MOR-HGRD-PASS
+  (if (same id "trtl_standup")   MOR-TRTL-STANDUP
+  (if (same id "trtl_sit")       MOR-TRTL-SIT
+  (if (same id "sctr_mount")     MOR-SCTR-MOUNT
+  (if (same id "sctr_americana") MOR-SCTR-AMERICANA
+  (if (same id "mnt_sub")        MOR-MNT-SUB
+  (if (same id "mnt_pressure")   MOR-MNT-PRESSURE
+  (if (same id "bctr_rnc")       MOR-BCTR-RNC
+  (if (same id "bctr_control")   MOR-BCTR-CONTROL
+  nil))))))))))))))))))

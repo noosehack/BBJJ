@@ -1,0 +1,150 @@
+;;; resolve.blisp — RESOLVE algorithm + VAL + game memory
+;;; Depends: types.blisp, radicals.blisp, morphisms.blisp
+
+;; ── apply-op: apply one op to state ──────────────────────────────────
+(define apply-op (lambda (st op)
+  (if (same op nil) st
+  (if (same (GET op :type) "ADD")      (state-add-con st (GET op :con))
+  (if (same (GET op :type) "DEL")      (state-del-con st (GET op :con))
+  (if (same (GET op :type) "SET_ORI")  (state-set-ori st (GET op :field) (GET op :value))
+  (if (same (GET op :type) "SET_GND")  (state-set-gnd st (GET op :role) (GET op :value))
+  st)))))))
+
+;; ── op-is-del: true if op is a DEL ──────────────────────────────────
+(define op-is-del (lambda (op)
+  (if (same op nil) false (same (GET op :type) "DEL"))))
+
+;; ── op-is-maintain: true if op is MAINTAIN for given CON ─────────────
+(define mor-maintains (lambda (mor con)
+  (if (same (GET mor :op0) nil) false
+  (if (same (GET (GET mor :op0) :type) "MAINTAIN")
+    (if (con-eq-safe (GET (GET mor :op0) :con) con) true
+    (if (same (GET mor :op1) nil) false
+    (if (same (GET (GET mor :op1) :type) "MAINTAIN")
+      (if (con-eq-safe (GET (GET mor :op1) :con) con) true
+      (if (same (GET mor :op2) nil) false
+      (if (same (GET (GET mor :op2) :type) "MAINTAIN")
+        (con-eq-safe (GET (GET mor :op2) :con) con)
+        false)))
+      false)))
+  (if (same (GET mor :op1) nil) false
+  (if (same (GET (GET mor :op1) :type) "MAINTAIN")
+    (if (con-eq-safe (GET (GET mor :op1) :con) con) true
+    (if (same (GET mor :op2) nil) false
+    (if (same (GET (GET mor :op2) :type) "MAINTAIN")
+      (con-eq-safe (GET (GET mor :op2) :con) con)
+      false)))
+  (if (same (GET mor :op2) nil) false
+  (if (same (GET (GET mor :op2) :type) "MAINTAIN")
+    (con-eq-safe (GET (GET mor :op2) :con) con)
+    false))))))))
+
+;; ── priority ─────────────────────────────────────────────────────────
+;; PRIORITY = burst + INITIATIVE + DEFENSE_BONUS - DIFFICULTY
+(define calc-priority (lambda (mor gmem pos player)
+  (+ (+ (GET mor :burst)
+        (if (same (GET gmem :initiative) player) 1 0))
+     (+ (if (< (v-pos pos) 0) 1 0)
+        (* -1 (+ (GET mor :cost) -1))))))
+
+;; ── contest: is a DEL contested? ─────────────────────────────────────
+;; A DEL by player A on CON X is contested if player B's MOR has MAINTAIN(X)
+(define del-contested (lambda (del-op opponent-mor)
+  (if (op-is-del del-op)
+    (mor-maintains opponent-mor (GET del-op :con))
+    false)))
+
+;; ── resolve-one-op: apply op if not contested, or if priority wins ───
+(define resolve-op (lambda (st op opp-mor my-pri opp-pri)
+  (if (same op nil) st
+  (if (same (GET op :type) "MAINTAIN") st
+  (if (del-contested op opp-mor)
+    (if (> my-pri opp-pri) (apply-op st op) st)
+    (apply-op st op))))))
+
+;; ── apply all ops from a MOR (4 slots) ──────────────────────────────
+(define apply-mor-ops (lambda (st mor opp-mor my-pri opp-pri)
+  (define s0 (resolve-op st (GET mor :op0) opp-mor my-pri opp-pri))
+  (define s1 (resolve-op s0 (GET mor :op1) opp-mor my-pri opp-pri))
+  (define s2 (resolve-op s1 (GET mor :op2) opp-mor my-pri opp-pri))
+  (resolve-op s2 (GET mor :op3) opp-mor my-pri opp-pri)))
+
+;; ── count contests won ───────────────────────────────────────────────
+(define count-contest-wins (lambda (mor opp-mor my-pri opp-pri)
+  (+ (if (del-contested (GET mor :op0) opp-mor) (if (> my-pri opp-pri) 1 0) 0)
+     (if (del-contested (GET mor :op1) opp-mor) (if (> my-pri opp-pri) 1 0) 0))))
+
+;; ── did MOR succeed (any non-MAINTAIN op applied)? ──────────────────
+(define mor-succeeded (lambda (st-before st-after)
+  (if (same st-before st-after) false true)))
+
+;; ── RESOLVE ──────────────────────────────────────────────────────────
+;; Returns (TUP :state new-state :gmem new-gmem :pos new-position
+;;              :contests-a wins-a :contests-b wins-b)
+(define resolve (lambda (st gmem mor-a-id mor-b-id)
+  (progn
+    (define pos (classify st))
+    (define mor-a (if (same mor-a-id "PASS") nil (mor-lookup mor-a-id)))
+    (define mor-b (if (same mor-b-id "PASS") nil (mor-lookup mor-b-id)))
+
+    ;; legality: if preconditions fail → PASS (nil)
+    (define mor-a (if (same mor-a nil) nil
+                    (if (check-mor-pre st pos mor-a) mor-a nil)))
+    (define mor-b (if (same mor-b nil) nil
+                    (if (check-mor-pre st pos mor-b) mor-b nil)))
+
+    ;; priority
+    (define pri-a (if (same mor-a nil) 0 (calc-priority mor-a gmem pos "A")))
+    (define pri-b (if (same mor-b nil) 0 (calc-priority mor-b gmem pos "B")))
+
+    ;; apply A's ops, then B's ops
+    (define st1 (if (same mor-a nil) st
+                  (apply-mor-ops st mor-a (if (same mor-b nil)
+                    (TUP :op0 nil :op1 nil :op2 nil :op3 nil) mor-b)
+                    pri-a pri-b)))
+    (define st2 (if (same mor-b nil) st1
+                  (apply-mor-ops st1 mor-b (if (same mor-a nil)
+                    (TUP :op0 nil :op1 nil :op2 nil :op3 nil) mor-a)
+                    pri-b pri-a)))
+
+    ;; contest accounting
+    (define wins-a (if (same mor-a nil) 0
+      (count-contest-wins mor-a (if (same mor-b nil)
+        (TUP :op0 nil :op1 nil :op2 nil :op3 nil) mor-b) pri-a pri-b)))
+    (define wins-b (if (same mor-b nil) 0
+      (count-contest-wins mor-b (if (same mor-a nil)
+        (TUP :op0 nil :op1 nil :op2 nil :op3 nil) mor-a) pri-b pri-a)))
+
+    ;; classify new position
+    (define new-pos (classify st2))
+
+    ;; game memory updates
+    (define a-ok (mor-succeeded st st1))
+    (define b-ok (mor-succeeded st1 st2))
+    (define new-mom (clamp
+      (+ (GET gmem :momentum)
+         (+ (if a-ok 1 0) (* -1 (if b-ok 1 0))))
+      -3 3))
+
+    ;; sub_threat: +1 if submission MOR was legal from offense
+    ;; MAINTAIN-only MORs don't change state, so legality (non-nil) is the criterion
+    (define a-is-sub (if (same mor-a nil) false (same (GET mor-a :tags) "submission")))
+    (define pos-is-off (if (same pos "SCTR") true (if (same pos "MNT") true
+                        (if (same pos "BCTR") true false))))
+    (define new-sub (if (if a-is-sub pos-is-off false)
+      (+ (GET gmem :sub_threat) 1)
+      (if (same new-pos pos) (GET gmem :sub_threat) 0)))
+
+    ;; initiative: whoever won more contests
+    (define new-init (if (> wins-a wins-b) "A" (if (> wins-b wins-a) "B" (GET gmem :initiative))))
+
+    (define new-gmem (GAME-MEM new-mom new-sub new-init (+ (GET gmem :turn) 1)))
+
+    (TUP :state st2 :gmem new-gmem :pos new-pos
+         :pos_before pos :wins_a wins-a :wins_b wins-b))))
+
+;; ── VAL ──────────────────────────────────────────────────────────────
+(define val (lambda (st pos)
+  (+ (v-pos pos)
+     (* 0.5 (+ (count-role-cons st "Me")
+               (* -1 (count-role-cons st "Op")))))))

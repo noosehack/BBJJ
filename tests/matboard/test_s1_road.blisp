@@ -1,0 +1,57 @@
+;;; test_s1_road.blisp — S1 canonical road test
+;;; Pull guard (STDN→CGRD) → sweep (CGRD→MNT) → submit×3 (sub_threat→3)
+;;; Expected: A wins by submission in 5 turns.
+
+(define PASS-COUNT 0)
+(define FAIL-COUNT 0)
+
+(define assert-eq (lambda (label actual expected)
+  (if (same actual expected)
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1)))
+    (progn (print (str-cat "  FAIL: " label " got=" actual " want=" expected))
+           (define FAIL-COUNT (+ FAIL-COUNT 1))))))
+
+(print "=== S1 ROAD: pull_guard → hip_bump → mnt_sub×3 ===")
+
+;; Turn 1: pull guard
+(define p1 (play-turn init-state init-gmem "pull_guard" "PASS"))
+(assert-eq "T1 pos_before" (GET (GET p1 :fpt) :pos_before) "STDN")
+(assert-eq "T1 pos_after"  (GET (GET p1 :fpt) :pos_after)  "CGRD")
+(assert-eq "T1 sub_threat" (GET (GET p1 :gmem) :sub_threat) 0)
+(assert-eq "T1 momentum"   (GET (GET p1 :gmem) :momentum)   1)
+(assert-eq "T1 turn"       (GET (GET p1 :gmem) :turn)        2)
+
+;; Turn 2: hip bump sweep
+(define p2 (play-turn (GET p1 :state) (GET p1 :gmem) "hip_bump" "PASS"))
+(assert-eq "T2 pos_before" (GET (GET p2 :fpt) :pos_before) "CGRD")
+(assert-eq "T2 pos_after"  (GET (GET p2 :fpt) :pos_after)  "MNT")
+(assert-eq "T2 sub_threat" (GET (GET p2 :gmem) :sub_threat) 0)
+(assert-eq "T2 momentum"   (GET (GET p2 :gmem) :momentum)   2)
+
+;; Turn 3: mnt_sub (sub_threat 0→1)
+(define p3 (play-turn (GET p2 :state) (GET p2 :gmem) "mnt_sub" "PASS"))
+(assert-eq "T3 pos_after"  (GET (GET p3 :fpt) :pos_after) "MNT")
+(assert-eq "T3 sub_threat" (GET (GET p3 :gmem) :sub_threat) 1)
+(assert-eq "T3 sub"        (GET p3 :sub) false)
+
+;; Turn 4: mnt_sub (sub_threat 1→2)
+(define p4 (play-turn (GET p3 :state) (GET p3 :gmem) "mnt_sub" "PASS"))
+(assert-eq "T4 sub_threat" (GET (GET p4 :gmem) :sub_threat) 2)
+(assert-eq "T4 sub"        (GET p4 :sub) false)
+
+;; Turn 5: mnt_sub (sub_threat 2→3 = SUBMISSION WIN)
+(define p5 (play-turn (GET p4 :state) (GET p4 :gmem) "mnt_sub" "PASS"))
+(assert-eq "T5 sub_threat" (GET (GET p5 :gmem) :sub_threat) 3)
+(assert-eq "T5 sub"        (GET p5 :sub) true)
+
+;; GAME_FPT construction
+(define va (GET (GET p5 :fpt) :val_a_after))
+(define vb (GET (GET p5 :fpt) :val_b_after))
+(define gfpt (GAME-FPT "A" "submission" va vb
+  (GET p1 :fpt) (GET p2 :fpt) (GET p3 :fpt) (GET p4 :fpt) (GET p5 :fpt)
+  nil nil nil nil nil nil nil 5))
+(assert-eq "GFPT winner"    (GET gfpt :winner) "A")
+(assert-eq "GFPT condition" (GET gfpt :win_condition) "submission")
+(assert-eq "GFPT turns"     (GET gfpt :num_turns) 5)
+
+(print (str-cat "=== S1 ROAD: " PASS-COUNT " passed, " FAIL-COUNT " failed ==="))

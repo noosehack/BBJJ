@@ -1,0 +1,156 @@
+;;; playtest_games.blisp — 16 scripted games for semantic playtest v2
+
+(print "╔══════════════════════════════════════════════════════════════╗")
+(print "║           MATBOARD V0 — SEMANTIC PLAYTEST v2               ║")
+(print "╚══════════════════════════════════════════════════════════════╝")
+
+;; ═══════════════════════════════════════════════════════════════════════
+;; GROUP 1: STDN — takedown / pull guard / simultaneous
+;; ═══════════════════════════════════════════════════════════════════════
+
+;; G01: A takedown, B passive. Clean top-game entry.
+(define g01 (play-game "G01 STDN takedown"
+  init-state init-gmem
+  (MOVES "takedown" "PASS" "PASS" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+;; G02: A pull guard, B passive. Clean bottom-game entry.
+(define g02 (play-game "G02 STDN pull_guard"
+  init-state init-gmem
+  (MOVES "pull_guard" "PASS" "PASS" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+;; G03: A takedown vs B pull_guard. Simultaneous conflicting transitions.
+(define g03 (play-game "G03 STDN takedown-vs-pull_guard"
+  init-state init-gmem
+  (MOVES "takedown" "PASS" "PASS" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  (MOVES "pull_guard" "PASS" "PASS" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")))
+
+;; G04: Stall. 12x mutual PASS.
+(define g04 (play-game "G04 STDN 12x-stall"
+  init-state init-gmem ALL-PASS ALL-PASS))
+
+;; ═══════════════════════════════════════════════════════════════════════
+;; GROUP 2: CGRD sweep chain
+;; ═══════════════════════════════════════════════════════════════════════
+
+;; G05: S1 road. pull guard → hip bump → mnt_sub x3.
+(define g05 (play-game "G05 CGRD sweep→mount→sub"
+  init-state init-gmem
+  (MOVES "pull_guard" "hip_bump" "mnt_sub" "mnt_sub" "mnt_sub" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+;; G06: Triangle from closed guard. Sub tag from non-offensive position.
+(define g06 (play-game "G06 CGRD triangle-from-defense"
+  init-state init-gmem
+  (MOVES "pull_guard" "triangle" "triangle" "triangle" "triangle" "triangle"
+         "triangle" "triangle" "triangle" "triangle" "triangle" "triangle")
+  ALL-PASS))
+
+;; G07: hip_bump sweep — does MAINTAIN hold contacts through ORI change?
+(define g07 (play-game "G07 CGRD sweep-contact-check"
+  init-state init-gmem
+  (MOVES "pull_guard" "hip_bump" "PASS" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+;; ═══════════════════════════════════════════════════════════════════════
+;; GROUP 3: SCTR — control / advance / sub_threat
+;; ═══════════════════════════════════════════════════════════════════════
+
+;; G08: takedown → americana x3. Submission from side control.
+(define g08 (play-game "G08 SCTR americana-sub"
+  init-state init-gmem
+  (MOVES "takedown" "sctr_americana" "sctr_americana" "sctr_americana"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+;; G09: takedown → americana x2 → mount advance → mnt_sub x3.
+;; Tests sub_threat reset on SCTR→MNT position change.
+(define g09 (play-game "G09 SCTR sub-reset-on-advance"
+  init-state init-gmem
+  (MOVES "takedown" "sctr_americana" "sctr_americana" "sctr_mount"
+         "mnt_sub" "mnt_sub" "mnt_sub" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+;; G10: takedown → americana x2 → PASS x9. Sub_threat persistence test.
+(define g10 (play-game "G10 SCTR sub-threat-non-decay"
+  init-state init-gmem
+  (MOVES "takedown" "sctr_americana" "sctr_americana" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+;; ═══════════════════════════════════════════════════════════════════════
+;; GROUP 4: MNT — pressure / absorbing state / B tries everything
+;; ═══════════════════════════════════════════════════════════════════════
+
+;; G11: Reach MNT, pressure hold x10. Points win.
+(define g11 (play-game "G11 MNT pressure-hold"
+  init-state init-gmem
+  (MOVES "pull_guard" "hip_bump" "mnt_pressure" "mnt_pressure" "mnt_pressure"
+         "mnt_pressure" "mnt_pressure" "mnt_pressure" "mnt_pressure"
+         "mnt_pressure" "mnt_pressure" "mnt_pressure")
+  ALL-PASS))
+
+;; G12: Reach MNT, B tries every fiber MOR. Absorbing-state probe.
+(define g12 (play-game "G12 MNT absorbing-B-tries-all"
+  init-state init-gmem
+  (MOVES "pull_guard" "hip_bump" "PASS" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  (MOVES "PASS" "PASS" "takedown" "pull_guard" "hip_bump" "triangle"
+         "ogrd_sweep" "hgrd_sweep" "trtl_standup" "sctr_mount" "bctr_rnc" "mnt_sub")))
+
+;; ═══════════════════════════════════════════════════════════════════════
+;; GROUP 5: BCTR — synthetic start, maintain / rnc
+;; ═══════════════════════════════════════════════════════════════════════
+
+;; Synthetic BCTR: both legs on torso, facing=ALIGNED
+(define st-bctr (state-set-ori
+  (state-add-con (state-add-con init-state CON-ME-LE+-OP-TO) CON-ME-LE--OP-TO)
+  "facing" "ALIGNED"))
+
+;; G13: BCTR rnc x3 → submission. Fastest possible finish.
+(define g13 (play-game "G13 BCTR rnc-sub"
+  st-bctr init-gmem
+  (MOVES "bctr_rnc" "bctr_rnc" "bctr_rnc" "PASS" "PASS" "PASS"
+         "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+;; G14: BCTR control x12. Hold for points, no submission.
+(define g14 (play-game "G14 BCTR control-hold"
+  st-bctr init-gmem
+  (MOVES "bctr_control" "bctr_control" "bctr_control" "bctr_control"
+         "bctr_control" "bctr_control" "bctr_control" "bctr_control"
+         "bctr_control" "bctr_control" "bctr_control" "bctr_control")
+  ALL-PASS))
+
+;; ═══════════════════════════════════════════════════════════════════════
+;; GROUP 6: TRTL — synthetic start, standup / sit-to-guard
+;; ═══════════════════════════════════════════════════════════════════════
+
+;; Synthetic TRTL: gnd.me = TURTLE
+(define st-trtl (STATE (ORI "OPPOSED" "LEVEL" "NORMAL") (GND "TURTLE" "STANDING")))
+
+;; G15: TRTL standup → STDN → takedown → americana x3.
+(define g15 (play-game "G15 TRTL standup→takedown→sub"
+  st-trtl init-gmem
+  (MOVES "trtl_standup" "takedown" "sctr_americana" "sctr_americana"
+         "sctr_americana" "PASS" "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+;; G16: TRTL sit → OGRD → sweep → SCTR → mount → mnt_sub x3.
+(define g16 (play-game "G16 TRTL sit→sweep→mount→sub"
+  st-trtl init-gmem
+  (MOVES "trtl_sit" "ogrd_sweep" "sctr_mount" "mnt_sub" "mnt_sub"
+         "mnt_sub" "PASS" "PASS" "PASS" "PASS" "PASS" "PASS")
+  ALL-PASS))
+
+(print "")
+(print "╔══════════════════════════════════════════════════════════════╗")
+(print "║                   PLAYTEST COMPLETE                        ║")
+(print "╚══════════════════════════════════════════════════════════════╝")

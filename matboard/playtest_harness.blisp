@@ -1,0 +1,125 @@
+;;; playtest_harness.blisp — play-game function and reporting helpers
+
+;; ── play-game: run up to 12 turns or until submission ───────────────
+;; moves-a and moves-b are 12-slot TUPs: :m1 .. :m12
+;; Returns game result TUP with all turn data
+
+(define get-move (lambda (moves turn)
+  (if (same turn 1)  (GET moves :m1)
+  (if (same turn 2)  (GET moves :m2)
+  (if (same turn 3)  (GET moves :m3)
+  (if (same turn 4)  (GET moves :m4)
+  (if (same turn 5)  (GET moves :m5)
+  (if (same turn 6)  (GET moves :m6)
+  (if (same turn 7)  (GET moves :m7)
+  (if (same turn 8)  (GET moves :m8)
+  (if (same turn 9)  (GET moves :m9)
+  (if (same turn 10) (GET moves :m10)
+  (if (same turn 11) (GET moves :m11)
+  (if (same turn 12) (GET moves :m12)
+  "PASS"))))))))))))))
+
+(define play-game (lambda (label st0 gm0 moves-a moves-b)
+  (progn
+    (print (str-cat ""))
+    (print (str-cat "══════ GAME: " label " ══════"))
+
+    ;; Turn 1
+    (define ma1 (get-move moves-a 1)) (define mb1 (get-move moves-b 1))
+    (define p1 (play-turn st0 gm0 ma1 mb1))
+    (print-turn-fpt (GET p1 :fpt))
+    (if (same (GET p1 :sub) true) (print "*** SUBMISSION ***") nil)
+
+    ;; Turn 2
+    (define ma2 (get-move moves-a 2)) (define mb2 (get-move moves-b 2))
+    (define p2 (if (same (GET p1 :sub) true) p1 (play-turn (GET p1 :state) (GET p1 :gmem) ma2 mb2)))
+    (if (same (GET p1 :sub) true) nil (progn (print-turn-fpt (GET p2 :fpt))
+      (if (same (GET p2 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 3
+    (define ma3 (get-move moves-a 3)) (define mb3 (get-move moves-b 3))
+    (define p3 (if (same (GET p2 :sub) true) p2 (play-turn (GET p2 :state) (GET p2 :gmem) ma3 mb3)))
+    (if (same (GET p2 :sub) true) nil (progn (print-turn-fpt (GET p3 :fpt))
+      (if (same (GET p3 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 4
+    (define ma4 (get-move moves-a 4)) (define mb4 (get-move moves-b 4))
+    (define p4 (if (same (GET p3 :sub) true) p3 (play-turn (GET p3 :state) (GET p3 :gmem) ma4 mb4)))
+    (if (same (GET p3 :sub) true) nil (progn (print-turn-fpt (GET p4 :fpt))
+      (if (same (GET p4 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 5
+    (define ma5 (get-move moves-a 5)) (define mb5 (get-move moves-b 5))
+    (define p5 (if (same (GET p4 :sub) true) p4 (play-turn (GET p4 :state) (GET p4 :gmem) ma5 mb5)))
+    (if (same (GET p4 :sub) true) nil (progn (print-turn-fpt (GET p5 :fpt))
+      (if (same (GET p5 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 6
+    (define ma6 (get-move moves-a 6)) (define mb6 (get-move moves-b 6))
+    (define p6 (if (same (GET p5 :sub) true) p5 (play-turn (GET p5 :state) (GET p5 :gmem) ma6 mb6)))
+    (if (same (GET p5 :sub) true) nil (progn (print-turn-fpt (GET p6 :fpt))
+      (if (same (GET p6 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 7
+    (define ma7 (get-move moves-a 7)) (define mb7 (get-move moves-b 7))
+    (define p7 (if (same (GET p6 :sub) true) p6 (play-turn (GET p6 :state) (GET p6 :gmem) ma7 mb7)))
+    (if (same (GET p6 :sub) true) nil (progn (print-turn-fpt (GET p7 :fpt))
+      (if (same (GET p7 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 8
+    (define ma8 (get-move moves-a 8)) (define mb8 (get-move moves-b 8))
+    (define p8 (if (same (GET p7 :sub) true) p7 (play-turn (GET p7 :state) (GET p7 :gmem) ma8 mb8)))
+    (if (same (GET p7 :sub) true) nil (progn (print-turn-fpt (GET p8 :fpt))
+      (if (same (GET p8 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 9
+    (define ma9 (get-move moves-a 9)) (define mb9 (get-move moves-b 9))
+    (define p9 (if (same (GET p8 :sub) true) p8 (play-turn (GET p8 :state) (GET p8 :gmem) ma9 mb9)))
+    (if (same (GET p8 :sub) true) nil (progn (print-turn-fpt (GET p9 :fpt))
+      (if (same (GET p9 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 10
+    (define ma10 (get-move moves-a 10)) (define mb10 (get-move moves-b 10))
+    (define p10 (if (same (GET p9 :sub) true) p9 (play-turn (GET p9 :state) (GET p9 :gmem) ma10 mb10)))
+    (if (same (GET p9 :sub) true) nil (progn (print-turn-fpt (GET p10 :fpt))
+      (if (same (GET p10 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 11
+    (define ma11 (get-move moves-a 11)) (define mb11 (get-move moves-b 11))
+    (define p11 (if (same (GET p10 :sub) true) p10 (play-turn (GET p10 :state) (GET p10 :gmem) ma11 mb11)))
+    (if (same (GET p10 :sub) true) nil (progn (print-turn-fpt (GET p11 :fpt))
+      (if (same (GET p11 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Turn 12
+    (define ma12 (get-move moves-a 12)) (define mb12 (get-move moves-b 12))
+    (define p12 (if (same (GET p11 :sub) true) p11 (play-turn (GET p11 :state) (GET p11 :gmem) ma12 mb12)))
+    (if (same (GET p11 :sub) true) nil (progn (print-turn-fpt (GET p12 :fpt))
+      (if (same (GET p12 :sub) true) (print "*** SUBMISSION ***") nil)))
+
+    ;; Final result
+    (define final-fpt (GET p12 :fpt))
+    (define final-va (GET final-fpt :val_a_after))
+    (define final-vb (GET final-fpt :val_b_after))
+    (define final-turn (GET (GET p12 :gmem) :turn))
+    (define sub-win (GET p12 :sub))
+
+    (define winner (if (same sub-win true) "A"
+      (determine-winner final-va final-vb)))
+    (define condition (if (same sub-win true) "submission"
+      (if (same winner "DRAW") "draw" "points")))
+
+    (print (str-cat "  ── Result: " winner " by " condition
+                    " | final val A=" final-va " B=" final-vb
+                    " | turns=" (+ final-turn -1)))
+
+    (TUP :label label :winner winner :condition condition
+         :final_va final-va :final_vb final-vb
+         :turns (+ final-turn -1) :sub sub-win))))
+
+;; ── move schedule helpers ───────────────────────────────────────────
+(defmacro MOVES (m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12)
+  `(TUP :m1 ,m1 :m2 ,m2 :m3 ,m3 :m4 ,m4 :m5 ,m5 :m6 ,m6
+        :m7 ,m7 :m8 ,m8 :m9 ,m9 :m10 ,m10 :m11 ,m11 :m12 ,m12))
+
+(define ALL-PASS (MOVES "PASS" "PASS" "PASS" "PASS" "PASS" "PASS"
+                        "PASS" "PASS" "PASS" "PASS" "PASS" "PASS"))

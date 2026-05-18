@@ -1,0 +1,38 @@
+;;; test_sweep_contacts.blisp — Sweeps preserve contacts, change orientation
+;;; Invariant: MAINTAIN ops in sweep MORs keep CONs intact.
+
+(define PASS-COUNT 0)
+(define FAIL-COUNT 0)
+
+(define assert-eq (lambda (label actual expected)
+  (if (same actual expected)
+    (progn (print (str-cat "  PASS: " label)) (define PASS-COUNT (+ PASS-COUNT 1)))
+    (progn (print (str-cat "  FAIL: " label " got=" actual " want=" expected))
+           (define FAIL-COUNT (+ FAIL-COUNT 1))))))
+
+(print "=== SWEEP CONTACT PRESERVATION ===")
+
+;; Build CGRD state: add both leg CONs to init
+(define st-cgrd (state-add-con
+  (state-add-con
+    (state-set-gnd init-state "me" "SUPINE")
+    CON-ME-LE+-OP-TO)
+  CON-ME-LE--OP-TO))
+(assert-eq "pre: classify CGRD" (classify st-cgrd) "CGRD")
+(assert-eq "pre: has LE+" (state-has-con st-cgrd CON-ME-LE+-OP-TO) true)
+(assert-eq "pre: has LE-" (state-has-con st-cgrd CON-ME-LE--OP-TO) true)
+
+;; Apply hip bump: should MAINTAIN both legs, SET_ORI level ME_OVER
+(define gm (GAME-MEM 0 0 "A" 1))
+(define r (resolve st-cgrd gm "hip_bump" "PASS"))
+(define st-after (GET r :state))
+
+(assert-eq "post: classify MNT" (GET r :pos) "MNT")
+(assert-eq "post: has LE+" (state-has-con st-after CON-ME-LE+-OP-TO) true)
+(assert-eq "post: has LE-" (state-has-con st-after CON-ME-LE--OP-TO) true)
+(assert-eq "post: level ME_OVER" (GET (GET st-after :ori) :level) "ME_OVER")
+
+;; Contact count unchanged (2 leg CONs before and after)
+(assert-eq "post: con count" (count-role-cons st-after "Me") 2)
+
+(print (str-cat "=== SWEEP CONTACTS: " PASS-COUNT " passed, " FAIL-COUNT " failed ==="))
