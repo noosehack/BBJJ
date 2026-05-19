@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matboard Debugger</title>
+  <link rel="stylesheet" href="matboard-game.css">
+</head>
+<body>
+  <header>
+    <h1>MATBOARD</h1>
+    <span class="version">v4-P1 replay debugger</span>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Games</h2>
+      <div id="game-list"></div>
+    </nav>
+
+    <div class="graph-panel" id="graph-panel">
+      <svg id="graph-svg" viewBox="0 0 600 360" width="600" height="360"></svg>
+    </div>
+
+    <div class="replay-panel">
+      <div class="result-banner" id="result-banner"></div>
+
+      <div class="controls" id="controls">
+        <button id="btn-prev" disabled>&lt;</button>
+        <input type="range" class="turn-slider" id="turn-slider" min="0" max="11" value="0">
+        <button id="btn-next">&gt;</button>
+        <span class="turn-label" id="turn-label">Turn 0/0</span>
+      </div>
+
+      <div class="tab-bar">
+        <button class="active" data-tab="replay">Replay</button>
+        <button data-tab="teaching">Teaching</button>
+        <button data-tab="debug">Debug</button>
+      </div>
+
+      <div id="tab-replay" class="tab-content active">
+        <table class="turn-table">
+          <thead>
+            <tr>
+              <th>T</th>
+              <th>MOR A</th>
+              <th>MOR B</th>
+              <th>RAD</th>
+              <th>VAL</th>
+              <th>Sub</th>
+              <th>Mom</th>
+              <th>Init</th>
+            </tr>
+          </thead>
+          <tbody id="turn-body"></tbody>
+        </table>
+      </div>
+
+      <div id="tab-teaching" class="tab-content">
+        <div id="teaching-content"></div>
+      </div>
+
+      <div id="tab-debug" class="tab-content">
+        <div class="debug-toggle" id="debug-toggle">[ raw footprint data ]</div>
+        <div class="debug-content" id="debug-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="matboard-game.js"></script>
+</body>
+</html>

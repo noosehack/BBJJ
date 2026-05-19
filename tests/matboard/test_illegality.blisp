@@ -37,9 +37,9 @@
 (define r6 (resolve init-state init-gmem "trtl_standup" "PASS"))
 (assert-eq "trtl_standup from STDN: no change" (GET r6 :pos) "STDN")
 
-;; sub_threat must NOT increment on illegal submission MOR
+;; sub_threat decays when illegal submission MOR is rejected (becomes PASS)
 (define gm-sub (GAME-MEM 0 1 "A" 1))
 (define r7 (resolve init-state gm-sub "mnt_sub" "PASS"))
-(assert-eq "illegal sub: threat unchanged" (GET (GET r7 :gmem) :sub_threat) 1)
+(assert-eq "illegal sub: threat decays" (GET (GET r7 :gmem) :sub_threat) 0)
 
 (print (str-cat "=== ILLEGALITY: " PASS-COUNT " passed, " FAIL-COUNT " failed ==="))

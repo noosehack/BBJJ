@@ -1,8 +1,8 @@
-;;; playtest_games.blisp — 20 scripted games for semantic playtest v3
-;;; v3: adds escape MOR games (G17-G20), updates G12
+;;; playtest_games.blisp — 20 scripted games for semantic playtest v4
+;;; v4: P1 tuning (sub_threat decay, CGRD offensive submissions)
 
 (print "╔══════════════════════════════════════════════════════════════╗")
-(print "║           MATBOARD V1 — SEMANTIC PLAYTEST v3               ║")
+(print "║           MATBOARD V1 — SEMANTIC PLAYTEST v4 (P1)          ║")
 (print "╚══════════════════════════════════════════════════════════════╝")
 
 ;; ═══════════════════════════════════════════════════════════════════════

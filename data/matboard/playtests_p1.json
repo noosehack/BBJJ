@@ -1,0 +1,2183 @@
+{
+  "version": "v4-P1",
+  "games": [
+    {
+      "label": "G01 STDN takedown",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "takedown",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 2.5,
+      "final_val_b": -2.5,
+      "num_turns": 12
+    },
+    {
+      "label": "G02 STDN pull_guard",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "pull_guard",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 2.0,
+      "final_val_b": -2.0,
+      "num_turns": 12
+    },
+    {
+      "label": "G03 STDN takedown-vs-pull_guard",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "takedown",
+          "mor_b": "pull_guard",
+          "pos_before": "STDN",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "A"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 2.0,
+      "final_val_b": -2.0,
+      "num_turns": 12
+    },
+    {
+      "label": "G04 STDN 12x-stall",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        }
+      ],
+      "winner": "DRAW",
+      "condition": "draw",
+      "final_val_a": 0.0,
+      "final_val_b": -0.0,
+      "num_turns": 12
+    },
+    {
+      "label": "G05 CGRD sweep\u2192mount\u2192sub",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "pull_guard",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "hip_bump",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 1,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 2,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 3,
+          "momentum": 2,
+          "initiative": "A"
+        }
+      ],
+      "submission_turn": 5,
+      "winner": "A",
+      "condition": "submission",
+      "final_val_a": 4.0,
+      "final_val_b": -4.0,
+      "num_turns": 5
+    },
+    {
+      "label": "G06 CGRD triangle-from-defense",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "pull_guard",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "triangle",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 1,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "triangle",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 2,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "triangle",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 3,
+          "momentum": 1,
+          "initiative": "A"
+        }
+      ],
+      "submission_turn": 4,
+      "winner": "A",
+      "condition": "submission",
+      "final_val_a": 2.0,
+      "final_val_b": -2.0,
+      "num_turns": 4
+    },
+    {
+      "label": "G07 CGRD sweep-contact-check",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "pull_guard",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "hip_bump",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 4.0,
+      "final_val_b": -4.0,
+      "num_turns": 12
+    },
+    {
+      "label": "G08 SCTR americana-sub",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "takedown",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 1,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 2,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 3,
+          "momentum": 1,
+          "initiative": "A"
+        }
+      ],
+      "submission_turn": 4,
+      "winner": "A",
+      "condition": "submission",
+      "final_val_a": 2.5,
+      "final_val_b": -2.5,
+      "num_turns": 4
+    },
+    {
+      "label": "G09 SCTR sub-reset-on-advance",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "takedown",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 1,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 2,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "sctr_mount",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 1,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 2,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 3,
+          "momentum": 2,
+          "initiative": "A"
+        }
+      ],
+      "submission_turn": 7,
+      "winner": "A",
+      "condition": "submission",
+      "final_val_a": 4.0,
+      "final_val_b": -4.0,
+      "num_turns": 7
+    },
+    {
+      "label": "G10 SCTR sub-threat-non-decay",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "takedown",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 1,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 2,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 1,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 2.5,
+      "final_val_b": -2.5,
+      "num_turns": 12
+    },
+    {
+      "label": "G11 MNT pressure-hold",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "pull_guard",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "hip_bump",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "mnt_pressure",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 4.0,
+      "final_val_b": -4.0,
+      "num_turns": 12
+    },
+    {
+      "label": "G12 MNT B-escapes-vs-A-control",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "pull_guard",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "hip_bump",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "mnt_sub",
+          "mor_b": "mnt_bridge",
+          "pos_before": "MNT",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 1,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "mnt_sub",
+          "mor_b": "mnt_bridge",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "mnt_sub",
+          "mor_b": "mnt_bridge",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "mnt_sub",
+          "mor_b": "mnt_bridge",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "mnt_sub",
+          "mor_b": "mnt_bridge",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "CGRD",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 2.0,
+      "final_val_b": -2.0,
+      "num_turns": 12
+    },
+    {
+      "label": "G13 BCTR rnc-sub",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "bctr_rnc",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 1,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "bctr_rnc",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 2,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "bctr_rnc",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 3,
+          "momentum": 0,
+          "initiative": "A"
+        }
+      ],
+      "submission_turn": 3,
+      "winner": "A",
+      "condition": "submission",
+      "final_val_a": 5.0,
+      "final_val_b": -5.0,
+      "num_turns": 3
+    },
+    {
+      "label": "G14 BCTR control-hold",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "bctr_control",
+          "mor_b": "PASS",
+          "pos_before": "BCTR",
+          "pos_after": "BCTR",
+          "val": 5.0,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "A"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 5.0,
+      "final_val_b": -5.0,
+      "num_turns": 12
+    },
+    {
+      "label": "G15 TRTL standup\u2192takedown\u2192sub",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "trtl_standup",
+          "mor_b": "PASS",
+          "pos_before": "TRTL",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "takedown",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 1,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 2,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 3,
+          "momentum": 2,
+          "initiative": "A"
+        }
+      ],
+      "submission_turn": 5,
+      "winner": "A",
+      "condition": "submission",
+      "final_val_a": 2.5,
+      "final_val_b": -2.5,
+      "num_turns": 5
+    },
+    {
+      "label": "G16 TRTL sit\u2192sweep\u2192mount\u2192sub",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "trtl_sit",
+          "mor_b": "PASS",
+          "pos_before": "TRTL",
+          "pos_after": "OGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "ogrd_sweep",
+          "mor_b": "PASS",
+          "pos_before": "OGRD",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "sctr_mount",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 3,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 1,
+          "momentum": 3,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 2,
+          "momentum": 3,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 3,
+          "momentum": 3,
+          "initiative": "A"
+        }
+      ],
+      "submission_turn": 6,
+      "winner": "A",
+      "condition": "submission",
+      "final_val_a": 4.0,
+      "final_val_b": -4.0,
+      "num_turns": 6
+    },
+    {
+      "label": "G17 MNT bridge-escape-cycle",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "pull_guard",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "hip_bump",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "mnt_sub",
+          "mor_b": "mnt_bridge",
+          "pos_before": "MNT",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 1,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "hip_bump",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 1,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 2,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "mnt_sub",
+          "mor_b": "PASS",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 3,
+          "momentum": 2,
+          "initiative": "A"
+        }
+      ],
+      "submission_turn": 7,
+      "winner": "A",
+      "condition": "submission",
+      "final_val_a": 4.0,
+      "final_val_b": -4.0,
+      "num_turns": 7
+    },
+    {
+      "label": "G18 SCTR shrimp-escape",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "takedown",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "sctr_americana",
+          "mor_b": "sctr_shrimp",
+          "pos_before": "SCTR",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 1,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 3,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 4,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 5,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 6,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 7,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 8,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 9,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 10,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 11,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        },
+        {
+          "turn": 12,
+          "mor_a": "PASS",
+          "mor_b": "PASS",
+          "pos_before": "HGRD",
+          "pos_after": "HGRD",
+          "val": 0.5,
+          "sub_threat": 0,
+          "momentum": 0,
+          "initiative": "B"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 0.5,
+      "final_val_b": -0.5,
+      "num_turns": 12
+    },
+    {
+      "label": "G19 BCTR turn-in-escape",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "bctr_rnc",
+          "mor_b": "bctr_turn_in",
+          "pos_before": "BCTR",
+          "pos_after": "TRTL",
+          "val": -1.0,
+          "sub_threat": 1,
+          "momentum": -1,
+          "initiative": "B"
+        },
+        {
+          "turn": 2,
+          "mor_a": "PASS",
+          "mor_b": "trtl_standup",
+          "pos_before": "TRTL",
+          "pos_after": "STDN",
+          "val": 0.0,
+          "sub_threat": 0,
+          "momentum": -2,
+          "initiative": "B"
+        },
+        {
+          "turn": 3,
+          "mor_a": "takedown",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 0,
+          "momentum": -1,
+          "initiative": "B"
+        },
+        {
+          "turn": 4,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 1,
+          "momentum": -1,
+          "initiative": "B"
+        },
+        {
+          "turn": 5,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 2,
+          "momentum": -1,
+          "initiative": "B"
+        },
+        {
+          "turn": 6,
+          "mor_a": "sctr_americana",
+          "mor_b": "PASS",
+          "pos_before": "SCTR",
+          "pos_after": "SCTR",
+          "val": 2.5,
+          "sub_threat": 3,
+          "momentum": -1,
+          "initiative": "B"
+        }
+      ],
+      "submission_turn": 6,
+      "winner": "A",
+      "condition": "submission",
+      "final_val_a": 2.5,
+      "final_val_b": -2.5,
+      "num_turns": 6
+    },
+    {
+      "label": "G20 MNT failed-escape-chain",
+      "turns": [
+        {
+          "turn": 1,
+          "mor_a": "pull_guard",
+          "mor_b": "PASS",
+          "pos_before": "STDN",
+          "pos_after": "CGRD",
+          "val": 2.0,
+          "sub_threat": 0,
+          "momentum": 1,
+          "initiative": "A"
+        },
+        {
+          "turn": 2,
+          "mor_a": "hip_bump",
+          "mor_b": "PASS",
+          "pos_before": "CGRD",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 3,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 4,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 5,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 6,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 7,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 8,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 9,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 10,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 11,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        },
+        {
+          "turn": 12,
+          "mor_a": "mnt_pressure",
+          "mor_b": "mnt_elbow_knee",
+          "pos_before": "MNT",
+          "pos_after": "MNT",
+          "val": 4.0,
+          "sub_threat": 0,
+          "momentum": 2,
+          "initiative": "A"
+        }
+      ],
+      "winner": "A",
+      "condition": "points",
+      "final_val_a": 4.0,
+      "final_val_b": -4.0,
+      "num_turns": 12
+    }
+  ]
+}

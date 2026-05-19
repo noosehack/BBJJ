@@ -145,14 +145,15 @@
          (+ (if a-ok 1 0) (* -1 (if b-ok 1 0))))
       -3 3))
 
-    ;; sub_threat: +1 if submission MOR was legal from offense
-    ;; MAINTAIN-only MORs don't change state, so legality (non-nil) is the criterion
+    ;; sub_threat: +1 if submission MOR from offense (incl CGRD), decay -1 otherwise, reset on pos change
     (define a-is-sub (if (same mor-a nil) false (same (GET mor-a :tags) "submission")))
     (define pos-is-off (if (same pos "SCTR") true (if (same pos "MNT") true
-                        (if (same pos "BCTR") true false))))
+                        (if (same pos "BCTR") true (if (same pos "CGRD") true false)))))
     (define new-sub (if (if a-is-sub pos-is-off false)
       (+ (GET gmem :sub_threat) 1)
-      (if (same new-pos pos) (GET gmem :sub_threat) 0)))
+      (if (same new-pos pos)
+        (clamp (+ (GET gmem :sub_threat) -1) 0 3)
+        0)))
 
     ;; initiative: whoever won more contests
     (define new-init (if (> wins-a wins-b) "A" (if (> wins-b wins-a) "B" (GET gmem :initiative))))

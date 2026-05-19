@@ -36,12 +36,12 @@
 (assert-eq "sub_threat 2→3" (GET (GET r3 :gmem) :sub_threat) 3)
 (assert-eq "submission win"  (if (>= (GET (GET r3 :gmem) :sub_threat) 3) true false) true)
 
-;; Sub from non-offensive position should NOT increment
+;; Submission from CGRD now increments sub_threat (P1.2: CGRD offensive for subs)
 (define gm-def (GAME-MEM 0 0 "A" 1))
 (define r-cgrd (resolve
   (state-add-con (state-add-con init-state CON-ME-LE+-OP-TO) CON-ME-LE--OP-TO)
   gm-def "triangle" "PASS"))
-(assert-eq "triangle from CGRD: sub=0" (GET (GET r-cgrd :gmem) :sub_threat) 0)
+(assert-eq "triangle from CGRD: sub=1" (GET (GET r-cgrd :gmem) :sub_threat) 1)
 
 ;; Sub_threat resets on position change away from offense
 (define gm-sub1 (GAME-MEM 0 1 "A" 1))
