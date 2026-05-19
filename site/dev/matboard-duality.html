@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matboard — Duality</title>
+  <link rel="stylesheet" href="matboard-duality.css">
+</head>
+<body>
+  <!-- Game selector bar -->
+  <nav id="game-bar"></nav>
+
+  <div class="shell">
+    <!-- ═══ LEFT: Dual Player + Contest ═══ -->
+    <main class="stage">
+
+      <!-- Dual Player Panel -->
+      <section class="duality">
+        <div class="player player-a" id="player-a">
+          <div class="player-label">A</div>
+          <div class="player-role" id="pa-role">ATTACKER</div>
+          <div class="player-mor" id="pa-mor">—</div>
+          <div class="player-mor-desc" id="pa-mor-desc"></div>
+          <div class="player-intent" id="pa-intent"></div>
+          <div class="player-stats">
+            <div class="stat"><span class="stat-label">VAL</span><span class="stat-val" id="pa-val">0</span></div>
+            <div class="stat"><span class="stat-label">SUB</span><span class="stat-val" id="pa-sub">0</span></div>
+          </div>
+        </div>
+
+        <div class="versus">
+          <div class="vs-label">VS</div>
+          <div class="advantage-bar" id="advantage-bar">
+            <div class="adv-fill" id="adv-fill"></div>
+            <div class="adv-marker" id="adv-marker"></div>
+          </div>
+          <div class="momentum-bar" id="momentum-display">
+            <span class="mom-label">MOMENTUM</span>
+            <span class="mom-val" id="mom-val">0</span>
+          </div>
+          <div class="initiative-badge" id="initiative-badge">INIT: A</div>
+        </div>
+
+        <div class="player player-b" id="player-b">
+          <div class="player-label">B</div>
+          <div class="player-role" id="pb-role">DEFENDER</div>
+          <div class="player-mor" id="pb-mor">—</div>
+          <div class="player-mor-desc" id="pb-mor-desc"></div>
+          <div class="player-intent" id="pb-intent"></div>
+          <div class="player-stats">
+            <div class="stat"><span class="stat-label">VAL</span><span class="stat-val" id="pb-val">0</span></div>
+            <div class="stat"><span class="stat-label">SUB</span><span class="stat-val" id="pb-sub">—</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contest / Resolve Panel -->
+      <section class="contest-panel" id="contest-panel">
+        <div class="contest-header">
+          <span class="pos-badge" id="pos-before">STDN</span>
+          <span class="arrow" id="transition-arrow">—</span>
+          <span class="pos-badge" id="pos-after">STDN</span>
+        </div>
+        <div class="contest-narrative" id="contest-narrative"></div>
+        <div class="contest-outcome" id="contest-outcome"></div>
+      </section>
+
+      <!-- Sub_threat pressure gauge -->
+      <section class="pressure-strip" id="pressure-strip">
+        <div class="pressure-label">SUBMISSION PRESSURE</div>
+        <div class="pressure-track">
+          <div class="pressure-seg" data-level="1"></div>
+          <div class="pressure-seg" data-level="2"></div>
+          <div class="pressure-seg" data-level="3"></div>
+        </div>
+      </section>
+
+      <!-- Teaching explanation -->
+      <section class="teaching" id="teaching">
+        <div class="teach-text" id="teach-text"></div>
+      </section>
+
+      <!-- Matboard Graph -->
+      <section class="graph-section">
+        <svg id="graph-svg" viewBox="0 0 560 240"></svg>
+      </section>
+
+    </main>
+
+    <!-- ═══ RIGHT: Timeline ═══ -->
+    <aside class="timeline" id="timeline">
+      <div class="tl-header">
+        <span>TIMELINE</span>
+        <span class="tl-result" id="tl-result"></span>
+      </div>
+      <div class="tl-turns" id="tl-turns"></div>
+      <div class="tl-debug-toggle" id="debug-toggle">RAW FOOTPRINT</div>
+      <pre class="tl-debug" id="debug-content"></pre>
+    </aside>
+  </div>
+
+  <!-- Turn navigation -->
+  <footer class="nav-bar" id="nav-bar">
+    <button id="btn-prev">&larr;</button>
+    <input type="range" id="turn-slider" min="0" max="11" value="0">
+    <button id="btn-next">&rarr;</button>
+    <span id="turn-label" class="turn-counter">T1 / 12</span>
+  </footer>
+
+  <script src="matboard-duality.js"></script>
+</body>
+</html>
